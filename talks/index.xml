@@ -21,5 +21,15 @@ Kubernetes promises healing your application on all kinds of failure scenarios, 
 This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>
     </item>
     
+    <item>
+      <title>Intro to Kubernetes</title>
+      <link>https://mxinden.github.io/talks/introduction-to-k8s/</link>
+      <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/talks/introduction-to-k8s/</guid>
+      <description>Distributing and deploying software inside (Docker-) containers for security, isolation and ease of use is the new big thing. But once you got all your services nicely wrapped - who takes care of all these containers?
+The open source project Kubernetes, originating from Google, helps you manage containerized applications, as the operating system of your datacenter, treating hundreds of machines as a single resource pool. This talk introduces the core concepts of Kubernetes, its benefits and its huge ecosystem and gives you an idea of how Google controls parts of their gigantic infrastructure.</description>
+    </item>
+    
   </channel>
 </rss>
