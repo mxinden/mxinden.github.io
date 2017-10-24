@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Talks on mxinden</title>
-    <link>mxinden.github.io/talks/</link>
+    <link>https://mxinden.github.io/talks/</link>
     <description>Recent content in Talks on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 22 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="mxinden.github.io/talks/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mxinden.github.io/talks/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Self-healing Kubernetes</title>
-      <link>mxinden.github.io/talks/self-healing-k8s/</link>
+      <link>https://mxinden.github.io/talks/self-healing-k8s/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>mxinden.github.io/talks/self-healing-k8s/</guid>
+      <guid>https://mxinden.github.io/talks/self-healing-k8s/</guid>
       <description>What If Component xxx Dies? Introducing Self-Healing Kubernetes
 Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
 This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>
