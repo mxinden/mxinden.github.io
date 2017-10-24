@@ -4,22 +4,18 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='What If Component xxx Dies? Introducing Self-Healing Kubernetes
-Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
-This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.'>
+<meta name='description' content='Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus ensures that Kubernetes stays healthy. Prometheus is a stateful application, so operating it in a cloud native environment can be a challenging task. The Prometheus Operator makes running highly available Prometheus clusters, and even an entire end to end monitoring pipeline, easily manageable. Max will explain the functionality of the Prometheus Operator and describe a desirable end-to-end monitoring stack, including alerts and dashboards.'>
 
-<meta property='og:title' content='Self-healing Kubernetes • mxinden'>
-<meta property='og:description' content='What If Component xxx Dies? Introducing Self-Healing Kubernetes
-Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
-This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.'>
-<meta property='og:url' content='https://mxinden.github.io/talks/self-healing-k8s/'>
+<meta property='og:title' content='End-to-end monitoring with the Prometheus Operator • mxinden'>
+<meta property='og:description' content='Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus ensures that Kubernetes stays healthy. Prometheus is a stateful application, so operating it in a cloud native environment can be a challenging task. The Prometheus Operator makes running highly available Prometheus clusters, and even an entire end to end monitoring pipeline, easily manageable. Max will explain the functionality of the Prometheus Operator and describe a desirable end-to-end monitoring stack, including alerts and dashboards.'>
+<meta property='og:url' content='https://mxinden.github.io/talks/end-to-end-monitoring-with-the-prometheus-operator/'>
 <meta property='og:site_name' content='mxinden'>
-<meta property='og:type' content='article'><meta property='article:section' content='Talks'><meta property='article:published_time' content='2017-10-22T00:00:00Z'/><meta property='article:modified_time' content='2017-10-22T00:00:00Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='Talks'><meta property='article:published_time' content='2017-08-19T00:00:00Z'/><meta property='article:modified_time' content='2017-08-19T00:00:00Z'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.30.2" />
 
-  <title>Self-healing Kubernetes • mxinden</title>
-  <link rel='canonical' href='https://mxinden.github.io/talks/self-healing-k8s/'>
+  <title>End-to-end monitoring with the Prometheus Operator • mxinden</title>
+  <link rel='canonical' href='https://mxinden.github.io/talks/end-to-end-monitoring-with-the-prometheus-operator/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -65,7 +61,7 @@ This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously 
     <header class='header-container'>
   <div class='header entry-header'>
     <div class='header-info'>
-      <h1 class='title'>Self-healing Kubernetes</h1>
+      <h1 class='title'>End-to-end monitoring with the Prometheus Operator</h1>
       
 
     </div>
@@ -80,7 +76,7 @@ This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously 
   
 </svg>
 <span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2017-10-22T00:00:00Z'>2017, Oct 22</time>
+  <time class='date' datetime='2017-08-19T00:00:00Z'>2017, Aug 19</time>
 </span>
 
   
@@ -96,21 +92,12 @@ This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously 
     
 
     <div class='entry-content'>
-  <p>What If Component xxx Dies? Introducing Self-Healing Kubernetes</p>
+  <p>Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus ensures that Kubernetes stays healthy. Prometheus is a stateful application, so operating it in a cloud native environment can be a challenging task. The Prometheus Operator makes running highly available Prometheus clusters, and even an entire end to end monitoring pipeline, easily manageable. Max will explain the functionality of the Prometheus Operator and describe a desirable end-to-end monitoring stack, including alerts and dashboards.</p>
 
-<p>Kubernetes promises healing your application on all kinds of failure scenarios,
-but why not self-heal Kubernetes itself?</p>
-
-<p>This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously
-recover from failure scenarios with the help of e.g. itself, systemd and
-checkpointing. We will ask and answer questions like “What happens when xxx
-dies”. The theory will be followed by a demo on a live cluster showcasing what
-happens when we kill central Kubernetes components, like the API-Server. Let’s
-see how well Kubernetes recovers.</p>
+<p>The audience will learn how to setup monitoring for both the components of a Kubernetes cluster and the applications running inside. The talk will explain how end-to-end monitoring in Kubernetes clusters with Prometheus can look like and how to easily achieve it with the Prometheus Operator.</p>
 
 <ul>
-<li><a href="/static/self-healing-k8s.pdf">Slides</a></li>
-<li><a href="https://media.ccc.de/v/ASG2017-137-what_if_component_xxx_dies_introducing_self-healing_kubernetes" target="_blank">Recording</a></li>
+<li><a href="https://www.youtube.com/watch?v=-cw_LS4C2Ew" target="_blank">Recording</a></li>
 </ul>
 
 </div>
@@ -127,7 +114,7 @@ see how well Kubernetes recovers.</p>
   
 <nav class='entry-nav-container'>
   <div class='entry-nav'><div class='prev-entry'>
-      <a href='/talks/end-to-end-monitoring-with-the-prometheus-operator/'>
+      <a href='/talks/introduction-to-k8s/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -135,7 +122,17 @@ see how well Kubernetes recovers.</p>
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>End-to-end monitoring with the Prometheus Operator</a>
+        <span class='screen-reader'>Previous post: </span>Intro to Kubernetes</a>
+    </div><div class='next-entry'>
+      <a href='/talks/self-healing-k8s/'>
+        <span class='screen-reader'>Next post: </span>Self-healing Kubernetes<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
     </div></div>
 </nav>
 

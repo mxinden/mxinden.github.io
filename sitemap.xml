@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>https://mxinden.github.io/talks/end-to-end-monitoring-with-the-prometheus-operator/</loc>
+    <lastmod>2017-08-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mxinden.github.io/talks/introduction-to-k8s/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
   </url>
