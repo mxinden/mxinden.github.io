@@ -40,5 +40,15 @@ This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously 
 The open source project Kubernetes, originating from Google, helps you manage containerized applications, as the operating system of your datacenter, treating hundreds of machines as a single resource pool. This talk introduces the core concepts of Kubernetes, its benefits and its huge ecosystem and gives you an idea of how Google controls parts of their gigantic infrastructure.</description>
     </item>
     
+    <item>
+      <title>Improving user and developer experience of the Alertmanager UI</title>
+      <link>https://mxinden.github.io/talks/improving-user-and-developer-experience-of-the-alertmanager-ui/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/talks/improving-user-and-developer-experience-of-the-alertmanager-ui/</guid>
+      <description>Alertmanager deduplicates, groups, and routes alerts from Prometheus to all kinds of paging services. With it comes a dated UI which does not live up to the expectations of the users, nor does it attract new contributors.
+From this talk, you will learn how we addressed these issues when building the new UI from scratch. We made it friendlier to users by removing unnecessary domain language noise. In addition we added new power features such as filtering and grouping.</description>
+    </item>
+    
   </channel>
 </rss>
