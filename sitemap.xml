@@ -17,6 +17,15 @@
   </url>
   
   <url>
+    <loc>https://mxinden.github.io/blog/</loc>
+    <lastmod>2017-06-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mxinden.github.io/misc/</loc>
+  </url>
+  
+  <url>
     <loc>https://mxinden.github.io/talks/self-healing-k8s/</loc>
     <lastmod>2017-10-22T00:00:00+00:00</lastmod>
   </url>
@@ -239,11 +248,6 @@
   <url>
     <loc>https://mxinden.github.io/authors/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mxinden.github.io/blog/</loc>
-    <lastmod>2017-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
