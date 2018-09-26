@@ -4,22 +4,18 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='What If Component xxx Dies? Introducing Self-Healing Kubernetes
-Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
-This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.'>
+<meta name='description' content='Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.'>
 
-<meta property='og:title' content='Self-healing Kubernetes • mxinden'>
-<meta property='og:description' content='What If Component xxx Dies? Introducing Self-Healing Kubernetes
-Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
-This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.'>
-<meta property='og:url' content='https://mxinden.github.io/talks/self-healing-k8s/'>
+<meta property='og:title' content='Self-Service Monitoring • mxinden'>
+<meta property='og:description' content='Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.'>
+<meta property='og:url' content='https://mxinden.github.io/talks/self-service-monitoring/'>
 <meta property='og:site_name' content='mxinden'>
-<meta property='og:type' content='article'><meta property='article:section' content='Talks'><meta property='article:published_time' content='2017-10-22T00:00:00Z'/><meta property='article:modified_time' content='2017-10-22T00:00:00Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='Talks'><meta property='article:published_time' content='2018-09-26T00:00:00Z'/><meta property='article:modified_time' content='2018-09-26T00:00:00Z'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.42.2" />
 
-  <title>Self-healing Kubernetes • mxinden</title>
-  <link rel='canonical' href='https://mxinden.github.io/talks/self-healing-k8s/'>
+  <title>Self-Service Monitoring • mxinden</title>
+  <link rel='canonical' href='https://mxinden.github.io/talks/self-service-monitoring/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -71,7 +67,7 @@ This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously 
     <header class='header-container'>
   <div class='header entry-header'>
     <div class='header-info'>
-      <h1 class='title'>Self-healing Kubernetes</h1>
+      <h1 class='title'>Self-Service Monitoring</h1>
       
 
     </div>
@@ -86,7 +82,7 @@ This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously 
   
 </svg>
 <span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2017-10-22T00:00:00Z'>2017, Oct 22</time>
+  <time class='date' datetime='2018-09-26T00:00:00Z'>2018, Sep 26</time>
 </span>
 
   
@@ -102,21 +98,22 @@ This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously 
     
 
     <div class='entry-content'>
-  <p>What If Component xxx Dies? Introducing Self-Healing Kubernetes</p>
+  <p>Monitoring plays a crucial role in a microservice architecture. Restricting the
+management and configuration of the monitoring stack to the operations team
+results in workflow bottlenecks. Instead one could provide a self-service
+monitoring platform, enabling each team to easily setup monitoring for their
+applications and customize it to their needs. This gives each team the ability
+to deeply introspect their application, benchmark new features and alert on
+failures on their own.</p>
 
-<p>Kubernetes promises healing your application on all kinds of failure scenarios,
-but why not self-heal Kubernetes itself?</p>
-
-<p>This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously
-recover from failure scenarios with the help of e.g. itself, systemd and
-checkpointing. We will ask and answer questions like “What happens when xxx
-dies”. The theory will be followed by a demo on a live cluster showcasing what
-happens when we kill central Kubernetes components, like the API-Server. Let’s
-see how well Kubernetes recovers.</p>
+<p>The talk will show hands-on how to achieve the above on Kubernetes via the
+Prometheus Operator leveraging the Prometheus systems and service monitoring
+project. By the end of this talk, one will be ready to try self-service
+monitoring in their own Kubernetes infrastructure.</p>
 
 <ul>
-<li><a href="/static/self-healing-k8s.pdf">Slides</a></li>
-<li><a href="https://media.ccc.de/v/ASG2017-137-what_if_component_xxx_dies_introducing_self-healing_kubernetes" target="_blank">Recording</a></li>
+<li><a href="/static/self-service-monitoring.pdf">Slides</a></li>
+<li><a href="https://github.com/mxinden/self-service-monitoring-workshop" target="_blank">Workshop</a></li>
 </ul>
 
 </div>
@@ -133,7 +130,7 @@ see how well Kubernetes recovers.</p>
   
 <nav class='entry-nav-container'>
   <div class='entry-nav'><div class='prev-entry'>
-      <a href='/talks/end-to-end-monitoring-with-the-prometheus-operator/'>
+      <a href='/talks/self-healing-k8s/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -141,17 +138,7 @@ see how well Kubernetes recovers.</p>
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>End-to-end monitoring with the Prometheus Operator</a>
-    </div><div class='next-entry'>
-      <a href='/talks/self-service-monitoring/'>
-        <span class='screen-reader'>Next post: </span>Self-Service Monitoring<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
-  
-</svg>
-</span>
-      </a>
+        <span class='screen-reader'>Previous post: </span>Self-healing Kubernetes</a>
     </div></div>
 </nav>
 
