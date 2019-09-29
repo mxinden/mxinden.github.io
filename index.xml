@@ -5,10 +5,34 @@
     <link>https://mxinden.github.io/</link>
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
     <lastBuildDate>Mon, 24 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mxinden.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Resume</title>
+      <link>https://mxinden.github.io/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/resume/</guid>
+      <description>Experience Senior Software Engineer at CoreOS / RedHat | Jan 2017 - Present
+Systems engineer working on the open source monitoring project Prometheus and its integration with the Kubernetes ecosystem to monitor cloud-native Linux container infrastructures. Designing and implementing distributed systems on top of the Linux operating system and Kubernetes orchestrator. Presenting open source work at various IT conferences and champion the Prometheus project as a core maintainer.
+Software Engineer at Innoscale | Aug 2014 - Dec 2016</description>
+    </item>
+    
+    <item>
+      <title>Misc</title>
+      <link>https://mxinden.github.io/misc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/misc/</guid>
+      <description>Projects &amp;amp; Achievements  2019-01-16 - Maintainer of Kubernetes kube-state-metrics.
+ 2019-01-15 - Joining Kubernetes organisation.
+ 2019-01-11 - Kubernetes kube-state-metrics performance optimization dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
+ 2018-09-04 - Design, specification and implementation of a new API (v2) for Prometheus Alertmanager, generated via OpenAPI.</description>
+    </item>
     
     <item>
       <title>Metric driven performance optimization</title>

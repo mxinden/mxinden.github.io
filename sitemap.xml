@@ -26,38 +26,33 @@
   </url>
   
   <url>
+    <loc>https://mxinden.github.io/tags/kubernetes/</loc>
+    <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mxinden.github.io/blog/2019-06-25-metric-driven-performance-optimization/</loc>
+    <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mxinden.github.io/tags/monitoring/</loc>
+    <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mxinden.github.io/tags/prometheus/</loc>
     <lastmod>2019-06-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://mxinden.github.io/tags/</loc>
     <lastmod>2019-06-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mxinden.github.io/tags/kubernetes/</loc>
-    <lastmod>2019-06-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mxinden.github.io/tags/monitoring/</loc>
-    <lastmod>2019-06-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mxinden.github.io/tags/prometheus/</loc>
-    <lastmod>2019-06-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mxinden.github.io/tags/tech/</loc>
     <lastmod>2019-06-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -103,13 +98,11 @@
   <url>
     <loc>https://mxinden.github.io/tags/travel/</loc>
     <lastmod>2017-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mxinden.github.io/tags/usa/</loc>
     <lastmod>2017-02-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -300,16 +293,6 @@
   <url>
     <loc>https://mxinden.github.io/blog/2016-10-06-flying-to-san-francisco/</loc>
     <lastmod>2016-10-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mxinden.github.io/authors/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mxinden.github.io/categories/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
