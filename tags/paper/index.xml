@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>paper on mxinden</title>
+    <link>https://mxinden.github.io/tags/paper/</link>
+    <description>Recent content in paper on mxinden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mxinden.github.io/tags/paper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>19th Distributed Systems Paper Club</title>
+      <link>https://mxinden.github.io/blog/2019-10-27-19th-paper-club/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/blog/2019-10-27-19th-paper-club/</guid>
+      <description>I have been organizing a distributed systems paper reading group in Berlin for the last year. We meet every other week discussing a paper in the distributed systems space. This could be anything from Chandy–Lamport&amp;rsquo;s algorithm for global distributed snapshots [1] to things like conflict free replicated datatypes [2]. The event is open for anyone interested. I only ask people to come prepared.
+In the last meeting (19th) we covered distributed hash tables.</description>
+    </item>
+    
+  </channel>
+</rss>

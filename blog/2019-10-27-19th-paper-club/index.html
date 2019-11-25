@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.58.3" />
-  <link rel="canonical" href="https://mxinden.github.io/misc/">
+  <link rel="canonical" href="https://mxinden.github.io/blog/2019-10-27-19th-paper-club/">
 
   
 
@@ -32,7 +32,7 @@
 
   
   
-  <title>Misc | mxinden</title>
+  <title>19th Distributed Systems Paper Club | mxinden</title>
 </head>
 
   <body>
@@ -207,7 +207,7 @@
       
       
       
-      <a href="/misc/" aria-current="page">
+      <a href="/misc/" >
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -249,166 +249,55 @@
         <div>
           
   <main id="main">
-    <h1>Misc</h1>
-    
+    <h1>19th Distributed Systems Paper Club</h1>
+    <p>I have been organizing a distributed systems paper reading group in Berlin for
+the last year. We meet every other week discussing a paper in the distributed
+systems space. This could be anything from <em>Chandy–Lamport&rsquo;s algorithm for
+global distributed snapshots</em> [1] to things like <em>conflict free replicated
+datatypes</em> [2]. The event is open for anyone interested. I only ask people to
+come prepared.</p>
 
-<h1 id="projects-achievements">Projects &amp; Achievements</h1>
+<p>In the last meeting (19th) we covered distributed hash tables. They play a
+crucial role in e.g. decentralized file sharing networks for example as
+directory services, simple key-value stores, or peer-to-peer membership
+management protocols.</p>
 
-<ul>
-<li><p><em>2019-01-16</em> - Maintainer of <a href="https://github.com/kubernetes/kube-state-metrics">Kubernetes
-kube-state-metrics</a>.</p></li>
+<p>Given its simplicity and wide spread industry adoption we chose to cover the
+distributed hash table <em>Kademlia</em> [3]. I doubt I would do a better job
+explaining the concepts then the paper does, thus I recommend giving the paper
+itself a read.</p>
 
-<li><p><em>2019-01-15</em> - Joining <a href="https://github.com/kubernetes/org/issues/364">Kubernetes
-organisation</a>.</p></li>
+<p>Libp2p [4], a peer-to-peer networking library, implements the <em>Kademlia</em> paper
+with a couple of extensions. Multiple maintainers of the project attended the
+meeting sharing insights on implementation challenges like the suggested routing
+table optimizations.</p>
 
-<li><p><em>2019-01-11</em> - Kubernetes kube-state-metrics <a href="https://github.com/kubernetes/kube-state-metrics/issues/498">performance
-optimization</a>
-dividing CPU usage by a factor of 6 and memory and response time by a factor
-of 3 through introducing an intelligent Prometheus metric cache in the code
-hot path and optimizing memory allocations during response generation.</p></li>
+<p>For the next meeting we might stay within the Kademlia realm and look at
+different follow up papers covering its security aspects in byzantine
+environments [5] [6].</p>
 
-<li><p><em>2018-09-04</em> - Design, specification and implementation of a <a href="https://github.com/prometheus/alertmanager/pull/1352">new API
-(v2)</a> for Prometheus
-Alertmanager, generated via
-<a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md">OpenAPI</a>.</p></li>
+<hr />
 
-<li><p><em>2018-08-17</em> - Initiate and organize distributed systems book club covering
-distributed and decentralized systems research and their real-world
-applications.</p></li>
+<p>[1] Chandy, K. Mani, and Leslie Lamport. &ldquo;Distributed snapshots: Determining
+global states of distributed systems.&rdquo; ACM Transactions on Computer Systems
+(TOCS) 3.1 (1985): 63-75.</p>
 
-<li><p><em>2018-08-13</em> - Maintainer of <a href="https://github.com/prometheus/alertmanager">Prometheus
-Alertmanager</a>.</p></li>
+<p>[2] Shapiro, Marc, et al. &ldquo;A comprehensive study of convergent and commutative
+replicated data types.&rdquo; (2011).</p>
 
-<li><p><em>2017-11-12</em> - Joining <a href="https://prometheus.io/governance/#team-members">Prometheus
-organisation</a>.</p></li>
-</ul>
+<p>[3] Maymounkov, Petar, and David Mazieres. : A peer-to-peer information system
+based on the xor metric.&rdquo; International Workshop on Peer-to-Peer Systems.
+Springer, Berlin, Heidelberg, 2002.</p>
 
-<h1 id="resources-worth-sharing">Resources worth sharing</h1>
+<p>[4] <a href="https://github.com/libp2p/rust-libp2p/">https://github.com/libp2p/rust-libp2p/</a></p>
 
-<h2 id="books">Books</h2>
+<p>[5] Baumgart, Ingmar, and Sebastian Mies. &ldquo;S/kademlia: A practicable approach
+towards secure key-based routing.&rdquo; 2007 International Conference on Parallel and
+Distributed Systems. IEEE, 2007.</p>
 
-<ul>
-<li><p>Kurose, J. F., &amp; Ross, K. W. (2017). <strong>Computer networking: a top-down
-approach</strong> (Vol. 7). Boston, USA: Addison Wesley.</p></li>
-
-<li><p>Kleppmann, M. (2017). <strong>Designing data-intensive applications</strong>: The big ideas
-behind reliable, scalable, and maintainable systems. &ldquo; O&rsquo;Reilly Media, Inc.&rdquo;.</p></li>
-
-<li><p>Klabnik, Steve, and Carol Nichols. <strong>The Rust Programming Language</strong>. No
-Starch Press, 2018.</p></li>
-
-<li><p>Tanenbaum, A. S., &amp; Van Steen, M. (2017). <strong>Distributed systems</strong>: principles and
-paradigms.</p></li>
-
-<li><p>Gregg, B. (2013). <strong>Systems performance: enterprise and the cloud</strong>. Pearson
-Education.</p></li>
-
-<li><p>Cooper, Keith, and Linda Torczon. <strong>Engineering a compiler</strong>. Elsevier, 2011.</p></li>
-
-<li><p>Cox-Buday, Katherine. <strong>Concurrency in Go: Tools and Techniques for
-Developers.</strong> &ldquo; O&rsquo;Reilly Media, Inc.&rdquo;, 2017.</p></li>
-
-<li><p>Lipovaca, M. (2011). <strong>Learn you a haskell for great good!</strong>: a beginner&rsquo;s
-guide. no starch press.</p></li>
-
-<li><p>Grigorik, I. (2013). <strong>High Performance Browser Networking</strong>: What every web
-developer should know about networking and web performance. &ldquo; O&rsquo;Reilly Media,
-Inc.&ldquo;.</p></li>
-
-<li><p>Love, R. (2005). <strong>Linux Kernel Development</strong> (Novell Press). Novell Press.</p></li>
-
-<li><p>Beyer, B., Jones, C., Petoff, J., &amp; Murphy, N. R. (2016). <strong>Site Reliability
-Engineering: How Google Runs Production Systems</strong>. &ldquo; O&rsquo;Reilly Media, Inc.&rdquo;.</p></li>
-</ul>
-
-<h2 id="papers">Papers</h2>
-
-<h3 id="databases">Databases</h3>
-
-<ul>
-<li><p>Howard, Heidi. (2018). <strong>Distributed consensus revised.</strong></p></li>
-
-<li><p>Fischer, Michael J., Nancy A. Lynch, and Michael S. Paterson. <strong>Impossibility
-of distributed consensus with one faulty process.</strong> No. MIT/LCS/TR-282.
-Massachusetts Inst of Tech Cambridge lab for Computer Science, 1982.</p></li>
-
-<li><p>Levandoski, Justin J., David B. Lomet, and Sudipta Sengupta. <strong>&ldquo;The Bw-Tree: A
-B-tree for new hardware platforms.&rdquo;</strong> 2013 IEEE 29th International Conference
-on Data Engineering (ICDE). IEEE, 2013.</p></li>
-
-<li><p>Thomson, Alexander, et al. <strong>&ldquo;Calvin: fast distributed transactions for
-partitioned database systems.&rdquo;</strong> Proceedings of the 2012 ACM SIGMOD
-International Conference on Management of Data. ACM, 2012.</p></li>
-</ul>
-
-<h3 id="lock-free-data-structures">Lock-free data structures</h3>
-
-<ul>
-<li><p>Hart, Thomas Edward. <strong>Comparative performance of memory reclamation strategies
-for lock-free and concurrently-readable data structures</strong>. University of
-Toronto, 2005.</p></li>
-
-<li><p>Kogan, Alex, and Erez Petrank. <strong>&ldquo;A methodology for creating fast wait-free
-data structures.&rdquo;</strong> ACM SIGPLAN Notices. Vol. 47. No. 8. ACM, 2012.</p></li>
-
-<li><p>Herlihy, Maurice, Victor Luchangco, and Mark Moir. <strong>&ldquo;Obstruction-free
-synchronization: Double-ended queues as an example.&rdquo;</strong> 23rd International
-Conference on Distributed Computing Systems, 2003. Proceedings.. IEEE, 2003.</p></li>
-</ul>
-
-<h3 id="hardware-synchronization">Hardware synchronization</h3>
-
-<ul>
-<li>David, Tudor, Rachid Guerraoui, and Vasileios Trigonakis. <strong>&ldquo;Everything you
-always wanted to know about synchronization but were afraid to ask.&rdquo;</strong>
-Proceedings of the Twenty-Fourth ACM Symposium on Operating Systems
-Principles. ACM, 2013.</li>
-</ul>
-
-<h3 id="networking">Networking</h3>
-
-<ul>
-<li><p>Lamport, Leslie. <strong>&ldquo;Time, clocks, and the ordering of events in a distributed
-system.&rdquo;</strong> Communications of the ACM 21.7 (1978): 558-565.</p></li>
-
-<li><p>Chandy, K. Mani, and Leslie Lamport. <strong>&ldquo;Distributed snapshots: Determining
-global states of distributed systems.&rdquo;</strong> ACM Transactions on Computer Systems
-(TOCS) 3.1 (1985): 63-75.</p></li>
-
-<li><p>Shapiro, Marc, et al. <strong>&ldquo;A comprehensive study of convergent and commutative
-replicated data types.&rdquo;</strong> (2011).</p></li>
-
-<li><p>Van Renesse, Robbert, et al. <strong>&ldquo;Efficient reconciliation and flow control for
-anti-entropy protocols.&rdquo;</strong> proceedings of the 2nd Workshop on Large-Scale
-Distributed Systems and Middleware. ACM, 2008.</p></li>
-</ul>
-
-<h4 id="peer-to-peer">Peer to peer</h4>
-
-<h5 id="gossip-epidemic-broadcast">Gossip / epidemic broadcast</h5>
-
-<ul>
-<li>Leitao, Joao, Jose Pereira, and Luis Rodrigues. <strong>&ldquo;Epidemic broadcast
-trees.&rdquo;</strong> 2007 26th IEEE International Symposium on Reliable Distributed
-Systems (SRDS 2007). IEEE, 2007.</li>
-</ul>
-
-<h5 id="distributed-hash-table">Distributed hash table</h5>
-
-<ul>
-<li>Maymounkov, Petar, and David Mazieres. <strong>&ldquo;Kademlia: A peer-to-peer information
-system based on the xor metric.&rdquo;</strong> International Workshop on Peer-to-Peer
-Systems. Springer, Berlin, Heidelberg, 2002.</li>
-</ul>
-
-<h5 id="membership-protocol">Membership protocol</h5>
-
-<ul>
-<li>Das, Abhinandan, Indranil Gupta, and Ashish Motivala. <strong>&ldquo;Swim: Scalable
-weakly-consistent infection-style process group membership protocol.&rdquo;</strong>
-Proceedings International Conference on Dependable Systems and Networks. IEEE,
-2002.</li>
-</ul>
+<p>[6] Marcus, Yuval, Ethan Heilman, and Sharon Goldberg. &ldquo;Low-Resource Eclipse
+Attacks on Ethereum&rsquo;s Peer-to-Peer Network.&rdquo; IACR Cryptology ePrint Archive 2018
+(2018): 236.</p>
 
   </main>
 
