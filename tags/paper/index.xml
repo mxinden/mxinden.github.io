@@ -6,10 +6,19 @@
     <description>Recent content in paper on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mxinden.github.io/tags/paper/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>20th Distributed Systems Paper Club</title>
+      <link>https://mxinden.github.io/blog/2019-11-28-20th-paper-club/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/blog/2019-11-28-20th-paper-club/</guid>
+      <description>Last Tuesday we meet again to discuss different attacks and possible countermeasures for distributed hash tables. More in particular we looked at Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on the Ethereum network [2], a novel approach of hiding its own connection buckets as well as using an existing social graph as a network topology in the Whanau paper[3], security extensions to the Chord DHT [4], as well as a larger study of different security techniques for DHTs [5].</description>
+    </item>
     
     <item>
       <title>19th Distributed Systems Paper Club</title>

@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mxinden.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -32,6 +32,15 @@ Software Engineer at Innoscale | Aug 2014 - Dec 2016</description>
  2019-01-15 - Joining Kubernetes organisation.
  2019-01-11 - Kubernetes kube-state-metrics performance optimization dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
  2018-09-04 - Design, specification and implementation of a new API (v2) for Prometheus Alertmanager, generated via OpenAPI.</description>
+    </item>
+    
+    <item>
+      <title>20th Distributed Systems Paper Club</title>
+      <link>https://mxinden.github.io/blog/2019-11-28-20th-paper-club/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/blog/2019-11-28-20th-paper-club/</guid>
+      <description>Last Tuesday we meet again to discuss different attacks and possible countermeasures for distributed hash tables. More in particular we looked at Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on the Ethereum network [2], a novel approach of hiding its own connection buckets as well as using an existing social graph as a network topology in the Whanau paper[3], security extensions to the Chord DHT [4], as well as a larger study of different security techniques for DHTs [5].</description>
     </item>
     
     <item>
