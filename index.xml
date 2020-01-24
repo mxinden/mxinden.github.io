@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>About</title>
+      <link>https://mxinden.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/about/</guid>
+      <description>Hi there, I am Max, a software developer interested in distributed systems.
+You can best reach me via e-mail: mail@max-inden.de.
+GPG Fingerprint: 4110045EE7A432D67AFAC8C85403C5464810BC26</description>
+    </item>
+    
+    <item>
       <title>Resume</title>
       <link>https://mxinden.github.io/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -39,5 +39,16 @@ In the last meeting (19th) we covered distributed hash tables.</description>
       <description>Within my work at Red Hat and Kubernetes SIG instrumentation  I have been working on kube-state-metrics , a Prometheus  exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
     </item>
     
+    <item>
+      <title>Self-healing Kubernetes</title>
+      <link>https://mxinden.github.io/talks/self-healing-k8s/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://mxinden.github.io/talks/self-healing-k8s/</guid>
+      <description>What If Component xxx Dies? Introducing Self-Healing Kubernetes
+Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
+This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>
+    </item>
+    
   </channel>
 </rss>
