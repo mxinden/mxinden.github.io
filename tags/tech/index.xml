@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tech on mxinden</title>
-    <link>https://mxinden.github.io/tags/tech/</link>
+    <link>https://max-inden.de/tags/tech/</link>
     <description>Recent content in tech on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://mxinden.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://max-inden.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>20th Distributed Systems Paper Club</title>
-      <link>https://mxinden.github.io/blog/2019-11-28-20th-paper-club/</link>
+      <link>https://max-inden.de/blog/2019-11-28-20th-paper-club/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/blog/2019-11-28-20th-paper-club/</guid>
+      <guid>https://max-inden.de/blog/2019-11-28-20th-paper-club/</guid>
       <description>Last Tuesday we meet again to discuss different attacks and possible countermeasures for distributed hash tables. More in particular we looked at Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on the Ethereum network [2], a novel approach of hiding its own connection buckets as well as using an existing social graph as a network topology in the Whanau paper[3], security extensions to the Chord DHT [4], as well as a larger study of different security techniques for DHTs [5].</description>
     </item>
     
     <item>
       <title>19th Distributed Systems Paper Club</title>
-      <link>https://mxinden.github.io/blog/2019-10-27-19th-paper-club/</link>
+      <link>https://max-inden.de/blog/2019-10-27-19th-paper-club/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/blog/2019-10-27-19th-paper-club/</guid>
+      <guid>https://max-inden.de/blog/2019-10-27-19th-paper-club/</guid>
       <description>I have been organizing a distributed systems paper reading group in Berlin for the last year. We meet every other week discussing a paper in the distributed systems space. This could be anything from Chandy–Lamport&amp;rsquo;s algorithm for global distributed snapshots [1] to things like conflict free replicated datatypes [2]. The event is open for anyone interested. I only ask people to come prepared.
 In the last meeting (19th) we covered distributed hash tables.</description>
     </item>
     
     <item>
       <title>Metric driven performance optimization</title>
-      <link>https://mxinden.github.io/blog/2019-06-25-metric-driven-performance-optimization/</link>
+      <link>https://max-inden.de/blog/2019-06-25-metric-driven-performance-optimization/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/blog/2019-06-25-metric-driven-performance-optimization/</guid>
+      <guid>https://max-inden.de/blog/2019-06-25-metric-driven-performance-optimization/</guid>
       <description>Within my work at Red Hat and Kubernetes SIG instrumentation  I have been working on kube-state-metrics , a Prometheus  exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
     </item>
     
     <item>
       <title>Self-healing Kubernetes</title>
-      <link>https://mxinden.github.io/talks/self-healing-k8s/</link>
+      <link>https://max-inden.de/talks/self-healing-k8s/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/talks/self-healing-k8s/</guid>
+      <guid>https://max-inden.de/talks/self-healing-k8s/</guid>
       <description>What If Component xxx Dies? Introducing Self-Healing Kubernetes
 Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
 This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>

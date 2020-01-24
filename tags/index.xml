@@ -2,84 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on mxinden</title>
-    <link>https://mxinden.github.io/tags/</link>
+    <link>https://max-inden.de/tags/</link>
     <description>Recent content in Tags on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://mxinden.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>distributed-systems</title>
-      <link>https://mxinden.github.io/tags/distributed-systems/</link>
+      <link>https://max-inden.de/tags/distributed-systems/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/distributed-systems/</guid>
+      <guid>https://max-inden.de/tags/distributed-systems/</guid>
       <description></description>
     </item>
     
     <item>
       <title>paper</title>
-      <link>https://mxinden.github.io/tags/paper/</link>
+      <link>https://max-inden.de/tags/paper/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/paper/</guid>
+      <guid>https://max-inden.de/tags/paper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tech</title>
-      <link>https://mxinden.github.io/tags/tech/</link>
+      <link>https://max-inden.de/tags/tech/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/tech/</guid>
+      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>https://mxinden.github.io/tags/kubernetes/</link>
+      <link>https://max-inden.de/tags/kubernetes/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/kubernetes/</guid>
+      <guid>https://max-inden.de/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>monitoring</title>
-      <link>https://mxinden.github.io/tags/monitoring/</link>
+      <link>https://max-inden.de/tags/monitoring/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/monitoring/</guid>
+      <guid>https://max-inden.de/tags/monitoring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>prometheus</title>
-      <link>https://mxinden.github.io/tags/prometheus/</link>
+      <link>https://max-inden.de/tags/prometheus/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/prometheus/</guid>
+      <guid>https://max-inden.de/tags/prometheus/</guid>
       <description></description>
     </item>
     
     <item>
       <title>travel</title>
-      <link>https://mxinden.github.io/tags/travel/</link>
+      <link>https://max-inden.de/tags/travel/</link>
       <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/travel/</guid>
+      <guid>https://max-inden.de/tags/travel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>usa</title>
-      <link>https://mxinden.github.io/tags/usa/</link>
+      <link>https://max-inden.de/tags/usa/</link>
       <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://mxinden.github.io/tags/usa/</guid>
+      <guid>https://max-inden.de/tags/usa/</guid>
       <description></description>
     </item>
     
