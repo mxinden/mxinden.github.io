@@ -6,7 +6,7 @@
     <description>Recent content in Tags on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,25 +14,52 @@
     <item>
       <title>distributed-systems</title>
       <link>https://max-inden.de/tags/distributed-systems/</link>
-      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/distributed-systems/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>epidemic</title>
+      <link>https://max-inden.de/tags/epidemic/</link>
+      <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/epidemic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gossip</title>
+      <link>https://max-inden.de/tags/gossip/</link>
+      <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/gossip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>paper</title>
       <link>https://max-inden.de/tags/paper/</link>
-      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/paper/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>protocol</title>
+      <link>https://max-inden.de/tags/protocol/</link>
+      <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/protocol/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>tech</title>
       <link>https://max-inden.de/tags/tech/</link>
-      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
