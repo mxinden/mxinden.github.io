@@ -75,22 +75,17 @@
 		</div>
 
 		<div class="markdown">
-			
-
-<p>We started the new year with a session on <em>epidemic</em> / <em>gossip</em> protocols. To
+			<p>We started the new year with a session on <em>epidemic</em> / <em>gossip</em> protocols. To
 decide what to read I compiled the following list of papers that I either
 enjoyed reading in the past, or that were recommended to me. The <em>Swim (Scalable
 failure detection and membership protocol)</em> paper won the poll.</p>
-
 <blockquote>
 <p>Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &ldquo;Swim: Scalable
 weakly-consistent infection-style process group membership protocol.&rdquo;
 Proceedings International Conference on Dependable Systems and Networks. IEEE,
 2002.</p>
-
 <p><a href="https://www.cs.cornell.edu/projects/Quicksilver/public_pdfs/SWIM.pdf">https://www.cs.cornell.edu/projects/Quicksilver/public_pdfs/SWIM.pdf</a></p>
 </blockquote>
-
 <p>I have first gotten into touch with <em>Swim</em> through <a href="https://github.com/hashicorp/memberlist">Hashicorp&rsquo;s
 Memberlist</a>, given that it is the
 underlying protocol implementation of <a href="https://github.com/prometheus/alertmanager/">Prometheus
@@ -98,24 +93,20 @@ Alertmanager&rsquo;s</a> high availability
 architecture, which I was maintaining in the past. The implementation in itself
 is not based on <em>Swim</em> but <em>Lifeguard</em>, a follow up paper published by Hashicorp
 [2].</p>
-
 <p>Trying to summarize a couple of discussions of the session, we first talked
 about the general use cases of group membership protocols (e.g. Multicast,
 gossip, databases, pub/sub or gaming) and the trade offs one has to make within
 such protocols (e.g. latency vs. message load, decentralization vs. complexity,
 false negative vs. false positive rate).</p>
-
 <p>Quickly we digressed talking about possible improvements e.g. leveraging vector
 clocks or inverted bloom filters to implement pull based membership updates,
 instead of push-based updates, alternative architectures, weighting information
 density higher than message load overhead, e.g. by forming multiple connected
 graphs between nodes (see Microsoft&rsquo;s Pingmesh [1]).</p>
-
 <p>Given that we have talked a bunch about CRDTs in the past, there is always a
 mandatory <em>How would we implement this as a CRDT</em> discussion, ending up as
 <em>Whether the TCP packet sequence number would be a valid CRDT</em> (majority tended
 towards &lsquo;yes&rsquo;).</p>
-
 <p>At first I was a bit surprised by the stats the paper publishes on high failures
 raids on 10 % packet loss. Given that <em>Swim</em> involves roundtrips within certain
 protocol steps these failure rates accumulate thus 10% packet loss within a
@@ -123,65 +114,42 @@ local-area-network is quite significant and a valid excuse for SWIM not to build
 full membership groups. To quickly recover from such scenarios it might be worth
 introducing an additional anti-entropy process to do periodic full-state syncs
 between nodes like done in Hashicorp&rsquo;s advanced <em>SWIM</em> - <em>Lifeguard</em> [2].</p>
-
 <h3 id="alternative-papers">Alternative Papers</h3>
-
 <h4 id="combining-the-resilience-of-gossip-networks-with-the-efficiency-of-tree-based-broadcast">Combining the resilience of gossip networks with the efficiency of tree-based broadcast.</h4>
-
 <p>Leitao, Joao, Jose Pereira, and Luis Rodrigues. &ldquo;Epidemic broadcast trees.&rdquo; 2007
 26th IEEE International Symposium on Reliable Distributed Systems (SRDS 2007).
 IEEE, 2007.</p>
-
 <p><a href="https://www.gsd.inesc-id.pt/~ler/docencia/rcs1617/papers/srds07.pdf">https://www.gsd.inesc-id.pt/~ler/docencia/rcs1617/papers/srds07.pdf</a></p>
-
 <h4 id="proximity-aware-tree-based-multicast">Proximity aware tree based multicast.</h4>
-
 <p>Tang, Chunqiang, Rong N. Chang, and Christopher Ward. &ldquo;GoCast: Gossip-enhanced
 overlay multicast for fast and dependable group communication.&rdquo; 2005
 International Conference on Dependable Systems and Networks (DSN&rsquo;05). IEEE,
 2005.</p>
-
 <p><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.75.4811&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.75.4811&amp;rep=rep1&amp;type=pdf</a></p>
-
 <h4 id="paper-laying-the-foundation-of-epidemic-gossip-communication-in-1988">Paper laying the foundation of epidemic (gossip) communication in 1988.</h4>
-
 <p>Demers, Alan, et al. &ldquo;Epidemic algorithms for replicated database maintenance.&rdquo;
 ACM SIGOPS Operating Systems Review 22.1 (1988): 8-32.</p>
-
 <p><a href="http://bitsavers.informatik.uni-stuttgart.de/pdf/xerox/parc/techReports/CSL-89-1_Epidemic_Algorithms_for_Replicated_Database_Maintenance.pdf">http://bitsavers.informatik.uni-stuttgart.de/pdf/xerox/parc/techReports/CSL-89-1_Epidemic_Algorithms_for_Replicated_Database_Maintenance.pdf</a></p>
-
 <h4 id="reducing-network-bandwidth-through-efficient-set-reconciliation-in">Reducing network bandwidth through efficient set reconciliation in</h4>
-
 <p>peer-to-peer networks.</p>
-
 <p>Ozisik, A. Pinar, et al. &ldquo;Graphene: efficient interactive set reconciliation
 applied to blockchain propagation.&rdquo; Proceedings of the ACM Special Interest
 Group on Data Communication. ACM, 2019.</p>
-
 <p><a href="https://people.cs.umass.edu/~gbiss/graphene.sigcomm.pdf">https://people.cs.umass.edu/~gbiss/graphene.sigcomm.pdf</a></p>
-
 <h4 id="algorithm-to-maintain-reliable-partial-views-in-gossip-networks">Algorithm to maintain reliable partial views in gossip networks.</h4>
-
 <p>Leitao, Joao, José Pereira, and Luis Rodrigues. &ldquo;HyParView: A membership
 protocol for reliable gossip-based broadcast.&rdquo; 37th Annual IEEE/IFIP
 International Conference on Dependable Systems and Networks (DSN&rsquo;07). IEEE,
 2007.</p>
-
 <p><a href="http://asc.di.fct.unl.pt/~jleitao/pdf/dsn07-leitao.pdf">http://asc.di.fct.unl.pt/~jleitao/pdf/dsn07-leitao.pdf</a></p>
-
-<hr />
-
+<hr>
 <h2 id="references">References</h2>
-
 <p>[1] Guo, Chuanxiong, et al. &ldquo;Pingmesh: A large-scale system for data center
 network latency measurement and analysis.&rdquo; ACM SIGCOMM Computer Communication
 Review. Vol. 45. No. 4. ACM, 2015.</p>
-
 <p><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/pingmesh_sigcomm2015.pdf">https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/pingmesh_sigcomm2015.pdf</a></p>
-
 <p>[2] Dadgar, Armon, James Phillips, and Jon Currey. &ldquo;Lifeguard: Swim-ing with
 situational awareness.&rdquo; CoRR (2017).</p>
-
 <p><a href="https://www.researchgate.net/profile/Jon_Currey/publication/318205535_Lifeguard_SWIM-ing_with_Situational_Awareness/links/59a46993aca272a6461bc263/Lifeguard-SWIM-ing-with-Situational-Awareness.pdf">https://www.researchgate.net/profile/Jon_Currey/publication/318205535_Lifeguard_SWIM-ing_with_Situational_Awareness/links/59a46993aca272a6461bc263/Lifeguard-SWIM-ing-with-Situational-Awareness.pdf</a></p>
 
 		</div>

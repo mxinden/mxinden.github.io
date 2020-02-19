@@ -78,12 +78,10 @@ This talk covers different optimizations like metric caching and improved text m
 			<p>Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes
 cluster. The project uses the standard Prometheus client Golang library, which
 is not optimized for the very specific use case of kube-state-metrics.</p>
-
 <p>This talk covers different optimizations like metric caching and improved text
 marshaling dividing CPU usage by a factor of 6 and memory and response time by a
 factor of 3 through introducing an intelligent Prometheus metric cache in the
 code hot path and optimizing memory allocations during response generation.</p>
-
 <ul>
 <li><a href="https://www.youtube.com/watch?v=dvk_-NCK1Ls">Recording</a></li>
 <li><a href="/static/metric-driven-performance-optimization/slides.pdf">Slides</a></li>

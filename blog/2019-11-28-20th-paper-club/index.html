@@ -80,12 +80,10 @@ the Ethereum network [2], a novel approach of hiding its own connection buckets
 as well as using an existing social graph as a network topology in the Whanau
 paper[3], security extensions to the Chord DHT [4], as well as a larger study of
 different security techniques for DHTs [5].</p>
-
 <p>The attacks mentioned in the papers go from the simple <em>identity stealing</em>, to
 the well known <em>eclipse</em> and related <em>adversarial routing</em> attacks, <em>sybil</em>
 attacks, <em>denial of service</em> and <em>churn</em> attacks as well as attacks on the <em>data
 storage</em>.</p>
-
 <p>While the <em>identity stealing</em> attack is easy to solve with the help of
 public-key cryptography, most of the others are based on the fact that in
 peer-to-peer networks there is no global trusted authority granting access, thus
@@ -93,47 +91,36 @@ generating new identities is cheap and fast. When introducing a central
 authority is not an option, one can make identity generation harder by
 introducing crypto puzzles [1], binding identities to IP addresses [2] or depend
 on reputation systems.</p>
-
 <p>Within a Kademlia DHT, queries converge towards the same path when searching for
 a node or value. With this in mind an attacker would need to only control some
 nodes at the right place within the key spectrum to control answers to queries
 for a certain key range. The S/Kademlia [1] paper suggests to enforce disjoint
 lookup paths making those <em>adversarial routing</em> attacks less likely to succeed.</p>
-
 <blockquote>
 <p>The evaluation of S/Kademlia in the simulation frame-work OverSim has shown,
 that even with 20% of adversar-ial nodes still 99% of all lookups are
 successful if disjointpaths are used</p>
 </blockquote>
-
-<p><small>For more info, see [1] directly.</small></p>
-
+<p><!-- raw HTML omitted -->For more info, see [1] directly.<!-- raw HTML omitted --></p>
 <p>A countermeasure against <em>data storage</em> attacks would be to enforce that a given
 key would always need to correspond to the hash of its value. While this makes
 targeted storage requests a lot harder, it defeats the use case of the DHT as a
 lookup service where the key is a known string not based on the value.</p>
-
 <p>Instead when issuing a storage request, one can: (1) use the hash of the key to
 enforce a uniform distribution and (2) send the plaintext key along with the
 request as an attestation for proper hashing, making the generation of keys
 within a certain range a lot harder.</p>
-
-<hr />
-
+<hr>
 <p>[1] Baumgart, Ingmar, and Sebastian Mies. &ldquo;S/kademlia: A practicable approach
 towards secure key-based routing.&rdquo; 2007 International Conference on Parallel and
 Distributed Systems. IEEE, 2007.</p>
-
 <p>[2] Marcus, Yuval, Ethan Heilman, and Sharon Goldberg. &ldquo;Low-Resource Eclipse
 Attacks on Ethereum&rsquo;s Peer-to-Peer Network.&rdquo; IACR Cryptology ePrint Archive 2018
 (2018): 236.</p>
-
 <p>[3] Lesniewski-Laas, Christopher, and M. Frans Kaashoek. &ldquo;Whanau: A sybil-proof
 distributed hash table.&rdquo; (2010).</p>
-
 <p>[4] Fiat, Amos, Jared Saia, and Maxwell Young. &ldquo;Making chord robust to byzantine
 attacks.&rdquo; European Symposium on Algorithms. Springer, Berlin, Heidelberg, 2005.</p>
-
 <p>[5] Urdaneta, Guido, Guillaume Pierre, and Maarten Van Steen. &ldquo;A survey of DHT
 security techniques.&rdquo; ACM Computing Surveys (CSUR) 43.2 (2011): 8.</p>
 

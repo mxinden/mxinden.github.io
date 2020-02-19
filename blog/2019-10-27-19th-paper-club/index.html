@@ -81,45 +81,34 @@ systems space. This could be anything from <em>Chandy–Lamport&rsquo;s algorith
 global distributed snapshots</em> [1] to things like <em>conflict free replicated
 datatypes</em> [2]. The event is open for anyone interested. I only ask people to
 come prepared.</p>
-
 <p>In the last meeting (19th) we covered distributed hash tables. They play a
 crucial role in e.g. decentralized file sharing networks for example as
 directory services, simple key-value stores, or peer-to-peer membership
 management protocols.</p>
-
 <p>Given its simplicity and wide spread industry adoption we chose to cover the
 distributed hash table <em>Kademlia</em> [3]. I doubt I would do a better job
 explaining the concepts then the paper does, thus I recommend giving the paper
 itself a read.</p>
-
 <p>Libp2p [4], a peer-to-peer networking library, implements the <em>Kademlia</em> paper
 with a couple of extensions. Multiple maintainers of the project attended the
 meeting sharing insights on implementation challenges like the suggested routing
 table optimizations.</p>
-
 <p>For the next meeting we might stay within the Kademlia realm and look at
 different follow up papers covering its security aspects in byzantine
 environments [5] [6].</p>
-
-<hr />
-
+<hr>
 <p>[1] Chandy, K. Mani, and Leslie Lamport. &ldquo;Distributed snapshots: Determining
 global states of distributed systems.&rdquo; ACM Transactions on Computer Systems
 (TOCS) 3.1 (1985): 63-75.</p>
-
 <p>[2] Shapiro, Marc, et al. &ldquo;A comprehensive study of convergent and commutative
 replicated data types.&rdquo; (2011).</p>
-
 <p>[3] Maymounkov, Petar, and David Mazieres. : A peer-to-peer information system
 based on the xor metric.&rdquo; International Workshop on Peer-to-Peer Systems.
 Springer, Berlin, Heidelberg, 2002.</p>
-
 <p>[4] <a href="https://github.com/libp2p/rust-libp2p/">https://github.com/libp2p/rust-libp2p/</a></p>
-
 <p>[5] Baumgart, Ingmar, and Sebastian Mies. &ldquo;S/kademlia: A practicable approach
 towards secure key-based routing.&rdquo; 2007 International Conference on Parallel and
 Distributed Systems. IEEE, 2007.</p>
-
 <p>[6] Marcus, Yuval, Ethan Heilman, and Sharon Goldberg. &ldquo;Low-Resource Eclipse
 Attacks on Ethereum&rsquo;s Peer-to-Peer Network.&rdquo; IACR Cryptology ePrint Archive 2018
 (2018): 236.</p>

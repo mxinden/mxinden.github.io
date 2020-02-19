@@ -73,9 +73,7 @@
 		</div>
 
 		<div class="markdown">
-			
-
-<p>Within my work at Red Hat and Kubernetes <a href="https://github.com/kubernetes/community/tree/master/sig-instrumentation"> SIG instrumentation
+			<p>Within my work at Red Hat and Kubernetes <a href="https://github.com/kubernetes/community/tree/master/sig-instrumentation"> SIG instrumentation
 </a> I
 have been working on <a href="https://github.com/kubernetes/kube-state-metrics/"> kube-state-metrics
 </a>, a <a href="https://github.com/prometheus/prometheus"> Prometheus
@@ -85,9 +83,7 @@ focused on performance optimizing metric rendering for both latency as well as
 resource usage. Below I want to describe our approach of metric driven
 performance tuning, using Prometheus to monitor kube-state-metrics on top of
 Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</p>
-
 <h2 id="what-is-kube-state-metrics">What is kube-state-metrics</h2>
-
 <p>Kube-state-metrics is a <a href="https://prometheus.io/docs/instrumenting/exporters/"> Prometheus exporter
 </a> exposing metrics about
 the state of Kubernetes objects such as <em>Pods</em> and <em>Deployments</em> to Prometheus.
@@ -95,55 +91,20 @@ It listens for state changes via the Kubernetes API and exposes this state in
 the <a href="https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-format-example"> Prometheus format
 </a>
 on <code>http://xxx/metrics</code> on each scrape by Prometheus.</p>
-
-<p><small></p>
-
-<pre><code>+-----------+      +-------------------+                       +-------------+
-| APIServer |      | kubestatemetrics  |                       | Prometheus  |
-+-----------+      +-------------------+                       +-------------+
-      |                      |                                        |
-      | New Pod p1           |                                        |
-      |---------------------&gt;|                                        |
-      |         -----------\ |                                        |
-      |         | Cache p1 |-|                                        |
-      |         |----------| |                                        |
-      |                      |                                        |
-      |                      |                                        |
-      |                      |                                        |
-      |                      |                        Get all metrics |
-      |                      |&lt;---------------------------------------|
-      |                      | --------------------------------\      |
-      |                      |-| Render all Kubernetes objects |      |
-      |                      | | into metrics                  |      |
-      |                      | |-------------------------------|      |
-      |                      |                                        |
-      |                      | Metrics                                |
-      |                      |---------------------------------------&gt;|
-      |                      |                                        |
-</code></pre>
-
-<p></small></p>
-
+<!-- raw HTML omitted -->
 <p>One can think of kube-state-metrics as an adapter converting Kubernetes Objects</p>
-
-<pre><code class="language-yaml">- apiVersion: v1
-  kind: Pod
-  metadata:
-    labels:
-      app: kube-state-metrics
-      pod-template-hash: 5fc64f676f
-    name: kube-state-metrics-5fc64f676f-gl6v6
-    namespace: monitoring
-</code></pre>
-
-<p>into Prometheus metrics.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">apiVersion</span>: v1
+  <span style="color:#66d9ef">kind</span>: Pod
+  <span style="color:#66d9ef">metadata</span>:
+    <span style="color:#66d9ef">labels</span>:
+      <span style="color:#66d9ef">app</span>: kube-state-metrics
+      <span style="color:#66d9ef">pod-template-hash</span>: 5fc64f676f
+    <span style="color:#66d9ef">name</span>: kube-state-metrics-5fc64f676f-gl6v6
+    <span style="color:#66d9ef">namespace</span>: monitoring
+</code></pre></div><p>into Prometheus metrics.</p>
 <pre><code>kube_pod_container_info{container=&quot;kube-state-metrics&quot;,namespace=&quot;monitoring&quot;,pod=&quot;kube-state-metrics-5fc64f676f-gl6v6&quot;} 1        
 kube_pod_labels{label_app=&quot;kube-state-metrics&quot;,label_pod_template_hash=&quot;5fc64f676f&quot;,namespace=&quot;monitoring&quot;,pod=&quot;kube-state-metrics-5fc64f676f-gl6v6&quot;} 1
-</code></pre>
-
-<h2 id="problem-with-kube-state-metrics-1-4">Problem with kube-state-metrics &lt; 1.4</h2>
-
+</code></pre><h2 id="problem-with-kube-state-metrics--14">Problem with kube-state-metrics &lt; 1.4</h2>
 <p>Kube-state-metrics v1.4 and below is leveraging Kubernetes <a href="https://github.com/kubernetes/client-go"> client-go
 </a> and Prometheus <a href="https://github.com/prometheus/client_golang/"> client_golang
 </a> to inter-operate with Kubernetes
@@ -154,14 +115,11 @@ Prometheus client_golang are not optimized for the kube-state-metrics use case
 see e.g. user reports <a href="https://github.com/kubernetes/kube-state-metrics/issues/257"> #257
 </a> and <a href="https://github.com/kubernetes/kube-state-metrics/issues/257"> #493
 </a>.</p>
-
 <p>The above trade-off serves us well on smaller Kubernetes clusters. Once
 kube-state-metrics is used on larger clusters with more than 50 MB of metric
 output, three properties become problematic, consequently forming our
 optimization targets:</p>
-
 <h3 id="1-scrape-duration">1. Scrape duration</h3>
-
 <p>The reoccurring (e.g. every minute) process of Prometheus requesting Kubernetes
 metrics from kube-state-metrics is called a <em>scrape</em>. Prometheus tracks the
 start of the process, initializes the http request to kube-state-metrics
@@ -169,9 +127,7 @@ start of the process, initializes the http request to kube-state-metrics
 its time series database. Both if kube-state-metrics respondes within a second
 and within a minute, the values are saved with the same timestamp within the
 Prometheus database.</p>
-
-<p><img src="/static/metric-driven-performance-optimization/v1.4_scrape_duration_seconds.png"></p>
-
+<!-- raw HTML omitted -->
 <p>Once scrape durations differ within consecutive scrapes of the same exporter
 (e.g. kube-state-metrics) or across exporters (kube-state-metrics and <a href="https://github.com/google/cadvisor">cadvisor
 </a>), it is difficult to correlate the
@@ -180,27 +136,20 @@ collected data, as it could be off by as much as the scraping process lasted
 keep the scrape duration to a minimum. In addition Prometheus even times out by
 default <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file"> once a scrape duration reaches
 10s</a>.</p>
-
 <p>The metric <em>scrape_duration_seconds</em> exposed by Prometheus itself gives us
 visibility for the above, hence we can use it for the planned optimization.</p>
-
 <h3 id="2-cpu-usage">2. CPU usage</h3>
-
 <p>Running kube-state-metrics on large Kubernetes clusters results in high CPU
 usage of kube-state-metrics as it has to convert the Kubernetes API objects to
 Prometheus metrics ad-hoc on each scrape of Prometheus. In addition this CPU
 load is not a flat line, but spiky, given that this CPU intensive process is
 part of the hot-path of Prometheus scraping the exporter.</p>
-
-<p><img src="/static/metric-driven-performance-optimization/v1.4_container_cpu_usage_seconds.png"></p>
-
+<!-- raw HTML omitted -->
 <p>As with the <em>scrape_duration_seconds</em> metric for the first optimization target,
 we can leverage the fact that kube-state-metrics can run on a Kubernetes cluster
 and use the <em>container_cpu_usage_seconds</em> exposed by cadvisor to get visibility
 into optimizing cpu usage.</p>
-
 <h3 id="3-memory-usage">3. Memory usage</h3>
-
 <p>As mentioned above, kube-state-metrics uses the Kubernetes client-go library to
 inter-operate with Kubernetes. More specifically it leverages client-go&rsquo;s
 <a href="https://godoc.org/k8s.io/client-go/informers">informers</a>. While using informers
@@ -209,115 +158,81 @@ it, given that kube-state-metrics is interested in all Kubernetes objects of a
 cluster, thus keeping a copy of all Kubernetes objects within the cache of the
 infomers. This is not problematic for small Kubernetes clusters but results in
 large memory allocations on larger ones.</p>
-
 <p>Analogous to <em>container_cpu_usage_seconds</em> we can use
 <em>container_memory_usage_bytes</em> to track the memory usage of kube-state-metrics.</p>
-
 <h2 id="introducing-a-custom-cache">Introducing a custom cache</h2>
-
 <p>As previously mentioned kube-state-metrics v1.4 and below replicates all
 Kubernetes objects into its internal cache to ad-hoc convert them into
 the Prometheus metric format, once a new scrape request comes in.</p>
+<!-- raw HTML omitted -->
+<pre><code>&lt;/small&gt;
 
-<p><small></p>
-
-<pre><code>+-----------+      +-------------------+                       +-------------+
-| APIServer |      | kubestatemetrics  |                       | Prometheus  |
-+-----------+      +-------------------+                       +-------------+
-      |                      |                                        |
-      | New Pod p1           |                                        |
-      |---------------------&gt;|                                        |
-      |         -----------\ |                                        |
-      |         | Cache p1 |-|                                        |
-      |         |----------| |                                        |
-      |                      |                                        |
-      |                      |                                        |
-      |                      |                                        |
-      |                      |                        Get all metrics |
-      |                      |&lt;---------------------------------------|
-      |                      | --------------------------------\      |
-      |                      |-| Render all Kubernetes objects |      |
-      |                      | | into metrics                  |      |
-      |                      | |-------------------------------|      |
-      |                      |                                        |
-      |                      | Metrics                                |
-      |                      |---------------------------------------&gt;|
-      |                      |                                        |
-
-</code></pre>
-
-<p></small></p>
-
-<p>This lead us to an idea. Instead of caching the Kubernetes objects themselves,
+This lead us to an idea. Instead of caching the Kubernetes objects themselves,
 how about rendering them into Prometheus metrics right away and only cache the
 rendered metrics instead. This has three advantages: First Kubernetes object to
 metric rendering is not happening in the hot-path (scrape) anymore reducing
 scrape duration. Second caching metrics instead of full Kubernetes objects
 reduces needed memory. Third, under the premise that most Kubernetes objects
 stay untouched between consecutive scrapes, metrics are rendered once per
-Kubernetes object update, not once per scrape, reducing CPU usage.</p>
+Kubernetes object update, not once per scrape, reducing CPU usage.
 
-<p><small></p>
-
-<pre><code>+-----------+           +-------------------+       +-------------+
+&lt;small&gt;
+</code></pre><p>+&mdash;&mdash;&mdash;&ndash;+           +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+       +&mdash;&mdash;&mdash;&mdash;-+
 | APIServer |           | kubestatemetrics  |       | Prometheus  |
-+-----------+           +-------------------+       +-------------+
-      |                           |                        |
-      | New Pod p1                |                        |
-      |--------------------------&gt;|                        |
-      |  -----------------------\ |                        |
-      |  | Render metrics of p1 |-|                        |
-      |  |----------------------| |                        |
-      |-------------------------\ |                        |
-      || Cache rendered metrics |-|                        |
-      ||------------------------| |                        |
-      |                           |                        |
-      |                           |                        |
-      |                           |                        |
-      |                           |        Get all metrics |
-      |                           |&lt;-----------------------|
-      |                           |                        |
-      |                           | Metrics                |
-      |                           |-----------------------&gt;|
-      |                           |                        |
++&mdash;&mdash;&mdash;&ndash;+           +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+       +&mdash;&mdash;&mdash;&mdash;-+
+|                           |                        |
+| New Pod p1                |                        |
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&gt;|                        |
+|  &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;\ |                        |
+|  | Render metrics of p1 |-|                        |
+|  |&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-| |                        |
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-\ |                        |
+|| Cache rendered metrics |-|                        |
+||&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;| |                        |
+|                           |                        |
+|                           |                        |
+|                           |                        |
+|                           |        Get all metrics |
+|                           |&lt;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|
+|                           |                        |
+|                           | Metrics                |
+|                           |&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&gt;|
+|                           |                        |</p>
+<pre><code>&lt;/small&gt;
 
-
-</code></pre>
-
-<p></small></p>
-
-<p>Instead of replacing all of Kubernetes client-go with our own specialized
+Instead of replacing all of Kubernetes client-go with our own specialized
 implementation, which increases the maintenance burdon given that Kubernetes is a
-fast moving project, it is possible to hook into client-go via the <a href="https://github.com/kubernetes/client-go/blob/master/tools/cache/reflector.go"> <em>Reflector</em>
-</a>
+fast moving project, it is possible to hook into client-go via the [ *Reflector*
+](https://github.com/kubernetes/client-go/blob/master/tools/cache/reflector.go)
 abstraction and implement a custom cache, in our case for metrics instead of
-Kubernetes objects.</p>
+Kubernetes objects.
 
-<p>The result can be seen in the graph below, showing the duration of Prometheus
+The result can be seen in the graph below, showing the duration of Prometheus
 scrapes of the old version (v1.4) in red and the optimized version in cyan.
 Introducing the optimized cache lead to a ~10x improvement in our test
 environment. Please keep in mind that this was under artificial load. Numbers on
-real world clusters will be shown further below.</p>
+real world clusters will be shown further below.
 
-<p><img src="/static/metric-driven-performance-optimization/result-caching.png"></p>
+&lt;img src=&quot;/static/metric-driven-performance-optimization/result-caching.png&quot;&gt;
 
-<h2 id="compression-on-or-off">Compression on or off?</h2>
 
-<p>Next up we looked into compression of the metric payload going back to
+## Compression on or off?
+
+Next up we looked into compression of the metric payload going back to
 Prometheus. By default kube-state-metrics v1.4, more precisely Prometheus
 client_golang, compressed its responses. Doing so sounds reasonable, given that
 the Prometheus metric format is repetitive, thus great for compression, but
 still we wanted to investigate this default option, given that most deployments
-are running in a local area network.</p>
+are running in a local area network.
 
-<p>We deployed kube-state-metrics in four versions: v1.4, cache-optimized without
-compression, cache-optimized with golang gzip, cache-optimized with <a href="https://github.com/NYTimes/gziphandler">New York
-Times gzip</a>. First off we can compare
-the CPU usage. Without surprise compressing is more CPU intense:</p>
+We deployed kube-state-metrics in four versions: v1.4, cache-optimized without
+compression, cache-optimized with golang gzip, cache-optimized with [New York
+Times gzip](https://github.com/NYTimes/gziphandler). First off we can compare
+the CPU usage. Without surprise compressing is more CPU intense:
 
-<p><img src="/static/metric-driven-performance-optimization/compression_cpu_usage.png"></p>
+&lt;img src=&quot;/static/metric-driven-performance-optimization/compression_cpu_usage.png&quot;&gt;
 
-<p>Next we can take a look at the memory usage (not allocation). One would think
+Next we can take a look at the memory usage (not allocation). One would think
 that using compression kube-state-metrics would use less memory. Problem is,
 that we are not caching a big blob of metrics of all Kubernetes objects, but
 instead we are caching multiple blobs of metrics per Kubernetes object. That
@@ -325,51 +240,54 @@ way, once an update for a single Kubernetes object comes in, one does not have
 to recompute the big blob, but only the metric blob for that specific Kubernetes
 object. With this in mind, for a scrape we have to cumulate all the blobs and
 then compress. Thus compression does not decrease the memory footprint, but
-quite the opposite, increases it.</p>
+quite the opposite, increases it.
 
-<p><img src="/static/metric-driven-performance-optimization/compression_memory_usage.png"></p>
+&lt;img src=&quot;/static/metric-driven-performance-optimization/compression_memory_usage.png&quot;&gt;
 
-<p>Last we should take a look at the impact of compression on the scrape duration.
+Last we should take a look at the impact of compression on the scrape duration.
 In our test environment Prometheus and kube-state-metrics are within the same
 local area network. The graph below shows, that transfering bigger metric blobs
 in plain-text is faster than transfering smaller compressed metric blobs +
 compressing and decompressing. Thus, as you can see in the graph below
 kube-state-metrics with optimized caching but disabled compression has the
-lowest scrape duration.</p>
+lowest scrape duration.
 
-<p><img src="/static/metric-driven-performance-optimization/compression_scrape_duration.png"></p>
+&lt;img src=&quot;/static/metric-driven-performance-optimization/compression_scrape_duration.png&quot;&gt;
 
-<p>After testing this in multiple real world scenarios, we ended up adding the
+After testing this in multiple real world scenarios, we ended up adding the
 option to compress to the new version of kube-state-metrics but disabling it by
-default.</p>
+default.
 
-<h2 id="golangs-strings-builder">Golangs <em>strings.Builder</em></h2>
 
-<p>While optimizing kube-state-metrics itself, a lot happened on the Prometheus
-upstream <a href="https://github.com/prometheus/common/pull/148">common library</a> in
-parallel. Among other things the library switched to using Golangs <a href="https://golang.org/pkg/strings/#Builder">
-strings.Builder </a>. Instead of
-formatting strings via <code>fmt</code>, which bears many memory allocations with it,
-<code>strings.Builder</code> uses a byte slice under the hood, leveraging the fact that
+## Golangs _strings.Builder_
+
+While optimizing kube-state-metrics itself, a lot happened on the Prometheus
+upstream [common library](https://github.com/prometheus/common/pull/148) in
+parallel. Among other things the library switched to using Golangs [
+strings.Builder ](https://golang.org/pkg/strings/#Builder). Instead of
+formatting strings via `fmt`, which bears many memory allocations with it,
+`strings.Builder` uses a byte slice under the hood, leveraging the fact that
 byte slices in constrary to strings are mutable. Many of these optimizations
-also landed downstream in kube-state-metrics.</p>
+also landed downstream in kube-state-metrics.
 
-<h2 id="benchmarks">Benchmarks</h2>
 
-<p>Given the wide spread usage of kube-state-metrics in the Kubernetes community,
+## Benchmarks
+
+Given the wide spread usage of kube-state-metrics in the Kubernetes community,
 many users helped us to test the performance optimized version of kube-state-metrics.
-You can find multiple benchmarks in <a href="https://github.com/kubernetes/kube-state-metrics/issues/498"> this
-</a>
-Github thread.</p>
+You can find multiple benchmarks in [ this
+](https://github.com/kubernetes/kube-state-metrics/issues/498)
+Github thread.
 
-<hr />
 
-<p>This blog post is based on a <a href="https://kccnceu19.sched.com/event/MPjo/deep-dive-kubernetes-instrumentation-sig-frederic-branczyk-max-inden-red-hat">talk I gave at KubeCon Barcelona
-2019</a>.
-The <a href="https://www.youtube.com/watch?v=dvk_-NCK1Ls">recording</a> is online. The
-<a href="/static/metric-driven-performance-optimization/slides.pdf">slides can be downloaded
-here</a>.</p>
+---
 
+This blog post is based on a [talk I gave at KubeCon Barcelona
+2019](https://kccnceu19.sched.com/event/MPjo/deep-dive-kubernetes-instrumentation-sig-frederic-branczyk-max-inden-red-hat).
+The [recording](https://www.youtube.com/watch?v=dvk_-NCK1Ls) is online. The
+[slides can be downloaded
+here](/static/metric-driven-performance-optimization/slides.pdf).
+</code></pre>
 		</div>
 
 		<div class="post-tags">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>distributed-systems on mxinden</title>
@@ -6,10 +6,31 @@
     <description>Recent content in distributed-systems on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/distributed-systems/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>23rd Distributed Systems Paper Club</title>
+      <link>https://max-inden.de/blog/2020-02-18-23rd-paper-club/</link>
+      <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-02-18-23rd-paper-club/</guid>
+      <description>At the end of the previous session one of us suggested to dive into congestion control algorithms. This has found a greater echo, thus the 23rd session covered congestion control algorithms in general and TCP&amp;rsquo;s Reno as well as TCP&amp;rsquo;s Tahoe in particular.
+This weeks reading was:
+  Chapter 13 &amp;ldquo;TCP Reno and Congestion Management&amp;rdquo; from the comprehensive online book &amp;ldquo;An Introduction to Computer Networks&amp;rdquo; [1] from the Loyola University Chicago.</description>
+    </item>
+    
+    <item>
+      <title>22nd Distributed Systems Paper Club</title>
+      <link>https://max-inden.de/blog/2020-01-28-22nd-paper-club/</link>
+      <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-01-28-22nd-paper-club/</guid>
+      <description>In the 22nd session we took a look at io_uring - a new Kernel interface for asynchronous I/O. Tyler, who is currently implementing an io_uring library in Rust [4] for his database sled [7] guided us through the concepts as well as a bunch of source code.
+Tyler started off introducing the status quo of I/O interfaces within the Linux Kernel like read, pread and preadv, jumped over to asynchronous I/O like aio and eventually helped us develop a sense of what the perfect asynchronous I/O interface of the future could look like.</description>
+    </item>
     
     <item>
       <title>21st Distributed Systems Paper Club</title>
