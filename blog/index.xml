@@ -6,10 +6,20 @@
     <description>Recent content in Blog on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leaving the Prometheus team</title>
+      <link>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</link>
+      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</guid>
+      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
+Over the next 2 years and 4 month I worked a lot on Alertmanager, e.</description>
+    </item>
     
     <item>
       <title>23rd Distributed Systems Paper Club</title>

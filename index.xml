@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,9 +28,11 @@ GPG Fingerprint: 4110045EE7A432D67AFAC8C85403C5464810BC26</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/resume/</guid>
-      <description>Experience Senior Software Engineer at CoreOS / RedHat | Jan 2017 - Present
-Systems engineer working on the open source monitoring project Prometheus and its integration with the Kubernetes ecosystem to monitor cloud-native Linux container infrastructures. Designing and implementing distributed systems on top of the Linux operating system and Kubernetes orchestrator. Presenting open source work at various IT conferences and champion the Prometheus project as a core maintainer.
-Software Engineer at Innoscale | Aug 2014 - Dec 2016</description>
+      <description>Experience Software Engineer at Parity | July 2019 - Present
+Freelance Network Engineer at SpaceNet AG | Jun 2019
+Work on multiplexed fiber-optic setup and server migration. Wrote Prometheus exporter to monitor data center power modules via Modbus. Gained insight into BGP infrastructure.
+Senior Software Engineer at CoreOS / RedHat | Jan 2017 - May 2019
+Systems engineer working on the open source monitoring project Prometheus and its integration with the Kubernetes ecosystem to monitor cloud-native Linux container infrastructures.</description>
     </item>
     
     <item>
@@ -39,10 +41,20 @@ Software Engineer at Innoscale | Aug 2014 - Dec 2016</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/misc/</guid>
-      <description>Projects &amp;amp; Achievements   2019-01-16 - Maintainer of Kubernetes kube-state-metrics.
+      <description>Projects &amp;amp; Achievements   2019-01-16 to 2019-08-02 - Maintainer of Kubernetes kube-state-metrics.
   2019-01-15 - Joining Kubernetes organisation.
   2019-01-11 - Kubernetes kube-state-metrics performance optimization dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
   2018-09-04 - Design, specification and implementation of a new API (v2) for Prometheus Alertmanager, generated via OpenAPI.</description>
+    </item>
+    
+    <item>
+      <title>Leaving the Prometheus team</title>
+      <link>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</link>
+      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</guid>
+      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
+Over the next 2 years and 4 month I worked a lot on Alertmanager, e.</description>
     </item>
     
     <item>
