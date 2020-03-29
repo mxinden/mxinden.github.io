@@ -93,14 +93,14 @@ the <a href="https://github.com/prometheus/docs/blob/master/content/docs/instrum
 on <code>http://xxx/metrics</code> on each scrape by Prometheus.</p>
 <!-- raw HTML omitted -->
 <p>One can think of kube-state-metrics as an adapter converting Kubernetes Objects</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">apiVersion</span>: v1
-  <span style="color:#66d9ef">kind</span>: Pod
-  <span style="color:#66d9ef">metadata</span>:
-    <span style="color:#66d9ef">labels</span>:
-      <span style="color:#66d9ef">app</span>: kube-state-metrics
-      <span style="color:#66d9ef">pod-template-hash</span>: 5fc64f676f
-    <span style="color:#66d9ef">name</span>: kube-state-metrics-5fc64f676f-gl6v6
-    <span style="color:#66d9ef">namespace</span>: monitoring
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="font-weight:bold">apiVersion</span>: v1
+  <span style="font-weight:bold">kind</span>: Pod
+  <span style="font-weight:bold">metadata</span>:
+    <span style="font-weight:bold">labels</span>:
+      <span style="font-weight:bold">app</span>: kube-state-metrics
+      <span style="font-weight:bold">pod-template-hash</span>: 5fc64f676f
+    <span style="font-weight:bold">name</span>: kube-state-metrics-5fc64f676f-gl6v6
+    <span style="font-weight:bold">namespace</span>: monitoring
 </code></pre></div><p>into Prometheus metrics.</p>
 <pre><code>kube_pod_container_info{container=&quot;kube-state-metrics&quot;,namespace=&quot;monitoring&quot;,pod=&quot;kube-state-metrics-5fc64f676f-gl6v6&quot;} 1        
 kube_pod_labels{label_app=&quot;kube-state-metrics&quot;,label_pod_template_hash=&quot;5fc64f676f&quot;,namespace=&quot;monitoring&quot;,pod=&quot;kube-state-metrics-5fc64f676f-gl6v6&quot;} 1

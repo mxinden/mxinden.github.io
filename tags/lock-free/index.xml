@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lock-free on mxinden</title>
+    <link>https://max-inden.de/tags/lock-free/</link>
+    <description>Recent content in lock-free on mxinden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://max-inden.de/tags/lock-free/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Elimination back-off stack</title>
+      <link>https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/</link>
+      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/</guid>
+      <description>Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
+How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&amp;rsquo;s dive into it.
+A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.</description>
+    </item>
+    
+  </channel>
+</rss>

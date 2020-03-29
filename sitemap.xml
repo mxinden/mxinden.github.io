@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://max-inden.de/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -17,7 +17,7 @@
   
   <url>
     <loc>https://max-inden.de/blog/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -27,6 +27,41 @@
   
   <url>
     <loc>https://max-inden.de/misc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/concurrent/</loc>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/</loc>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/lock-free/</loc>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/multithreaded/</loc>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/paper/</loc>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/</loc>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/tech/</loc>
+    <lastmod>2020-03-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -40,27 +75,12 @@
   </url>
   
   <url>
-    <loc>https://max-inden.de/tags/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://max-inden.de/blog/2020-02-18-23rd-paper-club/</loc>
     <lastmod>2020-02-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://max-inden.de/tags/distributed-systems/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/paper/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/tech/</loc>
     <lastmod>2020-02-18T00:00:00+00:00</lastmod>
   </url>
   
