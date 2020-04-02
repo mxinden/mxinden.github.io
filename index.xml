@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     
@@ -45,6 +45,16 @@ Systems engineer working on the open source monitoring project Prometheus and it
   2019-01-15 - Joining Kubernetes organisation.
   2019-01-11 - Kubernetes kube-state-metrics performance optimization dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
   2018-09-04 - Design, specification and implementation of a new API (v2) for Prometheus Alertmanager, generated via OpenAPI.</description>
+    </item>
+    
+    <item>
+      <title>Elimination back-off stack performance</title>
+      <link>https://max-inden.de/blog/2020-04-01-elimination-backoff-stack-performance/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-04-01-elimination-backoff-stack-performance/</guid>
+      <description>I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations.</description>
     </item>
     
     <item>

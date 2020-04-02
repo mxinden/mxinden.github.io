@@ -6,7 +6,7 @@
     <description>Recent content in Tags on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,16 +14,25 @@
     <item>
       <title>concurrent</title>
       <link>https://max-inden.de/tags/concurrent/</link>
-      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/concurrent/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>crossbeam</title>
+      <link>https://max-inden.de/tags/crossbeam/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/crossbeam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>lock-free</title>
       <link>https://max-inden.de/tags/lock-free/</link>
-      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/lock-free/</guid>
       <description></description>
@@ -32,7 +41,7 @@
     <item>
       <title>multithreaded</title>
       <link>https://max-inden.de/tags/multithreaded/</link>
-      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/multithreaded/</guid>
       <description></description>
@@ -41,16 +50,25 @@
     <item>
       <title>paper</title>
       <link>https://max-inden.de/tags/paper/</link>
-      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/paper/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>rust</title>
+      <link>https://max-inden.de/tags/rust/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>tech</title>
       <link>https://max-inden.de/tags/tech/</link>
-      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
