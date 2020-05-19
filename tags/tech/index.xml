@@ -6,10 +6,21 @@
     <description>Recent content in tech on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>26th DistSys Reading Group - Cache coherence</title>
+      <link>https://max-inden.de/blog/2020-05-18-26th-paper-club/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-05-18-26th-paper-club/</guid>
+      <description>We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
+  CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
+  Write Combining exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one can make use of them.</description>
+    </item>
     
     <item>
       <title>25th DistSys Reading Group - Fair queuing</title>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>26th DistSys Reading Group - Cache coherence - mxinden</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="26th DistSys Reading Group - Cache coherence" />
+<meta property="og:description" content="We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
+  CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
+  Write Combining exemplifying the advanced mechanisms one can find in today&rsquo;s CPUs and how one can make use of them." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://max-inden.de/blog/2020-05-18-26th-paper-club/" />
+<meta property="article:published_time" content="2020-05-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="26th DistSys Reading Group - Cache coherence"/>
+<meta name="twitter:description" content="We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
+  CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
+  Write Combining exemplifying the advanced mechanisms one can find in today&rsquo;s CPUs and how one can make use of them."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://max-inden.de/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://max-inden.de/css/main.css" />
+
+	<script src="https://max-inden.de/js/feather.min.js"></script>
+	
+	<script src="https://max-inden.de/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="https://max-inden.de/">mxinden</a></h1>
+	<div class="site-description"><h2>Homepage of Max Inden</h2><nav class="nav social">
+			<ul class="flat"><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a><a href="https://github.com/mxinden" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/mxinden" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/about/">About</a>
+			</li>
+			
+			<li>
+				<a href="/resume/">Resume</a>
+			</li>
+			
+			<li>
+				<a href="/blog/">Blog</a>
+			</li>
+			
+			<li>
+				<a href="/talks/">Talks</a>
+			</li>
+			
+			<li>
+				<a href="/misc/">Misc</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">26th DistSys Reading Group - Cache coherence</h1>
+			<div class="meta">Posted at &mdash; May 18, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>We have long been planning to cover the caching mechanisms in CPUs. As a shared
+knowledge base for the discussions in this session we chose the following two
+articles by Martin Thompson among other things known for his work on the <a href="https://lmax-exchange.github.io/disruptor/">LMAX
+Disruptor</a>:</p>
+<ul>
+<li>
+<p><a href="https://mechanical-sympathy.blogspot.com/2013/02/cpu-cache-flushing-fallacy.html">CPU Cache Flushing
+Fallacy</a>
+including a good overview over the different caches in modern Intel CPUs.</p>
+</li>
+<li>
+<p><a href="https://mechanical-sympathy.blogspot.com/2011/07/write-combining.html">Write
+Combining</a>
+exemplifying the advanced mechanisms one can find in today&rsquo;s CPUs and how one
+can make use of them.</p>
+</li>
+</ul>
+<p>Below I am listing a couple of take-aways of the session as well as further
+learning resources:</p>
+<ul>
+<li>
+<p>As a rule of thumb with each cache level the access latency quadruples (L1
+1ns, L2 3ns, L3 12ns, DRAM 65ns).</p>
+</li>
+<li>
+<p>Tyler wrote <a href="https://github.com/sled-rs/sled-rs.github.io/blob/master/hardware_timing/">two great
+tools</a>
+to show different CPU optimizations and and the impact of synchronization
+on your hardware. Make sure you have a Rust environment set up. You can run
+each of them via <code>cargo run --bin &lt;name&gt; --release</code>.</p>
+<ul>
+<li>
+<p><code>increment</code>: Comparing different ways (volatile, volatile + release fence,
+volatile + seqcst fence, seqcst CAS, &hellip;) of incrementing a counter 500
+million times thus showing the impact of the cache coherence protocol e.g.
+load &amp; store buffer flushes.</p>
+</li>
+<li>
+<p><code>write_combining</code>: Enabling one to see the write combining optimization in
+action described by Martin Thompson in the <a href="https://mechanical-sympathy.blogspot.com/2011/07/write-combining.html">blog
+post</a>
+mentioned above. Looking at the latency jumps one can estimate the <em>line
+fill buffer</em> length of ones CPU.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>During the session Tyler often showed excerpts from the Intel manuals, in particular:</p>
+<ul>
+<li>
+<p>Chapter 8 and 11 from the <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-software-developer-system-programming-manual-325384.html">Software developers
+manual</a>.
+It is worth taking a look at the memory ordering section in 8.2.2.</p>
+</li>
+<li>
+<p><a href="https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-optimization-manual.pdf">Optimization reference
+manual</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>CPUs expose a lot of performance metrics. On Linux and with Intel Sandy bridge
+CPUs one can take a look at <a href="https://www.kernel.org/doc/html/v4.12/admin-guide/pm/intel_pstate.html">the corresponding Kernel
+subsystem</a>.</p>
+</li>
+</ul>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/tech">tech</a></li>
+								
+								<li><a href="/tags/paper">paper</a></li>
+								
+								<li><a href="/tags/distributed-systems">distributed-systems</a></li>
+								
+								<li><a href="/tags/cpu">CPU</a></li>
+								
+								<li><a href="/tags/cache">cache</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>
