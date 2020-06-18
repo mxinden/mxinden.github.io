@@ -29,10 +29,9 @@ GPG Fingerprint: 4110045EE7A432D67AFAC8C85403C5464810BC26</description>
       
       <guid>https://max-inden.de/resume/</guid>
       <description>Experience Software Engineer at Parity | July 2019 - Present
+Maintaining Rust peer-to-peer networking library libp2p and its usage within the Blockchain framework Substrate. Involved in the networking logic of the main byzantine fault tolerant finality gadget finality-grandpa. Filling role of hiring manager for team building automated testing infrastructure. Shepherding (Prometheus) monitoring across the company.
 Freelance Network Engineer at SpaceNet AG | Jun 2019
-Work on multiplexed fiber-optic setup and server migration. Wrote Prometheus exporter to monitor data center power modules via Modbus. Gained insight into BGP infrastructure.
-Senior Software Engineer at CoreOS / RedHat | Jan 2017 - May 2019
-Systems engineer working on the open source monitoring project Prometheus and its integration with the Kubernetes ecosystem to monitor cloud-native Linux container infrastructures.</description>
+Work on multiplexed fiber-optic setup and server migration.</description>
     </item>
     
     <item>
