@@ -6,7 +6,7 @@
     <description>Recent content in Tags on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>cache</title>
       <link>https://max-inden.de/tags/cache/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/cache/</guid>
       <description></description>
@@ -23,9 +23,36 @@
     <item>
       <title>CPU</title>
       <link>https://max-inden.de/tags/cpu/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/cpu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>networking</title>
+      <link>https://max-inden.de/tags/networking/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/networking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>performance</title>
+      <link>https://max-inden.de/tags/performance/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/performance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tech</title>
+      <link>https://max-inden.de/tags/tech/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     
@@ -44,24 +71,6 @@
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/paper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tech</title>
-      <link>https://max-inden.de/tags/tech/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-inden.de/tags/tech/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>networking</title>
-      <link>https://max-inden.de/tags/networking/</link>
-      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-inden.de/tags/networking/</guid>
       <description></description>
     </item>
     

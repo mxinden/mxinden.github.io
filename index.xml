@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     
@@ -44,6 +44,15 @@ Work on multiplexed fiber-optic setup and server migration.</description>
   2019-01-15 - Joining Kubernetes organisation.
   2019-01-11 - Kubernetes kube-state-metrics performance optimization dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
   2018-09-04 - Design, specification and implementation of a new API (v2) for Prometheus Alertmanager, generated via OpenAPI.</description>
+    </item>
+    
+    <item>
+      <title>Know your latencies</title>
+      <link>https://max-inden.de/blog/2020-06-19-latencies/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2020-06-19-latencies/</guid>
+      <description>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.</description>
     </item>
     
     <item>
