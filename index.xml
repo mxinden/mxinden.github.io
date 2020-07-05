@@ -40,10 +40,11 @@ Work on multiplexed fiber-optic setup and server migration.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/misc/</guid>
-      <description>Projects &amp;amp; Achievements   2019-01-16 to 2019-08-02 - Maintainer of Kubernetes kube-state-metrics.
-  2019-01-15 - Joining Kubernetes organisation.
-  2019-01-11 - Kubernetes kube-state-metrics performance optimization dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
-  2018-09-04 - Design, specification and implementation of a new API (v2) for Prometheus Alertmanager, generated via OpenAPI.</description>
+      <description>Projects &amp;amp; Achievements   2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.)
+  2020-05-08 - Maintainer of the Rust Prometheus client library.
+  2019-10-06 - Maintainer of the Rust libp2p implementation.
+  2019-01-16 to 2019-08-02 - Maintainer of Kubernetes kube-state-metrics.
+  2019-01-15 - Joining Kubernetes organisation.</description>
     </item>
     
     <item>
