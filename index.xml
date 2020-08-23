@@ -40,11 +40,9 @@ Work on multiplexed fiber-optic setup and server migration.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/misc/</guid>
-      <description>Projects &amp;amp; Achievements   2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.)
-  2020-05-08 - Maintainer of the Rust Prometheus client library.
-  2019-10-06 - Maintainer of the Rust libp2p implementation.
-  2019-01-16 to 2019-08-02 - Maintainer of Kubernetes kube-state-metrics.
-  2019-01-15 - Joining Kubernetes organisation.</description>
+      <description>Projects &amp;amp; Achievements   2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
+  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.)
+  2020-05-08 - Maintainer of the Rust Prometheus client library.</description>
     </item>
     
     <item>
