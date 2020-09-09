@@ -6,10 +6,64 @@
     <description>Recent content in Tags on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>blockchain</title>
+      <link>https://max-inden.de/tags/blockchain/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/blockchain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>byzantine</title>
+      <link>https://max-inden.de/tags/byzantine/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/byzantine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>consensus</title>
+      <link>https://max-inden.de/tags/consensus/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/consensus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>distributed-systems</title>
+      <link>https://max-inden.de/tags/distributed-systems/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/distributed-systems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paper</title>
+      <link>https://max-inden.de/tags/paper/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tech</title>
+      <link>https://max-inden.de/tags/tech/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/tags/tech/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>cache</title>
@@ -44,33 +98,6 @@
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/tags/performance/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tech</title>
-      <link>https://max-inden.de/tags/tech/</link>
-      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-inden.de/tags/tech/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>distributed-systems</title>
-      <link>https://max-inden.de/tags/distributed-systems/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-inden.de/tags/distributed-systems/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>paper</title>
-      <link>https://max-inden.de/tags/paper/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-inden.de/tags/paper/</guid>
       <description></description>
     </item>
     
