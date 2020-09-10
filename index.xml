@@ -40,9 +40,9 @@ Work on multiplexed fiber-optic setup and server migration.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/misc/</guid>
-      <description>Projects &amp;amp; Achievements   2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
-  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.)
-  2020-05-08 - Maintainer of the Rust Prometheus client library.</description>
+      <description>Projects &amp;amp; Achievements   2020-07-19 - Optimize metric encoding in Prometheus Rust client library drastically reducing memory allocations in hot-path.
+  2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
+  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.</description>
     </item>
     
     <item>

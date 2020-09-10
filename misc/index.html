@@ -4,17 +4,17 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Misc - mxinden</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Misc" />
-<meta property="og:description" content="Projects &amp; Achievements   2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
-  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.)
-  2020-05-08 - Maintainer of the Rust Prometheus client library." />
+<meta property="og:description" content="Projects &amp; Achievements   2020-07-19 - Optimize metric encoding in Prometheus Rust client library drastically reducing memory allocations in hot-path.
+  2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
+  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://max-inden.de/misc/" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Misc"/>
-<meta name="twitter:description" content="Projects &amp; Achievements   2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
-  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.)
-  2020-05-08 - Maintainer of the Rust Prometheus client library."/>
+<meta name="twitter:description" content="Projects &amp; Achievements   2020-07-19 - Optimize metric encoding in Prometheus Rust client library drastically reducing memory allocations in hot-path.
+  2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
+  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://max-inden.de/css/normalize.css" />
@@ -78,6 +78,11 @@
 		<div class="markdown">
 			<h1 id="projects--achievements">Projects &amp; Achievements</h1>
 <ul>
+<li>
+<p><em>2020-07-19</em> - Optimize metric encoding in <a href="https://github.com/tikv/rust-prometheus/pull/327">Prometheus Rust client
+library</a> drastically
+reducing memory allocations in hot-path.</p>
+</li>
 <li>
 <p><em>2020-07-14</em> - Port partially lock-free Prometheus histogram implementation to
 the <a href="https://github.com/tikv/rust-prometheus/pull/314">Prometheus Rust client
