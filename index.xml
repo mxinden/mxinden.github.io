@@ -40,9 +40,10 @@ Work on multiplexed fiber-optic setup and server migration.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/misc/</guid>
-      <description>Projects &amp;amp; Achievements   2020-07-19 - Optimize metric encoding in Prometheus Rust client library drastically reducing memory allocations in hot-path.
-  2020-07-14 - Port partially lock-free Prometheus histogram implementation to the Prometheus Rust client library making histogram observe calls atomic across collect calls.
-  2020-06-19 - Implement lookups over disjoint paths based on the extension research paper S/Kademlia in the Rust libp2p Kademlia implementation. (See as well libp2p forum post including a summary and benchmarks.</description>
+      <description>Resources worth sharing Books   Kurose, J. F., &amp;amp; Ross, K. W. (2017). Computer networking: a top-down approach (Vol. 7). Boston, USA: Addison Wesley.
+  Herlihy, Maurice, and Nir Shavit. The Art of Multiprocessor Programming, revised first edition. Morgan Kaufmann, 2012.
+  Kleppmann, M. (2017). Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems. &amp;quot; O&amp;rsquo;Reilly Media, Inc.&amp;quot;.
+  Klabnik, Steve, and Carol Nichols.</description>
     </item>
     
     <item>
