@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>time on mxinden</title>
+    <link>https://max-inden.de/tags/time/</link>
+    <description>Recent content in time on mxinden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://max-inden.de/tags/time/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>30th DistSys Reading Group - NTP</title>
+      <link>https://max-inden.de/blog/2021-01-26-30th-paper-club/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-01-26-30th-paper-club/</guid>
+      <description>What better way to start a new year than with a paper discussing how to change time?
+In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place.</description>
+    </item>
+    
+  </channel>
+</rss>

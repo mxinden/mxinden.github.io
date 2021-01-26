@@ -9,7 +9,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-<meta property="og:updated_time" content="2020-09-08T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-01-26T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Home"/>
 <meta name="twitter:description" content=""/>
@@ -26,6 +26,7 @@
 <body>
 	<div class="container wrapper">
 		<div class="header">
+	<base href="https://max-inden.de/">
 	<h1 class="site-title"><a href="https://max-inden.de/">mxinden</a></h1>
 	<div class="site-description"><h2>Homepage of Max Inden</h2><nav class="nav social">
 			<ul class="flat"><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a><a href="https://github.com/mxinden" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/mxinden" title="Twitter"><i data-feather="twitter"></i></a></ul>
@@ -37,10 +38,6 @@
 			
 			<li>
 				<a href="/">Home</a>
-			</li>
-			
-			<li>
-				<a href="/about/">About</a>
 			</li>
 			
 			<li>
@@ -68,6 +65,20 @@
 </div>
 
 
+		<hr>
+<h3 id="hi-there">Hi there,</h3>
+<p>I am Max, a software developer interested in distributed systems, type theory
+and consensus. Welcome to my little island in this crazy thing called <em>The
+Internet</em>.</p>
+<p>You might enjoy browsing through <a href="/misc">my list of resources I consider worth
+sharing</a>, get some inspiration from the <a href="/blog">numerous summaries of past
+reading group sessions</a> that I organize or simply scroll through <a href="/resume">my
+resume</a> to see what I am up to lately.</p>
+<p>You can best reach me via e-mail: <a href="mailto:mail@max-inden.de">mail@max-inden.de</a>.</p>
+<p>GPG Fingerprint: <code>4110045EE7A432D67AFAC8C85403C5464810BC26</code></p>
+<hr>
+
+
 		<div class="recent-posts section">
 			<h2 class="section-header">
 				Recent posts
@@ -77,13 +88,23 @@
 				
 				
 				<div class="post">
+					<div class="meta">Jan 28, 2020</div>
+					<a class="title" href="/blog/2020-01-28-22nd-paper-club/">22nd Distributed Systems Paper Club</a> &mdash;
+					<span class="description">
+						
+						In the 22nd session we took a look at io_uring - a new Kernel interface for asynchronous I/O. Tyler, who is currently implementing an io_uring library in Rust [4] for his database sled [7] guided us through the concepts as well as a bunch of source code.
+Tyler started off introducing the status quo of I/O interfaces within the Linux Kernel like read, pread and preadv, jumped over to asynchronous I/O like aio and eventually helped us develop a sense of what the perfect asynchronous I/O interface of the future could look like.&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
 					<div class="meta">Jan 24, 2020</div>
 					<a class="title" href="/blog/2020-01-24-21st-paper-club/">21st Distributed Systems Paper Club</a> &mdash;
 					<span class="description">
 						
-						
-We started the new year with a session on *epidemic* / *gossip* protocols. To
-decide what to read I compiled the follow...
+						We started the new year with a session on epidemic / gossip protocols. To decide what to read I compiled the following list of papers that I either enjoyed reading in the past, or that were recommended to me. The Swim (Scalable failure detection and membership protocol) paper won the poll.
+ Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&rdquo; Proceedings International Conference on Dependable Systems and Networks.&hellip;
 						
 					</span>
 				</div>
@@ -93,9 +114,7 @@ decide what to read I compiled the follow...
 					<a class="title" href="/blog/2019-11-28-20th-paper-club/">20th Distributed Systems Paper Club</a> &mdash;
 					<span class="description">
 						
-						
-Last Tuesday we meet again to discuss different attacks and possible
-countermeasures for distributed hash tables. More ...
+						Last Tuesday we meet again to discuss different attacks and possible countermeasures for distributed hash tables. More in particular we looked at Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on the Ethereum network [2], a novel approach of hiding its own connection buckets as well as using an existing social graph as a network topology in the Whanau paper[3], security extensions to the Chord DHT [4], as well as a larger study of different security techniques for DHTs [5].&hellip;
 						
 					</span>
 				</div>
@@ -105,9 +124,8 @@ countermeasures for distributed hash tables. More ...
 					<a class="title" href="/blog/2019-10-27-19th-paper-club/">19th Distributed Systems Paper Club</a> &mdash;
 					<span class="description">
 						
-						
-I have been organizing a distributed systems paper reading group in Berlin for
-the last year. We meet every other week ...
+						I have been organizing a distributed systems paper reading group in Berlin for the last year. We meet every other week discussing a paper in the distributed systems space. This could be anything from Chandy–Lamport&rsquo;s algorithm for global distributed snapshots [1] to things like conflict free replicated datatypes [2]. The event is open for anyone interested. I only ask people to come prepared.
+In the last meeting (19th) we covered distributed hash tables.&hellip;
 						
 					</span>
 				</div>
@@ -117,10 +135,7 @@ the last year. We meet every other week ...
 					<a class="title" href="/blog/2019-06-25-metric-driven-performance-optimization/">Metric driven performance optimization</a> &mdash;
 					<span class="description">
 						
-						
-
-Within my work at Red Hat and Kubernetes [ SIG instrumentation
-](https://github.com/kubernetes/community/tree/master/s...
+						Within my work at Red Hat and Kubernetes SIG instrumentation  I have been working on kube-state-metrics , a Prometheus  exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.&hellip;
 						
 					</span>
 				</div>
@@ -130,9 +145,8 @@ Within my work at Red Hat and Kubernetes [ SIG instrumentation
 					<a class="title" href="/talks/optimizing-metric-rendering-in-kube-state-metrics/">Optimizing Metric Rendering in kube-state-metrics</a> &mdash;
 					<span class="description">
 						
-						
-Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes
-cluster. The project uses the standard...
+						Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
+This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.&hellip;
 						
 					</span>
 				</div>
@@ -142,9 +156,7 @@ cluster. The project uses the standard...
 					<a class="title" href="/talks/self-service-monitoring/">Self-Service Monitoring</a> &mdash;
 					<span class="description">
 						
-						
-Monitoring plays a crucial role in a microservice architecture. Restricting the
-management and configuration of the mon...
+						Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.&hellip;
 						
 					</span>
 				</div>
@@ -155,8 +167,8 @@ management and configuration of the mon...
 					<span class="description">
 						
 						What If Component xxx Dies? Introducing Self-Healing Kubernetes
-
-Kubernetes promises healing your application on all kin...
+Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
+This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.&hellip;
 						
 					</span>
 				</div>
@@ -166,8 +178,7 @@ Kubernetes promises healing your application on all kin...
 					<a class="title" href="/talks/end-to-end-monitoring-with-the-prometheus-operator/">End-to-end monitoring with the Prometheus Operator</a> &mdash;
 					<span class="description">
 						
-						
-Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus e...
+						Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus ensures that Kubernetes stays healthy. Prometheus is a stateful application, so operating it in a cloud native environment can be a challenging task. The Prometheus Operator makes running highly available Prometheus clusters, and even an entire end to end monitoring pipeline, easily manageable. Max will explain the functionality of the Prometheus Operator and describe a desirable end-to-end monitoring stack, including alerts and dashboards.&hellip;
 						
 					</span>
 				</div>
@@ -177,20 +188,8 @@ Kubernetes is a powerful system to build and operate a modern cloud-native infra
 					<a class="title" href="/talks/introduction-to-k8s/">Intro to Kubernetes</a> &mdash;
 					<span class="description">
 						
-						
-Distributing and deploying software inside (Docker-) containers for security,
-isolation and ease of use is the new big ...
-						
-					</span>
-				</div>
-				
-				<div class="post">
-					<div class="meta">Aug 18, 2017</div>
-					<a class="title" href="/talks/improving-user-and-developer-experience-of-the-alertmanager-ui/">Improving user and developer experience of the Alertmanager UI</a> &mdash;
-					<span class="description">
-						
-						
-Alertmanager deduplicates, groups, and routes alerts from Prometheus to all kinds of paging services. With it comes a d...
+						Distributing and deploying software inside (Docker-) containers for security, isolation and ease of use is the new big thing. But once you got all your services nicely wrapped - who takes care of all these containers?
+The open source project Kubernetes, originating from Google, helps you manage containerized applications, as the operating system of your datacenter, treating hundreds of machines as a single resource pool. This talk introduces the core concepts of Kubernetes, its benefits and its huge ecosystem and gives you an idea of how Google controls parts of their gigantic infrastructure.&hellip;
 						
 					</span>
 				</div>
@@ -204,6 +203,8 @@ Alertmanager deduplicates, groups, and routes alerts from Prometheus to all kind
 	
 	</li>
 	<li class="page-item page-next">
+	
+    <a href="/page/3/" class="page-link" aria-label="Next"><span aria-hidden="true">Next page →</span></a>
 	
 	</li>
 </ul>

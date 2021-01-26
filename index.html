@@ -9,7 +9,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-<meta property="og:updated_time" content="2020-09-08T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-01-26T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Home"/>
 <meta name="twitter:description" content=""/>
@@ -26,6 +26,7 @@
 <body>
 	<div class="container wrapper">
 		<div class="header">
+	<base href="https://max-inden.de/">
 	<h1 class="site-title"><a href="https://max-inden.de/">mxinden</a></h1>
 	<div class="site-description"><h2>Homepage of Max Inden</h2><nav class="nav social">
 			<ul class="flat"><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a><a href="https://github.com/mxinden" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/mxinden" title="Twitter"><i data-feather="twitter"></i></a></ul>
@@ -37,10 +38,6 @@
 			
 			<li>
 				<a href="/">Home</a>
-			</li>
-			
-			<li>
-				<a href="/about/">About</a>
 			</li>
 			
 			<li>
@@ -68,6 +65,20 @@
 </div>
 
 
+		<hr>
+<h3 id="hi-there">Hi there,</h3>
+<p>I am Max, a software developer interested in distributed systems, type theory
+and consensus. Welcome to my little island in this crazy thing called <em>The
+Internet</em>.</p>
+<p>You might enjoy browsing through <a href="/misc">my list of resources I consider worth
+sharing</a>, get some inspiration from the <a href="/blog">numerous summaries of past
+reading group sessions</a> that I organize or simply scroll through <a href="/resume">my
+resume</a> to see what I am up to lately.</p>
+<p>You can best reach me via e-mail: <a href="mailto:mail@max-inden.de">mail@max-inden.de</a>.</p>
+<p>GPG Fingerprint: <code>4110045EE7A432D67AFAC8C85403C5464810BC26</code></p>
+<hr>
+
+
 		<div class="recent-posts section">
 			<h2 class="section-header">
 				Recent posts
@@ -77,13 +88,23 @@
 				
 				
 				<div class="post">
+					<div class="meta">Jan 26, 2021</div>
+					<a class="title" href="/blog/2021-01-26-30th-paper-club/">30th DistSys Reading Group - NTP</a> &mdash;
+					<span class="description">
+						
+						What better way to start a new year than with a paper discussing how to change time?
+In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place.&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
 					<div class="meta">Sep 8, 2020</div>
 					<a class="title" href="/blog/2020-09-08-28th-paper-club/">28th DistSys Reading Group - Hotstuff</a> &mdash;
 					<span class="description">
 						
-						
-With the 28th session we jumped into the space of byzantine fault tolerant
-consensus protocols. We covered fault tolera...
+						With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
+Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.&hellip;
 						
 					</span>
 				</div>
@@ -93,9 +114,7 @@ consensus protocols. We covered fault tolera...
 					<a class="title" href="/blog/2020-06-19-latencies/">Know your latencies</a> &mdash;
 					<span class="description">
 						
-						
-I find it helpful to know the orders of magnitude by which certain computer
-operations differ. Certainly it is not wort...
+						I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.&hellip;
 						
 					</span>
 				</div>
@@ -105,9 +124,9 @@ operations differ. Certainly it is not wort...
 					<a class="title" href="/blog/2020-05-18-26th-paper-club/">26th DistSys Reading Group - Cache coherence</a> &mdash;
 					<span class="description">
 						
-						
-We have long been planning to cover the caching mechanisms in CPUs. As a shared
-knowledge base for the discussions in t...
+						We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
+  CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
+  Write Combining exemplifying the advanced mechanisms one can find in today&rsquo;s CPUs and how one can make use of them.&hellip;
 						
 					</span>
 				</div>
@@ -117,9 +136,9 @@ knowledge base for the discussions in t...
 					<a class="title" href="/blog/2020-04-27-25th-paper-club/">25th DistSys Reading Group - Fair queuing</a> &mdash;
 					<span class="description">
 						
-						
-In the session today we covered Madhavapeddi Shreedhar and George Varghese paper
-&#34;*Efficient fair queuing using deficit...
+						In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &ldquo;Efficient fair queuing using deficit round-robin&rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
+  Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
+  Its wide deployment still seen today.&hellip;
 						
 					</span>
 				</div>
@@ -129,10 +148,9 @@ In the session today we covered Madhavapeddi Shreedhar and George Varghese paper
 					<a class="title" href="/blog/2020-04-06-24th-paper-club/">24th DistSys Reading Group - BBR Congestion-Based Congestion Control</a> &mdash;
 					<span class="description">
 						
-						
-
-After a bit of a break due to current pandemic we decided to carry on and
-continue our meetings as virtual calls. Igno...
+						After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
+Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
+We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &ldquo;just works&rdquo; due to congestion control.&hellip;
 						
 					</span>
 				</div>
@@ -142,10 +160,8 @@ continue our meetings as virtual calls. Igno...
 					<a class="title" href="/blog/2020-04-01-elimination-backoff-stack-performance/">Elimination back-off stack performance</a> &mdash;
 					<span class="description">
 						
-						
-![All stacks from 1 thread to up to 128](/static/elimination-back-off-stack/lines.svg)
-
-I recently stumbled upon the id...
+						I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations.&hellip;
 						
 					</span>
 				</div>
@@ -155,9 +171,9 @@ I recently stumbled upon the id...
 					<a class="title" href="/blog/2020-03-28-elimination-backoff-stack/">Elimination back-off stack</a> &mdash;
 					<span class="description">
 						
-						
-Reading *The Art of Multiprocessor Programming* [1] I came across the
-*Elimination Back-off Stack* [2] datastructure in...
+						Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
+How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
+A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.&hellip;
 						
 					</span>
 				</div>
@@ -167,9 +183,8 @@ Reading *The Art of Multiprocessor Programming* [1] I came across the
 					<a class="title" href="/blog/2020-03-14-leaving-prometheus-team/">Leaving the Prometheus team</a> &mdash;
 					<span class="description">
 						
-						
-In January 2017 I joined the company CoreOS as a test-engineer helping the
-monitoring team and the [rkt container engin...
+						In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
+Over the next 2 years and 4 month I worked a lot on Alertmanager, e.&hellip;
 						
 					</span>
 				</div>
@@ -179,21 +194,9 @@ monitoring team and the [rkt container engin...
 					<a class="title" href="/blog/2020-02-18-23rd-paper-club/">23rd Distributed Systems Paper Club</a> &mdash;
 					<span class="description">
 						
-						
-At the end of the previous session one of us suggested to dive into congestion
-control algorithms. This has found a gre...
-						
-					</span>
-				</div>
-				
-				<div class="post">
-					<div class="meta">Jan 28, 2020</div>
-					<a class="title" href="/blog/2020-01-28-22nd-paper-club/">22nd Distributed Systems Paper Club</a> &mdash;
-					<span class="description">
-						
-						
-In the 22nd session we took a look at `io_uring` - a new Kernel interface for
-asynchronous I/O. Tyler, who is currently...
+						At the end of the previous session one of us suggested to dive into congestion control algorithms. This has found a greater echo, thus the 23rd session covered congestion control algorithms in general and TCP&rsquo;s Reno as well as TCP&rsquo;s Tahoe in particular.
+This weeks reading was:
+  Chapter 13 &ldquo;TCP Reno and Congestion Management&rdquo; from the comprehensive online book &ldquo;An Introduction to Computer Networks&rdquo; [1] from the Loyola University Chicago.&hellip;
 						
 					</span>
 				</div>
