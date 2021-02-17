@@ -6,10 +6,20 @@
     <description>Recent content in Blog on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>New GPG Key</title>
+      <link>https://max-inden.de/blog/2021-02-17-new-gpg-key/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-02-17-new-gpg-key/</guid>
+      <description>I have created a new GPG key replacing my old GPG key. I did not loose access to the old one, nor was it, as far as I am able to tell, ever compromised. As I did with the old key, I will use the new key both for signing my open source work as well as securing my e-mail communication.
+You can find both the old and the new key on all major key servers.</description>
+    </item>
     
     <item>
       <title>30th DistSys Reading Group - NTP</title>
