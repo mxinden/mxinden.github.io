@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     
@@ -33,6 +33,17 @@ Work on multiplexed fiber-optic setup and server migration.</description>
   Herlihy, Maurice, and Nir Shavit. The Art of Multiprocessor Programming, revised first edition. Morgan Kaufmann, 2012.
   Kleppmann, M. (2017). Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems. &amp;quot; O&amp;rsquo;Reilly Media, Inc.&amp;quot;.
   Klabnik, Steve, and Carol Nichols.</description>
+    </item>
+    
+    <item>
+      <title>31st DistSys Reading Group - BGP 1</title>
+      <link>https://max-inden.de/blog/2021-02-24-31st-paper-club/</link>
+      <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-02-24-31st-paper-club/</guid>
+      <description>We decided to turn our interest to BGP which we will devote 3 sessions to. In today&amp;rsquo;s session - the first one - we introduced BGP, looked at the convergence problem, as well as the solution suggested in the paper below.
+Gao, Lixin, and Jennifer Rexford. &amp;ldquo;Stable Internet routing without global coordination.&amp;rdquo; IEEE/ACM Transactions on networking 9.6 (2001): 681-692.
+To play around with BGP as well as general Internet routing:</description>
     </item>
     
     <item>
