@@ -6,10 +6,20 @@
     <description>Recent content in networking on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early</title>
+      <link>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</link>
+      <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</guid>
+      <description>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
+https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</description>
+    </item>
     
     <item>
       <title>Know your latencies</title>

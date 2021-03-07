@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://max-inden.de/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,7 +13,7 @@
   
   <url>
     <loc>https://max-inden.de/blog/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -23,6 +23,36 @@
   
   <url>
     <loc>https://max-inden.de/misc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/congestion-control/</loc>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/networking/</loc>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</loc>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/</loc>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/tcp/</loc>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/tech/</loc>
+    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -52,16 +82,6 @@
   
   <url>
     <loc>https://max-inden.de/tags/routing/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/tech/</loc>
     <lastmod>2021-02-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -116,11 +136,6 @@
   </url>
   
   <url>
-    <loc>https://max-inden.de/tags/networking/</loc>
-    <lastmod>2020-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://max-inden.de/tags/performance/</loc>
     <lastmod>2020-06-19T00:00:00+00:00</lastmod>
   </url>
@@ -142,11 +157,6 @@
   
   <url>
     <loc>https://max-inden.de/blog/2020-04-06-24th-paper-club/</loc>
-    <lastmod>2020-04-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/congestion-control/</loc>
     <lastmod>2020-04-06T00:00:00+00:00</lastmod>
   </url>
   

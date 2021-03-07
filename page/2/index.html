@@ -9,7 +9,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-<meta property="og:updated_time" content="2021-02-24T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-03-07T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Home"/>
 <meta name="twitter:description" content=""/>
@@ -86,6 +86,18 @@ resume</a> to see what I am up to lately.</p>
 			<div class="posts">
 				
 				
+				
+				<div class="post">
+					<div class="meta">Mar 28, 2020</div>
+					<a class="title" href="/blog/2020-03-28-elimination-backoff-stack/">Elimination back-off stack</a> &mdash;
+					<span class="description">
+						
+						Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
+How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
+A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.&hellip;
+						
+					</span>
+				</div>
 				
 				<div class="post">
 					<div class="meta">Mar 14, 2020</div>
@@ -180,18 +192,6 @@ This talk covers different optimizations like metric caching and improved text m
 					<span class="description">
 						
 						Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.&hellip;
-						
-					</span>
-				</div>
-				
-				<div class="post">
-					<div class="meta">Oct 22, 2017</div>
-					<a class="title" href="/talks/self-healing-k8s/">Self-healing Kubernetes</a> &mdash;
-					<span class="description">
-						
-						What If Component xxx Dies? Introducing Self-Healing Kubernetes
-Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
-This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.&hellip;
 						
 					</span>
 				</div>
