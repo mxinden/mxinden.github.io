@@ -9,7 +9,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-<meta property="og:updated_time" content="2021-03-07T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-04-12T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Home"/>
 <meta name="twitter:description" content=""/>
@@ -86,6 +86,29 @@ resume</a> to see what I am up to lately.</p>
 			<div class="posts">
 				
 				
+				
+				<div class="post">
+					<div class="meta">Apr 6, 2020</div>
+					<a class="title" href="/blog/2020-04-06-24th-paper-club/">24th DistSys Reading Group - BBR Congestion-Based Congestion Control</a> &mdash;
+					<span class="description">
+						
+						After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
+Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
+We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &ldquo;just works&rdquo; due to congestion control.&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
+					<div class="meta">Apr 1, 2020</div>
+					<a class="title" href="/blog/2020-04-01-elimination-backoff-stack-performance/">Elimination back-off stack performance</a> &mdash;
+					<span class="description">
+						
+						I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations.&hellip;
+						
+					</span>
+				</div>
 				
 				<div class="post">
 					<div class="meta">Mar 28, 2020</div>
@@ -171,27 +194,6 @@ In the last meeting (19th) we covered distributed hash tables.&hellip;
 					<span class="description">
 						
 						Within my work at Red Hat and Kubernetes SIG instrumentation  I have been working on kube-state-metrics , a Prometheus  exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.&hellip;
-						
-					</span>
-				</div>
-				
-				<div class="post">
-					<div class="meta">May 22, 2019</div>
-					<a class="title" href="/talks/optimizing-metric-rendering-in-kube-state-metrics/">Optimizing Metric Rendering in kube-state-metrics</a> &mdash;
-					<span class="description">
-						
-						Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
-This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.&hellip;
-						
-					</span>
-				</div>
-				
-				<div class="post">
-					<div class="meta">Sep 26, 2018</div>
-					<a class="title" href="/talks/self-service-monitoring/">Self-Service Monitoring</a> &mdash;
-					<span class="description">
-						
-						Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.&hellip;
 						
 					</span>
 				</div>

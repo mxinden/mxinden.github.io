@@ -9,7 +9,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-<meta property="og:updated_time" content="2021-03-07T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-04-12T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Home"/>
 <meta name="twitter:description" content=""/>
@@ -86,6 +86,27 @@ resume</a> to see what I am up to lately.</p>
 			<div class="posts">
 				
 				
+				
+				<div class="post">
+					<div class="meta">May 22, 2019</div>
+					<a class="title" href="/talks/optimizing-metric-rendering-in-kube-state-metrics/">Optimizing Metric Rendering in kube-state-metrics</a> &mdash;
+					<span class="description">
+						
+						Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
+This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
+					<div class="meta">Sep 26, 2018</div>
+					<a class="title" href="/talks/self-service-monitoring/">Self-Service Monitoring</a> &mdash;
+					<span class="description">
+						
+						Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.&hellip;
+						
+					</span>
+				</div>
 				
 				<div class="post">
 					<div class="meta">Oct 22, 2017</div>

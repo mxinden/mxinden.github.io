@@ -6,10 +6,31 @@
     <description>Recent content in distributed-systems on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/distributed-systems/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>33rd DistSys Reading Group - BGP 3</title>
+      <link>https://max-inden.de/blog/2021-04-12-33rd-reading-group/</link>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-04-12-33rd-reading-group/</guid>
+      <description>In our third BGP session we focused on BGP security, more specifically we discussed how to perform hijack and interception attacks using BGP. The primary paper of the session was:
+Birge-Lee, Henry, et al. &amp;ldquo;Sico: Surgical interception attacks by manipulating bgp communities.&amp;rdquo; Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security. 2019.
+A good introduction to RPKI can be found here.</description>
+    </item>
+    
+    <item>
+      <title>32nd DistSys Reading Group - BGP 2</title>
+      <link>https://max-inden.de/blog/2021-03-18-32nd-reading-group/</link>
+      <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-03-18-32nd-reading-group/</guid>
+      <description>After our first BGP session, introducing the protocol based on the convergence problem of BGP, our second session on BGP covered route propagation and tuning. The primary paper was:
+Gray, Caitlin, et al. &amp;ldquo;BGP Beacons, Network Tomography, and Bayesian Computation to Locate Route Flap Damping.&amp;rdquo; Proceedings of the ACM Internet Measurement Conference. 2020.</description>
+    </item>
     
     <item>
       <title>31st DistSys Reading Group - BGP 1</title>

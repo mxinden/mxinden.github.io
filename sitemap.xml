@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://max-inden.de/</loc>
-    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,7 +13,7 @@
   
   <url>
     <loc>https://max-inden.de/blog/</loc>
-    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -23,6 +23,56 @@
   
   <url>
     <loc>https://max-inden.de/misc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/blog/2021-04-12-33rd-reading-group/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/bgp/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/distributed-systems/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/internet/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/paper/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/routing/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/security/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/tech/</loc>
+    <lastmod>2021-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/blog/2021-03-18-32nd-reading-group/</loc>
+    <lastmod>2021-03-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -41,47 +91,12 @@
   </url>
   
   <url>
-    <loc>https://max-inden.de/tags/</loc>
-    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://max-inden.de/tags/tcp/</loc>
     <lastmod>2021-03-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://max-inden.de/tags/tech/</loc>
-    <lastmod>2021-03-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://max-inden.de/blog/2021-02-24-31st-paper-club/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/bgp/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/distributed-systems/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/internet/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/paper/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/routing/</loc>
     <lastmod>2021-02-24T00:00:00+00:00</lastmod>
   </url>
   
