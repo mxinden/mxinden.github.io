@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>security on mxinden</title>
-    <link>https://max-inden.de/tags/security/</link>
-    <description>Recent content in security on mxinden</description>
+    <title>mixnets on mxinden</title>
+    <link>https://max-inden.de/tags/mixnets/</link>
+    <description>Recent content in mixnets on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://max-inden.de/tags/security/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://max-inden.de/tags/mixnets/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -22,17 +22,6 @@ Piotrowska, Ania M., et al. &amp;ldquo;The loopix anonymity system.&amp;rdquo; 2
 https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska.pdf
 The corresponding talk by Ania Piotrowska is very much worth watching as an additional resource.
 https://www.youtube.com/watch?v=R-yEqLX_UvI</description>
-    </item>
-    
-    <item>
-      <title>33rd DistSys Reading Group - BGP 3</title>
-      <link>https://max-inden.de/blog/2021-04-12-33rd-reading-group/</link>
-      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-inden.de/blog/2021-04-12-33rd-reading-group/</guid>
-      <description>In our third BGP session we focused on BGP security, more specifically we discussed how to perform hijack and interception attacks using BGP. The primary paper of the session was:
-Birge-Lee, Henry, et al. &amp;ldquo;Sico: Surgical interception attacks by manipulating bgp communities.&amp;rdquo; Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security. 2019.
-A good introduction to RPKI can be found here.</description>
     </item>
     
   </channel>

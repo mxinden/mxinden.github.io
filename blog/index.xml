@@ -6,10 +6,23 @@
     <description>Recent content in Blog on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>34rd DistSys Reading Group - Mixnets</title>
+      <link>https://max-inden.de/blog/2021-05-10-34th-reading-group/</link>
+      <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-05-10-34th-reading-group/</guid>
+      <description>34th session was on Mixnets as lots of people suggested in the past. As a preparation we read the Loopix paper.
+Piotrowska, Ania M., et al. &amp;ldquo;The loopix anonymity system.&amp;rdquo; 26th {USENIX} Security Symposium ({USENIX} Security 17). 2017.
+https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska.pdf
+The corresponding talk by Ania Piotrowska is very much worth watching as an additional resource.
+https://www.youtube.com/watch?v=R-yEqLX_UvI</description>
+    </item>
     
     <item>
       <title>33rd DistSys Reading Group - BGP 3</title>
