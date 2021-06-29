@@ -6,10 +6,23 @@
     <description>Recent content in distributed-systems on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/tags/distributed-systems/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>35th DistSys Reading Group - Nym</title>
+      <link>https://max-inden.de/blog/2021-06-29-35th-reading-group/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-06-29-35th-reading-group/</guid>
+      <description>In our previous session we looked into Mixnets, more specifically Loopix. With this session we stayed in the space, talking about a network adopting many concepts from Loopix, namely Nym.
+As a preparation, we read section 1 through 4 of the Nym whitepaper.
+(1) Introduction (2) Network-level surveillance (3) The Nym Network Design (4) Mixnet for Network-Level Privacy
+Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. &amp;ldquo;The Nym Network.&amp;rdquo; (2021).
+https://nymtech.net/nym-whitepaper.pdf</description>
+    </item>
     
     <item>
       <title>34th DistSys Reading Group - Mixnets</title>

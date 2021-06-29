@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     
@@ -33,6 +33,19 @@ Freelance Network Engineer at SpaceNet AG | Jun 2019</description>
   Herlihy, Maurice, and Nir Shavit. The Art of Multiprocessor Programming, revised first edition. Morgan Kaufmann, 2012.
   Kleppmann, M. (2017). Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems. &amp;quot; O&amp;rsquo;Reilly Media, Inc.&amp;quot;.
   Klabnik, Steve, and Carol Nichols.</description>
+    </item>
+    
+    <item>
+      <title>35th DistSys Reading Group - Nym</title>
+      <link>https://max-inden.de/blog/2021-06-29-35th-reading-group/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/blog/2021-06-29-35th-reading-group/</guid>
+      <description>In our previous session we looked into Mixnets, more specifically Loopix. With this session we stayed in the space, talking about a network adopting many concepts from Loopix, namely Nym.
+As a preparation, we read section 1 through 4 of the Nym whitepaper.
+(1) Introduction (2) Network-level surveillance (3) The Nym Network Design (4) Mixnet for Network-Level Privacy
+Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. &amp;ldquo;The Nym Network.&amp;rdquo; (2021).
+https://nymtech.net/nym-whitepaper.pdf</description>
     </item>
     
     <item>
