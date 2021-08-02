@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     
@@ -33,6 +33,16 @@ Freelance Network Engineer at SpaceNet AG | Jun 2019</description>
   Herlihy, Maurice, and Nir Shavit. The Art of Multiprocessor Programming, revised first edition. Morgan Kaufmann, 2012.
   Kleppmann, M. (2017). Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems. &amp;quot; O&amp;rsquo;Reilly Media, Inc.&amp;quot;.
   Klabnik, Steve, and Carol Nichols.</description>
+    </item>
+    
+    <item>
+      <title>Intro to libp2p</title>
+      <link>https://max-inden.de/talks/intro-to-libp2p/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/talks/intro-to-libp2p/</guid>
+      <description>On Tuesday 20th of July I gave a talk introducing libp2p, a modular network stack.
+ Recording Slides  </description>
     </item>
     
     <item>

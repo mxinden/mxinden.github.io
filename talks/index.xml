@@ -6,10 +6,20 @@
     <description>Recent content in Talks on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://max-inden.de/talks/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Intro to libp2p</title>
+      <link>https://max-inden.de/talks/intro-to-libp2p/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/talks/intro-to-libp2p/</guid>
+      <description>On Tuesday 20th of July I gave a talk introducing libp2p, a modular network stack.
+ Recording Slides  </description>
+    </item>
     
     <item>
       <title>Optimizing Metric Rendering in kube-state-metrics</title>
