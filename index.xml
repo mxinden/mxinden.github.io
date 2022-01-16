@@ -6,11 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Resume</title>
       <link>https://max-inden.de/resume/</link>
@@ -18,9 +14,9 @@
       
       <guid>https://max-inden.de/resume/</guid>
       <description>Experience Software Engineer at Protocol Labs | March 2021 - Present
+Steward of the libp2p project and maintainer of the Rust libp2p implementation.
 Software Engineer at Parity | July 2019 - February 2021
-Maintaining Rust peer-to-peer networking library libp2p and its usage within the Blockchain framework Substrate. Involved in the networking logic of the main byzantine fault tolerant finality gadget finality-grandpa. Filling role of hiring manager for team building automated testing infrastructure. Shepherding (Prometheus) monitoring across the company.
-Freelance Network Engineer at SpaceNet AG | Jun 2019</description>
+Maintaining Rust peer-to-peer networking library libp2p and its usage within the Blockchain framework Substrate. Involved in the networking logic of the main byzantine fault tolerant finality gadget finality-grandpa. Filling role of hiring manager for team building automated testing infrastructure.</description>
     </item>
     
     <item>
@@ -211,7 +207,7 @@ A lock-free stack A lock-free stack, also often referred to as a Treiber stack [
       <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</guid>
-      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
+      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&#39; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
 Over the next 2 years and 4 month I worked a lot on Alertmanager, e.</description>
     </item>
     

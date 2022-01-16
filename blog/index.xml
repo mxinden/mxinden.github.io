@@ -6,11 +6,7 @@
     <description>Recent content in Blog on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://max-inden.de/blog/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>35th DistSys Reading Group - Nym</title>
       <link>https://max-inden.de/blog/2021-06-29-35th-reading-group/</link>
@@ -177,7 +173,7 @@ A lock-free stack A lock-free stack, also often referred to as a Treiber stack [
       <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</guid>
-      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
+      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&#39; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
 Over the next 2 years and 4 month I worked a lot on Alertmanager, e.</description>
     </item>
     
