@@ -6,7 +6,33 @@
     <description>Recent content in Talks on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/talks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Peer-to-peer hole punching without centralized infrastructure</title>
+      <link>https://max-inden.de/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/</guid>
+      <description>Gave a talk on hole punching in libp2p at FOSDEM 2022.
+ Peer-to-peer hole punching without centralized infrastructure
+How libp2p can traverse NATs and firewalls without coordination through central STUN and TURN servers.
+libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
+In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together.</description>
+    </item>
+    
+    <item>
+      <title>State of libp2p</title>
+      <link>https://max-inden.de/talks/state-of-libp2p/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/talks/state-of-libp2p/</guid>
+      <description>Gave a talk on the state of libp2p at FOSDEM 2022.
+ State of libp2p
+Status quo and future roadmap of the peer-to-peer networking library libp2p.
+libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
+We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.</description>
+    </item>
+    
     <item>
       <title>Intro to libp2p</title>
       <link>https://max-inden.de/talks/intro-to-libp2p/</link>
