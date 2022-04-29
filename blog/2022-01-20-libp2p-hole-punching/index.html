@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Hole punching in libp2p - Overcoming Firewalls - mxinden</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Hole punching in libp2p - Overcoming Firewalls" />
+<meta property="og:description" content="In case you haven&#39;t yet heard the great news, libp2p can now punch holes.
+ The below explains why we want to punch holes, into what we are punching those holes and most interestingly how we punch those holes.
+The Problem with Firewalls   Computers in today&#39;s Internet can be divided into two groups, public and non-public computers, i.e. those that you can dial and those that you can not." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://max-inden.de/blog/2022-01-20-libp2p-hole-punching/" />
+<meta property="article:published_time" content="2022-01-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hole punching in libp2p - Overcoming Firewalls"/>
+<meta name="twitter:description" content="In case you haven&#39;t yet heard the great news, libp2p can now punch holes.
+ The below explains why we want to punch holes, into what we are punching those holes and most interestingly how we punch those holes.
+The Problem with Firewalls   Computers in today&#39;s Internet can be divided into two groups, public and non-public computers, i.e. those that you can dial and those that you can not."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://max-inden.de/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://max-inden.de/css/main.css" />
+
+	<script src="https://max-inden.de/js/feather.min.js"></script>
+	
+	<script src="https://max-inden.de/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<base href="https://max-inden.de/">
+	<h1 class="site-title"><a href="https://max-inden.de/">mxinden</a></h1>
+	<div class="site-description"><h2>Homepage of Max Inden</h2><nav class="nav social">
+			<ul class="flat"><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a><a href="https://github.com/mxinden" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/mxinden" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/resume/">Resume</a>
+			</li>
+			
+			<li>
+				<a href="/blog/">Blog</a>
+			</li>
+			
+			<li>
+				<a href="/talks/">Talks</a>
+			</li>
+			
+			<li>
+				<a href="/misc/">Misc</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Hole punching in libp2p - Overcoming Firewalls</h1>
+			<div class="meta">Posted at &mdash; Jan 20, 2022</div>
+		</div>
+
+		<div class="markdown">
+			
+<p>
+In case you haven&#39;t yet heard the great news, libp2p can now punch holes.</p>
+<p>
+The below explains why we want to punch holes, into what we are punching those holes and most interestingly how we punch those holes.</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+The Problem with Firewalls
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+Computers in today&#39;s Internet can be divided into two groups, public and non-public computers, i.e. those that you can dial and those that you can not. Public computers can dial public computers. Non-public computers can dial public computers. But public computers can not dial non-public computers, nor can non-public computers dial other non-public computers.</p>
+<p>
+Let&#39;s look at an example. Two computers, <em>A</em> and <em>B</em>, each in their own network, connected to the internet via a separate home router each, with those home routers acting as firewalls.</p>
+<p>
+Note that we are focusing on overcoming firewalls today and ignore NATs for now. The process described below (hole punching in libp2p) enables overcoming both. For the sake of simplicity we will concentrate on firewalls in this blog post.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  
+  cloud {
+          [Internet]
+  }
+  
+  package &#34;Network_A&#34; {
+          [A]
+          [Router_A]
+  }
+  
+  package &#34;Network_B&#34; {
+          [B]
+          [Router_B]
+  }
+  
+  [A] &lt;--&gt; [Router_A]
+  [B] &lt;--&gt; [Router_B]
+  [Router_A] &lt;--&gt; [Internet]
+  [Router_B] &lt;--&gt; [Internet]
+  
+  @enduml</code></pre>
+</div>
+<p><img src="./libp2p-hole-punching-network.svg" alt="./libp2p-hole-punching-network.svg" title="./libp2p-hole-punching-network.svg" /></p>
+<p>
+The sequence diagram below depicts the scenario where computer <em>A</em> emitts a packet destined for <em>B</em>. Said packet is first send to A&#39;s router, which in turn forwards it to <em>B</em>&#39;s router.</p>
+<p>
+(We will be using the term &#34;computer&#34; and &#34;node&#34; as synonyms from now on.)</p>
+<p>
+Small detour on the matter of firewalls. Firewalls control the bytes flowing in and out of a network, e.g. in this case in and out of A&#39;s and <em>B</em>&#39;s home network. They usually do so using a state table of 5-tuples. A 5-tuple is used to identify a connection between two endpoints. It consists of the IP source address, the IP destination address, the transport protocol e.g. TCP or UDP, the source port number and the destination port number of a connection.</p>
+<table>
+<thead>
+<tr>
+<th>Source IP</th>
+<th>Destination IP</th>
+<th>Transport Protocol</th>
+<th class="align-right">Source Port</th>
+<th class="align-right">Destination Port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.0.2</td>
+<td>198.51.100.0</td>
+<td>TCP</td>
+<td class="align-right">12345</td>
+<td class="align-right">443</td>
+</tr>
+<tr>
+<td>192.168.0.2</td>
+<td>198.51.100.1</td>
+<td>UDP</td>
+<td class="align-right">12345</td>
+<td class="align-right">53</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td class="align-right">…</td>
+<td class="align-right">…</td>
+</tr>
+</tbody>
+</table>
+<p>
+The simplest security measure all major consumer firewalls enforce to protect their network is the following:</p>
+<ol>
+<li>
+<p>When forwarding an outgoing packet, add a 5-tuple for said connection to the state table.</p>
+</li>
+<li>
+<p>When receiving an incoming packet, check whether there is a 5-tuple for an outgoing connection matching the incoming packet.</p>
+<ol>
+<li>
+<p>If there is, it is a response to a previous outgoing packet and thus the packet is forwarded to the destined machine within the network.</p>
+</li>
+<li>
+<p>If there is not, drop the packet.</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Back to our sequence diagram below. A&#39;s router forwards the packet to <em>B</em>&#39;s router. <em>B</em>&#39;s router checks its state table, can not find a matching 5-tuple (IP_A, IP_B, TCP, Port_A, Port_B) and thus drops the packet. In a nutshell, this is why the Internet is divided into two, public and non-public computers.</p>
+<p>
+Same applies to packets send from <em>B</em> to <em>A</em>, see second half of the sequence diagram.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  actor A
+  participant Router_A
+  participant Router_B
+  actor B
+  
+  group A tries to connect to B
+          A -&gt; Router_A: PacketA
+          Router_A -&gt; Router_B: PacketA
+          hnote over Router_B: Checking state table\nNo 5-tuple.\nDropping PacketA
+  end
+  
+  group B tries to connect to A
+          B -&gt; Router_B: PacketB
+          Router_B -&gt; Router_A: PacketB
+          hnote over Router_A: Checking state table\nNo 5-tuple.\nDropping PacketB
+  end
+  
+  @enduml</code></pre>
+</div>
+<p><img src="./libp2p-hole-punching-firewall.svg" alt="./libp2p-hole-punching-firewall.svg" title="./libp2p-hole-punching-firewall.svg" /></p>
+<p>
+Now this should not suggest to go ahead and disable all firewalls across the world. Please no. They do serve their purpose. Afterall <em>A</em> and <em>B</em> most likely don&#39;t want random strangers connecting to them. Though they do still want to connect to each other.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Hole Punching
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+Hole punching is one mechanism to overcome the problem described above. Let&#39;s see how it works.</p>
+<p>
+Imagine that we have some mysterious mechanism to synchronize <em>A</em> and <em>B</em>. Mysterious as synchronizing clocks is hard, … really hard. For those that don&#39;t believe me, I recommend reading Lamport&#39;s &#34;Time, Clocks, and the Ordering of Events in a Distributed System&#34; and Mills&#39; &#34;A Brief History of NTP Time: Memoirs of an Internet Timekeeper&#34;.</p>
+<p>
+Anyways, back to assuming the existence of a mysterious synchronization mechanism. Such mechanism would allow <em>A</em> and <em>B</em> to dial each other &#34;at the same time&#34;.</p>
+<ol>
+<li>
+<p>A&#39;s packet would pass through router <em>A</em> and thus add a 5-tuple to router A&#39;s state table. Same on the other side, where the packet send by <em>B</em> would trigger a 5-tuple being added to <em>B</em>&#39;s router&#39;s state table. Packet <em>A</em> and packet <em>B</em> &#34;punch holes&#34; into their router&#39;s firewalls.</p>
+</li>
+<li>
+<p>Both packets, each then forwarded to the opposite router, would cross paths somewhere in this crazy thing called Internet. (Whether they really cross paths is something for another blog post, but still an amusing image to have in mind.)</p>
+</li>
+<li>
+<p>Onces A&#39;s packet arrives at router <em>B</em>, router <em>B</em> checks its state table, finds a 5-tuple previously added through the packet sent by <em>B</em>, and forwards the packet to computer <em>B</em>. Same with <em>B</em>&#39;s packet, arriving at router <em>A</em>, matching a 5-tuple in router A&#39;s state table and thus forwarded to computer <em>A</em>.</p>
+</li>
+</ol>
+<p>In case you haven&#39;t noticed, we just fixed our problem. <em>A</em> and <em>B</em> can now happily exchange packets. Take a look at the sequence diagram below, depicting the same process.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  actor A
+  participant Router_A
+  participant Router_B
+  actor B
+  
+  A -&gt; Router_A: PacketA
+  rnote over Router_A: Add 5-tuple\nto local state table
+  B -&gt; Router_B: PacketB
+  rnote over Router_B: Add 5-tuple\nto local state table
+  Router_A -&gt; Router_B: PacketA
+  Router_B -&gt; Router_A: PacketB
+  rnote over Router_A: 5-tuple exists\nin local state table
+  Router_A -&gt; A: PacketB
+  rnote over Router_B: 5-tuple exists\nin local state table
+  Router_B -&gt; B: PacketA
+  
+  @enduml</code></pre>
+</div>
+<p><img src="./libp2p-hole-punching-hole-punch.svg" alt="./libp2p-hole-punching-hole-punch.svg" title="./libp2p-hole-punching-hole-punch.svg" /></p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-2">
+<h2 id="headline-3">
+Project Flare
+</h2>
+<div id="outline-text-headline-3" class="outline-text-2">
+<p>
+So the above sounds easy from a birds-eye view, but is a lot more complex than one would think. In addition, we didn&#39;t even cover the &#34;mysterious mechanism to synchronize <em>A</em> and <em>B</em>&#34;. </p>
+<p>
+Introducing <strong>Project Flare</strong>, libp2p&#39;s way of decentralized hole punching. Those familiar with <a href="https://datatracker.ietf.org/doc/html/rfc8445">IETF&#39;s ICE</a> will spot many similarities. Project Flare is heavily inspired by ICE.</p>
+<p>
+One can partition libp2p&#39;s way of hole punching in roughly 2 phases, a preparation phase and a hole punching phase. We will go into each of them in more detail further below.</p>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+Overview
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>
+Here is a sequence diagram of the whole process. Don&#39;t worry, we will go into each step separately. Maybe the sole purpose of this huge diagram is to prove the point above that holepunching &#34;is a lot more complex than one would think&#34;.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  participant A
+  participant Relay
+  participant B
+  collections Other_Peers
+  
+  mainframe Goal: Peer A establishes a direct connection to non-dialable peer B.
+  
+  == __Phase 1 - Preparation__ ==
+  
+  group B determining whether it is dialable via AutoNAT protocol
+          B -&gt; Other_Peers: DialRequest {\n  supposedly_public_addresses\n}
+          group For each provided supposedly public address
+                  Other_Peers -&gt; B: Dial
+          end
+          alt One of the dials succeeded.\nThus B is dialable. No need for Hole Punching.\nDon&#39;t continue.
+                  Other_Peers -&gt; B: DialOutcome {\n  &#34;Ok&#34;\n  successful_address\n}
+          else None of the dials succeeded.\nThus not dialable. Hole Punching needed. Continue.
+                  Other_Peers -&gt; B: DialOutcome {\n  &#34;Error&#34;\n}
+          end
+  end
+  
+  group B finding closest public Relay nodes via Kademlia Protocol
+          B -&gt; Other_Peers: FindNodes(PEER_ID_B) 
+          Other_Peers -&gt; B: [ Public nodes closest to PEER_ID_B ]
+  end
+  
+  group B listening for incoming connections via closest Relay
+          group For each closest Relay via Circuit Relay v2 Protocol
+                  B -&gt; Relay: Establish connection
+                  B -&gt; Relay: Request reservation
+                  Relay -&gt; B: Accept reservation
+          end
+          B -&gt; Other_Peers: Advertise oneself as\n/&lt;RELAY_ADDR&gt;/p2p-circuit/&lt;PEER_ID_B&gt;
+  end
+  
+  == __Phase 2 - Hole Punching__ ==
+  
+  group A establish relayed connection to B
+  
+          A -&gt; Relay: Establish Connection
+          group Circuit Relay v2 Protocol
+                  A -&gt; Relay: Request connection to B
+                  Relay -&gt; B: Request connection from A
+                  B -&gt; Relay: Accept connection request
+                  Relay -&gt; A: Accept connection request
+          end
+  
+          A &lt;-&gt; B: **Relayed Connection established**
+  
+  end
+  
+  group A and B coordinate dial via Direct Connection Upgrade through Relay (DCUtR) Protocol
+          loop Until direct connection established
+                  group Via relayed connection
+                          A -&gt; B: Connect { addresses }
+                          rnote over A: Measure round-trip time
+                          B -&gt; A: Connect { addresses }
+                          A -&gt; B: Sync
+                  end
+                  rnote over A, B: Simultaneously establish connection\n- A after 1/2 RTT\n- B when receiving Sync
+                  A &lt;-&gt; B: **Attempt direct connection / Hole Punch**
+          end
+  end
+  
+  @enduml</code></pre>
+</div>
+<p><img src="./libp2p-hole-punching-overview.svg" alt="./libp2p-hole-punching-overview.svg" title="./libp2p-hole-punching-overview.svg" /></p>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+Phase 1 - Preparation
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<div id="outline-container-headline-6" class="outline-4">
+<h4 id="headline-6">
+1.1 Determine whether one is dialable (AutoNAT)
+</h4>
+<div id="outline-text-headline-6" class="outline-text-4">
+<p>
+In step 1 of phase 1 a computer determines whether it is dialable, in other words it determines whether computers outside of its own network can connect to it. The main protocol involved here is the <a href="https://github.com/libp2p/specs/blob/master/autonat/README.md">libp2p <em>AutoNAT</em> protocol</a>. (Worth drawing the connection to the corresponding ICE protocol <a href="https://datatracker.ietf.org/doc/html/rfc5389">STUN</a> here.)</p>
+<p>
+In our case computer B from above determines whether it is dialable. It does so with the help of random public nodes, e.g. bootnodes of its peer-to-peer network.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  participant B
+  collections Other_Peers
+  
+  group B determining whether it is dialable via AutoNAT protocol
+          B -&gt; Other_Peers: DialRequest {\n  supposedly_public_addresses\n}
+          group For each provided supposedly public address
+                  Other_Peers -&gt; B: Dial
+          end
+          alt One of the dials succeeded.\nThus B is dialable. No need for Hole Punching.\nDon&#39;t continue.
+                  Other_Peers -&gt; B: DialOutcome {\n  &#34;Ok&#34;\n  successful_address\n}
+          else None of the dials succeeded.\nThus not dialable. Hole Punching needed. Continue.
+                  Other_Peers -&gt; B: DialOutcome {\n  &#34;Error&#34;\n}
+          end
+  end
+  @enduml</code></pre>
+</div>
+<p><img src="./libp2p-hole-punching-autonat.svg" alt="./libp2p-hole-punching-autonat.svg" title="./libp2p-hole-punching-autonat.svg" /></p>
+<p>
+<em>B</em> reaches out to a subset of public nodes of its peer-to-peer network, asking each node to try to dial it (<em>B</em>). <em>B</em> sends along a set of addresses that it assumes to be reachable under. Each of the contacted node goes ahead and attempts to dial each of <em>B</em>&#39;s addresses. They report the outcome back to <em>B</em>, i.e. whether they succeeded to dial <em>B</em>, including the address that succeeded, or whether they didn&#39;t succeed with any of the provided addressses. Based on a set of reports, <em>B</em> can gauge whether it is publicly dialable or not. In the case where <em>B</em> is publicly dialable no hole punching is needed. In the case where <em>B</em> is not dialable, <em>B</em> proceeds to the next step of the first phase of Project Flare.</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-4">
+<h4 id="headline-7">
+1.2 Find closest public Relay nodes (e.g. through Kademlia)
+</h4>
+<div id="outline-text-headline-7" class="outline-text-4">
+<p>
+<em>B</em> knows that nodes outside its own home network can not dial it. Well, they &#34;can not dial it <strong>directly</strong>&#34;. Though they could do so <strong>indirectly</strong> through some public relay node. We will go into what <em>indirect</em> dialing looks like in the next step.</p>
+<p>
+For now let&#39;s find a couple of public nodes in our peer-to-peer network that can serve as relay nodes. This step is not defined by Project Flare nor libp2p, as it heavily depends on the peer-to-peer network. In the case of <a href="https://ipfs.io/">IPFS</a> each public nodes in the IPFS network serves as a relay node. <em>B</em> would either do a lookup on the <a href="https://github.com/libp2p/specs/blob/master/kad-dht/README.md">Kademlia DHT</a> for the closest peers to its own peer ID, or just choose a subset of the public nodes it is already connected to. (Just a note: Latency matters in the choice of one&#39;s public relay node, though that is for another blog post.)</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  scale 1280 width
+  participant B
+  collections Other_Peers
+  
+  group B finding closest public Relay nodes via Kademlia Protocol
+          B -&gt; Other_Peers: FindNodes(PEER_ID_B) 
+          Other_Peers -&gt; B: [ Public nodes closest to PEER_ID_B ]
+  end
+  
+  @enduml</code></pre>
+</div>
+<p><img src="./libp2p-hole-punching-autorelay.svg" alt="./libp2p-hole-punching-autorelay.svg" title="./libp2p-hole-punching-autorelay.svg" /></p>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-4">
+<h4 id="headline-8">
+1.3 Listen for connections via Relay (Circuit Relay v2)
+</h4>
+<div id="outline-text-headline-8" class="outline-text-4">
+<p>
+Back to the previous question. How can a node be <strong>indirectly</strong> dialable through a relay node? This is enabled through the <a href="https://github.com/libp2p/specs/blob/master/relay/circuit-v2.md">libp2p Circuit Relay protocol</a>. Drawing the connection to IETF&#39;s ICE once more, this would be the equivalent to the <a href="https://datatracker.ietf.org/doc/html/rfc5766">TURN protocol</a>.</p>
+<p>
+For each of the public relay nodes discovered in the previous step, <em>B</em> would do the following: First <em>B</em> connects to the remote node. Next is requests a so called &#34;Reservation&#34;, basically saying: &#34;Hey, I am not dialable. Given that you are dialable, would you mind listening for incoming connections on my behalf, forwarding each of them to me over this connection?&#34;.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  scale 1280 width
+  participant Relay
+  participant B
+  collections Other_Peers
+  
+  group B listening for incoming connections via closest Relay
+          group For each closest Relay via Circuit Relay v2 Protocol
+                  B -&gt; Relay: Establish connection
+                  B -&gt; Relay: Request reservation
+                  Relay -&gt; B: Accept reservation
+          end
+          B -&gt; Other_Peers: Advertise oneself as\n/&lt;RELAY_ADDR&gt;/p2p-circuit/&lt;PEER_ID_B&gt;
+  end
+  
+  @enduml</code></pre>
+</div>
+<p>
+Once the remote accepted the reservation request, <em>B</em> can advertise itself as being reachable through the remote Relay node. In other words, instead of advertising its own IP address, which is useless given that <em>B</em> is not publicly dialable, <em>B</em> advertises a &#34;relayed&#34; address which contains the IP address of the remote relay node plus its own peer ID.</p>
+<div class="src src-text">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">/&lt;RELAY_ADDR&gt;/p2p-circuit/&lt;B_PEER_ID&gt;</code></pre></div>
+</div>
+<p>
+(The above is a so-called <a href="https://github.com/multiformats/multiaddr">multiaddr</a>. It is a composable network addressing schema. The address above reads as: &#34;You can reach peer <em>B</em> with the peer ID /B/_PEER_ID via the relay at the address RELAY_ADDR&#34;.)</p>
+<p>
+Note: It is very important that <em>B</em> keeps the outgoing connection to the relay node alive. <em>B</em> is not publicly dialable, thus the relay can never establish a connection to <em>B</em>. In case a connection request for <em>B</em> comes in through the relay, the relay depends on the initial connection from <em>B</em> to the relay in order to notify <em>B</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-9" class="outline-3">
+<h3 id="headline-9">
+Phase 2 - Hole punching
+</h3>
+<div id="outline-text-headline-9" class="outline-text-3">
+<p>
+Entering the next phase. Now that everything is prepared (phase 1), we can punch some holes (into firewalls).</p>
+<p>
+For that, let&#39;s imagine computer <em>A</em> got a hold of <em>B</em>&#39;s relayed address through some mechanism. <em>A</em> possible scenario could in the IPFS world could e.g. be that <em>B</em> is providing some data and <em>A</em> discovered the data provider <em>B</em> on the Kademlia DHT. Given the relayed address <em>A</em> would now like to establish a direct connection to <em>B</em>. <em>B</em> is advertising a relayed address and not a direct address, <em>A</em> can thus assume that <em>B</em> is not directly dialable, but only dialable through a relay node.</p>
+<div id="outline-container-headline-10" class="outline-4">
+<h4 id="headline-10">
+2.1 Establish relayed connection (Circuit Relay v2)
+</h4>
+<div id="outline-text-headline-10" class="outline-text-4">
+<p>
+Before establishing a direct connection using hole punching, <em>A</em> first has to establish a relayed connection to <em>B</em> via the public relay node. <em>A</em> extracts the address of the relay node from <em>B</em>&#39;s advertised relayed address and establishes a direct connection to the relay node. Once established <em>A</em> can request a relayed connection to <em>B</em> from the relay. The relay forwards said request to <em>B</em> which accepts the request. The relay once more forwards the acceptance to <em>A</em>. From now on, <em>A</em> and <em>B</em> can use the bi-directional channel over the relay to communicate.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  scale 1280 width
+  participant A
+  participant Relay
+  participant B
+  
+  group A establish relayed connection to B
+  
+          A -&gt; Relay: Establish Connection
+          group Circuit Relay v2 Protocol
+                  A -&gt; Relay: Request connection to B
+                  Relay -&gt; B: Request connection from A
+                  B -&gt; Relay: Accept connection request
+                  Relay -&gt; A: Accept connection request
+          end
+  
+          A &lt;-&gt; B: **Relayed Connection established**
+  
+  end
+  
+  @enduml</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-11" class="outline-4">
+<h4 id="headline-11">
+2.2. Coordinate simultaneous dial (DCUtR)
+</h4>
+<div id="outline-text-headline-11" class="outline-text-4">
+<p>
+Over the relayed connection established in the previous step, <em>A</em> and <em>B</em> can now coordinate the hole punch ultimately leading to a direct connection between <em>A</em> and <em>B</em>. This coordination is happening via the <a href="https://github.com/libp2p/specs/blob/master/relay/DCUtR.md">libp2p DCUtR protocol</a> which stands for &#34;Direct Connection Upgrade through Relay&#34; protocol. In case you still remember the introduction to this blog post, this is the magical synchronization mechanism, or rather a pretty good synchronization mechanism, referred to earlier.</p>
+<p>
+There are two stages to do a <em>direct connection upgrade through a relay</em>, exchanging <em>Connect</em> messages and sending a single <em>Sync</em> message.</p>
+<p>
+First off, <em>A</em> sends a <em>Connect</em> message to <em>B</em>. That <em>Connect</em> message contains the addresses of <em>A</em>. libp2p offers multiple mechanism to discover ones addresses, e.g. via the <a href="https://github.com/libp2p/specs/blob/master/identify/README.md">libp2p identify protocol.</a> Once sent out, <em>A</em> starts a timer. <em>B</em> receives the <em>Connect</em> message through the relayed connection via the relay and replies with a <em>Connect</em> message containing its relayed addresses. <em>B</em>&#39;s <em>Connect</em> message eventually arrives at <em>A</em> which stops the timer and thus knows the round trip time between <em>A</em> and <em>B</em> via the relay. </p>
+<p>
+Next <em>A</em> sends a <em>Sync</em> message to <em>B</em>. Once sent out, <em>A</em> does a countdown of half the round trip time between <em>A</em> and <em>B</em> via the relay. Once the countdown fires, <em>A</em> dials <em>B</em> via the addresses received in <em>B</em>&#39;s <em>Connect</em>. On the other end, <em>B</em> eventually receives A&#39;s <em>Sync</em> and directly on receival dials <em>A</em> with the addresses provided in A&#39;s <em>Connect</em> message.</p>
+<div class="src src-plantuml">
+<pre><code class="language-plantuml" data-lang="plantuml">  @startuml
+  scale 1280 width
+  participant A
+  participant Relay
+  participant B
+  
+  
+  group A and B coordinate dial via Direct Connection Upgrade through Relay (DCUtR) Protocol
+          loop Until direct connection established
+                  group Via relayed connection
+                          A -&gt; B: Connect { addresses }
+                          rnote over A: Measure round-trip time
+                          B -&gt; A: Connect { addresses }
+                          A -&gt; B: Sync
+                  end
+                  rnote over A, B: Simultaneously establish connection\n- A after 1/2 RTT\n- B when receiving Sync
+                  A &lt;-&gt; B: **Attempt direct connection / Hole Punch**
+          end
+  end
+  
+  @enduml</code></pre>
+</div>
+<p><img src="./libp2p-hole-punching-dcutr.svg" alt="./libp2p-hole-punching-dcutr.svg" title="./libp2p-hole-punching-dcutr.svg" /></p>
+<p>
+Now if you do the math, <em>A</em> starts after half the round trip time between <em>A</em> and <em>B</em> via the relay and <em>B</em> starts once it receives the <em>Sync</em>, this should roughly account to the same point in time.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-2">
+<h2 id="headline-12">
+Hole Punching
+</h2>
+<div id="outline-text-headline-12" class="outline-text-2">
+<p>
+So you can already guess what happens once both <em>A</em> and <em>B</em> dial each other simultaneously, … a <strong>hole punch</strong>. Let&#39;s play through this one more time, using the sequence diagram on generic hole punching from the beginning of this blog post:</p>
+<blockquote>
+<ol>
+<li>
+<p>A&#39;s packet would pass through router <em>A</em> and thus add a 5-tuple to router A&#39;s state table. Same on the other side, where the packet send by <em>B</em> would trigger a 5-tuple being added to <em>B</em>&#39;s router&#39;s state table. Packet <em>A</em> and packet <em>B</em> &#34;punch holes&#34; into their router&#39;s firewalls.</p>
+</li>
+<li>
+<p>Both packets, each then forwarded to the opposite router, would cross paths somewhere in this crazy thing called Internet. (Whether they really cross paths is something for another blog post, but still an amusing image to have in mind.)</p>
+</li>
+<li>
+<p>Onces A&#39;s packet arrives at router <em>B</em>, router <em>B</em> checks its state table, finds a 5-tuple previously added through the packet sent by <em>B</em>, and forwards the packet to computer <em>B</em>. Same with <em>B</em>&#39;s packet, arriving at router <em>A</em>, matching a 5-tuple in router A&#39;s state table and thus forwarded to computer <em>A</em>.</p>
+</li>
+</ol>
+</blockquote>
+<p><img src="hole-punch.svg" alt="hole-punch.svg" title="hole-punch.svg" /></p>
+<p>
+Quite a process, huh?!</p>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-2">
+<h2 id="headline-13">
+Closing
+</h2>
+<div id="outline-text-headline-13" class="outline-text-2">
+<p>
+Project Flare, libp2p&#39;s way of doing hole punching, is fully specified in the <a href="https://github.com/libp2p/specs/">libp2p specification</a>. It is implemented in <a href="https://github.com/libp2p/go-libp2p">go-libp2p</a> and <a href="https://github.com/libp2p/rust-libp2p/">rust-libp2p</a>, though in the latter it is not yet released (see <a href="https://github.com/libp2p/rust-libp2p/issues/2052">tracking issue</a>).</p>
+<p>
+If you want to:</p>
+<ul>
+<li>
+<p><strong>Learn</strong> more, check out the libp2p <a href="https://docs.libp2p.io/">documentation</a> and <a href="https://github.com/libp2p/specs/">specification</a>.</p>
+</li>
+<li>
+<p><strong>Get involved</strong>, check out the repository of your favorite libp2p implementation. Look out for &#34;help wanted&#34; labeled issues.</p>
+</li>
+<li>
+<p><strong>Work</strong> on things like the above fullt-time, <a href="https://jobs.lever.co/protocol/8c03a123-4890-4265-96e1-0427bd7ec193">we are hiring</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/libp2p">libp2p</a></li>
+								
+								<li><a href="/tags/tech">tech</a></li>
+								
+								<li><a href="/tags/networking">networking</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>
