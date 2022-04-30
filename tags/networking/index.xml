@@ -6,18 +6,7 @@
     <description>Recent content in networking on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/networking/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hole punching in libp2p - Overcoming Firewalls</title>
-      <link>https://max-inden.de/blog/2022-01-20-libp2p-hole-punching/</link>
-      <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-inden.de/blog/2022-01-20-libp2p-hole-punching/</guid>
-      <description>In case you haven&amp;#39;t yet heard the great news, libp2p can now punch holes.
- The below explains why we want to punch holes, into what we are punching those holes and most interestingly how we punch those holes.
-The Problem with Firewalls   Computers in today&amp;#39;s Internet can be divided into two groups, public and non-public computers, i.e. those that you can dial and those that you can not.</description>
-    </item>
-    
+    <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early</title>
       <link>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</link>

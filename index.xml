@@ -6,7 +6,7 @@
     <description>Recent content in Home on mxinden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Resume</title>
       <link>https://max-inden.de/resume/</link>
@@ -32,14 +32,39 @@ Maintaining Rust peer-to-peer networking library libp2p and its usage within the
     </item>
     
     <item>
-      <title>Hole punching in libp2p - Overcoming Firewalls</title>
-      <link>https://max-inden.de/blog/2022-01-20-libp2p-hole-punching/</link>
-      <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
+      <title>Hole punching in libp2p</title>
+      <link>https://max-inden.de/blog/2022-03-06-libp2p-hole-punching/</link>
+      <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2022-01-20-libp2p-hole-punching/</guid>
-      <description>In case you haven&amp;#39;t yet heard the great news, libp2p can now punch holes.
- The below explains why we want to punch holes, into what we are punching those holes and most interestingly how we punch those holes.
-The Problem with Firewalls   Computers in today&amp;#39;s Internet can be divided into two groups, public and non-public computers, i.e. those that you can dial and those that you can not.</description>
+      <guid>https://max-inden.de/blog/2022-03-06-libp2p-hole-punching/</guid>
+      <description>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
+Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/</description>
+    </item>
+    
+    <item>
+      <title>Peer-to-peer hole punching without centralized infrastructure</title>
+      <link>https://max-inden.de/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/</guid>
+      <description>Gave a talk on hole punching in libp2p at FOSDEM 2022.
+ Peer-to-peer hole punching without centralized infrastructure
+How libp2p can traverse NATs and firewalls without coordination through central STUN and TURN servers.
+libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
+In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together.</description>
+    </item>
+    
+    <item>
+      <title>State of libp2p</title>
+      <link>https://max-inden.de/talks/state-of-libp2p/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/talks/state-of-libp2p/</guid>
+      <description>Gave a talk on the state of libp2p at FOSDEM 2022.
+ State of libp2p
+Status quo and future roadmap of the peer-to-peer networking library libp2p.
+libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
+We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.</description>
     </item>
     
     <item>
