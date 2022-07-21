@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>networking on mxinden</title>
+    <title>networking on Max Inden</title>
     <link>https://max-inden.de/tags/networking/</link>
-    <description>Recent content in networking on mxinden</description>
+    <description>Recent content in networking on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early</title>
-      <link>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</link>
+      <link>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</guid>
+      <guid>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</guid>
       <description>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
 https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</description>
     </item>
     
     <item>
       <title>Know your latencies</title>
-      <link>https://max-inden.de/blog/2020-06-19-latencies/</link>
+      <link>https://max-inden.de/post/2020-06-19-latencies/</link>
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-06-19-latencies/</guid>
+      <guid>https://max-inden.de/post/2020-06-19-latencies/</guid>
       <description>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.</description>
     </item>
     
     <item>
       <title>25th DistSys Reading Group - Fair queuing</title>
-      <link>https://max-inden.de/blog/2020-04-27-25th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-04-27-25th-paper-club/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-04-27-25th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-04-27-25th-paper-club/</guid>
       <description>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &amp;ldquo;Efficient fair queuing using deficit round-robin&amp;rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
-  Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
-  Its wide deployment still seen today.</description>
+Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
+Its wide deployment still seen today.
+Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as latency critical flows.</description>
     </item>
     
     <item>
       <title>24th DistSys Reading Group - BBR Congestion-Based Congestion Control</title>
-      <link>https://max-inden.de/blog/2020-04-06-24th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-04-06-24th-paper-club/</link>
       <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-04-06-24th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-04-06-24th-paper-club/</guid>
       <description>After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
 Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
 We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &amp;ldquo;just works&amp;rdquo; due to congestion control.</description>

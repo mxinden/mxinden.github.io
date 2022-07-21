@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>consensus on mxinden</title>
+    <title>consensus on Max Inden</title>
     <link>https://max-inden.de/tags/consensus/</link>
-    <description>Recent content in consensus on mxinden</description>
+    <description>Recent content in consensus on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/consensus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>28th DistSys Reading Group - Hotstuff</title>
-      <link>https://max-inden.de/blog/2020-09-08-28th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-09-08-28th-paper-club/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-09-08-28th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-09-08-28th-paper-club/</guid>
       <description>With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
 Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.</description>
     </item>

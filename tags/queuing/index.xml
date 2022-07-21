@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>queuing on mxinden</title>
+    <title>queuing on Max Inden</title>
     <link>https://max-inden.de/tags/queuing/</link>
-    <description>Recent content in queuing on mxinden</description>
+    <description>Recent content in queuing on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/queuing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>25th DistSys Reading Group - Fair queuing</title>
-      <link>https://max-inden.de/blog/2020-04-27-25th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-04-27-25th-paper-club/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-04-27-25th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-04-27-25th-paper-club/</guid>
       <description>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &amp;ldquo;Efficient fair queuing using deficit round-robin&amp;rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
-  Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
-  Its wide deployment still seen today.</description>
+Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
+Its wide deployment still seen today.
+Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as latency critical flows.</description>
     </item>
     
   </channel>

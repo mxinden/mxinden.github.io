@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>prometheus on mxinden</title>
+    <title>prometheus on Max Inden</title>
     <link>https://max-inden.de/tags/prometheus/</link>
-    <description>Recent content in prometheus on mxinden</description>
+    <description>Recent content in prometheus on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 14 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leaving the Prometheus team</title>
-      <link>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</link>
+      <link>https://max-inden.de/post/2020-03-14-leaving-prometheus-team/</link>
       <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-03-14-leaving-prometheus-team/</guid>
-      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&#39; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
+      <guid>https://max-inden.de/post/2020-03-14-leaving-prometheus-team/</guid>
+      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
 Over the next 2 years and 4 month I worked a lot on Alertmanager, e.</description>
     </item>
     
     <item>
       <title>Metric driven performance optimization</title>
-      <link>https://max-inden.de/blog/2019-06-25-metric-driven-performance-optimization/</link>
+      <link>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2019-06-25-metric-driven-performance-optimization/</guid>
-      <description>Within my work at Red Hat and Kubernetes SIG instrumentation  I have been working on kube-state-metrics , a Prometheus  exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
+      <guid>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</guid>
+      <description>Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
     </item>
     
   </channel>

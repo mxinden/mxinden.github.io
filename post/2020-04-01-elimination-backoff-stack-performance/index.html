@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Elimination back-off stack performance - Max Inden</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Max Inden" /><meta name="description" content="I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations." />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
+
+
+<link rel="canonical" href="https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Elimination back-off stack performance" />
+<meta property="og:description" content="I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-04-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="Elimination back-off stack performance">
+<meta itemprop="description" content="I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations."><meta itemprop="datePublished" content="2020-04-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-04-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1156">
+<meta itemprop="keywords" content="tech,paper,lock-free,multithreaded,concurrent,rust,crossbeam," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Elimination back-off stack performance"/>
+<meta name="twitter:description" content="I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Max Inden</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/resume">
+        <li class="mobile-menu-item">Resume</li>
+      </a><a href="/misc">
+        <li class="mobile-menu-item">Misc</li>
+      </a><a href="/talks">
+        <li class="mobile-menu-item">Talks</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archive</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Max Inden</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resume">Resume</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/misc">Misc</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/talks">Talks</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archive</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Elimination back-off stack performance</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-01 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#stacks-of-the-day">Stacks of the day</a>
+          <ul>
+            <li><a href="#1-simplest-stack-in-the-world">(1) Simplest stack in the world</a></li>
+            <li><a href="#2-plain-lock-free-treiber-stack">(2) Plain lock-free Treiber stack</a></li>
+            <li><a href="#elimination-back-off-stack">Elimination back-off stack</a></li>
+          </ul>
+        </li>
+        <li><a href="#benchmarking">Benchmarking</a>
+          <ul>
+            <li><a href="#a-single-thread">A single thread</a></li>
+            <li><a href="#introducing-a-little-contention-with-8-threads">Introducing a little contention with 8 threads</a></li>
+            <li><a href="#operating-under-heavy-load-with-128-threads">Operating under heavy load with 128 threads</a></li>
+            <li><a href="#summary">Summary</a></li>
+          </ul>
+        </li>
+        <li><a href="#open-questions-suggestions-welcome">Open questions (suggestions welcome)</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><img src="/static/elimination-back-off-stack/lines.svg" alt="All stacks from 1 thread to up to 128"></p>
+<p>I recently stumbled upon the idea of an <em>Elimination Back-off Stack</em> promising
+to be a <strong>parallel</strong>, linearizable and lock-free stack. In case you are not
+familiar with it, I would suggest either reading my <a href="/blog/2020-03-28-elimination-backoff-stack/">previous
+post</a> or the corresponding paper
+[1] itself. Being quite intrigued by the ideas of the above stack I wrote <a href="https://github.com/mxinden/elimination-backoff-stack/">my
+own implementation</a> in
+Rust with a <em>little</em> help from
+<a href="https://github.com/crossbeam-rs/crossbeam">crossbeam</a>.</p>
+<p>In this post I will compare my implementation to other stack implementations.
+In particular I want to dive into some performance characteristics and their
+behavior in regards to the amount of threads (≤ 128) accessing the
+datastructure.</p>
+<p>The code of the implementation itself, as well as all benchmarking logic is
+public at <a href="https://github.com/mxinden/elimination-backoff-stack/">https://github.com/mxinden/elimination-backoff-stack/</a> .</p>
+<p><strong>Take this with a grain of salt. This is a hobby project, thus in no way
+sophisticated let alone ready for production.</strong></p>
+<h2 id="stacks-of-the-day">Stacks of the day</h2>
+<h3 id="1-simplest-stack-in-the-world">(1) Simplest stack in the world</h3>
+<p>A Rust <a href="https://doc.rust-lang.org/std/vec/struct.Vec.html"><code>Vec</code></a> implements
+both <code>push</code> and <code>pop</code>, wrapping it in a <code>Mutex</code> for mutual exclusion and an
+<code>Arc</code> for shared ownership makes it a <em>concurrent</em> stack. Let&rsquo;s see whether an
+<code>Arc&lt;Mutex&lt;Vec&lt;_&gt;&gt;&gt;</code> outperforms any of the more sophisticated implementations
+below. Rephrased: <em>At which point is lock-free programming worth the complexity
+coming alongside with it?</em></p>
+<h3 id="2-plain-lock-free-treiber-stack">(2) Plain lock-free Treiber stack</h3>
+<p>A lock-free stack, also often referred to as a <a href="https://en.wikipedia.org/wiki/Treiber_stack">Treiber
+stack</a> [2] due to Kent Treiber,
+operates on top of a lock-free linked list. The entry point of the stack is an
+atomic pointer which is either pointing to the node on the very top of the stack
+or is <code>null</code> in case of an empty stack.</p>
+<p>The stack linearizes concurrent access through that single atomic <code>head</code> pointer
+on which <code>push</code> and <code>pop</code> operations loop trying to <code>compare_and_set</code> it. Let&rsquo;s
+see how many threads it takes for that single serialization point (<code>head</code>) to
+hurts performance.</p>
+<h3 id="elimination-back-off-stack">Elimination back-off stack</h3>
+<p>A lock-free elimination back-off stack wraps a lock-free Treiber stack, but
+instead of simply exponentially backing off on <code>compare_and_set</code> failures, it
+uses something called an elimination array to back-off in space instead of time.
+Again for details please either read my <a href="/blog/2020-03-28-elimination-backoff-stack/">previous
+post</a> or the corresponding paper
+[1] itself. I will be waiting here.</p>
+<h4 id="3-switching-back-and-forth">(3) Switching back and forth</h4>
+<p>Each operation failing on the lock-free Treiber stack will try to exchange its
+value on the elimination array. A failure on the elimination array makes an
+operation try the stack again. This goes back and forth until the operation
+succeeds.</p>
+<h4 id="4-exponentially-backing-off-in-space">(4) Exponentially backing-off in space</h4>
+<p>If you are not familiar with the concept of backing-off in space instead of
+time, please read the <a href="/blog/2020-03-28-elimination-backoff-stack/#backing-off-in-space-instead-of-time">corresponding
+section</a>.
+This elimination back-off stack variation keeps track of a <em>contention score</em>.
+Whenever an operation fails on the stack or the elimination array due to
+contention the score is increased by one. Whenever an operation fails due to
+missing contention, e.g. as a <code>push</code> operation waiting for a <code>pop</code> operation to
+exchange with, the <em>contention score</em> is subtracted by two.</p>
+<p>An operation failing on the stack will try to exchange with the opposite
+operation type on the elimination array. It will consider <code>2^contention_score</code>
+exchangers of the elimination array. See how each operation considers
+exponentially more exchangers the more contention it experiences? That is the
+idea of <em>backing-off in space</em>.</p>
+<h2 id="benchmarking">Benchmarking</h2>
+<p>The benchmark described has been executed on a dual-socket machine with an AMD
+EPYC 7601 32-Core Processors making up a total of 128 hyper-threads. The
+benchmark is using <a href="https://github.com/bheisler/criterion.rs">criterion</a> as a
+benchmark library. Each test run takes as parameters a stack implementation and
+the amount of threads to test with. Each thread executes 1_000 operations
+(<code>push</code> / <code>pop</code>) on the shared stack.</p>
+<p><strong>Again, take these numbers with a grain of salt.</strong> The benchmark above is
+highly artificial. One would need to test this under some real-world load in
+order to derive proper conclusions.</p>
+<h3 id="a-single-thread">A single thread</h3>
+<p>While pretty useless in itself for a concurrent datastructure, having decent
+single-threaded performance is still a nice-to have. The clear winner, <em>who
+would have thought</em>, is the <code>Arc&lt;Mutex&lt;Vec&lt;_&gt;&gt;&gt;</code> (1) with an average of <code>77.655 ns</code>. While some outliers took longer, all stayed below <code>100 ns</code>. Below you see a
+graph depicting each result as well as the mean of the distribution.</p>
+<p><img src="/static/elimination-back-off-stack/vec_1.svg" alt="Single Thread - Stack (1)"></p>
+<p>Just as a comparison the lock-free stacks (2), (3) and (4) all took somewhere
+around <code>4.6768 us</code>. The similarities come at no suppries, given that a single
+threaded elimination back-off stack is just a lock-free Treiber stack as there
+is no contention.</p>
+<h3 id="introducing-a-little-contention-with-8-threads">Introducing a little contention with 8 threads</h3>
+<p>Earlier I asked the question at what point the complexity introduced through
+lock-free programming is worth the gain. Having 8 threads hammering at the same
+datastructure is definitely beyond that point. While the <code>Arc&lt;Mutex&lt;Vec&lt;_&gt;&gt;&gt;</code>
+(1) can offer a mean test execution time of <code>3.3933 ms</code>, the lock-free Treiber
+stack (2) runs through the test at a mean of <code>2.4423 ms</code>. But one should not
+just pay attention to averages. Looking at the best and worst cases depicted
+below in the violin graph, the lock-free Treiber stack (2) outperforms all other
+stacks by far. Just as a reminder, this is not the time per operation, but the
+time it takes 8 threads to execute 1_000 operations each.</p>
+<p><img src="/static/elimination-back-off-stack/violin_8.svg" alt="Violin plot comparing the stacks with 8 threads"></p>
+<h3 id="operating-under-heavy-load-with-128-threads">Operating under heavy load with 128 threads</h3>
+<p>While implementing and testing my elimination back-off stack (3) and (4) on my
+local laptop with an i7-8550U I got constantly disappointed as I couldn&rsquo;t get it
+to outperform a lock-free Treiber stack (2). This would imply that the whole
+overhead and complexity of an elimination back-off stack (and at least one of my
+weekends) would go down the drain. Turns out, things change if you just throw
+more threads at it.</p>
+<p>As we have noticed in the previous section the plain <code>Arc&lt;Mutex&lt;Vec&lt;_&gt;&gt;&gt;</code> (1)
+falls behind once one operates with high contention. This has not changed now
+that we are using 128 threads. The thing that we should definitely direct our
+attention at though, is that the lock-free Treiber stack (2) and the elimination
+back-off stack with exponential back-off in space (4) switched spots. (2)
+executes a test run within an average of <code>106.11 ms</code>, while (4) gets through a
+test in nearly halve the time with <code>57.118 ms</code>.</p>
+<p><img src="/static/elimination-back-off-stack/violin_128.svg" alt="Violin plot comparing the stacks with 128threads"></p>
+<p>Also the best and worst cases spread across a smaller range (see violin chat above).</p>
+<h3 id="summary">Summary</h3>
+<p><img src="/static/elimination-back-off-stack/lines.svg" alt="All stacks from 1 thread to up to 128"></p>
+<h2 id="open-questions-suggestions-welcome">Open questions (suggestions welcome)</h2>
+<ul>
+<li>
+<p>Testing, testing, testing. In particular my use of atomics, in addition any
+randomized linearization testing tools.</p>
+</li>
+<li>
+<p>Collecting more data to optimize my current static assumptions. E.g. how long
+should a <code>push</code> operation wait for a <code>pop</code> operation on an Exchanger.</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
+<li>
+<p>And of course the most important one: <strong>Why would one use a stack with 128
+concurrent threads?</strong></p>
+</li>
+</ul>
+<hr>
+<h2 id="references">References</h2>
+<p>[1] Hendler, Danny, Nir Shavit, and Lena Yerushalmi. &ldquo;A scalable lock-free stack
+algorithm.&rdquo; Proceedings of the sixteenth annual ACM symposium on Parallelism in
+algorithms and architectures. 2004.</p>
+<p>[2] Treiber, R. Kent. Systems programming: Coping with parallelism. New York:
+International Business Machines Incorporated, Thomas J. Watson Research Center,
+1986.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Max Inden</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-04-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tech/">tech</a>
+          <a href="/tags/paper/">paper</a>
+          <a href="/tags/lock-free/">lock-free</a>
+          <a href="/tags/multithreaded/">multithreaded</a>
+          <a href="/tags/concurrent/">concurrent</a>
+          <a href="/tags/rust/">rust</a>
+          <a href="/tags/crossbeam/">crossbeam</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020-04-06-24th-paper-club/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">24th DistSys Reading Group - BBR Congestion-Based Congestion Control</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2020-03-28-elimination-backoff-stack/">
+            <span class="next-text nav-default">Elimination back-off stack</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:mail@max-inden.de" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/mxinden" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/mxinden/" class="iconfont icon-github" title="github"></a>
+  <a href="https://max-inden.de/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2016 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

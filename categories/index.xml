@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on mxinden</title>
-    <link>https://mxinden.github.io/categories/</link>
-    <description>Recent content in Categories on mxinden</description>
+    <title>Categories on Max Inden</title>
+    <link>https://max-inden.de/categories/</link>
+    <description>Recent content in Categories on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://mxinden.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="https://max-inden.de/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

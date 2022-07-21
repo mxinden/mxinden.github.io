@@ -1,2 +1,2 @@
 User-agent: *
-Disallow:
+Sitemap: https://max-inden.de/sitemap.xml

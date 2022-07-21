@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Know your latencies - Max Inden</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Max Inden" /><meta name="description" content="I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance." />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
+
+
+<link rel="canonical" href="https://max-inden.de/post/2020-06-19-latencies/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Know your latencies" />
+<meta property="og:description" content="I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://max-inden.de/post/2020-06-19-latencies/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-06-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="Know your latencies">
+<meta itemprop="description" content="I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance."><meta itemprop="datePublished" content="2020-06-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-06-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="358">
+<meta itemprop="keywords" content="tech,CPU,cache,networking,performance," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Know your latencies"/>
+<meta name="twitter:description" content="I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Max Inden</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/resume">
+        <li class="mobile-menu-item">Resume</li>
+      </a><a href="/misc">
+        <li class="mobile-menu-item">Misc</li>
+      </a><a href="/talks">
+        <li class="mobile-menu-item">Talks</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archive</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Max Inden</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resume">Resume</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/misc">Misc</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/talks">Talks</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archive</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Know your latencies</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-06-19 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#atomic-operations">Atomic operations</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>I find it helpful to know the orders of magnitude by which certain computer
+operations differ. Certainly it is not worth the effort to pay attention to
+every digit or learn these by heart, especially since they differ (slightly)
+across systems, but having a basic understanding of what a tiny fraction of time
+a CPU cycle occupies compared to sending a TCP packet is incredibly helpful
+whenever reasoning about systems performance.</p>
+<p>With the above in mind, below I am citing a list of metrics that proved useful
+in the past.</p>
+<p><em>Keep in mind that these numbers represent estimates. They will most certainly
+not match your machine&rsquo;s performance by the digit, but they will by the orders
+of magnitude.</em></p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Latency</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nanoseconds</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CPU cycle</td>
+<td>0.3 ns</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Level 1 cache access</td>
+<td>0.9 ns</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Level 2 cache access</td>
+<td>2.8 ns</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Level 3 cache access</td>
+<td>12.9 ns</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Mutex lock/unlock</td>
+<td>25 ns</td>
+<td>[2]</td>
+</tr>
+<tr>
+<td>Main memory access</td>
+<td>120 ns</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td><strong>Microseconds</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Kernel context switch</td>
+<td>1-2 μs</td>
+<td>[4]</td>
+</tr>
+<tr>
+<td>Ping on localhost</td>
+<td>50 μs</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Solid-state disk I/O</td>
+<td>50–150 μs</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Ping same subnet via 10 GBit</td>
+<td>200 μs</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td><strong>Milliseconds</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Rotational disk I/O</td>
+<td>1–10 ms</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Ping same subnet via Wifi</td>
+<td>3 ms</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Internet: San Francisco to New York</td>
+<td>40 ms</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Internet: San Francisco to United Kingdom</td>
+<td>81 ms</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>Internet: San Francisco to Australia</td>
+<td>183 ms</td>
+<td>[1]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atomic-operations">Atomic operations</h3>
+<p>I have deliberately not included latencies for atomic operations here as those
+heavily depend on the CPU architecture, the MESI state of the cache line,
+whether it is shared across cores or even sockets, the bus speed, memory speed,
+&hellip; I would like to refer those curious for more to the paper <em>&ldquo;Everything You
+Always Wanted to Know About Synchronization but Were Afraid to Ask&rdquo;</em> [3].</p>
+<hr>
+<h3 id="references">References</h3>
+<p>[1] Gregg, B. (2013). Systems performance: enterprise and the cloud. Pearson
+Education.</p>
+<p>[2] Dean, Jeff, and P. Norvig. &ldquo;Latency numbers every programmer should know.&rdquo;
+(2012). <a href="http://norvig.com/21-days.html#answers">http://norvig.com/21-days.html#answers</a></p>
+<p>[3] David, Tudor, Rachid Guerraoui, and Vasileios Trigonakis. &ldquo;Everything you
+always wanted to know about synchronization but were afraid to ask.&rdquo; Proceedings
+of the Twenty-Fourth ACM Symposium on Operating Systems Principles. ACM, 2013.</p>
+<p>[4]
+<a href="https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/">https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Max Inden</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-06-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tech/">tech</a>
+          <a href="/tags/cpu/">CPU</a>
+          <a href="/tags/cache/">cache</a>
+          <a href="/tags/networking/">networking</a>
+          <a href="/tags/performance/">performance</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020-09-08-28th-paper-club/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">28th DistSys Reading Group - Hotstuff</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2020-05-18-26th-paper-club/">
+            <span class="next-text nav-default">26th DistSys Reading Group - Cache coherence</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:mail@max-inden.de" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/mxinden" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/mxinden/" class="iconfont icon-github" title="github"></a>
+  <a href="https://max-inden.de/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2016 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

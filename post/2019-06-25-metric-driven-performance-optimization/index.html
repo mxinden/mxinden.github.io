@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Metric driven performance optimization - Max Inden</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Max Inden" /><meta name="description" content="Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes." />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
+
+
+<link rel="canonical" href="https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Metric driven performance optimization" />
+<meta property="og:description" content="Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-06-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-06-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="Metric driven performance optimization">
+<meta itemprop="description" content="Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes."><meta itemprop="datePublished" content="2019-06-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-06-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1708">
+<meta itemprop="keywords" content="tech,prometheus,monitoring,kubernetes," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Metric driven performance optimization"/>
+<meta name="twitter:description" content="Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Max Inden</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/resume">
+        <li class="mobile-menu-item">Resume</li>
+      </a><a href="/misc">
+        <li class="mobile-menu-item">Misc</li>
+      </a><a href="/talks">
+        <li class="mobile-menu-item">Talks</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archive</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Max Inden</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resume">Resume</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/misc">Misc</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/talks">Talks</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archive</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Metric driven performance optimization</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-24 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-is-kube-state-metrics">What is kube-state-metrics</a></li>
+        <li><a href="#problem-with-kube-state-metrics--14">Problem with kube-state-metrics &lt; 1.4</a>
+          <ul>
+            <li><a href="#1-scrape-duration">1. Scrape duration</a></li>
+            <li><a href="#2-cpu-usage">2. CPU usage</a></li>
+            <li><a href="#3-memory-usage">3. Memory usage</a></li>
+          </ul>
+        </li>
+        <li><a href="#introducing-a-custom-cache">Introducing a custom cache</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Within my work at Red Hat and Kubernetes <a href="https://github.com/kubernetes/community/tree/master/sig-instrumentation"> SIG instrumentation
+</a> I
+have been working on <a href="https://github.com/kubernetes/kube-state-metrics/"> kube-state-metrics
+</a>, a <a href="https://github.com/prometheus/prometheus"> Prometheus
+</a> exporter exposing the state of a
+Kubernetes cluster to a Prometheus monitoring system. In particular I have
+focused on performance optimizing metric rendering for both latency as well as
+resource usage. Below I want to describe our approach of metric driven
+performance tuning, using Prometheus to monitor kube-state-metrics on top of
+Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</p>
+<h2 id="what-is-kube-state-metrics">What is kube-state-metrics</h2>
+<p>Kube-state-metrics is a <a href="https://prometheus.io/docs/instrumenting/exporters/"> Prometheus exporter
+</a> exposing metrics about
+the state of Kubernetes objects such as <em>Pods</em> and <em>Deployments</em> to Prometheus.
+It listens for state changes via the Kubernetes API and exposes this state in
+the <a href="https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-format-example"> Prometheus format
+</a>
+on <code>http://xxx/metrics</code> on each scrape by Prometheus.</p>
+<small>
+```
++-----------+      +-------------------+                       +-------------+
+| APIServer |      | kubestatemetrics  |                       | Prometheus  |
++-----------+      +-------------------+                       +-------------+
+      |                      |                                        |
+      | New Pod p1           |                                        |
+      |--------------------->|                                        |
+      |         -----------\ |                                        |
+      |         | Cache p1 |-|                                        |
+      |         |----------| |                                        |
+      |                      |                                        |
+      |                      |                                        |
+      |                      |                                        |
+      |                      |                        Get all metrics |
+      |                      |<---------------------------------------|
+      |                      | --------------------------------\      |
+      |                      |-| Render all Kubernetes objects |      |
+      |                      | | into metrics                  |      |
+      |                      | |-------------------------------|      |
+      |                      |                                        |
+      |                      | Metrics                                |
+      |                      |--------------------------------------->|
+      |                      |                                        |
+```
+</small>
+<p>One can think of kube-state-metrics as an adapter converting Kubernetes Objects</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">kube-state-metrics</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">pod-template-hash</span><span class="p">:</span><span class="w"> </span><span class="l">5fc64f676f</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">kube-state-metrics-5fc64f676f-gl6v6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">monitoring</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>into Prometheus metrics.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kube_pod_container_info{container=&#34;kube-state-metrics&#34;,namespace=&#34;monitoring&#34;,pod=&#34;kube-state-metrics-5fc64f676f-gl6v6&#34;} 1        
+</span></span><span class="line"><span class="cl">kube_pod_labels{label_app=&#34;kube-state-metrics&#34;,label_pod_template_hash=&#34;5fc64f676f&#34;,namespace=&#34;monitoring&#34;,pod=&#34;kube-state-metrics-5fc64f676f-gl6v6&#34;} 1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="problem-with-kube-state-metrics--14">Problem with kube-state-metrics &lt; 1.4</h2>
+<p>Kube-state-metrics v1.4 and below is leveraging Kubernetes <a href="https://github.com/kubernetes/client-go"> client-go
+</a> and Prometheus <a href="https://github.com/prometheus/client_golang/"> client_golang
+</a> to inter-operate with Kubernetes
+and Prometheus. Thereby kube-state-metrics only contains little amount of glue
+code and mostly business logic itself. On the one hand this keeps the complexity
+of the project low. On the other hand, both Kubernetes client-go as well as
+Prometheus client_golang are not optimized for the kube-state-metrics use case
+see e.g. user reports <a href="https://github.com/kubernetes/kube-state-metrics/issues/257"> #257
+</a> and <a href="https://github.com/kubernetes/kube-state-metrics/issues/257"> #493
+</a>.</p>
+<p>The above trade-off serves us well on smaller Kubernetes clusters. Once
+kube-state-metrics is used on larger clusters with more than 50 MB of metric
+output, three properties become problematic, consequently forming our
+optimization targets:</p>
+<h3 id="1-scrape-duration">1. Scrape duration</h3>
+<p>The reoccurring (e.g. every minute) process of Prometheus requesting Kubernetes
+metrics from kube-state-metrics is called a <em>scrape</em>. Prometheus tracks the
+start of the process, initializes the http request to kube-state-metrics
+<code>/metrics</code>, parses the response and saves the values with the start timestamp in
+its time series database. Both if kube-state-metrics respondes within a second
+and within a minute, the values are saved with the same timestamp within the
+Prometheus database.</p>
+<img src="/static/metric-driven-performance-optimization/v1.4_scrape_duration_seconds.png">
+<p>Once scrape durations differ within consecutive scrapes of the same exporter
+(e.g. kube-state-metrics) or across exporters (kube-state-metrics and <a href="https://github.com/google/cadvisor">cadvisor
+</a>), it is difficult to correlate the
+collected data, as it could be off by as much as the scraping process lasted
+(minus network latency, http, tcp, ip overhead, &hellip;). Thus it is disirable to
+keep the scrape duration to a minimum. In addition Prometheus even times out by
+default <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file"> once a scrape duration reaches
+10s</a>.</p>
+<p>The metric <em>scrape_duration_seconds</em> exposed by Prometheus itself gives us
+visibility for the above, hence we can use it for the planned optimization.</p>
+<h3 id="2-cpu-usage">2. CPU usage</h3>
+<p>Running kube-state-metrics on large Kubernetes clusters results in high CPU
+usage of kube-state-metrics as it has to convert the Kubernetes API objects to
+Prometheus metrics ad-hoc on each scrape of Prometheus. In addition this CPU
+load is not a flat line, but spiky, given that this CPU intensive process is
+part of the hot-path of Prometheus scraping the exporter.</p>
+<img src="/static/metric-driven-performance-optimization/v1.4_container_cpu_usage_seconds.png">
+<p>As with the <em>scrape_duration_seconds</em> metric for the first optimization target,
+we can leverage the fact that kube-state-metrics can run on a Kubernetes cluster
+and use the <em>container_cpu_usage_seconds</em> exposed by cadvisor to get visibility
+into optimizing cpu usage.</p>
+<h3 id="3-memory-usage">3. Memory usage</h3>
+<p>As mentioned above, kube-state-metrics uses the Kubernetes client-go library to
+inter-operate with Kubernetes. More specifically it leverages client-go&rsquo;s
+<a href="https://godoc.org/k8s.io/client-go/informers">informers</a>. While using informers
+keeps kube-state-metric&rsquo;s code complexity low, it forces high memory usage upon
+it, given that kube-state-metrics is interested in all Kubernetes objects of a
+cluster, thus keeping a copy of all Kubernetes objects within the cache of the
+infomers. This is not problematic for small Kubernetes clusters but results in
+large memory allocations on larger ones.</p>
+<p>Analogous to <em>container_cpu_usage_seconds</em> we can use
+<em>container_memory_usage_bytes</em> to track the memory usage of kube-state-metrics.</p>
+<h2 id="introducing-a-custom-cache">Introducing a custom cache</h2>
+<p>As previously mentioned kube-state-metrics v1.4 and below replicates all
+Kubernetes objects into its internal cache to ad-hoc convert them into
+the Prometheus metric format, once a new scrape request comes in.</p>
+<small>
+```
++-----------+      +-------------------+                       +-------------+
+| APIServer |      | kubestatemetrics  |                       | Prometheus  |
++-----------+      +-------------------+                       +-------------+
+      |                      |                                        |
+      | New Pod p1           |                                        |
+      |--------------------->|                                        |
+      |         -----------\ |                                        |
+      |         | Cache p1 |-|                                        |
+      |         |----------| |                                        |
+      |                      |                                        |
+      |                      |                                        |
+      |                      |                                        |
+      |                      |                        Get all metrics |
+      |                      |<---------------------------------------|
+      |                      | --------------------------------\      |
+      |                      |-| Render all Kubernetes objects |      |
+      |                      | | into metrics                  |      |
+      |                      | |-------------------------------|      |
+      |                      |                                        |
+      |                      | Metrics                                |
+      |                      |--------------------------------------->|
+      |                      |                                        |
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;/small&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">This lead us to an idea. Instead of caching the Kubernetes objects themselves,
+</span></span><span class="line"><span class="cl">how about rendering them into Prometheus metrics right away and only cache the
+</span></span><span class="line"><span class="cl">rendered metrics instead. This has three advantages: First Kubernetes object to
+</span></span><span class="line"><span class="cl">metric rendering is not happening in the hot-path (scrape) anymore reducing
+</span></span><span class="line"><span class="cl">scrape duration. Second caching metrics instead of full Kubernetes objects
+</span></span><span class="line"><span class="cl">reduces needed memory. Third, under the premise that most Kubernetes objects
+</span></span><span class="line"><span class="cl">stay untouched between consecutive scrapes, metrics are rendered once per
+</span></span><span class="line"><span class="cl">Kubernetes object update, not once per scrape, reducing CPU usage.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;small&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>+&mdash;&mdash;&mdash;&ndash;+           +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+       +&mdash;&mdash;&mdash;&mdash;-+
+| APIServer |           | kubestatemetrics  |       | Prometheus  |
++&mdash;&mdash;&mdash;&ndash;+           +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+       +&mdash;&mdash;&mdash;&mdash;-+
+|                           |                        |
+| New Pod p1                |                        |
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&gt;|                        |
+|  &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;\ |                        |
+|  | Render metrics of p1 |-|                        |
+|  |&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-| |                        |
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-\ |                        |
+|| Cache rendered metrics |-|                        |
+||&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;| |                        |
+|                           |                        |
+|                           |                        |
+|                           |                        |
+|                           |        Get all metrics |
+|                           |&lt;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|
+|                           |                        |
+|                           | Metrics                |
+|                           |&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&gt;|
+|                           |                        |</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">small</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Instead</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">replacing</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Kubernetes</span><span class="w"> </span><span class="n">client</span><span class="o">-</span><span class="n">go</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">own</span><span class="w"> </span><span class="n">specialized</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">implementation</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">increases</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">maintenance</span><span class="w"> </span><span class="n">burdon</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">Kubernetes</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">fast</span><span class="w"> </span><span class="n">moving</span><span class="w"> </span><span class="n">project</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">hook</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">client</span><span class="o">-</span><span class="n">go</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">*</span><span class="n">Reflector</span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">/</span><span class="n">client</span><span class="o">-</span><span class="n">go</span><span class="o">/</span><span class="kt">blob</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">reflector</span><span class="p">.</span><span class="n">go</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">abstraction</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">implement</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">cache</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">metrics</span><span class="w"> </span><span class="n">instead</span><span class="w"> </span><span class="n">of</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Kubernetes</span><span class="w"> </span><span class="n">objects</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">The</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">seen</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="n">below</span><span class="p">,</span><span class="w"> </span><span class="n">showing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Prometheus</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">scrapes</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">old</span><span class="w"> </span><span class="nf">version</span><span class="w"> </span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">red</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">optimized</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">cyan</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Introducing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">optimized</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">lead</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">~</span><span class="mi">10</span><span class="n">x</span><span class="w"> </span><span class="n">improvement</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">environment</span><span class="p">.</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">keep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">mind</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">under</span><span class="w"> </span><span class="n">artificial</span><span class="w"> </span><span class="k">load</span><span class="p">.</span><span class="w"> </span><span class="n">Numbers</span><span class="w"> </span><span class="k">on</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">real</span><span class="w"> </span><span class="n">world</span><span class="w"> </span><span class="n">clusters</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">shown</span><span class="w"> </span><span class="n">further</span><span class="w"> </span><span class="n">below</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">&lt;</span><span class="n">img</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="s2">&#34;/static/metric-driven-performance-optimization/result-caching.png&#34;</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">## Compression on or off?
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Next</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">looked</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">compression</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="n">going</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="k">to</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Prometheus</span><span class="p">.</span><span class="w"> </span><span class="k">By</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="n">v1</span><span class="p">.</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">precisely</span><span class="w"> </span><span class="n">Prometheus</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">client_golang</span><span class="p">,</span><span class="w"> </span><span class="n">compressed</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">responses</span><span class="p">.</span><span class="w"> </span><span class="n">Doing</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">sounds</span><span class="w"> </span><span class="n">reasonable</span><span class="p">,</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">that</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">the</span><span class="w"> </span><span class="n">Prometheus</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">repetitive</span><span class="p">,</span><span class="w"> </span><span class="n">thus</span><span class="w"> </span><span class="n">great</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">compression</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">still</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">wanted</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">investigate</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">option</span><span class="p">,</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">most</span><span class="w"> </span><span class="n">deployments</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">are</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="n">network</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">We</span><span class="w"> </span><span class="n">deployed</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">four</span><span class="w"> </span><span class="n">versions</span><span class="p">:</span><span class="w"> </span><span class="n">v1</span><span class="p">.</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">cache</span><span class="o">-</span><span class="n">optimized</span><span class="w"> </span><span class="n">without</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">compression</span><span class="p">,</span><span class="w"> </span><span class="n">cache</span><span class="o">-</span><span class="n">optimized</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">golang</span><span class="w"> </span><span class="n">gzip</span><span class="p">,</span><span class="w"> </span><span class="n">cache</span><span class="o">-</span><span class="n">optimized</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">[</span><span class="n">New</span><span class="w"> </span><span class="n">York</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Times</span><span class="w"> </span><span class="n">gzip</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">NYTimes</span><span class="o">/</span><span class="n">gziphandler</span><span class="p">).</span><span class="w"> </span><span class="n">First</span><span class="w"> </span><span class="n">off</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">compare</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">the</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="k">usage</span><span class="p">.</span><span class="w"> </span><span class="n">Without</span><span class="w"> </span><span class="n">surprise</span><span class="w"> </span><span class="n">compressing</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">intense</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">&lt;</span><span class="n">img</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="s2">&#34;/static/metric-driven-performance-optimization/compression_cpu_usage.png&#34;</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Next</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">take</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">look</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">memory</span><span class="w"> </span><span class="k">usage</span><span class="w"> </span><span class="p">(</span><span class="k">not</span><span class="w"> </span><span class="n">allocation</span><span class="p">).</span><span class="w"> </span><span class="n">One</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="n">think</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">that</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">compression</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">less</span><span class="w"> </span><span class="n">memory</span><span class="p">.</span><span class="w"> </span><span class="n">Problem</span><span class="w"> </span><span class="k">is</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">that</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">caching</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">big</span><span class="w"> </span><span class="kt">blob</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">metrics</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">Kubernetes</span><span class="w"> </span><span class="n">objects</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">instead</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">caching</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">blobs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">metrics</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">Kubernetes</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="w"> </span><span class="n">That</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">way</span><span class="p">,</span><span class="w"> </span><span class="n">once</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">Kubernetes</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="n">comes</span><span class="w"> </span><span class="k">in</span><span class="p">,</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">does</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">have</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">to</span><span class="w"> </span><span class="n">recompute</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">big</span><span class="w"> </span><span class="kt">blob</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="kt">blob</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="k">specific</span><span class="w"> </span><span class="n">Kubernetes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">object</span><span class="p">.</span><span class="w"> </span><span class="k">With</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">mind</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">scrape</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cumulate</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">blobs</span><span class="w"> </span><span class="k">and</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">then</span><span class="w"> </span><span class="n">compress</span><span class="p">.</span><span class="w"> </span><span class="n">Thus</span><span class="w"> </span><span class="n">compression</span><span class="w"> </span><span class="n">does</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">decrease</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">memory</span><span class="w"> </span><span class="n">footprint</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">quite</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">opposite</span><span class="p">,</span><span class="w"> </span><span class="n">increases</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">&lt;</span><span class="n">img</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="s2">&#34;/static/metric-driven-performance-optimization/compression_memory_usage.png&#34;</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Last</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">take</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">look</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">impact</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">compression</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">scrape</span><span class="w"> </span><span class="n">duration</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">In</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="n">Prometheus</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">local</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="n">network</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="n">below</span><span class="w"> </span><span class="n">shows</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">transfering</span><span class="w"> </span><span class="n">bigger</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="n">blobs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">in</span><span class="w"> </span><span class="n">plain</span><span class="o">-</span><span class="kt">text</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">faster</span><span class="w"> </span><span class="n">than</span><span class="w"> </span><span class="n">transfering</span><span class="w"> </span><span class="n">smaller</span><span class="w"> </span><span class="n">compressed</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="n">blobs</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">compressing</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">decompressing</span><span class="p">.</span><span class="w"> </span><span class="n">Thus</span><span class="p">,</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="n">below</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">optimized</span><span class="w"> </span><span class="n">caching</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">disabled</span><span class="w"> </span><span class="n">compression</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">the</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">lowest</span><span class="w"> </span><span class="n">scrape</span><span class="w"> </span><span class="n">duration</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">&lt;</span><span class="n">img</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="s2">&#34;/static/metric-driven-performance-optimization/compression_scrape_duration.png&#34;</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">After</span><span class="w"> </span><span class="n">testing</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="kt">real</span><span class="w"> </span><span class="n">world</span><span class="w"> </span><span class="n">scenarios</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">ended</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">adding</span><span class="w"> </span><span class="n">the</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">option</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">compress</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">disabling</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">by</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">default</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">## Golangs _strings.Builder_
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">While</span><span class="w"> </span><span class="n">optimizing</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="n">itself</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">lot</span><span class="w"> </span><span class="n">happened</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Prometheus</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">upstream</span><span class="w"> </span><span class="p">[</span><span class="n">common</span><span class="w"> </span><span class="n">library</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">pull</span><span class="o">/</span><span class="mi">148</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">parallel</span><span class="p">.</span><span class="w"> </span><span class="n">Among</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">things</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="n">switched</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Golangs</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">strings</span><span class="p">.</span><span class="n">Builder</span><span class="w"> </span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">golang</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">pkg</span><span class="o">/</span><span class="n">strings</span><span class="o">/</span><span class="c1">#Builder). Instead of
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">formatting</span><span class="w"> </span><span class="n">strings</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="o">`</span><span class="n">fmt</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">bears</span><span class="w"> </span><span class="n">many</span><span class="w"> </span><span class="n">memory</span><span class="w"> </span><span class="n">allocations</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">it</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">`</span><span class="n">strings</span><span class="p">.</span><span class="n">Builder</span><span class="o">`</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="n">under</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hood</span><span class="p">,</span><span class="w"> </span><span class="n">leveraging</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">fact</span><span class="w"> </span><span class="n">that</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">byte</span><span class="w"> </span><span class="n">slices</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">constrary</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">strings</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">mutable</span><span class="p">.</span><span class="w"> </span><span class="n">Many</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">optimizations</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">also</span><span class="w"> </span><span class="n">landed</span><span class="w"> </span><span class="n">downstream</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">## Benchmarks
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Given</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">wide</span><span class="w"> </span><span class="n">spread</span><span class="w"> </span><span class="k">usage</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Kubernetes</span><span class="w"> </span><span class="n">community</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">many</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="n">helped</span><span class="w"> </span><span class="n">us</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">performance</span><span class="w"> </span><span class="n">optimized</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">benchmarks</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">this</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">/</span><span class="n">kube</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">metrics</span><span class="o">/</span><span class="n">issues</span><span class="o">/</span><span class="mi">498</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Github</span><span class="w"> </span><span class="n">thread</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-</span><span class="c1">--
+</span></span></span><span class="line"><span class="cl"><span class="c1">
+</span></span></span><span class="line"><span class="cl"><span class="c1">This blog post is based on a [talk I gave at KubeCon Barcelona
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">2019</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">kccnceu19</span><span class="p">.</span><span class="n">sched</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">event</span><span class="o">/</span><span class="n">MPjo</span><span class="o">/</span><span class="n">deep</span><span class="o">-</span><span class="n">dive</span><span class="o">-</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">instrumentation</span><span class="o">-</span><span class="n">sig</span><span class="o">-</span><span class="n">frederic</span><span class="o">-</span><span class="n">branczyk</span><span class="o">-</span><span class="n">max</span><span class="o">-</span><span class="n">inden</span><span class="o">-</span><span class="n">red</span><span class="o">-</span><span class="n">hat</span><span class="p">).</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">The</span><span class="w"> </span><span class="p">[</span><span class="n">recording</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">youtube</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">watch</span><span class="o">?</span><span class="n">v</span><span class="o">=</span><span class="n">dvk_</span><span class="o">-</span><span class="n">NCK1Ls</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">online</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="n">slides</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">downloaded</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">here</span><span class="p">](</span><span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="n">metric</span><span class="o">-</span><span class="n">driven</span><span class="o">-</span><span class="n">performance</span><span class="o">-</span><span class="n">optimization</span><span class="o">/</span><span class="n">slides</span><span class="p">.</span><span class="n">pdf</span><span class="p">).</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Max Inden</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-06-24
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tech/">tech</a>
+          <a href="/tags/prometheus/">prometheus</a>
+          <a href="/tags/monitoring/">monitoring</a>
+          <a href="/tags/kubernetes/">kubernetes</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019-10-27-19th-paper-club/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">19th Distributed Systems Paper Club</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2017-06-11-triathlon/">
+            <span class="next-text nav-default">First Triathlon</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:mail@max-inden.de" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/mxinden" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/mxinden/" class="iconfont icon-github" title="github"></a>
+  <a href="https://max-inden.de/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2016 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

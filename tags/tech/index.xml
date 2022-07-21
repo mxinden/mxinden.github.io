@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tech on mxinden</title>
+    <title>tech on Max Inden</title>
     <link>https://max-inden.de/tags/tech/</link>
-    <description>Recent content in tech on mxinden</description>
+    <description>Recent content in tech on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hole punching in libp2p</title>
-      <link>https://max-inden.de/blog/2022-03-06-libp2p-hole-punching/</link>
+      <link>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2022-03-06-libp2p-hole-punching/</guid>
+      <guid>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</guid>
       <description>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
 Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/</description>
     </item>
     
     <item>
       <title>35th DistSys Reading Group - Nym</title>
-      <link>https://max-inden.de/blog/2021-06-29-35th-reading-group/</link>
+      <link>https://max-inden.de/post/2021-06-29-35th-reading-group/</link>
       <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-06-29-35th-reading-group/</guid>
+      <guid>https://max-inden.de/post/2021-06-29-35th-reading-group/</guid>
       <description>In our previous session we looked into Mixnets, more specifically Loopix. With this session we stayed in the space, talking about a network adopting many concepts from Loopix, namely Nym.
 As a preparation, we read section 1 through 4 of the Nym whitepaper.
- Introduction Network-level surveillance The Nym Network Design Mixnet for Network-Level Privacy  Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. &amp;ldquo;The Nym Network.&amp;rdquo; (2021).
+Introduction Network-level surveillance The Nym Network Design Mixnet for Network-Level Privacy Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. &amp;ldquo;The Nym Network.&amp;rdquo; (2021).
 https://nymtech.net/nym-whitepaper.pdf</description>
     </item>
     
     <item>
       <title>34th DistSys Reading Group - Mixnets</title>
-      <link>https://max-inden.de/blog/2021-05-10-34th-reading-group/</link>
+      <link>https://max-inden.de/post/2021-05-10-34th-reading-group/</link>
       <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-05-10-34th-reading-group/</guid>
+      <guid>https://max-inden.de/post/2021-05-10-34th-reading-group/</guid>
       <description>34th session was on Mixnets as lots of people suggested in the past. As a preparation we read the Loopix paper.
 Piotrowska, Ania M., et al. &amp;ldquo;The loopix anonymity system.&amp;rdquo; 26th {USENIX} Security Symposium ({USENIX} Security 17). 2017.
 https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska.pdf
@@ -44,10 +44,10 @@ https://www.youtube.com/watch?v=R-yEqLX_UvI</description>
     
     <item>
       <title>33rd DistSys Reading Group - BGP 3</title>
-      <link>https://max-inden.de/blog/2021-04-12-33rd-reading-group/</link>
+      <link>https://max-inden.de/post/2021-04-12-33rd-reading-group/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-04-12-33rd-reading-group/</guid>
+      <guid>https://max-inden.de/post/2021-04-12-33rd-reading-group/</guid>
       <description>In our third BGP session we focused on BGP security, more specifically we discussed how to perform hijack and interception attacks using BGP. The primary paper of the session was:
 Birge-Lee, Henry, et al. &amp;ldquo;Sico: Surgical interception attacks by manipulating bgp communities.&amp;rdquo; Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security. 2019.
 A good introduction to RPKI can be found here.</description>
@@ -55,30 +55,30 @@ A good introduction to RPKI can be found here.</description>
     
     <item>
       <title>32nd DistSys Reading Group - BGP 2</title>
-      <link>https://max-inden.de/blog/2021-03-18-32nd-reading-group/</link>
+      <link>https://max-inden.de/post/2021-03-18-32nd-reading-group/</link>
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-03-18-32nd-reading-group/</guid>
+      <guid>https://max-inden.de/post/2021-03-18-32nd-reading-group/</guid>
       <description>After our first BGP session, introducing the protocol based on the convergence problem of BGP, our second session on BGP covered route propagation and tuning. The primary paper was:
 Gray, Caitlin, et al. &amp;ldquo;BGP Beacons, Network Tomography, and Bayesian Computation to Locate Route Flap Damping.&amp;rdquo; Proceedings of the ACM Internet Measurement Conference. 2020.</description>
     </item>
     
     <item>
       <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early</title>
-      <link>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</link>
+      <link>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-03-07-optimizing-yamux-flow-control/</guid>
+      <guid>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</guid>
       <description>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
 https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</description>
     </item>
     
     <item>
       <title>31st DistSys Reading Group - BGP 1</title>
-      <link>https://max-inden.de/blog/2021-02-24-31st-paper-club/</link>
+      <link>https://max-inden.de/post/2021-02-24-31st-paper-club/</link>
       <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-02-24-31st-paper-club/</guid>
+      <guid>https://max-inden.de/post/2021-02-24-31st-paper-club/</guid>
       <description>We decided to turn our interest to BGP which we will devote 3 sessions to. In today&amp;rsquo;s session - the first one - we introduced BGP, looked at the convergence problem, as well as the solution suggested in the paper below.
 Gao, Lixin, and Jennifer Rexford. &amp;ldquo;Stable Internet routing without global coordination.&amp;rdquo; IEEE/ACM Transactions on networking 9.6 (2001): 681-692.
 To play around with BGP as well as general Internet routing:</description>
@@ -86,61 +86,62 @@ To play around with BGP as well as general Internet routing:</description>
     
     <item>
       <title>30th DistSys Reading Group - NTP</title>
-      <link>https://max-inden.de/blog/2021-01-26-30th-paper-club/</link>
+      <link>https://max-inden.de/post/2021-01-26-30th-paper-club/</link>
       <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2021-01-26-30th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2021-01-26-30th-paper-club/</guid>
       <description>What better way to start a new year than with a paper discussing how to change time?
 In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place.</description>
     </item>
     
     <item>
       <title>28th DistSys Reading Group - Hotstuff</title>
-      <link>https://max-inden.de/blog/2020-09-08-28th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-09-08-28th-paper-club/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-09-08-28th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-09-08-28th-paper-club/</guid>
       <description>With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
 Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.</description>
     </item>
     
     <item>
       <title>Know your latencies</title>
-      <link>https://max-inden.de/blog/2020-06-19-latencies/</link>
+      <link>https://max-inden.de/post/2020-06-19-latencies/</link>
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-06-19-latencies/</guid>
+      <guid>https://max-inden.de/post/2020-06-19-latencies/</guid>
       <description>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.</description>
     </item>
     
     <item>
       <title>26th DistSys Reading Group - Cache coherence</title>
-      <link>https://max-inden.de/blog/2020-05-18-26th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-05-18-26th-paper-club/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-05-18-26th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-05-18-26th-paper-club/</guid>
       <description>We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
-  CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
-  Write Combining exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one can make use of them.</description>
+CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
+Write Combining exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one can make use of them.</description>
     </item>
     
     <item>
       <title>25th DistSys Reading Group - Fair queuing</title>
-      <link>https://max-inden.de/blog/2020-04-27-25th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-04-27-25th-paper-club/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-04-27-25th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-04-27-25th-paper-club/</guid>
       <description>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &amp;ldquo;Efficient fair queuing using deficit round-robin&amp;rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
-  Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
-  Its wide deployment still seen today.</description>
+Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
+Its wide deployment still seen today.
+Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as latency critical flows.</description>
     </item>
     
     <item>
       <title>24th DistSys Reading Group - BBR Congestion-Based Congestion Control</title>
-      <link>https://max-inden.de/blog/2020-04-06-24th-paper-club/</link>
+      <link>https://max-inden.de/post/2020-04-06-24th-paper-club/</link>
       <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-04-06-24th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-04-06-24th-paper-club/</guid>
       <description>After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
 Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
 We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &amp;ldquo;just works&amp;rdquo; due to congestion control.</description>
@@ -148,20 +149,20 @@ We started off with a quick recap of the previous session covering why we need c
     
     <item>
       <title>Elimination back-off stack performance</title>
-      <link>https://max-inden.de/blog/2020-04-01-elimination-backoff-stack-performance/</link>
+      <link>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-04-01-elimination-backoff-stack-performance/</guid>
+      <guid>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</guid>
       <description>I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
 In this post I will compare my implementation to other stack implementations.</description>
     </item>
     
     <item>
       <title>Elimination back-off stack</title>
-      <link>https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/</link>
+      <link>https://max-inden.de/post/2020-03-28-elimination-backoff-stack/</link>
       <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/</guid>
+      <guid>https://max-inden.de/post/2020-03-28-elimination-backoff-stack/</guid>
       <description>Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
 How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&amp;rsquo;s dive into it.
 A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.</description>
@@ -169,61 +170,61 @@ A lock-free stack A lock-free stack, also often referred to as a Treiber stack [
     
     <item>
       <title>23rd Distributed Systems Paper Club</title>
-      <link>https://max-inden.de/blog/2020-02-18-23rd-paper-club/</link>
+      <link>https://max-inden.de/post/2020-02-18-23rd-paper-club/</link>
       <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-02-18-23rd-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-02-18-23rd-paper-club/</guid>
       <description>At the end of the previous session one of us suggested to dive into congestion control algorithms. This has found a greater echo, thus the 23rd session covered congestion control algorithms in general and TCP&amp;rsquo;s Reno as well as TCP&amp;rsquo;s Tahoe in particular.
 This weeks reading was:
-  Chapter 13 &amp;ldquo;TCP Reno and Congestion Management&amp;rdquo; from the comprehensive online book &amp;ldquo;An Introduction to Computer Networks&amp;rdquo; [1] from the Loyola University Chicago.</description>
+Chapter 13 &amp;ldquo;TCP Reno and Congestion Management&amp;rdquo; from the comprehensive online book &amp;ldquo;An Introduction to Computer Networks&amp;rdquo; [1] from the Loyola University Chicago.</description>
     </item>
     
     <item>
       <title>22nd Distributed Systems Paper Club</title>
-      <link>https://max-inden.de/blog/2020-01-28-22nd-paper-club/</link>
+      <link>https://max-inden.de/post/2020-01-28-22nd-paper-club/</link>
       <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-01-28-22nd-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-01-28-22nd-paper-club/</guid>
       <description>In the 22nd session we took a look at io_uring - a new Kernel interface for asynchronous I/O. Tyler, who is currently implementing an io_uring library in Rust [4] for his database sled [7] guided us through the concepts as well as a bunch of source code.
 Tyler started off introducing the status quo of I/O interfaces within the Linux Kernel like read, pread and preadv, jumped over to asynchronous I/O like aio and eventually helped us develop a sense of what the perfect asynchronous I/O interface of the future could look like.</description>
     </item>
     
     <item>
       <title>21st Distributed Systems Paper Club</title>
-      <link>https://max-inden.de/blog/2020-01-24-21st-paper-club/</link>
+      <link>https://max-inden.de/post/2020-01-24-21st-paper-club/</link>
       <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2020-01-24-21st-paper-club/</guid>
+      <guid>https://max-inden.de/post/2020-01-24-21st-paper-club/</guid>
       <description>We started the new year with a session on epidemic / gossip protocols. To decide what to read I compiled the following list of papers that I either enjoyed reading in the past, or that were recommended to me. The Swim (Scalable failure detection and membership protocol) paper won the poll.
- Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&amp;rdquo; Proceedings International Conference on Dependable Systems and Networks.</description>
+Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&amp;rdquo; Proceedings International Conference on Dependable Systems and Networks.</description>
     </item>
     
     <item>
       <title>20th Distributed Systems Paper Club</title>
-      <link>https://max-inden.de/blog/2019-11-28-20th-paper-club/</link>
+      <link>https://max-inden.de/post/2019-11-28-20th-paper-club/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2019-11-28-20th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2019-11-28-20th-paper-club/</guid>
       <description>Last Tuesday we meet again to discuss different attacks and possible countermeasures for distributed hash tables. More in particular we looked at Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on the Ethereum network [2], a novel approach of hiding its own connection buckets as well as using an existing social graph as a network topology in the Whanau paper[3], security extensions to the Chord DHT [4], as well as a larger study of different security techniques for DHTs [5].</description>
     </item>
     
     <item>
       <title>19th Distributed Systems Paper Club</title>
-      <link>https://max-inden.de/blog/2019-10-27-19th-paper-club/</link>
+      <link>https://max-inden.de/post/2019-10-27-19th-paper-club/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2019-10-27-19th-paper-club/</guid>
+      <guid>https://max-inden.de/post/2019-10-27-19th-paper-club/</guid>
       <description>I have been organizing a distributed systems paper reading group in Berlin for the last year. We meet every other week discussing a paper in the distributed systems space. This could be anything from Chandy–Lamport&amp;rsquo;s algorithm for global distributed snapshots [1] to things like conflict free replicated datatypes [2]. The event is open for anyone interested. I only ask people to come prepared.
 In the last meeting (19th) we covered distributed hash tables.</description>
     </item>
     
     <item>
       <title>Metric driven performance optimization</title>
-      <link>https://max-inden.de/blog/2019-06-25-metric-driven-performance-optimization/</link>
+      <link>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/blog/2019-06-25-metric-driven-performance-optimization/</guid>
-      <description>Within my work at Red Hat and Kubernetes SIG instrumentation  I have been working on kube-state-metrics , a Prometheus  exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
+      <guid>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</guid>
+      <description>Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
     </item>
     
     <item>
