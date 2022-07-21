@@ -18,6 +18,19 @@ Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-
     </item>
     
     <item>
+      <title>Talk State of libp2p</title>
+      <link>https://max-inden.de/post/state-of-libp2p/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/state-of-libp2p/</guid>
+      <description>Gave a talk on the state of libp2p at FOSDEM 2022.
+State of libp2p
+Status quo and future roadmap of the peer-to-peer networking library libp2p.
+libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
+We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.</description>
+    </item>
+    
+    <item>
       <title>35th DistSys Reading Group - Nym</title>
       <link>https://max-inden.de/post/2021-06-29-35th-reading-group/</link>
       <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
@@ -228,11 +241,11 @@ In the last meeting (19th) we covered distributed hash tables.</description>
     </item>
     
     <item>
-      <title>Self-healing Kubernetes</title>
-      <link>https://max-inden.de/talks/self-healing-k8s/</link>
+      <title>Talk Self-healing Kubernetes</title>
+      <link>https://max-inden.de/post/self-healing-k8s/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://max-inden.de/talks/self-healing-k8s/</guid>
+      <guid>https://max-inden.de/post/self-healing-k8s/</guid>
       <description>What If Component xxx Dies? Introducing Self-Healing Kubernetes
 Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
 This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>

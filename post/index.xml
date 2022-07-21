@@ -18,6 +18,42 @@ Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-
     </item>
     
     <item>
+      <title>Talk Peer-to-peer hole punching without centralized infrastructure</title>
+      <link>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</guid>
+      <description>Gave a talk on hole punching in libp2p at FOSDEM 2022.
+Peer-to-peer hole punching without centralized infrastructure
+How libp2p can traverse NATs and firewalls without coordination through central STUN and TURN servers.
+libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
+In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together.</description>
+    </item>
+    
+    <item>
+      <title>Talk State of libp2p</title>
+      <link>https://max-inden.de/post/state-of-libp2p/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/state-of-libp2p/</guid>
+      <description>Gave a talk on the state of libp2p at FOSDEM 2022.
+State of libp2p
+Status quo and future roadmap of the peer-to-peer networking library libp2p.
+libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
+We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.</description>
+    </item>
+    
+    <item>
+      <title>Talk Intro to libp2p</title>
+      <link>https://max-inden.de/post/intro-to-libp2p/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/intro-to-libp2p/</guid>
+      <description>On Tuesday 20th of July I gave a talk introducing libp2p, a modular network stack.
+Recording Slides </description>
+    </item>
+    
+    <item>
       <title>35th DistSys Reading Group - Nym</title>
       <link>https://max-inden.de/post/2021-06-29-35th-reading-group/</link>
       <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
@@ -245,6 +281,65 @@ In the last meeting (19th) we covered distributed hash tables.</description>
       
       <guid>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</guid>
       <description>Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
+    </item>
+    
+    <item>
+      <title>Talk Optimizing Metric Rendering in kube-state-metrics</title>
+      <link>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</link>
+      <pubDate>Wed, 22 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</guid>
+      <description>Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
+This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.</description>
+    </item>
+    
+    <item>
+      <title>Talk Self-Service Monitoring</title>
+      <link>https://max-inden.de/post/self-service-monitoring/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/self-service-monitoring/</guid>
+      <description>Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.</description>
+    </item>
+    
+    <item>
+      <title>Talk Self-healing Kubernetes</title>
+      <link>https://max-inden.de/post/self-healing-k8s/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/self-healing-k8s/</guid>
+      <description>What If Component xxx Dies? Introducing Self-Healing Kubernetes
+Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
+This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>
+    </item>
+    
+    <item>
+      <title>Talk End-to-end monitoring with the Prometheus Operator</title>
+      <link>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</link>
+      <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</guid>
+      <description>Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus ensures that Kubernetes stays healthy. Prometheus is a stateful application, so operating it in a cloud native environment can be a challenging task. The Prometheus Operator makes running highly available Prometheus clusters, and even an entire end to end monitoring pipeline, easily manageable. Max will explain the functionality of the Prometheus Operator and describe a desirable end-to-end monitoring stack, including alerts and dashboards.</description>
+    </item>
+    
+    <item>
+      <title>Talk Intro to Kubernetes</title>
+      <link>https://max-inden.de/post/introduction-to-k8s/</link>
+      <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/introduction-to-k8s/</guid>
+      <description>Distributing and deploying software inside (Docker-) containers for security, isolation and ease of use is the new big thing. But once you got all your services nicely wrapped - who takes care of all these containers?
+The open source project Kubernetes, originating from Google, helps you manage containerized applications, as the operating system of your datacenter, treating hundreds of machines as a single resource pool. This talk introduces the core concepts of Kubernetes, its benefits and its huge ecosystem and gives you an idea of how Google controls parts of their gigantic infrastructure.</description>
+    </item>
+    
+    <item>
+      <title>Talk Improving user and developer experience of the Alertmanager UI</title>
+      <link>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</guid>
+      <description>Alertmanager deduplicates, groups, and routes alerts from Prometheus to all kinds of paging services. With it comes a dated UI which does not live up to the expectations of the users, nor does it attract new contributors.
+From this talk, you will learn how we addressed these issues when building the new UI from scratch. We made it friendlier to users by removing unnecessary domain language noise. In addition we added new power features such as filtering and grouping.</description>
     </item>
     
     <item>

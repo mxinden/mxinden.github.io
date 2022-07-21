@@ -64,28 +64,28 @@
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/</loc>
+    <loc>https://max-inden.de/tags/talk/</loc>
     <lastmod>2022-02-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/state-of-libp2p/</loc>
+    <loc>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</loc>
     <lastmod>2022-02-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/</loc>
+    <loc>https://max-inden.de/post/state-of-libp2p/</loc>
     <lastmod>2022-02-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/intro-to-libp2p/</loc>
+    <loc>https://max-inden.de/post/intro-to-libp2p/</loc>
     <lastmod>2021-07-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -449,42 +449,42 @@
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/optimizing-metric-rendering-in-kube-state-metrics/</loc>
+    <loc>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</loc>
     <lastmod>2019-05-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/self-service-monitoring/</loc>
+    <loc>https://max-inden.de/post/self-service-monitoring/</loc>
     <lastmod>2018-09-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/self-healing-k8s/</loc>
+    <loc>https://max-inden.de/post/self-healing-k8s/</loc>
     <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/end-to-end-monitoring-with-the-prometheus-operator/</loc>
+    <loc>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/introduction-to-k8s/</loc>
+    <loc>https://max-inden.de/post/introduction-to-k8s/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://max-inden.de/talks/improving-user-and-developer-experience-of-the-alertmanager-ui/</loc>
+    <loc>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</loc>
     <lastmod>2017-08-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -791,7 +791,7 @@
   </url>
   
   <url>
-    <loc>https://max-inden.de/misc/</loc>
+    <loc>https://max-inden.de/readings/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

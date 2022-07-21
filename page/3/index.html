@@ -78,10 +78,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/resume">
         <li class="mobile-menu-item">Resume</li>
-      </a><a href="/misc">
-        <li class="mobile-menu-item">Misc</li>
-      </a><a href="/talks">
-        <li class="mobile-menu-item">Talks</li>
+      </a><a href="/readings">
+        <li class="mobile-menu-item">Readings</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archive</li>
       </a><a href="/tags/">
@@ -113,9 +111,7 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/resume">Resume</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/misc">Misc</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/talks">Talks</a>
+        <a class="menu-item-link" href="/readings">Readings</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archive</a>
       </li><li class="menu-item">
@@ -132,6 +128,66 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2021-02-17-new-gpg-key/">New GPG Key</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-02-17 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      I have created a new GPG key replacing my old GPG key. I did not loose access to the old one, nor was it, as far as I am able to tell, ever compromised. As I did with the old key, I will use the new key both for signing my open source work as well as securing my e-mail communication.
+You can find both the old and the new key on all major key servers.
+    </div>
+    <div class="read-more">
+      <a href="/post/2021-02-17-new-gpg-key/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2021-01-26-30th-paper-club/">30th DistSys Reading Group - NTP</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-01-26 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      What better way to start a new year than with a paper discussing how to change time?
+In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place.
+    </div>
+    <div class="read-more">
+      <a href="/post/2021-01-26-30th-paper-club/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2020-09-08-28th-paper-club/">28th DistSys Reading Group - Hotstuff</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-09-08 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
+Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.
+    </div>
+    <div class="read-more">
+      <a href="/post/2020-09-08-28th-paper-club/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2020-06-19-latencies/">Know your latencies</a></h1>
@@ -168,69 +224,6 @@ Write Combining exemplifying the advanced mechanisms one can find in today&rsquo
     </div>
     <div class="read-more">
       <a href="/post/2020-05-18-26th-paper-club/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-04-27-25th-paper-club/">25th DistSys Reading Group - Fair queuing</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-27 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &ldquo;Efficient fair queuing using deficit round-robin&rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
-Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
-Its wide deployment still seen today.
-Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as latency critical flows.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-04-27-25th-paper-club/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-04-06-24th-paper-club/">24th DistSys Reading Group - BBR Congestion-Based Congestion Control</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-06 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
-Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
-We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &ldquo;just works&rdquo; due to congestion control.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-04-06-24th-paper-club/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-04-01-elimination-backoff-stack-performance/">Elimination back-off stack performance</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-01 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
-In this post I will compare my implementation to other stack implementations.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-04-01-elimination-backoff-stack-performance/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
