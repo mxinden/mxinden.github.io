@@ -8,6 +8,62 @@
   </url>
   
   <url>
+    <loc>https://max-inden.de/tags/libp2p/</loc>
+    <lastmod>2022-04-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/</loc>
+    <lastmod>2022-04-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/post/</loc>
+    <lastmod>2022-04-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/</loc>
+    <lastmod>2022-04-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/talk/</loc>
+    <lastmod>2022-04-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</loc>
+    <lastmod>2022-04-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/tech/</loc>
+    <lastmod>2022-04-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://max-inden.de/tags/distributed-systems/</loc>
     <lastmod>2022-03-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -22,50 +78,8 @@
   </url>
   
   <url>
-    <loc>https://max-inden.de/tags/libp2p/</loc>
-    <lastmod>2022-03-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/</loc>
-    <lastmod>2022-03-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://max-inden.de/tags/p2p/</loc>
     <lastmod>2022-03-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/post/</loc>
-    <lastmod>2022-03-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/</loc>
-    <lastmod>2022-03-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/tech/</loc>
-    <lastmod>2022-03-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/talk/</loc>
-    <lastmod>2022-02-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

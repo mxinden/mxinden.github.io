@@ -6,9 +6,29 @@
     <description>Recent content in talk on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/talk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/talk/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Talk Peer-to-peer hole punching without centralized infrastructure</title>
+      <title>Talk &#34;Hole punching with libp2p&#34; @p2p-paris</title>
+      <link>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</link>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</guid>
+      <description>We’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
+Recording</description>
+    </item>
+    
+    <item>
+      <title>Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris</title>
+      <link>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</link>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</guid>
+      <description>We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
+Recording</description>
+    </item>
+    
+    <item>
+      <title>Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -21,7 +41,7 @@ In the first part of the talk we’ll present the basic building blocks of the l
     </item>
     
     <item>
-      <title>Talk State of libp2p</title>
+      <title>Talk &#34;State of libp2p&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/state-of-libp2p/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
       

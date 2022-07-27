@@ -130,6 +130,46 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2020-06-19-latencies/">Know your latencies</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-06-19 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.
+    </div>
+    <div class="read-more">
+      <a href="/post/2020-06-19-latencies/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2020-05-18-26th-paper-club/">26th DistSys Reading Group - Cache coherence</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-18 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
+CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
+Write Combining exemplifying the advanced mechanisms one can find in today&rsquo;s CPUs and how one can make use of them.
+    </div>
+    <div class="read-more">
+      <a href="/post/2020-05-18-26th-paper-club/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2020-04-27-25th-paper-club/">25th DistSys Reading Group - Fair queuing</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-04-27 </span>
@@ -187,47 +227,6 @@ In this post I will compare my implementation to other stack implementations.
     </div>
     <div class="read-more">
       <a href="/post/2020-04-01-elimination-backoff-stack-performance/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-03-28-elimination-backoff-stack/">Elimination back-off stack</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-03-28 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
-How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
-A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-03-28-elimination-backoff-stack/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-03-14-leaving-prometheus-team/">Leaving the Prometheus team</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-03-14 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
-Over the next 2 years and 4 month I worked a lot on Alertmanager, e.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-03-14-leaving-prometheus-team/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
