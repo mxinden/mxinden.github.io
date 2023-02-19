@@ -6,7 +6,28 @@
     <description>Recent content in tech on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Talk &#34;Hole punching in the wild&#34; @FOSDEM</title>
+      <link>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</guid>
+      <description>Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
+At FOSDEM 2022 I presented libp2p&amp;rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.</description>
+    </item>
+    
+    <item>
+      <title>Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM</title>
+      <link>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</guid>
+      <description>I presented an overview on Peer-to-peer Browser Connectivity options in the network devroom at FOSDEM 2023.
+Connecting from the browser to a public server with a valid TLS certificate is easy. But what if the server has a self-signed certificate? What if it isn&amp;rsquo;t public? What if it is another browser?
+This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity.</description>
+    </item>
+    
     <item>
       <title>Talk &#34;Hole punching with libp2p&#34; @p2p-paris</title>
       <link>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</link>

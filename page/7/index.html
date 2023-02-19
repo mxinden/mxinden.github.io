@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
 
 
 <link rel="canonical" href="https://max-inden.de/" />
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -45,7 +45,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-
 <meta itemprop="name" content="Max Inden">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Max Inden"/>
@@ -130,6 +129,45 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/optimizing-metric-rendering-in-kube-state-metrics/">Talk Optimizing Metric Rendering in kube-state-metrics</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-22 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
+This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
+    </div>
+    <div class="read-more">
+      <a href="/post/optimizing-metric-rendering-in-kube-state-metrics/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/self-service-monitoring/">Talk Self-Service Monitoring</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-09-26 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.
+    </div>
+    <div class="read-more">
+      <a href="/post/self-service-monitoring/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/self-healing-k8s/">Talk Self-healing Kubernetes</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2017-10-22 </span>
@@ -188,45 +226,6 @@ The open source project Kubernetes, originating from Google, helps you manage co
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/improving-user-and-developer-experience-of-the-alertmanager-ui/">Talk Improving user and developer experience of the Alertmanager UI</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-08-18 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Alertmanager deduplicates, groups, and routes alerts from Prometheus to all kinds of paging services. With it comes a dated UI which does not live up to the expectations of the users, nor does it attract new contributors.
-From this talk, you will learn how we addressed these issues when building the new UI from scratch. We made it friendlier to users by removing unnecessary domain language noise. In addition we added new power features such as filtering and grouping.
-    </div>
-    <div class="read-more">
-      <a href="/post/improving-user-and-developer-experience-of-the-alertmanager-ui/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-06-11-triathlon/">First Triathlon</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-06-11 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Finished my very first Triathlon today here in Berlin. I survived the swimming way better than I thougt, biking wasn&rsquo;t a big problem, but the 10 k at the end were more of a stumbling then a running.
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-06-11-triathlon/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -268,7 +267,7 @@ From this talk, you will learn how we addressed these issues when building the n
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
   </span>
 </div>
 

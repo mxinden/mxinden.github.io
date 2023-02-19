@@ -24,7 +24,7 @@ This talk covers different optimizations like metric caching and improved text m
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
 
 
 <link rel="canonical" href="https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/" />
@@ -36,7 +36,7 @@ This talk covers different optimizations like metric caching and improved text m
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,7 +47,6 @@ This talk covers different optimizations like metric caching and improved text m
 <meta property="og:url" content="https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-05-22T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-05-22T00:00:00+00:00" />
-
 <meta itemprop="name" content="Talk Optimizing Metric Rendering in kube-state-metrics">
 <meta itemprop="description" content="Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
 This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation."><meta itemprop="datePublished" content="2019-05-22T00:00:00+00:00" />
@@ -234,7 +233,7 @@ code hot path and optimizing memory allocations during response generation.</p>
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
   </span>
 </div>
 

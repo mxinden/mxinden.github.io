@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
 
 
 <link rel="canonical" href="https://max-inden.de/" />
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -45,7 +45,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-
 <meta itemprop="name" content="Max Inden">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Max Inden"/>
@@ -130,6 +129,46 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2021-01-26-30th-paper-club/">30th DistSys Reading Group - NTP</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-01-26 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      What better way to start a new year than with a paper discussing how to change time?
+In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place.
+    </div>
+    <div class="read-more">
+      <a href="/post/2021-01-26-30th-paper-club/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2020-09-08-28th-paper-club/">28th DistSys Reading Group - Hotstuff</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-09-08 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
+Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.
+    </div>
+    <div class="read-more">
+      <a href="/post/2020-09-08-28th-paper-club/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2020-06-19-latencies/">Know your latencies</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-06-19 </span>
@@ -190,47 +229,6 @@ Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as 
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-04-06-24th-paper-club/">24th DistSys Reading Group - BBR Congestion-Based Congestion Control</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-06 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
-Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
-We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &ldquo;just works&rdquo; due to congestion control.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-04-06-24th-paper-club/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-04-01-elimination-backoff-stack-performance/">Elimination back-off stack performance</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-01 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
-In this post I will compare my implementation to other stack implementations.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-04-01-elimination-backoff-stack-performance/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -272,7 +270,7 @@ In this post I will compare my implementation to other stack implementations.
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
   </span>
 </div>
 

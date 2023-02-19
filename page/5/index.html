@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
 
 
 <link rel="canonical" href="https://max-inden.de/" />
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -45,7 +45,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://max-inden.de/" />
-
 <meta itemprop="name" content="Max Inden">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Max Inden"/>
@@ -130,6 +129,47 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2020-04-06-24th-paper-club/">24th DistSys Reading Group - BBR Congestion-Based Congestion Control</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-04-06 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
+Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
+We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &ldquo;just works&rdquo; due to congestion control.
+    </div>
+    <div class="read-more">
+      <a href="/post/2020-04-06-24th-paper-club/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2020-04-01-elimination-backoff-stack-performance/">Elimination back-off stack performance</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-04-01 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+In this post I will compare my implementation to other stack implementations.
+    </div>
+    <div class="read-more">
+      <a href="/post/2020-04-01-elimination-backoff-stack-performance/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2020-03-28-elimination-backoff-stack/">Elimination back-off stack</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-03-28 </span>
@@ -190,46 +230,6 @@ Chapter 13 &ldquo;TCP Reno and Congestion Management&rdquo; from the comprehensi
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-01-28-22nd-paper-club/">22nd Distributed Systems Paper Club</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-01-28 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      In the 22nd session we took a look at io_uring - a new Kernel interface for asynchronous I/O. Tyler, who is currently implementing an io_uring library in Rust [4] for his database sled [7] guided us through the concepts as well as a bunch of source code.
-Tyler started off introducing the status quo of I/O interfaces within the Linux Kernel like read, pread and preadv, jumped over to asynchronous I/O like aio and eventually helped us develop a sense of what the perfect asynchronous I/O interface of the future could look like.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-01-28-22nd-paper-club/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-01-24-21st-paper-club/">21st Distributed Systems Paper Club</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-01-24 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      We started the new year with a session on epidemic / gossip protocols. To decide what to read I compiled the following list of papers that I either enjoyed reading in the past, or that were recommended to me. The Swim (Scalable failure detection and membership protocol) paper won the poll.
-Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&rdquo; Proceedings International Conference on Dependable Systems and Networks.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-01-24-21st-paper-club/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -271,7 +271,7 @@ Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &ldquo;Swim: Scalable weak
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
   </span>
 </div>
 

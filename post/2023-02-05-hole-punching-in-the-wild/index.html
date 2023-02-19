@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early - Max Inden</title>
+  <title>Talk &#34;Hole punching in the wild&#34; @FOSDEM - Max Inden</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Max Inden" /><meta name="description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843" />
+<meta name="author" content="Max Inden" /><meta name="description" content="Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
+At FOSDEM 2022 I presented libp2p&amp;rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe." />
 
 
 
@@ -27,7 +27,7 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
 <meta name="generator" content="Hugo 0.110.0 with theme even" />
 
 
-<link rel="canonical" href="https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/" />
+<link rel="canonical" href="https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,22 +40,22 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Optimizing Yamux Flow Control - Sending Window Update Frames Early" />
-<meta property="og:description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843" />
+<meta property="og:title" content="Talk &#34;Hole punching in the wild&#34; @FOSDEM" />
+<meta property="og:description" content="Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
+At FOSDEM 2022 I presented libp2p&rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-03-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-03-07T00:00:00+00:00" />
-<meta itemprop="name" content="Optimizing Yamux Flow Control - Sending Window Update Frames Early">
-<meta itemprop="description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843"><meta itemprop="datePublished" content="2021-03-07T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-03-07T00:00:00+00:00" />
-<meta itemprop="wordCount" content="34">
-<meta itemprop="keywords" content="tech,networking,TCP,congestion-control," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Optimizing Yamux Flow Control - Sending Window Update Frames Early"/>
-<meta name="twitter:description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843"/>
+<meta property="og:url" content="https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-02-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-05T00:00:00+00:00" />
+<meta itemprop="name" content="Talk &#34;Hole punching in the wild&#34; @FOSDEM">
+<meta itemprop="description" content="Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
+At FOSDEM 2022 I presented libp2p&rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe."><meta itemprop="datePublished" content="2023-02-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-02-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="163">
+<meta itemprop="keywords" content="tech,talk,libp2p," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Talk &#34;Hole punching in the wild&#34; @FOSDEM"/>
+<meta name="twitter:description" content="Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
+At FOSDEM 2022 I presented libp2p&rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,10 +136,10 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Optimizing Yamux Flow Control - Sending Window Update Frames Early</h1>
+      <h1 class="post-title">Talk &#34;Hole punching in the wild&#34; @FOSDEM</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2021-03-07 </span>
+        <span class="post-time"> 2023-02-05 </span>
         
         
       </div>
@@ -152,10 +152,13 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
   </div>
 </div>
     <div class="post-content">
-      <p>Below is a summary of our efforts to optimize flow control in the <a href="https://github.com/paritytech/yamux">Rust Yamux
-implementation</a>. While not a novel
-approach, I still find the end result worth sharing thus my forum post.</p>
-<p><a href="https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843">https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</a></p>
+      <p>Dennis and I presented <em>Hole punching in the wild</em>, <em>learnings from running libp2p hole punching in production, measured from vantage points across the globe</em> in the network devroom at FOSDEM 2023.</p>
+<blockquote>
+<p>At FOSDEM 2022 I presented libp2p&rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.</p>
+<p>In this talk I will give an overview of the largest hack of the internet (aka. hole punching), dive into learnings running it on IPFS (~50_000 nodes) and finally present the data collected through our measurement campaign.</p>
+<p>If you always wondered how hole punching works, how much more successful UDP is over TCP, whether IPv4 or v6 makes a difference, which ISP is most friendly to p2p and how to overcome symetric NATs, join for the talk!</p>
+</blockquote>
+<p><a href="https://fosdem.org/2023/schedule/event/network_hole_punching_in_the_wild/">Recording &amp; slides</a></p>
 
     </div>
 
@@ -167,7 +170,7 @@ approach, I still find the end result worth sharing thus my forum post.</p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2021-03-07
+        2023-02-05
         
     </span>
   </p>
@@ -177,18 +180,13 @@ approach, I still find the end result worth sharing thus my forum post.</p>
 <footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/tech/">tech</a>
-          <a href="/tags/networking/">networking</a>
-          <a href="/tags/tcp/">TCP</a>
-          <a href="/tags/congestion-control/">congestion-control</a>
+          <a href="/tags/talk/">talk</a>
+          <a href="/tags/libp2p/">libp2p</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/2021-03-18-32nd-reading-group/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">32nd DistSys Reading Group - BGP 2</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/2021-02-24-31st-paper-club/">
-            <span class="next-text nav-default">31st DistSys Reading Group - BGP 1</span>
+        
+        <a class="next" href="/post/2023-02-05-peer-to-peer-browser-connectivity/">
+            <span class="next-text nav-default">Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

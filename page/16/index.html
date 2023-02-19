@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early - Max Inden</title>
+  <title>Max Inden</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Max Inden" /><meta name="description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843" />
+<meta name="author" content="Max Inden" />
 
 
 
@@ -27,7 +26,9 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
 <meta name="generator" content="Hugo 0.110.0 with theme even" />
 
 
-<link rel="canonical" href="https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/" />
+<link rel="canonical" href="https://max-inden.de/" />
+  <link href="https://max-inden.de/index.xml" rel="alternate" type="application/rss+xml" title="Max Inden" />
+  <link href="https://max-inden.de/index.xml" rel="feed" type="application/rss+xml" title="Max Inden" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,22 +41,14 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Optimizing Yamux Flow Control - Sending Window Update Frames Early" />
-<meta property="og:description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-03-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-03-07T00:00:00+00:00" />
-<meta itemprop="name" content="Optimizing Yamux Flow Control - Sending Window Update Frames Early">
-<meta itemprop="description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843"><meta itemprop="datePublished" content="2021-03-07T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-03-07T00:00:00+00:00" />
-<meta itemprop="wordCount" content="34">
-<meta itemprop="keywords" content="tech,networking,TCP,congestion-control," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Optimizing Yamux Flow Control - Sending Window Update Frames Early"/>
-<meta name="twitter:description" content="Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843"/>
+<meta property="og:title" content="Max Inden" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://max-inden.de/" />
+<meta itemprop="name" content="Max Inden">
+<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Max Inden"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,74 +126,63 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">Optimizing Yamux Flow Control - Sending Window Update Frames Early</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2021-03-07 </span>
-        
-        
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>Below is a summary of our efforts to optimize flow control in the <a href="https://github.com/paritytech/yamux">Rust Yamux
-implementation</a>. While not a novel
-approach, I still find the end result worth sharing thus my forum post.</p>
-<p><a href="https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843">https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</a></p>
-
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2016-10-06-flying-to-san-francisco/">Flying to San Francisco</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-10-06 </span>
+      
     </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Düsseldorf &mdash;-&gt; London &ndash;A380&ndash;&gt; San Francisco
+    </div>
+    <div class="read-more">
+      <a href="/post/2016-10-06-flying-to-san-francisco/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Max Inden</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">
-        2021-03-07
-        
-    </span>
-  </p>
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/readings/">Readings</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 0001-01-01 </span>
+      
+    </div>
+  </header>
   
+  <div class="post-content">
+    <div class="post-summary">
+      General Books
+Gregg, B. (2013). Systems performance: enterprise and the cloud. Pearson Education.
+Tanenbaum, A. S., &amp; Van Steen, M. (2017). Distributed systems: principles and paradigms.
+Love, R. (2005). Linux Kernel Development (Novell Press). Novell Press.
+Beyer, B., Jones, C., Petoff, J., &amp; Murphy, N. R. (2016). Site Reliability Engineering: How Google Runs Production Systems. &quot; O&rsquo;Reilly Media, Inc.&quot;.
+Consensus Papers
+Howard, Heidi. (2018). Distributed consensus revised.
+Yin, Maofan, et al.
+    </div>
+    <div class="read-more">
+      <a href="/readings/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    </section>
   
-</div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/tech/">tech</a>
-          <a href="/tags/networking/">networking</a>
-          <a href="/tags/tcp/">TCP</a>
-          <a href="/tags/congestion-control/">congestion-control</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2021-03-18-32nd-reading-group/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">32nd DistSys Reading Group - BGP 2</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/2021-02-24-31st-paper-club/">
-            <span class="next-text nav-default">31st DistSys Reading Group - BGP 1</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
+  <nav class="pagination">
+    <a class="prev" href="/page/15/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">Prev</span>
+      </a>
+    
+  </nav>
         </div>
         
-
-  
-
-  
 
       </div>
     </main>
