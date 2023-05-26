@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Talk &#34; DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp</title>
+      <link>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</guid>
+      <description>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
+Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&amp;rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&amp;rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&amp;rsquo;ts 1 2 3 4 5 6 // Decode the length prefix of a message.</description>
+    </item>
+    
+    <item>
       <title>Talk &#34;Hole punching in the wild&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
