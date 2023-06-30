@@ -6,7 +6,7 @@
     <description>Recent content on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://max-inden.de/about/</link>
@@ -15,6 +15,16 @@
       <guid>https://max-inden.de/about/</guid>
       <description>Hi there, I am Max, a software developer interested in distributed systems, type theory and consensus. Welcome to my little island on this crazy thing called The Internet.
 You might enjoy browsing through my list of resources I consider worth sharing, get some inspiration from the numerous summaries of past reading group sessions that I organize or simply scroll through my resume to see what I am up to lately.</description>
+    </item>
+    
+    <item>
+      <title>Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing</title>
+      <link>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</guid>
+      <description>How you can connect everything (browsers &amp;amp; non-browsers), everywhere (public or private), all at once (using libp2p).
+Slides</description>
     </item>
     
     <item>

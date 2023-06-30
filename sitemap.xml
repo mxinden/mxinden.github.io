@@ -9,35 +9,49 @@
   
   <url>
     <loc>https://max-inden.de/tags/libp2p/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://max-inden.de/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://max-inden.de/post/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://max-inden.de/tags/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://max-inden.de/tags/talk/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</loc>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://max-inden.de/tags/tech/</loc>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -58,13 +72,6 @@
   
   <url>
     <loc>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://max-inden.de/tags/tech/</loc>
     <lastmod>2023-02-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
