@@ -795,10 +795,8 @@ Yin, Maofan, et al.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/resume/</guid>
-      <description>Experience Software Engineer at Protocol Labs | March 2021 - Now
-Steward of the libp2p project and maintainer of the Rust libp2p implementation.
-Software Engineer at Parity | July 2019 - February 2021
-Maintaining Rust peer-to-peer networking library libp2p and its usage within the Blockchain framework Substrate. Involved in the networking logic of the main byzantine fault tolerant finality gadget finality-grandpa. Filling role of hiring manager for team building automated testing infrastructure.</description>
+      <description>Experience Software Engineer at Protocol Labs March 2021 - December 2023
+co-lead of the open source peer-to-peer networking library libp2p and technical lead of the Rust libp2p sub-project with 4 direct reports managing open source project with &amp;gt;250 contributors design, specification and implementation of network protocols e.g. decentralized hole punching without the reliance on central infrastructure, a distributed hash table based on the Kademlia research paper, security handshakes and multiplexing on top of various web protocols performance engineering e.</description>
     </item>
     
   </channel>
