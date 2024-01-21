@@ -13,8 +13,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://max-inden.de/about/</guid>
-      <description>Hi there, I am Max, a software developer interested in distributed systems, type theory and consensus. Welcome to my little island on this crazy thing called The Internet.
-You might enjoy browsing through my list of resources I consider worth sharing, get some inspiration from the numerous summaries of past reading group sessions that I organize or simply scroll through my resume to see what I am up to lately.</description>
+      <description>I am Max, a strange loop interested in distributed systems, type theory and consensus. Welcome to my little island on this crazy thing called The Internet.
+You might enjoy browsing through my list of resources I consider worth sharing, get some inspiration from the numerous summaries of past reading group sessions that I organize or simply scroll through my resume to see what I am up to lately.
+You can best reach me via e-mail: mail@max-inden.</description>
     </item>
     
     <item>
@@ -781,12 +782,10 @@ From this talk, you will learn how we addressed these issues when building the n
       <guid>https://max-inden.de/readings/</guid>
       <description>General Books
 Gregg, B. (2013). Systems performance: enterprise and the cloud. Pearson Education.
-Tanenbaum, A. S., &amp;amp; Van Steen, M. (2017). Distributed systems: principles and paradigms.
-Love, R. (2005). Linux Kernel Development (Novell Press). Novell Press.
 Beyer, B., Jones, C., Petoff, J., &amp;amp; Murphy, N. R. (2016). Site Reliability Engineering: How Google Runs Production Systems. &amp;quot; O&amp;rsquo;Reilly Media, Inc.&amp;quot;.
-Consensus Papers
-Howard, Heidi. (2018). Distributed consensus revised.
-Yin, Maofan, et al.</description>
+Ousterhout, John K. A philosophy of software design. Vol. 98. Palo Alto, CA, USA: Yaknyam Press, 2018.
+Tanenbaum, A. S., &amp;amp; Van Steen, M. (2017). Distributed systems: principles and paradigms.
+Love, R. (2005). Linux Kernel Development (Novell Press).</description>
     </item>
     
     <item>
