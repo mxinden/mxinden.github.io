@@ -130,6 +130,25 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2020-06-19-latencies/">Know your latencies</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-06-19 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.
+    </div>
+    <div class="read-more">
+      <a href="/post/2020-06-19-latencies/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2020-05-18-26th-paper-club/">26th DistSys Reading Group - Cache coherence</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-05-18 </span>
@@ -208,27 +227,6 @@ In this post I will compare my implementation to other stack implementations.
     </div>
     <div class="read-more">
       <a href="/post/2020-04-01-elimination-backoff-stack-performance/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2020-03-28-elimination-backoff-stack/">Elimination back-off stack</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-03-28 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
-How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
-A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.
-    </div>
-    <div class="read-more">
-      <a href="/post/2020-03-28-elimination-backoff-stack/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>

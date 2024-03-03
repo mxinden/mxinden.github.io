@@ -6,7 +6,18 @@
     <description>Recent content in libp2p on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/libp2p/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/libp2p/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Stepping down as a (rust-) libp2p maintainer</title>
+      <link>https://max-inden.de/post/2024-02-29-stepping-down/</link>
+      <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-inden.de/post/2024-02-29-stepping-down/</guid>
+      <description>I don&amp;rsquo;t see myself making major contributions to (rust-) libp2p in the near future and thus I am stepping down as a maintainer.
+As announced before, I have left Protocol Labs in December 2023. After a 2 month re-orientation break, I have decided to move on entirely.
+My first commit was 5y ago, a small bug fix in our address handling. Since then lots happened. A couple of milestones I was involved in:</description>
+    </item>
+    
     <item>
       <title>Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing</title>
       <link>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</link>
