@@ -1,110 +1,92 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Max Inden</title>
     <link>https://max-inden.de/</link>
     <description>Recent content on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://max-inden.de/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/about/</guid>
-      <description>I am Max, a strange loop interested in distributed systems, type theory and consensus. Welcome to my little island on this crazy thing called The Internet.
+      <description>I am Max, a strange loop interested in networking, distributed systems and type theory. Welcome to my little island on this astounding thing called The Internet.
 You might enjoy browsing through my list of resources I consider worth sharing, get some inspiration from the numerous summaries of past reading group sessions that I organize or simply scroll through my resume to see what I am up to lately.
 You can best reach me via e-mail: mail@max-inden.</description>
     </item>
-    
     <item>
       <title>Stepping down as a (rust-) libp2p maintainer</title>
       <link>https://max-inden.de/post/2024-02-29-stepping-down/</link>
       <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2024-02-29-stepping-down/</guid>
       <description>I don&amp;rsquo;t see myself making major contributions to (rust-) libp2p in the near future and thus I am stepping down as a maintainer.
 As announced before, I have left Protocol Labs in December 2023. After a 2 month re-orientation break, I have decided to move on entirely.
 My first commit was 5y ago, a small bug fix in our address handling. Since then lots happened. A couple of milestones I was involved in:</description>
     </item>
-    
     <item>
       <title>Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing</title>
       <link>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</guid>
       <description>How you can connect everything (browsers &amp;amp; non-browsers), everywhere (public or private), all at once (using libp2p).
 Slides</description>
     </item>
-    
     <item>
       <title>Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp</title>
       <link>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</guid>
       <description>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&amp;rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&amp;rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&amp;rsquo;ts 1 2 3 4 5 6 // Decode the length prefix of a message.</description>
+Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&amp;rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&amp;rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&amp;rsquo;ts // Decode the length prefix of a message.</description>
     </item>
-    
     <item>
       <title>Talk &#34;Hole punching in the wild&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</guid>
       <description>Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
 At FOSDEM 2022 I presented libp2p&amp;rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.</description>
     </item>
-    
     <item>
       <title>Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</guid>
       <description>I presented an overview on Peer-to-peer Browser Connectivity options in the network devroom at FOSDEM 2023.
 Connecting from the browser to a public server with a valid TLS certificate is easy. But what if the server has a self-signed certificate? What if it isn&amp;rsquo;t public? What if it is another browser?
 This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity.</description>
     </item>
-    
     <item>
       <title>Talk &#34;Hole punching with libp2p&#34; @p2p-paris</title>
       <link>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</link>
       <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</guid>
       <description>We’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
 Recording</description>
     </item>
-    
     <item>
       <title>Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris</title>
       <link>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</link>
       <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</guid>
       <description>We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
 Recording</description>
     </item>
-    
     <item>
       <title>Hole punching in libp2p</title>
       <link>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</guid>
       <description>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
 Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/</description>
     </item>
-    
     <item>
       <title>Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</guid>
       <description>Gave a talk on hole punching in libp2p at FOSDEM 2022.
 Peer-to-peer hole punching without centralized infrastructure
@@ -112,12 +94,10 @@ How libp2p can traverse NATs and firewalls without coordination through central 
 libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
 In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together.</description>
     </item>
-    
     <item>
       <title>Talk &#34;State of libp2p&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/state-of-libp2p/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/state-of-libp2p/</guid>
       <description>Gave a talk on the state of libp2p at FOSDEM 2022.
 State of libp2p
@@ -125,34 +105,28 @@ Status quo and future roadmap of the peer-to-peer networking library libp2p.
 libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
 We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.</description>
     </item>
-    
     <item>
       <title>Talk Intro to libp2p</title>
       <link>https://max-inden.de/post/intro-to-libp2p/</link>
       <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/intro-to-libp2p/</guid>
       <description>On Tuesday 20th of July I gave a talk introducing libp2p, a modular network stack.
 Recording Slides </description>
     </item>
-    
     <item>
       <title>35th DistSys Reading Group - Nym</title>
       <link>https://max-inden.de/post/2021-06-29-35th-reading-group/</link>
       <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-06-29-35th-reading-group/</guid>
       <description>In our previous session we looked into Mixnets, more specifically Loopix. With this session we stayed in the space, talking about a network adopting many concepts from Loopix, namely Nym.
 As a preparation, we read section 1 through 4 of the Nym whitepaper.
 Introduction Network-level surveillance The Nym Network Design Mixnet for Network-Level Privacy Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. &amp;ldquo;The Nym Network.&amp;rdquo; (2021).
 https://nymtech.net/nym-whitepaper.pdf</description>
     </item>
-    
     <item>
       <title>34th DistSys Reading Group - Mixnets</title>
       <link>https://max-inden.de/post/2021-05-10-34th-reading-group/</link>
       <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-05-10-34th-reading-group/</guid>
       <description>34th session was on Mixnets as lots of people suggested in the past. As a preparation we read the Loopix paper.
 Piotrowska, Ania M., et al. &amp;ldquo;The loopix anonymity system.&amp;rdquo; 26th {USENIX} Security Symposium ({USENIX} Security 17). 2017.
@@ -160,636 +134,502 @@ https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska
 The corresponding talk by Ania Piotrowska is very much worth watching as an additional resource.
 https://www.youtube.com/watch?v=R-yEqLX_UvI</description>
     </item>
-    
     <item>
       <title>33rd DistSys Reading Group - BGP 3</title>
       <link>https://max-inden.de/post/2021-04-12-33rd-reading-group/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-04-12-33rd-reading-group/</guid>
       <description>In our third BGP session we focused on BGP security, more specifically we discussed how to perform hijack and interception attacks using BGP. The primary paper of the session was:
 Birge-Lee, Henry, et al. &amp;ldquo;Sico: Surgical interception attacks by manipulating bgp communities.&amp;rdquo; Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security. 2019.
 A good introduction to RPKI can be found here.</description>
     </item>
-    
     <item>
       <title>32nd DistSys Reading Group - BGP 2</title>
       <link>https://max-inden.de/post/2021-03-18-32nd-reading-group/</link>
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-03-18-32nd-reading-group/</guid>
       <description>After our first BGP session, introducing the protocol based on the convergence problem of BGP, our second session on BGP covered route propagation and tuning. The primary paper was:
 Gray, Caitlin, et al. &amp;ldquo;BGP Beacons, Network Tomography, and Bayesian Computation to Locate Route Flap Damping.&amp;rdquo; Proceedings of the ACM Internet Measurement Conference. 2020.</description>
     </item>
-    
     <item>
       <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early</title>
       <link>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</guid>
       <description>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
 https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</description>
     </item>
-    
     <item>
       <title>31st DistSys Reading Group - BGP 1</title>
       <link>https://max-inden.de/post/2021-02-24-31st-paper-club/</link>
       <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-02-24-31st-paper-club/</guid>
       <description>We decided to turn our interest to BGP which we will devote 3 sessions to. In today&amp;rsquo;s session - the first one - we introduced BGP, looked at the convergence problem, as well as the solution suggested in the paper below.
 Gao, Lixin, and Jennifer Rexford. &amp;ldquo;Stable Internet routing without global coordination.&amp;rdquo; IEEE/ACM Transactions on networking 9.6 (2001): 681-692.
 To play around with BGP as well as general Internet routing:</description>
     </item>
-    
     <item>
       <title>New GPG Key</title>
       <link>https://max-inden.de/post/2021-02-17-new-gpg-key/</link>
       <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-02-17-new-gpg-key/</guid>
       <description>I have created a new GPG key replacing my old GPG key. I did not loose access to the old one, nor was it, as far as I am able to tell, ever compromised. As I did with the old key, I will use the new key both for signing my open source work as well as securing my e-mail communication.
 You can find both the old and the new key on all major key servers.</description>
     </item>
-    
     <item>
       <title>30th DistSys Reading Group - NTP</title>
       <link>https://max-inden.de/post/2021-01-26-30th-paper-club/</link>
       <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2021-01-26-30th-paper-club/</guid>
       <description>What better way to start a new year than with a paper discussing how to change time?
 In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place.</description>
     </item>
-    
     <item>
       <title>28th DistSys Reading Group - Hotstuff</title>
       <link>https://max-inden.de/post/2020-09-08-28th-paper-club/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-09-08-28th-paper-club/</guid>
       <description>With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
 Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.</description>
     </item>
-    
     <item>
       <title>Know your latencies</title>
       <link>https://max-inden.de/post/2020-06-19-latencies/</link>
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-06-19-latencies/</guid>
       <description>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.</description>
     </item>
-    
     <item>
       <title>26th DistSys Reading Group - Cache coherence</title>
       <link>https://max-inden.de/post/2020-05-18-26th-paper-club/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-05-18-26th-paper-club/</guid>
       <description>We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
 CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
 Write Combining exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one can make use of them.</description>
     </item>
-    
     <item>
       <title>25th DistSys Reading Group - Fair queuing</title>
       <link>https://max-inden.de/post/2020-04-27-25th-paper-club/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-04-27-25th-paper-club/</guid>
       <description>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &amp;ldquo;Efficient fair queuing using deficit round-robin&amp;rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
 Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
 Its wide deployment still seen today.
 Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as latency critical flows.</description>
     </item>
-    
     <item>
       <title>24th DistSys Reading Group - BBR Congestion-Based Congestion Control</title>
       <link>https://max-inden.de/post/2020-04-06-24th-paper-club/</link>
       <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-04-06-24th-paper-club/</guid>
       <description>After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
 Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
 We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &amp;ldquo;just works&amp;rdquo; due to congestion control.</description>
     </item>
-    
     <item>
       <title>Elimination back-off stack performance</title>
       <link>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</guid>
       <description>I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
 In this post I will compare my implementation to other stack implementations.</description>
     </item>
-    
     <item>
       <title>Elimination back-off stack</title>
       <link>https://max-inden.de/post/2020-03-28-elimination-backoff-stack/</link>
       <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-03-28-elimination-backoff-stack/</guid>
       <description>Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
 How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&amp;rsquo;s dive into it.
 A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.</description>
     </item>
-    
     <item>
       <title>Leaving the Prometheus team</title>
       <link>https://max-inden.de/post/2020-03-14-leaving-prometheus-team/</link>
       <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-03-14-leaving-prometheus-team/</guid>
       <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
 Over the next 2 years and 4 month I worked a lot on Alertmanager, e.</description>
     </item>
-    
     <item>
       <title>23rd Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2020-02-18-23rd-paper-club/</link>
       <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-02-18-23rd-paper-club/</guid>
       <description>At the end of the previous session one of us suggested to dive into congestion control algorithms. This has found a greater echo, thus the 23rd session covered congestion control algorithms in general and TCP&amp;rsquo;s Reno as well as TCP&amp;rsquo;s Tahoe in particular.
 This weeks reading was:
 Chapter 13 &amp;ldquo;TCP Reno and Congestion Management&amp;rdquo; from the comprehensive online book &amp;ldquo;An Introduction to Computer Networks&amp;rdquo; [1] from the Loyola University Chicago.</description>
     </item>
-    
     <item>
       <title>22nd Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2020-01-28-22nd-paper-club/</link>
       <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-01-28-22nd-paper-club/</guid>
       <description>In the 22nd session we took a look at io_uring - a new Kernel interface for asynchronous I/O. Tyler, who is currently implementing an io_uring library in Rust [4] for his database sled [7] guided us through the concepts as well as a bunch of source code.
 Tyler started off introducing the status quo of I/O interfaces within the Linux Kernel like read, pread and preadv, jumped over to asynchronous I/O like aio and eventually helped us develop a sense of what the perfect asynchronous I/O interface of the future could look like.</description>
     </item>
-    
     <item>
       <title>21st Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2020-01-24-21st-paper-club/</link>
       <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-01-24-21st-paper-club/</guid>
       <description>We started the new year with a session on epidemic / gossip protocols. To decide what to read I compiled the following list of papers that I either enjoyed reading in the past, or that were recommended to me. The Swim (Scalable failure detection and membership protocol) paper won the poll.
 Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&amp;rdquo; Proceedings International Conference on Dependable Systems and Networks.</description>
     </item>
-    
     <item>
       <title>20th Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2019-11-28-20th-paper-club/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2019-11-28-20th-paper-club/</guid>
       <description>Last Tuesday we meet again to discuss different attacks and possible countermeasures for distributed hash tables. More in particular we looked at Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on the Ethereum network [2], a novel approach of hiding its own connection buckets as well as using an existing social graph as a network topology in the Whanau paper[3], security extensions to the Chord DHT [4], as well as a larger study of different security techniques for DHTs [5].</description>
     </item>
-    
     <item>
       <title>19th Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2019-10-27-19th-paper-club/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2019-10-27-19th-paper-club/</guid>
       <description>I have been organizing a distributed systems paper reading group in Berlin for the last year. We meet every other week discussing a paper in the distributed systems space. This could be anything from Chandy–Lamport&amp;rsquo;s algorithm for global distributed snapshots [1] to things like conflict free replicated datatypes [2]. The event is open for anyone interested. I only ask people to come prepared.
 In the last meeting (19th) we covered distributed hash tables.</description>
     </item>
-    
     <item>
       <title>Metric driven performance optimization</title>
       <link>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</guid>
       <description>Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
     </item>
-    
     <item>
       <title>Talk Optimizing Metric Rendering in kube-state-metrics</title>
       <link>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</link>
       <pubDate>Wed, 22 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</guid>
       <description>Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
 This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.</description>
     </item>
-    
     <item>
       <title>Talk Self-Service Monitoring</title>
       <link>https://max-inden.de/post/self-service-monitoring/</link>
       <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/self-service-monitoring/</guid>
       <description>Monitoring plays a crucial role in a microservice architecture. Restricting the management and configuration of the monitoring stack to the operations team results in workflow bottlenecks. Instead one could provide a self-service monitoring platform, enabling each team to easily setup monitoring for their applications and customize it to their needs. This gives each team the ability to deeply introspect their application, benchmark new features and alert on failures on their own.</description>
     </item>
-    
     <item>
       <title>Talk Self-healing Kubernetes</title>
       <link>https://max-inden.de/post/self-healing-k8s/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/self-healing-k8s/</guid>
       <description>What If Component xxx Dies? Introducing Self-Healing Kubernetes
 Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
 This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>
     </item>
-    
     <item>
       <title>Talk End-to-end monitoring with the Prometheus Operator</title>
       <link>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</link>
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</guid>
       <description>Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus ensures that Kubernetes stays healthy. Prometheus is a stateful application, so operating it in a cloud native environment can be a challenging task. The Prometheus Operator makes running highly available Prometheus clusters, and even an entire end to end monitoring pipeline, easily manageable. Max will explain the functionality of the Prometheus Operator and describe a desirable end-to-end monitoring stack, including alerts and dashboards.</description>
     </item>
-    
     <item>
       <title>Talk Intro to Kubernetes</title>
       <link>https://max-inden.de/post/introduction-to-k8s/</link>
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/introduction-to-k8s/</guid>
       <description>Distributing and deploying software inside (Docker-) containers for security, isolation and ease of use is the new big thing. But once you got all your services nicely wrapped - who takes care of all these containers?
 The open source project Kubernetes, originating from Google, helps you manage containerized applications, as the operating system of your datacenter, treating hundreds of machines as a single resource pool. This talk introduces the core concepts of Kubernetes, its benefits and its huge ecosystem and gives you an idea of how Google controls parts of their gigantic infrastructure.</description>
     </item>
-    
     <item>
       <title>Talk Improving user and developer experience of the Alertmanager UI</title>
       <link>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</link>
       <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</guid>
       <description>Alertmanager deduplicates, groups, and routes alerts from Prometheus to all kinds of paging services. With it comes a dated UI which does not live up to the expectations of the users, nor does it attract new contributors.
 From this talk, you will learn how we addressed these issues when building the new UI from scratch. We made it friendlier to users by removing unnecessary domain language noise. In addition we added new power features such as filtering and grouping.</description>
     </item>
-    
     <item>
       <title>First Triathlon</title>
       <link>https://max-inden.de/post/2017-06-11-triathlon/</link>
       <pubDate>Sun, 11 Jun 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2017-06-11-triathlon/</guid>
       <description>Finished my very first Triathlon today here in Berlin. I survived the swimming way better than I thougt, biking wasn&amp;rsquo;t a big problem, but the 10 k at the end were more of a stumbling then a running.</description>
     </item>
-    
     <item>
       <title>Angels Island</title>
       <link>https://max-inden.de/post/2017-02-12-angels-island/</link>
       <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2017-02-12-angels-island/</guid>
       <description>Sunday five mile hike around Angels Island. Great to get out of the city from time to time.</description>
     </item>
-    
     <item>
       <title>Quick run through SF</title>
       <link>https://max-inden.de/post/2017-02-11-quick-run-through-sf/</link>
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2017-02-11-quick-run-through-sf/</guid>
       <description>My first 16 miles run. Nearly blacked out at the end. Amazing route!</description>
     </item>
-    
     <item>
       <title>Back in Germany</title>
       <link>https://max-inden.de/post/2016-12-17-back-in-germany/</link>
       <pubDate>Sat, 17 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-17-back-in-germany/</guid>
       <description>After two delayed flights, one canceled flight and two lost bags I made it back home to Germany.</description>
     </item>
-    
     <item>
       <title>Back in San Francisco</title>
       <link>https://max-inden.de/post/2016-12-08-back-in-san-francisco/</link>
       <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-08-back-in-san-francisco/</guid>
       <description>Made it back to San Francisco. Crashed on a good friends couch.</description>
     </item>
-    
     <item>
       <title>Flying to Las Vegas</title>
       <link>https://max-inden.de/post/2016-12-06-flying-to-las-vegas/</link>
       <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-06-flying-to-las-vegas/</guid>
       <description>On my way back to San Francisco I made a quick stop in Las Vegas. A friend I met in Austin showed me around. Visited Downtwon, the strip and the Red Rocks.</description>
     </item>
-    
     <item>
       <title>Tourist Tour through Austin</title>
       <link>https://max-inden.de/post/2016-12-04-tourist-tour-through-austin/</link>
       <pubDate>Sun, 04 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-04-tourist-tour-through-austin/</guid>
       <description>I went to the Texas State Capitol, learned a bunch about Texas history gaining independence, joined a local hiking Meetup and looked at the graffiti park.</description>
     </item>
-    
     <item>
       <title>First Yoga Class</title>
       <link>https://max-inden.de/post/2016-12-01-first-yoga-class/</link>
       <pubDate>Thu, 01 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-01-first-yoga-class/</guid>
       <description>20:20 - Hi Max, wanna join Yoga Class tonight? 20:21 - Sure, never tried though. 20:30 - Class starts My first Yoga class. It was extremly exhausting. Definitely doing it again some time.</description>
     </item>
-    
     <item>
       <title>Accomodation at Barton Springs Road</title>
       <link>https://max-inden.de/post/2016-11-30-accomodation-at-barton-springs-road/</link>
       <pubDate>Wed, 30 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-30-accomodation-at-barton-springs-road/</guid>
       <description>I got an AirBnB across the Colorado River fairly close to downtown. My hosts are great. Looking forward to the next days. Surrounded by great restaurants.</description>
     </item>
-    
     <item>
       <title>Flight to Austin</title>
       <link>https://max-inden.de/post/2016-11-28-flight-to-austin/</link>
       <pubDate>Mon, 28 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-28-flight-to-austin/</guid>
       <description>I am going to Austin Texas for the NodeJS Interactive conference. Am looking forward to some great talks both on NodeJS itself and microservice architectures. Flying over night - saving one night of accomodation.</description>
     </item>
-    
     <item>
       <title>Pierce Point</title>
       <link>https://max-inden.de/post/2016-11-27-pierce-point/</link>
       <pubDate>Sun, 27 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-27-pierce-point/</guid>
       <description>Hiking to the Pierce Point. We have seen something that looked like a fox and plenty of Elks. It is a scenic view along the coast.</description>
     </item>
-    
     <item>
       <title>Visiting Berkeley</title>
       <link>https://max-inden.de/post/2016-11-26-visiting-berkeley/</link>
       <pubDate>Sat, 26 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-26-visiting-berkeley/</guid>
       <description>With two friends of mine I wen to Berkeley. We started with downtown Berkeley and then made our way up to the university campus. We hiked all the way up to Lawrence Hall of Science from where we had an amazing view over the entire bay.</description>
     </item>
-    
     <item>
       <title>Thanksgiving</title>
       <link>https://max-inden.de/post/2016-11-24-thanksgiving/</link>
       <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-24-thanksgiving/</guid>
       <description>A very fun friend of mine from Covo with whom I shared a lot of great discussions on coding and code quality in particular invited me over for Thanksgiving. I felt very welcome. We talked a lot about politics. It is super interesting to see an American point of view on it.</description>
     </item>
-    
     <item>
       <title>Alcatraz</title>
       <link>https://max-inden.de/post/2016-11-19-alcatraz/</link>
       <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-19-alcatraz/</guid>
       <description>I booked a tour for Alcatraz. My first time on a boat in the Bay Area. The weather was horrible - setting the perfect mood for visiting a prison.</description>
     </item>
-    
     <item>
       <title>Friday Evening Friendsgiving</title>
       <link>https://max-inden.de/post/2016-11-18-friday-evening-friendsgiving/</link>
       <pubDate>Fri, 18 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-18-friday-evening-friendsgiving/</guid>
       <description>A cowoker / great friend of mine from Covo invited me over for a friendsgiving at his place. Like the day before, great food and a great party in a beautiful house in Potrero Hill.</description>
     </item>
-    
     <item>
       <title>Friendsgiving at Covo</title>
       <link>https://max-inden.de/post/2016-11-17-friendsgiving-at-covo/</link>
       <pubDate>Thu, 17 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-17-friendsgiving-at-covo/</guid>
       <description>The coworking space I currently work at, Covo, arranged a friendsgiving for lunch. Everybody contributed to the dinner. We had plenty of food and a great time. My first friendsgiving.</description>
     </item>
-    
     <item>
       <title>Visiting the Google Campus</title>
       <link>https://max-inden.de/post/2016-11-13-visiting-the-google-campus/</link>
       <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-13-visiting-the-google-campus/</guid>
       <description>There was a conference at the Google campus on Sunday. I really enjoyed the talks. I was especially interested in the topics architecture and artificial intelligence.</description>
     </item>
-    
     <item>
       <title>Golden Gate Bridge</title>
       <link>https://max-inden.de/post/2016-11-12-golden-gate-bridge/</link>
       <pubDate>Sat, 12 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-12-golden-gate-bridge/</guid>
       <description>I woke up reasonably early on Saturday to go to the Golden Gaten Bridge. The bus ride from Ingleside took me an hour. I started my hike in the Presidio park along the west coast. I found some lonely beaches. I felt nothing like being in a city. Afterwards I walked over the Golden Gate Bridge where two friends of mine, Simon and Marc, picked me up. We drove to Muir Beach, Stinson Beach, Tiboron and Sausalito.</description>
     </item>
-    
     <item>
       <title>Finding the Perfect Coworking Space</title>
       <link>https://max-inden.de/post/2016-11-02-finding-the-perfect-coworking-space/</link>
       <pubDate>Wed, 02 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-02-finding-the-perfect-coworking-space/</guid>
       <description>As we are working from San Francisco for the rest of the month, we were looking for a coworking space. Well, &amp;hellip; not just one coworking space, but the coworking space. We started our search on Wednesday with the coworking space, Thursday we looked at NextSpace, Wework and Bespoke In the evening we decided to go with Bespoken until we passed by two more coworking spaces (Covo and Impact Hub) on our way to a restaurant.</description>
     </item>
-    
     <item>
       <title>MongoDB Launchpad</title>
       <link>https://max-inden.de/post/2016-11-01-mongodb-launchpad/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-01-mongodb-launchpad/</guid>
       <description>Been to the MongoDB Launchpad event, a release event for their new version. Sadly it was more of a marketing event than a nerd event. But the location was really nice with a view on the Golden Gate Bridge (Fort Mason 2 Marina Blvd San Francisco, CA).</description>
     </item>
-    
     <item>
       <title>Moving to San Francisco</title>
       <link>https://max-inden.de/post/2016-11-01-moving-to-san-francisco/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-01-moving-to-san-francisco/</guid>
       <description>I moved to San Francisco to the Coliving Club. I will miss Palo Alto.</description>
     </item>
-    
     <item>
       <title>Pub Crawl</title>
       <link>https://max-inden.de/post/2016-10-30-pub-crawl/</link>
       <pubDate>Sun, 30 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-30-pub-crawl/</guid>
       <description>I went out with my roommates again - this time a pub crawl mostly in the city center.</description>
     </item>
-    
     <item>
       <title>Halloween Party or Art Event in San Francisco</title>
       <link>https://max-inden.de/post/2016-10-29-halloween-party-or-art-event-in-san-francisco/</link>
       <pubDate>Sat, 29 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-29-halloween-party-or-art-event-in-san-francisco/</guid>
       <description>We, my roommates and I, went to a crazy Halloween Party atPier 70 in San Francisco, an old industrial complex. The costumes of the other guests were amazing. They seemed to be inspired by the Burning Man festival.</description>
     </item>
-    
     <item>
       <title>JS Meetup in San Francisco</title>
       <link>https://max-inden.de/post/2016-10-27-js-meetup-in-san-francisco/</link>
       <pubDate>Thu, 27 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-27-js-meetup-in-san-francisco/</guid>
       <description>I have been to a JS meetup in San Francisco in the Yelp HQ. It is an impressiv building from 1925 known as the Pacific Bell Building.</description>
     </item>
-    
     <item>
       <title>Rooftop apartment office</title>
       <link>https://max-inden.de/post/2016-10-25-rooftop-apartment-office/</link>
       <pubDate>Tue, 25 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-25-rooftop-apartment-office/</guid>
       <description>Worked in a rooftop apartment today with a view over entire Palo Alto and parts of the bay area. Sadly I can&amp;rsquo;t work from there every day.</description>
     </item>
-    
     <item>
       <title>Hacker House One</title>
       <link>https://max-inden.de/post/2016-10-24-hacker-house-one/</link>
       <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-24-hacker-house-one/</guid>
       <description>My first day at the first Hacker House in Palo Alto. House cleaning is every Tuesday. I arrived on Monday. The people here are amazing. Many startup founders - smart people all over the place. The location, 635 Webster St., Palo Alto, is awesome, right in the center. This makes up for sleeping in a room with six other guys, living in an apartment with 21 guys with two bathrooms.</description>
     </item>
-    
     <item>
       <title>Hearst Castle</title>
       <link>https://max-inden.de/post/2016-10-23-hearst-castle/</link>
       <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-23-hearst-castle/</guid>
       <description>Hearst Castle is a huge Landmark. We did a tour with an amazing tour guide, it was like Mr. Hearst showed us around himself.</description>
     </item>
-    
     <item>
       <title>Los Angeles and Santa Monica</title>
       <link>https://max-inden.de/post/2016-10-22-los-angeles-and-santa-monica/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-22-los-angeles-and-santa-monica/</guid>
       <description>We did a very short walk through Los Angeles and I took a longer walk around Santa Monica and (https://en.wikipedia.org/wiki/Venice,_Los_Angeles)[Venice beach]. I liked the last two a lot. In the next two days I am heading back to the San Francisco bay area.</description>
     </item>
-    
     <item>
       <title>San Diego</title>
       <link>https://max-inden.de/post/2016-10-19-san-diego/</link>
       <pubDate>Wed, 19 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-19-san-diego/</guid>
       <description>We started of at theBalboa Park, walked down to Little Italy, visited the USS Midway aircraft carrier museum ship and walked back to the car through down town. This was my first time on an aircraft carrier, these things are huge.</description>
     </item>
-    
     <item>
       <title>Last Man Standing</title>
       <link>https://max-inden.de/post/2016-10-18-last-man-standing/</link>
       <pubDate>Tue, 18 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-18-last-man-standing/</guid>
       <description>Signed up for audience seats at the sitcom Last Man Standing. We had to arrive at 3 for the show to start at 6. They hired a comedian just to cheer up the audience - a little strange. It is very interesting to see how small the entire set actually is. Most of the times the actors only need 2 tries for one scene - extremly professional.</description>
     </item>
-    
     <item>
       <title>University of California Riverside</title>
       <link>https://max-inden.de/post/2016-10-17-university-of-california-riverside/</link>
       <pubDate>Mon, 17 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-17-university-of-california-riverside/</guid>
       <description>We walked over the campus of the University, ate in the canteen and worked outside at desks with solar powered outlets.</description>
     </item>
-    
     <item>
       <title>Palm Springs</title>
       <link>https://max-inden.de/post/2016-10-16-palm-springs/</link>
       <pubDate>Sun, 16 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-16-palm-springs/</guid>
       <description>First night in the Los Angeles area mostly for the mexican restaurant El Mirasol Cocina Mexicana across the street. There are many huge beautiful villas like little oasis in Palm Springs.</description>
     </item>
-    
     <item>
       <title>Kings Canyon National Park</title>
       <link>https://max-inden.de/post/2016-10-15-kings-canyon-national-park/</link>
       <pubDate>Sat, 15 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-15-kings-canyon-national-park/</guid>
       <description>We did a 10 Miles hike in the Kings Canyon National Park up to the Mist Falls. This has been my favourite National Park so far because of the very untouched nature.</description>
     </item>
-    
     <item>
       <title>Hana Haus</title>
       <link>https://max-inden.de/post/2016-10-13-hana-haus/</link>
       <pubDate>Thu, 13 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-13-hana-haus/</guid>
       <description>During the day we worked in the fancy Hana Haus, a coworking space by SAP. Afterwards we stayed for a Design Thinking Talk at the same place and finished the evening at a steake house close to the Apple offices.</description>
     </item>
-    
     <item>
       <title>Docker HQ</title>
       <link>https://max-inden.de/post/2016-10-12-docker-hq/</link>
       <pubDate>Wed, 12 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-12-docker-hq/</guid>
       <description>We visited the Docker HQ for a meetup.</description>
     </item>
-    
     <item>
       <title>Pinnacles National Park</title>
       <link>https://max-inden.de/post/2016-10-11-pinnacles-national-park/</link>
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-11-pinnacles-national-park/</guid>
       <description>We did two hikes, including a cave and three scary tarantulas.</description>
     </item>
-    
     <item>
       <title>Fleet Week</title>
       <link>https://max-inden.de/post/2016-10-09-fleet-week/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-09-fleet-week/</guid>
       <description>We went to the San Francisco Fleet Week. My first time to see SF downtown during daylight and the Golden Gate Bridge. Perfect weather in a very crowded town.</description>
     </item>
-    
     <item>
       <title>Santa Cruz</title>
       <link>https://max-inden.de/post/2016-10-09-santa-cruz/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-09-santa-cruz/</guid>
       <description>Exploring the beach area with all the surfers, working in a cafe and the hotel.</description>
     </item>
-    
     <item>
       <title>The Computer History Museum</title>
       <link>https://max-inden.de/post/2016-10-07-the-computer-history-museum/</link>
       <pubDate>Fri, 07 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-07-the-computer-history-museum/</guid>
       <description>First thing to do in Silicon Valley- the computer history museum. It is an amazing museum with all the hardware I have ever dreamed of. Showed me how much I don&amp;rsquo;t know about computers, especially anything below logic gates.</description>
     </item>
-    
     <item>
       <title>Flying to San Francisco</title>
       <link>https://max-inden.de/post/2016-10-06-flying-to-san-francisco/</link>
       <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-06-flying-to-san-francisco/</guid>
       <description>Düsseldorf &amp;mdash;-&amp;gt; London &amp;ndash;A380&amp;ndash;&amp;gt; San Francisco</description>
     </item>
-    
     <item>
       <title>Readings</title>
       <link>https://max-inden.de/readings/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/readings/</guid>
       <description>General Books
 Gregg, B. (2013). Systems performance: enterprise and the cloud. Pearson Education.
@@ -798,16 +638,13 @@ Ousterhout, John K. A philosophy of software design. Vol. 98. Palo Alto, CA, USA
 Tanenbaum, A. S., &amp;amp; Van Steen, M. (2017). Distributed systems: principles and paradigms.
 Love, R. (2005). Linux Kernel Development (Novell Press).</description>
     </item>
-    
     <item>
       <title>Resume</title>
       <link>https://max-inden.de/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/resume/</guid>
       <description>Experience Software Engineer at Protocol Labs March 2021 - December 2023
 co-lead of the open source peer-to-peer networking library libp2p and technical lead of its Rust implementation with 3 direct reports and &amp;gt;250 external contributors design, specification and implementation of network protocols e.g.: decentralized hole punching without the reliance on central infrastructure distributed hash table based on the Kademlia research paper security handshakes and multiplexing on top of various web protocols special focus on performance e.</description>
     </item>
-    
   </channel>
 </rss>

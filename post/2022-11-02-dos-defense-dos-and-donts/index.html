@@ -1,178 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp - Max Inden</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html lang="en" dir="auto">
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp | Max Inden</title>
+<meta name="keywords" content="tech, talk, libp2p">
+<meta name="description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
+Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts // Decode the length prefix of a message.">
+<meta name="author" content="Max Inden">
+<link rel="canonical" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://max-inden.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://max-inden.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://max-inden.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://max-inden.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://max-inden.de/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
-<meta name="author" content="Max Inden" /><meta name="description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&amp;rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&amp;rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&amp;rsquo;ts 1 2 3 4 5 6 // Decode the length prefix of a message." />
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-
-
-
-
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
-
-
-<link rel="canonical" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" />
+    </style>
+</noscript><meta property="og:title" content="Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" />
 <meta property="og:description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts 1 2 3 4 5 6 // Decode the length prefix of a message." />
+Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts // Decode the length prefix of a message." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-02-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-05T00:00:00+00:00" />
 
-<meta itemprop="name" content="Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp">
-<meta itemprop="description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts 1 2 3 4 5 6 // Decode the length prefix of a message."><meta itemprop="datePublished" content="2023-02-05T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-02-05T00:00:00+00:00" />
-<meta itemprop="wordCount" content="235">
-<meta itemprop="keywords" content="tech,talk,libp2p," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp"/>
 <meta name="twitter:description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts 1 2 3 4 5 6 // Decode the length prefix of a message."/>
+Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts // Decode the length prefix of a message."/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://max-inden.de/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Talk \"DOS Defense - Do’s and Don’ts\" @IPFS-Camp",
+      "item": "https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Talk \"DOS Defense - Do’s and Don’ts\" @IPFS-Camp",
+  "name": "Talk \u0022DOS Defense - Do’s and Don’ts\u0022 @IPFS-Camp",
+  "description": "I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.\nSlides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do\u0026rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do\u0026rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don\u0026rsquo;ts // Decode the length prefix of a message.",
+  "keywords": [
+    "tech", "talk", "libp2p"
+  ],
+  "articleBody": "I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.\nSlides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do’s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do’s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don’ts // Decode the length prefix of a message. let l = uvi::decode::usize(msg_len_prefix)?; // Allocate a corresponding buffer. let buffer = vec![0; l]; // Read message into buffer. socket.read_exact(\u0026mut buffer)?; Don’ts for { // Receive a request. request := \u003c- incomingRequests // Handle the request. go handleRequest(request) } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Handle the request. spawn(async move { handle(request) }); } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Send the request somewhere else. request_channel.unbounded_send(request); } Don’ts // Buffer of requests let to_be_handled_later = Vec::new(); // ... let request = incoming_requests.next().await?; to_be_handled_later.push(request); ",
+  "wordCount" : "201",
+  "inLanguage": "en",
+  "datePublished": "2023-02-05T00:00:00Z",
+  "dateModified": "2023-02-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Max Inden"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Max Inden",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://max-inden.de/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Max Inden</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/resume">
-        <li class="mobile-menu-item">Resume</li>
-      </a><a href="/readings">
-        <li class="mobile-menu-item">Readings</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archive</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a>
-  </ul>
 
-  
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
+</script>
 
-</nav>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://max-inden.de/" accesskey="h" title="Max Inden (Alt + H)">Max Inden</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://max-inden.de/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/resume" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/readings" title="Readings">
+                    <span>Readings</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/post/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Max Inden</a>
-</div>
-
-
-
-
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/resume">Resume</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/readings">Readings</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archive</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li>
-  </ul>
-</nav>
-
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+<article class="post-single">
+  <header class="post-header">
     
-    <header class="post-header">
-      <h1 class="post-title">Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp</h1>
+    <h1 class="post-title entry-hint-parent">
+      Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp
+    </h1>
+    <div class="post-meta"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Max Inden
 
-      <div class="post-meta">
-        <span class="post-time"> 2023-02-05 </span>
-        
-        
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#slides">Slides</a>
-      <ul>
-        <li><a href="#dos">DOS</a></li>
-        <li><a href="#dos-1">Do&rsquo;s</a></li>
-        <li><a href="#dos-2">Do&rsquo;s</a>
-          <ul>
-            <li><a href="#backpressure">Backpressure</a></li>
-          </ul>
-        </li>
-        <li><a href="#donts">Don&rsquo;ts</a></li>
-        <li><a href="#donts-1">Don&rsquo;ts</a></li>
-        <li><a href="#donts-2">Don&rsquo;ts</a></li>
-        <li><a href="#donts-3">Don&rsquo;ts</a></li>
-        <li><a href="#donts-4">Don&rsquo;ts</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
 </div>
-    <div class="post-content">
-      <p>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in
+  </header> 
+  <div class="post-content"><p>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in
 peer-to-peer networks. I discussed resource management strategies such as
 enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
 and Go. You can find the recording and slides of my talk below.</p>
@@ -181,14 +219,14 @@ and Go. You can find the recording and slides of my talk below.</p>
   <iframe src="https://www.youtube-nocookie.com/embed/jZrAnnFO-2c" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<h1 id="slides">Slides</h1>
-<h2 id="dos">DOS</h2>
+<h1 id="slides">Slides<a hidden class="anchor" aria-hidden="true" href="#slides">#</a></h1>
+<h2 id="dos">DOS<a hidden class="anchor" aria-hidden="true" href="#dos">#</a></h2>
 <ul>
 <li>Denial-of-service attack</li>
 <li>Hard in peer-to-peer as identities are cheap</li>
 <li>Relevant for any scarce resource, e.g. CPU, memory(, file descriptors)</li>
 </ul>
-<h2 id="dos-1">Do&rsquo;s</h2>
+<h2 id="dos-1">Do&rsquo;s<a hidden class="anchor" aria-hidden="true" href="#dos-1">#</a></h2>
 <ul>
 <li>Bound EVERYTHING</li>
 <li>Once a bound is exceeded:
@@ -198,212 +236,134 @@ and Go. You can find the recording and slides of my talk below.</p>
 </ul>
 </li>
 </ul>
-<h2 id="dos-2">Do&rsquo;s</h2>
-<h3 id="backpressure">Backpressure</h3>
+<h2 id="dos-2">Do&rsquo;s<a hidden class="anchor" aria-hidden="true" href="#dos-2">#</a></h2>
+<h3 id="backpressure">Backpressure<a hidden class="anchor" aria-hidden="true" href="#backpressure">#</a></h3>
 <ul>
 <li>Slow consumer should slow down a fast producer</li>
 <li>Can improve resource utilization</li>
 <li>Can improve latency</li>
 </ul>
-<h2 id="donts">Don&rsquo;ts</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="c1">// Decode the length prefix of a message.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uvi</span>::<span class="n">decode</span>::<span class="kt">usize</span><span class="p">(</span><span class="n">msg_len_prefix</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Allocate a corresponding buffer.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="p">];</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Read message into buffer.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">socket</span><span class="p">.</span><span class="n">read_exact</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="donts-1">Don&rsquo;ts</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// Receive a request.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">request</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="nx">incomingRequests</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// Handle the request.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">go</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="donts-2">Don&rsquo;ts</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// Receive a request.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming_requests</span><span class="p">.</span><span class="n">next</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// Handle the request.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">spawn</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">handle</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">});</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="donts-3">Don&rsquo;ts</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// Receive a request.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming_requests</span><span class="p">.</span><span class="n">next</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// Send the request somewhere else.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">request_channel</span><span class="p">.</span><span class="n">unbounded_send</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="donts-4">Don&rsquo;ts</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="c1">// Buffer of requests
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span><span class="w"> </span><span class="n">to_be_handled_later</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span>::<span class="n">new</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">let</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming_requests</span><span class="p">.</span><span class="n">next</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">to_be_handled_later</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
-    </div>
+<h2 id="donts">Don&rsquo;ts<a hidden class="anchor" aria-hidden="true" href="#donts">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// Decode the length prefix of a message.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> l <span style="color:#f92672">=</span> uvi::decode::<span style="color:#66d9ef">usize</span>(msg_len_prefix)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Allocate a corresponding buffer.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> buffer <span style="color:#f92672">=</span> vec![<span style="color:#ae81ff">0</span>; l];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Read message into buffer.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket.read_exact(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> buffer)<span style="color:#f92672">?</span>;
+</span></span></code></pre></div><h2 id="donts-1">Don&rsquo;ts<a hidden class="anchor" aria-hidden="true" href="#donts-1">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Receive a request.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">request</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">incomingRequests</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Handle the request.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">handleRequest</span>(<span style="color:#a6e22e">request</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="donts-2">Don&rsquo;ts<a hidden class="anchor" aria-hidden="true" href="#donts-2">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Receive a request.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> request <span style="color:#f92672">=</span> incoming_requests.next().<span style="color:#66d9ef">await</span><span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Handle the request.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  spawn(<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">move</span> {
+</span></span><span style="display:flex;"><span>      handle(request)
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="donts-3">Don&rsquo;ts<a hidden class="anchor" aria-hidden="true" href="#donts-3">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Receive a request.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> request <span style="color:#f92672">=</span> incoming_requests.next().<span style="color:#66d9ef">await</span><span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Send the request somewhere else.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  request_channel.unbounded_send(request);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="donts-4">Don&rsquo;ts<a hidden class="anchor" aria-hidden="true" href="#donts-4">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// Buffer of requests
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> to_be_handled_later <span style="color:#f92672">=</span> Vec::new();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> request <span style="color:#f92672">=</span> incoming_requests.next().<span style="color:#66d9ef">await</span><span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>to_be_handled_later.push(request);
+</span></span></code></pre></div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Max Inden</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">
-        2023-02-05
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/tech/">tech</a>
-          <a href="/tags/talk/">talk</a>
-          <a href="/tags/libp2p/">libp2p</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2023-04-16-connecting-everything-everywhere-all-at-once/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/2023-02-05-hole-punching-in-the-wild/">
-            <span class="next-text nav-default">Talk &#34;Hole punching in the wild&#34; @FOSDEM</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-
-  
-
-  
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:mail@max-inden.de" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/mxinden" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/mxinden/" class="iconfont icon-github" title="github"></a>
-  <a href="https://max-inden.de/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2016 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
-  </span>
-</div>
-
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://max-inden.de/tags/tech/">Tech</a></li>
+      <li><a href="https://max-inden.de/tags/talk/">Talk</a></li>
+      <li><a href="https://max-inden.de/tags/libp2p/">Libp2p</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://max-inden.de/">Max Inden</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-
-
-
-
-
+</script>
 </body>
+
 </html>

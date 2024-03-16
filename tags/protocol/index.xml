@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>protocol on Max Inden</title>
+    <title>Protocol on Max Inden</title>
     <link>https://max-inden.de/tags/protocol/</link>
-    <description>Recent content in protocol on Max Inden</description>
+    <description>Recent content in Protocol on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/protocol/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://max-inden.de/tags/protocol/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>21st Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2020-01-24-21st-paper-club/</link>
       <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-01-24-21st-paper-club/</guid>
       <description>We started the new year with a session on epidemic / gossip protocols. To decide what to read I compiled the following list of papers that I either enjoyed reading in the past, or that were recommended to me. The Swim (Scalable failure detection and membership protocol) paper won the poll.
 Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&amp;rdquo; Proceedings International Conference on Dependable Systems and Networks.</description>
     </item>
-    
   </channel>
 </rss>

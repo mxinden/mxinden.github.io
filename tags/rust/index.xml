@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>rust on Max Inden</title>
+    <title>Rust on Max Inden</title>
     <link>https://max-inden.de/tags/rust/</link>
-    <description>Recent content in rust on Max Inden</description>
+    <description>Recent content in Rust on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://max-inden.de/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Elimination back-off stack performance</title>
       <link>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</guid>
       <description>I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
 In this post I will compare my implementation to other stack implementations.</description>
     </item>
-    
   </channel>
 </rss>

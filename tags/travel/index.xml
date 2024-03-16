@@ -1,362 +1,285 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>travel on Max Inden</title>
+    <title>Travel on Max Inden</title>
     <link>https://max-inden.de/tags/travel/</link>
-    <description>Recent content in travel on Max Inden</description>
+    <description>Recent content in Travel on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Feb 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://max-inden.de/tags/travel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Feb 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://max-inden.de/tags/travel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Angels Island</title>
       <link>https://max-inden.de/post/2017-02-12-angels-island/</link>
       <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2017-02-12-angels-island/</guid>
       <description>Sunday five mile hike around Angels Island. Great to get out of the city from time to time.</description>
     </item>
-    
     <item>
       <title>Quick run through SF</title>
       <link>https://max-inden.de/post/2017-02-11-quick-run-through-sf/</link>
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2017-02-11-quick-run-through-sf/</guid>
       <description>My first 16 miles run. Nearly blacked out at the end. Amazing route!</description>
     </item>
-    
     <item>
       <title>Back in Germany</title>
       <link>https://max-inden.de/post/2016-12-17-back-in-germany/</link>
       <pubDate>Sat, 17 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-17-back-in-germany/</guid>
       <description>After two delayed flights, one canceled flight and two lost bags I made it back home to Germany.</description>
     </item>
-    
     <item>
       <title>Back in San Francisco</title>
       <link>https://max-inden.de/post/2016-12-08-back-in-san-francisco/</link>
       <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-08-back-in-san-francisco/</guid>
       <description>Made it back to San Francisco. Crashed on a good friends couch.</description>
     </item>
-    
     <item>
       <title>Flying to Las Vegas</title>
       <link>https://max-inden.de/post/2016-12-06-flying-to-las-vegas/</link>
       <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-06-flying-to-las-vegas/</guid>
       <description>On my way back to San Francisco I made a quick stop in Las Vegas. A friend I met in Austin showed me around. Visited Downtwon, the strip and the Red Rocks.</description>
     </item>
-    
     <item>
       <title>Tourist Tour through Austin</title>
       <link>https://max-inden.de/post/2016-12-04-tourist-tour-through-austin/</link>
       <pubDate>Sun, 04 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-04-tourist-tour-through-austin/</guid>
       <description>I went to the Texas State Capitol, learned a bunch about Texas history gaining independence, joined a local hiking Meetup and looked at the graffiti park.</description>
     </item>
-    
     <item>
       <title>First Yoga Class</title>
       <link>https://max-inden.de/post/2016-12-01-first-yoga-class/</link>
       <pubDate>Thu, 01 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-12-01-first-yoga-class/</guid>
       <description>20:20 - Hi Max, wanna join Yoga Class tonight? 20:21 - Sure, never tried though. 20:30 - Class starts My first Yoga class. It was extremly exhausting. Definitely doing it again some time.</description>
     </item>
-    
     <item>
       <title>Accomodation at Barton Springs Road</title>
       <link>https://max-inden.de/post/2016-11-30-accomodation-at-barton-springs-road/</link>
       <pubDate>Wed, 30 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-30-accomodation-at-barton-springs-road/</guid>
       <description>I got an AirBnB across the Colorado River fairly close to downtown. My hosts are great. Looking forward to the next days. Surrounded by great restaurants.</description>
     </item>
-    
     <item>
       <title>Flight to Austin</title>
       <link>https://max-inden.de/post/2016-11-28-flight-to-austin/</link>
       <pubDate>Mon, 28 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-28-flight-to-austin/</guid>
       <description>I am going to Austin Texas for the NodeJS Interactive conference. Am looking forward to some great talks both on NodeJS itself and microservice architectures. Flying over night - saving one night of accomodation.</description>
     </item>
-    
     <item>
       <title>Pierce Point</title>
       <link>https://max-inden.de/post/2016-11-27-pierce-point/</link>
       <pubDate>Sun, 27 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-27-pierce-point/</guid>
       <description>Hiking to the Pierce Point. We have seen something that looked like a fox and plenty of Elks. It is a scenic view along the coast.</description>
     </item>
-    
     <item>
       <title>Visiting Berkeley</title>
       <link>https://max-inden.de/post/2016-11-26-visiting-berkeley/</link>
       <pubDate>Sat, 26 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-26-visiting-berkeley/</guid>
       <description>With two friends of mine I wen to Berkeley. We started with downtown Berkeley and then made our way up to the university campus. We hiked all the way up to Lawrence Hall of Science from where we had an amazing view over the entire bay.</description>
     </item>
-    
     <item>
       <title>Thanksgiving</title>
       <link>https://max-inden.de/post/2016-11-24-thanksgiving/</link>
       <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-24-thanksgiving/</guid>
       <description>A very fun friend of mine from Covo with whom I shared a lot of great discussions on coding and code quality in particular invited me over for Thanksgiving. I felt very welcome. We talked a lot about politics. It is super interesting to see an American point of view on it.</description>
     </item>
-    
     <item>
       <title>Alcatraz</title>
       <link>https://max-inden.de/post/2016-11-19-alcatraz/</link>
       <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-19-alcatraz/</guid>
       <description>I booked a tour for Alcatraz. My first time on a boat in the Bay Area. The weather was horrible - setting the perfect mood for visiting a prison.</description>
     </item>
-    
     <item>
       <title>Friday Evening Friendsgiving</title>
       <link>https://max-inden.de/post/2016-11-18-friday-evening-friendsgiving/</link>
       <pubDate>Fri, 18 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-18-friday-evening-friendsgiving/</guid>
       <description>A cowoker / great friend of mine from Covo invited me over for a friendsgiving at his place. Like the day before, great food and a great party in a beautiful house in Potrero Hill.</description>
     </item>
-    
     <item>
       <title>Friendsgiving at Covo</title>
       <link>https://max-inden.de/post/2016-11-17-friendsgiving-at-covo/</link>
       <pubDate>Thu, 17 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-17-friendsgiving-at-covo/</guid>
       <description>The coworking space I currently work at, Covo, arranged a friendsgiving for lunch. Everybody contributed to the dinner. We had plenty of food and a great time. My first friendsgiving.</description>
     </item>
-    
     <item>
       <title>Visiting the Google Campus</title>
       <link>https://max-inden.de/post/2016-11-13-visiting-the-google-campus/</link>
       <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-13-visiting-the-google-campus/</guid>
       <description>There was a conference at the Google campus on Sunday. I really enjoyed the talks. I was especially interested in the topics architecture and artificial intelligence.</description>
     </item>
-    
     <item>
       <title>Golden Gate Bridge</title>
       <link>https://max-inden.de/post/2016-11-12-golden-gate-bridge/</link>
       <pubDate>Sat, 12 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-12-golden-gate-bridge/</guid>
       <description>I woke up reasonably early on Saturday to go to the Golden Gaten Bridge. The bus ride from Ingleside took me an hour. I started my hike in the Presidio park along the west coast. I found some lonely beaches. I felt nothing like being in a city. Afterwards I walked over the Golden Gate Bridge where two friends of mine, Simon and Marc, picked me up. We drove to Muir Beach, Stinson Beach, Tiboron and Sausalito.</description>
     </item>
-    
     <item>
       <title>Finding the Perfect Coworking Space</title>
       <link>https://max-inden.de/post/2016-11-02-finding-the-perfect-coworking-space/</link>
       <pubDate>Wed, 02 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-02-finding-the-perfect-coworking-space/</guid>
       <description>As we are working from San Francisco for the rest of the month, we were looking for a coworking space. Well, &amp;hellip; not just one coworking space, but the coworking space. We started our search on Wednesday with the coworking space, Thursday we looked at NextSpace, Wework and Bespoke In the evening we decided to go with Bespoken until we passed by two more coworking spaces (Covo and Impact Hub) on our way to a restaurant.</description>
     </item>
-    
     <item>
       <title>MongoDB Launchpad</title>
       <link>https://max-inden.de/post/2016-11-01-mongodb-launchpad/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-01-mongodb-launchpad/</guid>
       <description>Been to the MongoDB Launchpad event, a release event for their new version. Sadly it was more of a marketing event than a nerd event. But the location was really nice with a view on the Golden Gate Bridge (Fort Mason 2 Marina Blvd San Francisco, CA).</description>
     </item>
-    
     <item>
       <title>Moving to San Francisco</title>
       <link>https://max-inden.de/post/2016-11-01-moving-to-san-francisco/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-11-01-moving-to-san-francisco/</guid>
       <description>I moved to San Francisco to the Coliving Club. I will miss Palo Alto.</description>
     </item>
-    
     <item>
       <title>Pub Crawl</title>
       <link>https://max-inden.de/post/2016-10-30-pub-crawl/</link>
       <pubDate>Sun, 30 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-30-pub-crawl/</guid>
       <description>I went out with my roommates again - this time a pub crawl mostly in the city center.</description>
     </item>
-    
     <item>
       <title>Halloween Party or Art Event in San Francisco</title>
       <link>https://max-inden.de/post/2016-10-29-halloween-party-or-art-event-in-san-francisco/</link>
       <pubDate>Sat, 29 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-29-halloween-party-or-art-event-in-san-francisco/</guid>
       <description>We, my roommates and I, went to a crazy Halloween Party atPier 70 in San Francisco, an old industrial complex. The costumes of the other guests were amazing. They seemed to be inspired by the Burning Man festival.</description>
     </item>
-    
     <item>
       <title>JS Meetup in San Francisco</title>
       <link>https://max-inden.de/post/2016-10-27-js-meetup-in-san-francisco/</link>
       <pubDate>Thu, 27 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-27-js-meetup-in-san-francisco/</guid>
       <description>I have been to a JS meetup in San Francisco in the Yelp HQ. It is an impressiv building from 1925 known as the Pacific Bell Building.</description>
     </item>
-    
     <item>
       <title>Rooftop apartment office</title>
       <link>https://max-inden.de/post/2016-10-25-rooftop-apartment-office/</link>
       <pubDate>Tue, 25 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-25-rooftop-apartment-office/</guid>
       <description>Worked in a rooftop apartment today with a view over entire Palo Alto and parts of the bay area. Sadly I can&amp;rsquo;t work from there every day.</description>
     </item>
-    
     <item>
       <title>Hacker House One</title>
       <link>https://max-inden.de/post/2016-10-24-hacker-house-one/</link>
       <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-24-hacker-house-one/</guid>
       <description>My first day at the first Hacker House in Palo Alto. House cleaning is every Tuesday. I arrived on Monday. The people here are amazing. Many startup founders - smart people all over the place. The location, 635 Webster St., Palo Alto, is awesome, right in the center. This makes up for sleeping in a room with six other guys, living in an apartment with 21 guys with two bathrooms.</description>
     </item>
-    
     <item>
       <title>Hearst Castle</title>
       <link>https://max-inden.de/post/2016-10-23-hearst-castle/</link>
       <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-23-hearst-castle/</guid>
       <description>Hearst Castle is a huge Landmark. We did a tour with an amazing tour guide, it was like Mr. Hearst showed us around himself.</description>
     </item>
-    
     <item>
       <title>Los Angeles and Santa Monica</title>
       <link>https://max-inden.de/post/2016-10-22-los-angeles-and-santa-monica/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-22-los-angeles-and-santa-monica/</guid>
       <description>We did a very short walk through Los Angeles and I took a longer walk around Santa Monica and (https://en.wikipedia.org/wiki/Venice,_Los_Angeles)[Venice beach]. I liked the last two a lot. In the next two days I am heading back to the San Francisco bay area.</description>
     </item>
-    
     <item>
       <title>San Diego</title>
       <link>https://max-inden.de/post/2016-10-19-san-diego/</link>
       <pubDate>Wed, 19 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-19-san-diego/</guid>
       <description>We started of at theBalboa Park, walked down to Little Italy, visited the USS Midway aircraft carrier museum ship and walked back to the car through down town. This was my first time on an aircraft carrier, these things are huge.</description>
     </item>
-    
     <item>
       <title>Last Man Standing</title>
       <link>https://max-inden.de/post/2016-10-18-last-man-standing/</link>
       <pubDate>Tue, 18 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-18-last-man-standing/</guid>
       <description>Signed up for audience seats at the sitcom Last Man Standing. We had to arrive at 3 for the show to start at 6. They hired a comedian just to cheer up the audience - a little strange. It is very interesting to see how small the entire set actually is. Most of the times the actors only need 2 tries for one scene - extremly professional.</description>
     </item>
-    
     <item>
       <title>University of California Riverside</title>
       <link>https://max-inden.de/post/2016-10-17-university-of-california-riverside/</link>
       <pubDate>Mon, 17 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-17-university-of-california-riverside/</guid>
       <description>We walked over the campus of the University, ate in the canteen and worked outside at desks with solar powered outlets.</description>
     </item>
-    
     <item>
       <title>Palm Springs</title>
       <link>https://max-inden.de/post/2016-10-16-palm-springs/</link>
       <pubDate>Sun, 16 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-16-palm-springs/</guid>
       <description>First night in the Los Angeles area mostly for the mexican restaurant El Mirasol Cocina Mexicana across the street. There are many huge beautiful villas like little oasis in Palm Springs.</description>
     </item>
-    
     <item>
       <title>Kings Canyon National Park</title>
       <link>https://max-inden.de/post/2016-10-15-kings-canyon-national-park/</link>
       <pubDate>Sat, 15 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-15-kings-canyon-national-park/</guid>
       <description>We did a 10 Miles hike in the Kings Canyon National Park up to the Mist Falls. This has been my favourite National Park so far because of the very untouched nature.</description>
     </item>
-    
     <item>
       <title>Hana Haus</title>
       <link>https://max-inden.de/post/2016-10-13-hana-haus/</link>
       <pubDate>Thu, 13 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-13-hana-haus/</guid>
       <description>During the day we worked in the fancy Hana Haus, a coworking space by SAP. Afterwards we stayed for a Design Thinking Talk at the same place and finished the evening at a steake house close to the Apple offices.</description>
     </item>
-    
     <item>
       <title>Docker HQ</title>
       <link>https://max-inden.de/post/2016-10-12-docker-hq/</link>
       <pubDate>Wed, 12 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-12-docker-hq/</guid>
       <description>We visited the Docker HQ for a meetup.</description>
     </item>
-    
     <item>
       <title>Pinnacles National Park</title>
       <link>https://max-inden.de/post/2016-10-11-pinnacles-national-park/</link>
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-11-pinnacles-national-park/</guid>
       <description>We did two hikes, including a cave and three scary tarantulas.</description>
     </item>
-    
     <item>
       <title>Fleet Week</title>
       <link>https://max-inden.de/post/2016-10-09-fleet-week/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-09-fleet-week/</guid>
       <description>We went to the San Francisco Fleet Week. My first time to see SF downtown during daylight and the Golden Gate Bridge. Perfect weather in a very crowded town.</description>
     </item>
-    
     <item>
       <title>Santa Cruz</title>
       <link>https://max-inden.de/post/2016-10-09-santa-cruz/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-09-santa-cruz/</guid>
       <description>Exploring the beach area with all the surfers, working in a cafe and the hotel.</description>
     </item>
-    
     <item>
       <title>The Computer History Museum</title>
       <link>https://max-inden.de/post/2016-10-07-the-computer-history-museum/</link>
       <pubDate>Fri, 07 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-07-the-computer-history-museum/</guid>
       <description>First thing to do in Silicon Valley- the computer history museum. It is an amazing museum with all the hardware I have ever dreamed of. Showed me how much I don&amp;rsquo;t know about computers, especially anything below logic gates.</description>
     </item>
-    
     <item>
       <title>Flying to San Francisco</title>
       <link>https://max-inden.de/post/2016-10-06-flying-to-san-francisco/</link>
       <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://max-inden.de/post/2016-10-06-flying-to-san-francisco/</guid>
       <description>Düsseldorf &amp;mdash;-&amp;gt; London &amp;ndash;A380&amp;ndash;&amp;gt; San Francisco</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,47 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Elimination back-off stack - Max Inden</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html lang="en" dir="auto">
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Elimination back-off stack | Max Inden</title>
+<meta name="keywords" content="tech, paper, lock-free, multithreaded, concurrent">
+<meta name="description" content="Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
+How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
+A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.">
+<meta name="author" content="Max Inden">
+<link rel="canonical" href="https://max-inden.de/post/2020-03-28-elimination-backoff-stack/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://max-inden.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://max-inden.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://max-inden.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://max-inden.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://max-inden.de/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://max-inden.de/post/2020-03-28-elimination-backoff-stack/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
-<meta name="author" content="Max Inden" /><meta name="description" content="Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
-How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&amp;rsquo;s dive into it.
-A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list." />
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-
-
-
-
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
-
-
-<link rel="canonical" href="https://max-inden.de/post/2020-03-28-elimination-backoff-stack/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="Elimination back-off stack" />
+    </style>
+</noscript><meta property="og:title" content="Elimination back-off stack" />
 <meta property="og:description" content="Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
 How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
 A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list." />
@@ -50,176 +66,175 @@ A lock-free stack A lock-free stack, also often referred to as a Treiber stack [
 <meta property="article:published_time" content="2020-03-28T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-03-28T00:00:00+00:00" />
 
-<meta itemprop="name" content="Elimination back-off stack">
-<meta itemprop="description" content="Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
-How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
-A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list."><meta itemprop="datePublished" content="2020-03-28T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-03-28T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1409">
-<meta itemprop="keywords" content="tech,paper,lock-free,multithreaded,concurrent," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Elimination back-off stack"/>
 <meta name="twitter:description" content="Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
 How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.
 A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list."/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://max-inden.de/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Elimination back-off stack",
+      "item": "https://max-inden.de/post/2020-03-28-elimination-backoff-stack/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Elimination back-off stack",
+  "name": "Elimination back-off stack",
+  "description": "Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.\nHow can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let\u0026rsquo;s dive into it.\nA lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.",
+  "keywords": [
+    "tech", "paper", "lock-free", "multithreaded", "concurrent"
+  ],
+  "articleBody": "Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.\nHow can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let’s dive into it.\nA lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list. The entry point of the stack is an atomic pointer which is either pointing to the node on the very top of the stack or is null in case of an empty stack.\npub struct Stack\u003cT\u003e { head: Atomic\u003cNode\u003cT\u003e\u003e, } Each node on the stack contains its data as well as an atomic next pointer which is either null in the case where it is the last node of the stack (bottom plate) or a pointer to the next node.\nstruct Node\u003cT\u003e { data: ManuallyDrop\u003cT\u003e, next: Atomic\u003cNode\u003cT\u003e\u003e, } Push and pop operation A push operation creates a new Node, reads the current head, sets the next pointer of its new node to head and then tries to compare_and_set head to point to its new node. It loops until the final compare_and_set succeeds. A pop operation reads the current head. If the stack is empty head will be null thus pop can return. If the stack is not empty head will point to the first node. It reads that node and tries to compare_and_set head to point to the second node instead of the first one, again looping until the compare_and_set succeeds. On success it returns the data field of the first node.\nEmpty stack: +----+ |head| --\u003e null +----+ Non-empty stack: +----+ +----+ +----+ +----+ |head| --\u003e |next| --\u003e |next| --\u003e |next| --\u003e null +----+ |data| |data| |data| +----+ +----+ +----+ Performance The lock-free stack implementation above linearizes concurrent access through a single atomic head pointer on which push and pop operations loop trying to compare_and_set it. This single sequential execution point introduces contention when multiple threads try to push or pop at the same time thus making the entire stack implementation scale poorly. One can use exponential back-off by having a thread wait for a bit on compare_and_set failure before retrying.\nCan we do better?\nA lock-free elimination back-off stack A lock-free elimination back-off stack wraps a lock-free Treiber stack, but instead of simply exponentially backing off on compare_and_set failures, it uses something called an elimination array to back-off in space instead of time.\nElimination Array The stack datastructure allows two operations: push and pop. A push followed by a pop leaves a given stack in the same state as it was before the two operations. Thus the two operations cancel out. An elimination array is a fixed size array where each slot enables a thread executing a push operation to hand its item over to a thread executing a pop operation canceling the two out. A reasonable size for the elimination array would be the amount of threads operating on the datastructure.\nInitial state +----+ +----+ +----+ +----+ |head| --\u003e |next| --\u003e |next| --\u003e |next| --\u003e null +----+ |abcd| |efgh| |ijkl| +----+ +----+ +----+ After push operation +----+ +----+ +----+ +----+ +----+ |head| --\u003e |next| --\u003e |next| --\u003e |next| --\u003e |next| --\u003e null +----+ |push| |abcd| |efgh| |ijkl| +----+ +----+ +----+ +----+ After pop operation == initial state +----+ +----+ +----+ +----+ |head| --\u003e |next| --\u003e |next| --\u003e |next| --\u003e null +----+ |abcd| |efgh| |ijkl| +----+ +----+ +----+ Both push and pop try to succeed on the lock-free stack first. On contention an operation’s compare_and_set is likely to fail. Instead of backing-off by waiting a bit and retrying on the stack, an operation would try to exchange with its counterpart on the elimination array instead.\npub struct EliminationArray\u003cT\u003e { exchangers: Vec\u003cExchanger\u003cT\u003e\u003e, } pub struct Exchanger\u003cT\u003e { item: Atomic\u003cItem\u003cT\u003e\u003e, } enum Item\u003cT\u003e { Empty, Waiting(ManuallyDrop\u003cT\u003e), Busy, } In order for a push operation to exchange its data with a pop operation, the push operation first selects an Exchanger within the elimination array at random. It then checks the item field of the Exchanger.\nIf it is Empty the Exchanger is currently not in use. Thus it can compare_and_set it to Waiting with the data it wants to exchange. Next it loops until a corresponding pop operation sets the Item to Busy signaling a successful exchange. As a final step the push operation cleans up after itself by setting the Exchanger back to Empty for future exchanges to happen.\nIf it is Waiting the Exchanger is currently in use by another push operation waiting for a pop operation. Our push operation should try another Exchanger within the elimination array instead.\nIf it is Busy the Exchanger is currently in use by another push operation that already exchanged its data with a pop operation but has not yet done the final step. Our push operation should again try another Exchanger.\nIn order for a pop operation to eliminate with a push operation and receive its data it picks, just like a push operation, an Exchanger within the elimination array at random. It then checks the item field of that Exchanger.\nIf it is Empty the Exchanger is currently not in use. Instead of waiting for a push operation the pop operation tries another Exchanger within the elimination array.\nIf it is Waiting a push operation is currently waiting for a pop operation. Thus the pop operation can try to compare_and_set the Item to Busy. On success it is done and returns the data on failure it tries another Exchanger within the elimination array.\nIf it is Busy a push operation successfully exchanged with another pop operation and is just missing to do its final step. In that case our pop operation should try another Exchanger within the elimination array.\nBacking-off in space instead of time Steps of push and pop operations can fail on the elimination array due to too much contention or no contention. An example for the former would be a pop operation failing to compare_and_set an Item from Waiting to Busy due to another pop operation getting there first. On such contention one could back-off by exponentially waiting a bit. Instead operations on the elimination array back-off in space and not time. Backing-off in space instead of time enables the elimination back-off stack to be used by multiple operations in parallel. They do so by increasing the amount of Exchangers they consider when randomly selecting one from the elimination array.\nBacking-off in space instead of time enables the elimination back-off stack to be used by multiple operations in parallel.\nFor example at first a pop operation that failed on the lock-free stack selects one out of the two first exchangers of the elimination array. If it fails on that Exchanger due to contention it selects one out of the four first exchangers of the elimination array.\nLiveness To ensure a push operation does not starve waiting for a pop operation, or a pop operation unsuccessfully looking for a push operation on different Exchangers, they should first of all decrease the amount of Exchangers they consider out of all the Exchangers when witnessing missing contention. Second of all operations should eventually try the lock-free stack again, given that with low contention they will likely succeed on it directly.\nConclusion Combining a lock-free stack with an elimination array results in a lock-free linearizable and parallel stack. Linearizable as push and pop operations appear to take effect instantaneously for all threads at some moment between their invocation and response. Parallel due to the fact that multiple push and pop operations can cancel each other out on the elimination array.\nReferences [1] Herlihy, Maurice, and Nir Shavit. The art of multiprocessor programming. Morgan Kaufmann, 2011.\n[2] Hendler, Danny, Nir Shavit, and Lena Yerushalmi. “A scalable lock-free stack algorithm.” Proceedings of the sixteenth annual ACM symposium on Parallelism in algorithms and architectures. 2004.\n[3] Treiber, R. Kent. Systems programming: Coping with parallelism. New York: International Business Machines Incorporated, Thomas J. Watson Research Center, 1986.\n",
+  "wordCount" : "1357",
+  "inLanguage": "en",
+  "datePublished": "2020-03-28T00:00:00Z",
+  "dateModified": "2020-03-28T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Max Inden"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://max-inden.de/post/2020-03-28-elimination-backoff-stack/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Max Inden",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://max-inden.de/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Max Inden</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/resume">
-        <li class="mobile-menu-item">Resume</li>
-      </a><a href="/readings">
-        <li class="mobile-menu-item">Readings</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archive</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a>
-  </ul>
 
-  
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
+</script>
 
-</nav>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://max-inden.de/" accesskey="h" title="Max Inden (Alt + H)">Max Inden</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://max-inden.de/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/resume" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/readings" title="Readings">
+                    <span>Readings</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/post/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Max Inden</a>
-</div>
-
-
-
-
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/resume">Resume</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/readings">Readings</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archive</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li>
-  </ul>
-</nav>
-
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+<article class="post-single">
+  <header class="post-header">
     
-    <header class="post-header">
-      <h1 class="post-title">Elimination back-off stack</h1>
+    <h1 class="post-title entry-hint-parent">
+      Elimination back-off stack
+    </h1>
+    <div class="post-meta"><span title='2020-03-28 00:00:00 +0000 UTC'>March 28, 2020</span>&nbsp;·&nbsp;Max Inden
 
-      <div class="post-meta">
-        <span class="post-time"> 2020-03-28 </span>
-        
-        
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#a-lock-free-stack">A lock-free stack</a>
-          <ul>
-            <li><a href="#push-and-pop-operation">Push and pop operation</a></li>
-            <li><a href="#performance">Performance</a></li>
-          </ul>
-        </li>
-        <li><a href="#a-lock-free-elimination-back-off-stack">A lock-free elimination back-off stack</a>
-          <ul>
-            <li><a href="#elimination-array">Elimination Array</a></li>
-            <li><a href="#backing-off-in-space-instead-of-time">Backing-off in space instead of time</a></li>
-            <li><a href="#liveness">Liveness</a></li>
-          </ul>
-        </li>
-        <li><a href="#conclusion">Conclusion</a></li>
-        <li><a href="#references">References</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
 </div>
-    <div class="post-content">
-      <p>Reading <em>The Art of Multiprocessor Programming</em> [1] I came across the
+  </header> 
+  <div class="post-content"><p>Reading <em>The Art of Multiprocessor Programming</em> [1] I came across the
 <em>Elimination Back-off Stack</em> [2] datastructure introduced in 2004 by Danny
 Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a <strong>parallel</strong>
 lock-free stack.</p>
 <p>How can a stack allow parallel operations without going through a single
 serialization point, e.g. a Mutex or an Atomic? Let&rsquo;s dive into it.</p>
-<h2 id="a-lock-free-stack">A lock-free stack</h2>
+<h2 id="a-lock-free-stack">A lock-free stack<a hidden class="anchor" aria-hidden="true" href="#a-lock-free-stack">#</a></h2>
 <p>A lock-free stack, also often referred to as a Treiber stack [3] due to Kent
 Treiber, operates on top of a lock-free linked list. The entry point of the
 stack is an atomic pointer which is either pointing to the node on the very top
 of the stack or is <code>null</code> in case of an empty stack.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">head</span>: <span class="nc">Atomic</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>Each node on the stack contains its <code>data</code> as well as an atomic <code>next</code> pointer which is
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Rust" data-lang="Rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Stack</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    head: <span style="color:#a6e22e">Atomic</span><span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Each node on the stack contains its <code>data</code> as well as an atomic <code>next</code> pointer which is
 either <code>null</code> in the case where it is the last node of the stack (bottom plate)
 or a pointer to the next node.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">data</span>: <span class="nc">ManuallyDrop</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">next</span>: <span class="nc">Atomic</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="push-and-pop-operation">Push and pop operation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Rust" data-lang="Rust"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Node</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    data: <span style="color:#a6e22e">ManuallyDrop</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>    next: <span style="color:#a6e22e">Atomic</span><span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="push-and-pop-operation">Push and pop operation<a hidden class="anchor" aria-hidden="true" href="#push-and-pop-operation">#</a></h3>
 <p>A <code>push</code> operation creates a new <code>Node</code>, reads the current <code>head</code>, sets the
 <code>next</code> pointer of its new node to <code>head</code> and then tries to <code>compare_and_set</code>
 <code>head</code> to point to its new node. It loops until the final <code>compare_and_set</code>
@@ -229,37 +244,19 @@ will point to the first node. It reads that node and tries to <code>compare_and_
 <code>head</code> to point to the second node instead of the first one, again looping until
 the <code>compare_and_set</code> succeeds. On success it returns the <code>data</code> field of the
 first node.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">Empty stack:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">+----+
-</span></span><span class="line"><span class="cl">|head| --&gt; null
-</span></span><span class="line"><span class="cl">+----+
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Non-empty stack:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">+----+     +----+     +----+     +----+
-</span></span><span class="line"><span class="cl">|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
-</span></span><span class="line"><span class="cl">+----+     |data|     |data|     |data|
-</span></span><span class="line"><span class="cl">           +----+     +----+     +----+
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="performance">Performance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Empty stack:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+----+
+</span></span><span style="display:flex;"><span>|head| --&gt; null
+</span></span><span style="display:flex;"><span>+----+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Non-empty stack:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+----+     +----+     +----+     +----+
+</span></span><span style="display:flex;"><span>|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
+</span></span><span style="display:flex;"><span>+----+     |data|     |data|     |data|
+</span></span><span style="display:flex;"><span>           +----+     +----+     +----+
+</span></span></code></pre></div><h3 id="performance">Performance<a hidden class="anchor" aria-hidden="true" href="#performance">#</a></h3>
 <p>The lock-free stack implementation above linearizes concurrent access through a
 single atomic <code>head</code> pointer on which <code>push</code> and <code>pop</code> operations loop trying to
 <code>compare_and_set</code> it. This single sequential execution point introduces
@@ -268,11 +265,11 @@ making the entire stack implementation scale poorly. One can use exponential
 back-off by having a thread wait for a bit on <code>compare_and_set</code> failure before
 retrying.</p>
 <p><em>Can we do better?</em></p>
-<h2 id="a-lock-free-elimination-back-off-stack">A lock-free elimination back-off stack</h2>
+<h2 id="a-lock-free-elimination-back-off-stack">A lock-free elimination back-off stack<a hidden class="anchor" aria-hidden="true" href="#a-lock-free-elimination-back-off-stack">#</a></h2>
 <p>A lock-free elimination back-off stack wraps a lock-free Treiber stack, but
 instead of simply exponentially backing off on <code>compare_and_set</code> failures, it
 uses something called an elimination array to back-off in space instead of time.</p>
-<h3 id="elimination-array">Elimination Array</h3>
+<h3 id="elimination-array">Elimination Array<a hidden class="anchor" aria-hidden="true" href="#elimination-array">#</a></h3>
 <p>The stack datastructure allows two operations: <code>push</code> and <code>pop</code>. A <code>push</code>
 followed by a <code>pop</code> leaves a given stack in the same state as it was before the
 two operations. Thus the two operations <em>cancel out</em>. An elimination array is a
@@ -280,89 +277,44 @@ fixed size array where each slot enables a thread executing a <code>push</code> 
 to hand its item over to a thread executing a <code>pop</code> operation <em>canceling</em> the
 two out. A reasonable size for the elimination array would be the amount of
 threads operating on the datastructure.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">Initial state
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">+----+     +----+     +----+     +----+
-</span></span><span class="line"><span class="cl">|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
-</span></span><span class="line"><span class="cl">+----+     |abcd|     |efgh|     |ijkl|
-</span></span><span class="line"><span class="cl">           +----+     +----+     +----+
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">After push operation
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">+----+     +----+     +----+     +----+     +----+
-</span></span><span class="line"><span class="cl">|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
-</span></span><span class="line"><span class="cl">+----+     |push|     |abcd|     |efgh|     |ijkl|
-</span></span><span class="line"><span class="cl">           +----+     +----+     +----+     +----+
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">After pop operation == initial state
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">+----+     +----+     +----+     +----+
-</span></span><span class="line"><span class="cl">|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
-</span></span><span class="line"><span class="cl">+----+     |abcd|     |efgh|     |ijkl|
-</span></span><span class="line"><span class="cl">           +----+     +----+     +----+
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Both <code>push</code> and <code>pop</code> try to succeed on the lock-free stack first. On contention
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Initial state
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+----+     +----+     +----+     +----+
+</span></span><span style="display:flex;"><span>|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
+</span></span><span style="display:flex;"><span>+----+     |abcd|     |efgh|     |ijkl|
+</span></span><span style="display:flex;"><span>           +----+     +----+     +----+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>After push operation
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+----+     +----+     +----+     +----+     +----+
+</span></span><span style="display:flex;"><span>|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
+</span></span><span style="display:flex;"><span>+----+     |push|     |abcd|     |efgh|     |ijkl|
+</span></span><span style="display:flex;"><span>           +----+     +----+     +----+     +----+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>After pop operation == initial state
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+----+     +----+     +----+     +----+
+</span></span><span style="display:flex;"><span>|head| --&gt; |next| --&gt; |next| --&gt; |next| --&gt; null
+</span></span><span style="display:flex;"><span>+----+     |abcd|     |efgh|     |ijkl|
+</span></span><span style="display:flex;"><span>           +----+     +----+     +----+
+</span></span></code></pre></div><p>Both <code>push</code> and <code>pop</code> try to succeed on the lock-free stack first. On contention
 an operation&rsquo;s <code>compare_and_set</code> is likely to fail. Instead of backing-off by
 waiting a bit and retrying on the stack, an operation would try to exchange with
 its counterpart on the elimination array instead.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">EliminationArray</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">exchangers</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Exchanger</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">Exchanger</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">item</span>: <span class="nc">Atomic</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">enum</span> <span class="nc">Item</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Empty</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Waiting</span><span class="p">(</span><span class="n">ManuallyDrop</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Busy</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>In order for a <code>push</code> operation to exchange its <code>data</code> with a <code>pop</code> operation,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">EliminationArray</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    exchangers: Vec<span style="color:#f92672">&lt;</span>Exchanger<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Exchanger</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    item: <span style="color:#a6e22e">Atomic</span><span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Item</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    Empty,
+</span></span><span style="display:flex;"><span>    Waiting(ManuallyDrop<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>),
+</span></span><span style="display:flex;"><span>    Busy,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In order for a <code>push</code> operation to exchange its <code>data</code> with a <code>pop</code> operation,
 the <code>push</code> operation first selects an <code>Exchanger</code> within the elimination array
 at random. It then checks the <code>item</code> field of the <code>Exchanger</code>.</p>
 <ul>
@@ -408,7 +360,7 @@ another <code>Exchanger</code> within the elimination array.</p>
 <code>pop</code> operation should try another <code>Exchanger</code> within the elimination array.</p>
 </li>
 </ul>
-<h3 id="backing-off-in-space-instead-of-time">Backing-off in space instead of time</h3>
+<h3 id="backing-off-in-space-instead-of-time">Backing-off in space instead of time<a hidden class="anchor" aria-hidden="true" href="#backing-off-in-space-instead-of-time">#</a></h3>
 <p>Steps of <code>push</code> and <code>pop</code> operations can fail on the elimination array due to
 too much contention or no contention. An example for the former would be a <code>pop</code>
 operation failing to <code>compare_and_set</code> an <code>Item</code> from <code>Waiting</code> to <code>Busy</code> due to
@@ -426,14 +378,14 @@ be used by multiple operations in <strong>parallel</strong>.</p>
 selects one out of the two first exchangers of the elimination array. If it
 fails on that <code>Exchanger</code> due to contention it selects one out of the four first
 exchangers of the elimination array.</p>
-<h3 id="liveness">Liveness</h3>
+<h3 id="liveness">Liveness<a hidden class="anchor" aria-hidden="true" href="#liveness">#</a></h3>
 <p>To ensure a <code>push</code> operation does not starve waiting for a <code>pop</code> operation, or a
 <code>pop</code> operation unsuccessfully looking for a <code>push</code> operation on different
 <code>Exchanger</code>s, they should first of all decrease the amount of <code>Exchanger</code>s they
 consider out of all the <code>Exchanger</code>s when witnessing missing contention. Second
 of all operations should eventually try the lock-free stack again, given that
 with low contention they will likely succeed on it directly.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>Combining a lock-free stack with an elimination array results in a <em>lock-free</em>
 <em>linearizable</em> and <em>parallel</em> stack. <em>Linearizable</em> as <code>push</code> and <code>pop</code>
 operations appear to take effect instantaneously for all threads at some moment
@@ -441,7 +393,7 @@ between their invocation and response. <em>Parallel</em> due to the fact that mu
 <code>push</code> and <code>pop</code> operations can <em>cancel</em> each other out on the elimination
 array.</p>
 <hr>
-<h2 id="references">References</h2>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
 <p>[1] Herlihy, Maurice, and Nir Shavit. The art of multiprocessor programming.
 Morgan Kaufmann, 2011.</p>
 <p>[2] Hendler, Danny, Nir Shavit, and Lena Yerushalmi. &ldquo;A scalable lock-free stack
@@ -451,103 +403,89 @@ algorithms and architectures. 2004.</p>
 International Business Machines Incorporated, Thomas J. Watson Research Center,
 1986.</p>
 
-    </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Max Inden</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">
-        2020-03-28
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/tech/">tech</a>
-          <a href="/tags/paper/">paper</a>
-          <a href="/tags/lock-free/">lock-free</a>
-          <a href="/tags/multithreaded/">multithreaded</a>
-          <a href="/tags/concurrent/">concurrent</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2020-04-01-elimination-backoff-stack-performance/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Elimination back-off stack performance</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/2020-03-14-leaving-prometheus-team/">
-            <span class="next-text nav-default">Leaving the Prometheus team</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-
-  
-
-  
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:mail@max-inden.de" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/mxinden" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/mxinden/" class="iconfont icon-github" title="github"></a>
-  <a href="https://max-inden.de/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2016 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
-  </span>
-</div>
-
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://max-inden.de/tags/tech/">Tech</a></li>
+      <li><a href="https://max-inden.de/tags/paper/">Paper</a></li>
+      <li><a href="https://max-inden.de/tags/lock-free/">Lock-Free</a></li>
+      <li><a href="https://max-inden.de/tags/multithreaded/">Multithreaded</a></li>
+      <li><a href="https://max-inden.de/tags/concurrent/">Concurrent</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://max-inden.de/">Max Inden</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-
-
-
-
-
+</script>
 </body>
+
 </html>
