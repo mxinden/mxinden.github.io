@@ -644,7 +644,8 @@ Love, R. (2005). Linux Kernel Development (Novell Press).</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/resume/</guid>
       <description>Experience Software Engineer at Protocol Labs March 2021 - December 2023
-co-lead of the open source peer-to-peer networking library libp2p and technical lead of its Rust implementation with 3 direct reports and &amp;gt;250 external contributors design, specification and implementation of network protocols e.g.: decentralized hole punching without the reliance on central infrastructure distributed hash table based on the Kademlia research paper security handshakes and multiplexing on top of various web protocols special focus on performance e.</description>
+Co-lead of the open source peer-to-peer networking library libp2p and technical lead of its Rust implementation with 3 direct reports and &amp;gt;200 external contributors.
+Design, specification and implementation of network protocols. E.g. decentralized hole punching without the reliance on central infrastructure, a distributed hash table based on the Kademlia research paper and security handshakes and multiplexing on top of various web protocols.</description>
     </item>
   </channel>
 </rss>
