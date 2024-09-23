@@ -13,7 +13,7 @@
       <link>https://max-inden.de/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/about/</guid>
-      <description>&lt;p&gt;I am Max, a &lt;em&gt;strange loop&lt;/em&gt; interested in networking, distributed systems and type theory. Welcome to my little island on this astounding thing called &lt;em&gt;The Internet&lt;/em&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;I am Max, a &lt;a href=&#34;https://en.wikipedia.org/wiki/Strange_loop&#34;&gt;&lt;em&gt;strange loop&lt;/em&gt;&lt;/a&gt; interested in networking, distributed systems and type theory. Welcome to my little island on this astounding thing called &lt;em&gt;The Internet&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;You might enjoy browsing through &lt;a href=&#34;https://max-inden.de/readings&#34;&gt;my list of resources I consider worth sharing&lt;/a&gt;, get some inspiration from the &lt;a href=&#34;https://max-inden.de/post&#34;&gt;numerous summaries of past reading group sessions&lt;/a&gt; that I organize or simply scroll through &lt;a href=&#34;https://max-inden.de/resume&#34;&gt;my resume&lt;/a&gt; to see what I am up to lately.&lt;/p&gt;
 &lt;p&gt;You can best reach me via e-mail: &lt;a href=&#34;mailto:mail@max-inden.de&#34;&gt;mail@max-inden.de&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
@@ -1056,7 +1056,7 @@ paradigms.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1901292&#34;&gt;Rewrite&lt;/a&gt; Firefox&amp;rsquo;s QUIC UDP IO path.
 &lt;ul&gt;
 &lt;li&gt;Move to Rust via &lt;code&gt;quinn-udp&lt;/code&gt;. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1901295&#34;&gt;bugzilla#1901295&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Switch to multi-packet UDP I/O using OS mechanisms like &lt;code&gt;recvmmsg&lt;/code&gt;, generic receive offloading, across Linux, Windows, and Android.&lt;/li&gt;
+&lt;li&gt;Switch to multi-packet UDP IO using OS mechanisms like &lt;code&gt;recvmmsg&lt;/code&gt;, generic receive offloading, across Linux, Windows, and Android.&lt;/li&gt;
 &lt;li&gt;Enables support for ancillary IP metadata, such as Explicit Congestion Notification (ECN), improving congestion signals. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1902065&#34;&gt;bugzilla#1902065&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
