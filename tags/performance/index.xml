@@ -13,7 +13,12 @@
       <link>https://max-inden.de/post/2020-06-19-latencies/</link>
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-06-19-latencies/</guid>
-      <description>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.</description>
+      <description>&lt;p&gt;I find it helpful to know the orders of magnitude by which certain computer
+operations differ. Certainly it is not worth the effort to pay attention to
+every digit or learn these by heart, especially since they differ (slightly)
+across systems, but having a basic understanding of what a tiny fraction of time
+a CPU cycle occupies compared to sending a TCP packet is incredibly helpful
+whenever reasoning about systems performance.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

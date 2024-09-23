@@ -13,10 +13,21 @@
       <link>https://max-inden.de/post/2020-04-27-25th-paper-club/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-27-25th-paper-club/</guid>
-      <description>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &amp;ldquo;Efficient fair queuing using deficit round-robin&amp;rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
-Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
-Its wide deployment still seen today.
-Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as latency critical flows.</description>
+      <description>&lt;p&gt;In the session today we covered Madhavapeddi Shreedhar and George Varghese paper
+&amp;ldquo;&lt;em&gt;Efficient fair queuing using deficit round-robin&lt;/em&gt;&amp;rdquo; [1]. While the session was
+not so much about the relatively simple algorithmic details of
+deficit-round-robin (still worth checking out) we talked about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Its benefits over basic FIFO queuing and thus its impact for congestion
+controlled traffic (tcp) compared to not congestion controlled traffic (udp).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Its wide deployment still seen today.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Its derivatives DRR+ and DRR++ being able to handle both best-effort as well
+as latency critical flows.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

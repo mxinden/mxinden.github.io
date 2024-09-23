@@ -13,8 +13,10 @@
       <link>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</guid>
-      <description>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</description>
+      <description>&lt;p&gt;Below is a summary of our efforts to optimize flow control in the &lt;a href=&#34;https://github.com/paritytech/yamux&#34;&gt;Rust Yamux
+implementation&lt;/a&gt;. While not a novel
+approach, I still find the end result worth sharing thus my forum post.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843&#34;&gt;https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -13,16 +13,33 @@
       <link>https://max-inden.de/post/2020-06-19-latencies/</link>
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-06-19-latencies/</guid>
-      <description>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.</description>
+      <description>&lt;p&gt;I find it helpful to know the orders of magnitude by which certain computer
+operations differ. Certainly it is not worth the effort to pay attention to
+every digit or learn these by heart, especially since they differ (slightly)
+across systems, but having a basic understanding of what a tiny fraction of time
+a CPU cycle occupies compared to sending a TCP packet is incredibly helpful
+whenever reasoning about systems performance.&lt;/p&gt;</description>
     </item>
     <item>
       <title>26th DistSys Reading Group - Cache coherence</title>
       <link>https://max-inden.de/post/2020-05-18-26th-paper-club/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-05-18-26th-paper-club/</guid>
-      <description>We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
-CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
-Write Combining exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one can make use of them.</description>
+      <description>&lt;p&gt;We have long been planning to cover the caching mechanisms in CPUs. As a shared
+knowledge base for the discussions in this session we chose the following two
+articles by Martin Thompson among other things known for his work on the &lt;a href=&#34;https://lmax-exchange.github.io/disruptor/&#34;&gt;LMAX
+Disruptor&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://mechanical-sympathy.blogspot.com/2013/02/cpu-cache-flushing-fallacy.html&#34;&gt;CPU Cache Flushing
+Fallacy&lt;/a&gt;
+including a good overview over the different caches in modern Intel CPUs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://mechanical-sympathy.blogspot.com/2011/07/write-combining.html&#34;&gt;Write
+Combining&lt;/a&gt;
+exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one
+can make use of them.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

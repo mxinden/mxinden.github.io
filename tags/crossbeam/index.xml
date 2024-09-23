@@ -13,8 +13,16 @@
       <link>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</guid>
-      <description>I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
-In this post I will compare my implementation to other stack implementations.</description>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://max-inden.de/static/elimination-back-off-stack/lines.svg&#34; alt=&#34;All stacks from 1 thread to up to 128&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;I recently stumbled upon the idea of an &lt;em&gt;Elimination Back-off Stack&lt;/em&gt; promising
+to be a &lt;strong&gt;parallel&lt;/strong&gt;, linearizable and lock-free stack. In case you are not
+familiar with it, I would suggest either reading my &lt;a href=&#34;https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/&#34;&gt;previous
+post&lt;/a&gt; or the corresponding paper
+[1] itself. Being quite intrigued by the ideas of the above stack I wrote &lt;a href=&#34;https://github.com/mxinden/elimination-backoff-stack/&#34;&gt;my
+own implementation&lt;/a&gt; in
+Rust with a &lt;em&gt;little&lt;/em&gt; help from
+&lt;a href=&#34;https://github.com/crossbeam-rs/crossbeam&#34;&gt;crossbeam&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -13,7 +13,16 @@
       <link>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</guid>
-      <description>Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
+      <description>&lt;p&gt;Within my work at Red Hat and Kubernetes &lt;a href=&#34;https://github.com/kubernetes/community/tree/master/sig-instrumentation&#34;&gt; SIG instrumentation
+&lt;/a&gt; I
+have been working on &lt;a href=&#34;https://github.com/kubernetes/kube-state-metrics/&#34;&gt; kube-state-metrics
+&lt;/a&gt;, a &lt;a href=&#34;https://github.com/prometheus/prometheus&#34;&gt; Prometheus
+&lt;/a&gt; exporter exposing the state of a
+Kubernetes cluster to a Prometheus monitoring system. In particular I have
+focused on performance optimizing metric rendering for both latency as well as
+resource usage. Below I want to describe our approach of metric driven
+performance tuning, using Prometheus to monitor kube-state-metrics on top of
+Kubernetes, which in itself enables Prometheus to monitor Kubernetes.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

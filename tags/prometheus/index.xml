@@ -13,15 +13,37 @@
       <link>https://max-inden.de/post/2020-03-14-leaving-prometheus-team/</link>
       <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-03-14-leaving-prometheus-team/</guid>
-      <description>In January 2017 I joined the company CoreOS as a test-engineer helping the monitoring team and the rkt container engine team write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team full-time as a software engineer and ultimately was invited to be part of the upstream Prometheus team due to my contributions to the Alertmanager sub-project.
-Over the next 2 years and 4 month I worked a lot on Alertmanager, e.</description>
+      <description>&lt;p&gt;In January 2017 I joined the company CoreOS as a test-engineer helping the
+monitoring team and the &lt;a href=&#34;https://github.com/rkt/rkt&#34;&gt;rkt container engine team&lt;/a&gt;
+write reliable software. Eventually I joined the CoreOS&amp;rsquo; monitoring team
+full-time as a software engineer and ultimately was invited to be part of the
+upstream &lt;a href=&#34;https://prometheus.io/&#34;&gt;Prometheus team&lt;/a&gt; due to my contributions to
+the &lt;a href=&#34;https://github.com/prometheus/alertmanager/&#34;&gt;Alertmanager&lt;/a&gt; sub-project.&lt;/p&gt;
+&lt;p&gt;Over the next 2 years and 4 month I &lt;a href=&#34;https://github.com/prometheus/alertmanager/pulls?q=is%3Apr+is%3Aclosed+author%3Amxinden&#34;&gt;worked a lot on
+Alertmanager&lt;/a&gt;,
+e.g. writing parts of its Elm-based UI and introducing &lt;a href=&#34;https://github.com/prometheus/alertmanager/pull/1352&#34;&gt;API
+v2&lt;/a&gt;, a bit on &lt;a href=&#34;https://github.com/prometheus/prometheus/pulls?q=is%3Apr+is%3Aclosed+author%3Amxinden&#34;&gt;Prometheus
+itself&lt;/a&gt;
+and a bunch within the overall Prometheus and Kubernetes ecosystem e.g. on
+&lt;a href=&#34;https://github.com/kubernetes/kube-state-metrics/issues/498&#34;&gt;kube-state-metrics&lt;/a&gt;.
+In addition being part of the open source project enabled me to speak at many
+&lt;a href=&#34;https://max-inden.de/talks/&#34;&gt;conferences and meetups&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Metric driven performance optimization</title>
       <link>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</guid>
-      <description>Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
+      <description>&lt;p&gt;Within my work at Red Hat and Kubernetes &lt;a href=&#34;https://github.com/kubernetes/community/tree/master/sig-instrumentation&#34;&gt; SIG instrumentation
+&lt;/a&gt; I
+have been working on &lt;a href=&#34;https://github.com/kubernetes/kube-state-metrics/&#34;&gt; kube-state-metrics
+&lt;/a&gt;, a &lt;a href=&#34;https://github.com/prometheus/prometheus&#34;&gt; Prometheus
+&lt;/a&gt; exporter exposing the state of a
+Kubernetes cluster to a Prometheus monitoring system. In particular I have
+focused on performance optimizing metric rendering for both latency as well as
+resource usage. Below I want to describe our approach of metric driven
+performance tuning, using Prometheus to monitor kube-state-metrics on top of
+Kubernetes, which in itself enables Prometheus to monitor Kubernetes.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -13,17 +13,30 @@
       <link>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</guid>
-      <description>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</description>
+      <description>&lt;p&gt;Below is a summary of our efforts to optimize flow control in the &lt;a href=&#34;https://github.com/paritytech/yamux&#34;&gt;Rust Yamux
+implementation&lt;/a&gt;. While not a novel
+approach, I still find the end result worth sharing thus my forum post.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843&#34;&gt;https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>24th DistSys Reading Group - BBR Congestion-Based Congestion Control</title>
       <link>https://max-inden.de/post/2020-04-06-24th-paper-club/</link>
       <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-06-24th-paper-club/</guid>
-      <description>After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
-Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
-We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &amp;ldquo;just works&amp;rdquo; due to congestion control.</description>
+      <description>&lt;p&gt;After a bit of a break due to current pandemic we decided to carry on and
+continue our meetings as virtual calls. Ignoring the usual initial hiccups and
+the missing whiteboard the medium worked well for us.&lt;/p&gt;
+&lt;p&gt;Topic and reading of this session was the ACM Queue article &lt;a href=&#34;https://queue.acm.org/detail.cfm?id=3022184&#34;&gt;&lt;em&gt;BBR:
+Congestion-Based Congestion
+Control&lt;/em&gt;&lt;/a&gt; [1], as well as the
+Dropbox article &lt;a href=&#34;https://dropbox.tech/infrastructure/evaluating-bbrv2-on-the-dropbox-edge-network&#34;&gt;&lt;em&gt;Evaluating BBRv2 on the Dropbox Edge
+Network&lt;/em&gt;&lt;/a&gt;
+[2].&lt;/p&gt;
+&lt;p&gt;We started off with a quick recap of the previous session covering why we need
+congestion control, how one can view a multi-hop connection as a single hop
+connection with a single bottleneck and most importantly the fact that the
+Internet is the largest distributed system that most of the time &amp;ldquo;just works&amp;rdquo;
+due to congestion control.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -170,7 +170,8 @@
   <div class="entry-content">
     <p>I don’t see myself making major contributions to (rust-) libp2p in the near future and thus I am stepping down as a maintainer.
 As announced before, I have left Protocol Labs in December 2023. After a 2 month re-orientation break, I have decided to move on entirely.
-My first commit was 5y ago, a small bug fix in our address handling. Since then lots happened. A couple of milestones I was involved in:...</p>
+My first commit was 5y ago, a small bug fix in our address handling. Since then lots happened. A couple of milestones I was involved in:
+...</p>
   </div>
   <footer class="entry-footer"><span title='2024-02-29 00:00:00 +0000 UTC'>February 29, 2024</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Stepping down as a (rust-) libp2p maintainer" href="https://max-inden.de/post/2024-02-29-stepping-down/"></a>
@@ -183,7 +184,8 @@ My first commit was 5y ago, a small bug fix in our address handling. Since then 
   </header>
   <div class="entry-content">
     <p>How you can connect everything (browsers &amp; non-browsers), everywhere (public or private), all at once (using libp2p).
-Slides</p>
+Slides
+</p>
   </div>
   <footer class="entry-footer"><span title='2023-04-16 00:00:00 +0000 UTC'>April 16, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing" href="https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/"></a>
@@ -196,7 +198,7 @@ Slides</p>
   </header>
   <div class="entry-content">
     <p>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do’s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do’s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don’ts // Decode the length prefix of a message....</p>
+Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do’s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do’s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don’ts // Decode the length prefix of a message. let l = uvi::decode::usize(msg_len_prefix)?; // Allocate a corresponding buffer. let buffer = vec![0; l]; // Read message into buffer. socket.read_exact(&amp;mut buffer)?; Don’ts for { // Receive a request. request := &lt;- incomingRequests // Handle the request. go handleRequest(request) } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Handle the request. spawn(async move { handle(request) }); } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Send the request somewhere else. request_channel.unbounded_send(request); } Don’ts // Buffer of requests let to_be_handled_later = Vec::new(); // ... let request = incoming_requests.next().await?; to_be_handled_later.push(request); </p>
   </div>
   <footer class="entry-footer"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/"></a>
@@ -209,7 +211,8 @@ Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap
   </header>
   <div class="entry-content">
     <p>Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
-At FOSDEM 2022 I presented libp2p’s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe....</p>
+At FOSDEM 2022 I presented libp2p’s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Hole punching in the wild&#34; @FOSDEM" href="https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/"></a>
@@ -223,7 +226,8 @@ At FOSDEM 2022 I presented libp2p’s hole punching mechanism, overcoming NATs a
   <div class="entry-content">
     <p>I presented an overview on Peer-to-peer Browser Connectivity options in the network devroom at FOSDEM 2023.
 Connecting from the browser to a public server with a valid TLS certificate is easy. But what if the server has a self-signed certificate? What if it isn’t public? What if it is another browser?
-This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity....</p>
+This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity. We will leverage the new WebTransport for secure communication to public servers with self-signed certificates and WebRTC for secure communication to other browsers, using hole puching, without the dependency on central infrastructure.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM" href="https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/"></a>
@@ -235,8 +239,9 @@ This talk covers the intricacies of browser communication beyond the standard br
     </h2>
   </header>
   <div class="entry-content">
-    <p>We’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
-Recording</p>
+    <p> We’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
+Recording
+</p>
   </div>
   <footer class="entry-footer"><span title='2022-04-30 00:00:00 +0000 UTC'>April 30, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Hole punching with libp2p&#34; @p2p-paris" href="https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/"></a>
@@ -248,8 +253,9 @@ Recording</p>
     </h2>
   </header>
   <div class="entry-content">
-    <p>We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
-Recording</p>
+    <p> We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
+Recording
+</p>
   </div>
   <footer class="entry-footer"><span title='2022-04-29 00:00:00 +0000 UTC'>April 29, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris" href="https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/"></a>
@@ -262,7 +268,8 @@ Recording</p>
   </header>
   <div class="entry-content">
     <p>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
-Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/</p>
+Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/
+</p>
   </div>
   <footer class="entry-footer"><span title='2022-03-06 00:00:00 +0000 UTC'>March 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Hole punching in libp2p" href="https://max-inden.de/post/2022-03-06-libp2p-hole-punching/"></a>
@@ -278,7 +285,8 @@ Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-
 Peer-to-peer hole punching without centralized infrastructure
 How libp2p can traverse NATs and firewalls without coordination through central STUN and TURN servers.
 libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
-In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together....</p>
+In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together. In the second part, we’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
+...</p>
   </div>
   <footer class="entry-footer"><span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM" href="https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/"></a>
@@ -294,7 +302,8 @@ In the first part of the talk we’ll present the basic building blocks of the l
 State of libp2p
 Status quo and future roadmap of the peer-to-peer networking library libp2p.
 libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
-We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come....</p>
+We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk &#34;State of libp2p&#34; @FOSDEM" href="https://max-inden.de/post/state-of-libp2p/"></a>

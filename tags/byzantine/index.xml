@@ -13,8 +13,15 @@
       <link>https://max-inden.de/post/2020-09-08-28th-paper-club/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-09-08-28th-paper-club/</guid>
-      <description>With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
-Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.</description>
+      <description>&lt;p&gt;With the 28th session we jumped into the space of byzantine fault tolerant
+consensus protocols. We covered fault tolerant consensus with various Paxos
+variants in the past, but this session was the first one looking into how to
+solve the &lt;a href=&#34;https://en.wikipedia.org/wiki/Byzantine_fault&#34;&gt;byzantine generals
+problem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead.
+The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy
+up-to-date consensus algorithm and (b) that it provides a framework enabling one
+to compare other algorithms (e.g. PBFT) in the space.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

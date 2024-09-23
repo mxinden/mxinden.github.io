@@ -13,8 +13,10 @@
       <link>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</guid>
-      <description>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
-Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/</description>
+      <description>&lt;p&gt;We have been working on hole punching support in libp2p for the last year. It
+finally landed in the Go and Rust libp2p implementation.&lt;/p&gt;
+&lt;p&gt;Read all about it on the IPFS blog:
+&lt;a href=&#34;https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/&#34;&gt;https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

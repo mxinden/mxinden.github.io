@@ -13,267 +13,522 @@
       <link>https://max-inden.de/post/2024-02-29-stepping-down/</link>
       <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2024-02-29-stepping-down/</guid>
-      <description>I don&amp;rsquo;t see myself making major contributions to (rust-) libp2p in the near future and thus I am stepping down as a maintainer.
-As announced before, I have left Protocol Labs in December 2023. After a 2 month re-orientation break, I have decided to move on entirely.
-My first commit was 5y ago, a small bug fix in our address handling. Since then lots happened. A couple of milestones I was involved in:</description>
+      <description>&lt;p&gt;I don&amp;rsquo;t see myself making major contributions to (rust-) libp2p in the near future and thus I am stepping down as a maintainer.&lt;/p&gt;
+&lt;p&gt;As announced before, &lt;a href=&#34;https://github.com/libp2p/rust-libp2p/discussions/5007&#34;&gt;I have left Protocol Labs in December 2023&lt;/a&gt;.
+After a 2 month re-orientation break, I have decided to move on entirely.&lt;/p&gt;
+&lt;p&gt;My first commit was 5y ago, &lt;a href=&#34;https://github.com/libp2p/rust-libp2p/pull/1204&#34;&gt;a small bug fix in our address handling&lt;/a&gt;.
+Since then lots happened. A couple of milestones I was involved in:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing</title>
       <link>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</guid>
-      <description>How you can connect everything (browsers &amp;amp; non-browsers), everywhere (public or private), all at once (using libp2p).
-Slides</description>
+      <description>&lt;p&gt;How you can connect everything (browsers &amp;amp; non-browsers), everywhere (public or private), all at once (using libp2p).&lt;/p&gt;
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/4v-iIB0C9_8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://bafybeidyb3fucxaq32cm6vf6q5ziaah6foe5caggwsitlm7myd4pwpcgdq.ipfs.w3s.link/connecting-everything-everywhere-all-at-once-with-libp2p.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp</title>
       <link>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</guid>
-      <description>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&amp;rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&amp;rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&amp;rsquo;ts // Decode the length prefix of a message.</description>
+      <description>&lt;p&gt;I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in
+peer-to-peer networks. I discussed resource management strategies such as
+enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
+and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/jZrAnnFO-2c?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;h1 id=&#34;slides&#34;&gt;Slides&lt;/h1&gt;
+&lt;h2 id=&#34;dos&#34;&gt;DOS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Denial-of-service attack&lt;/li&gt;
+&lt;li&gt;Hard in peer-to-peer as identities are cheap&lt;/li&gt;
+&lt;li&gt;Relevant for any scarce resource, e.g. CPU, memory(, file descriptors)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dos-1&#34;&gt;Do&amp;rsquo;s&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Bound EVERYTHING&lt;/li&gt;
+&lt;li&gt;Once a bound is exceeded:
+&lt;ul&gt;
+&lt;li&gt;Drop item (&lt;del&gt;good&lt;/del&gt;)&lt;/li&gt;
+&lt;li&gt;Enforce backpressure (good)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dos-2&#34;&gt;Do&amp;rsquo;s&lt;/h2&gt;
+&lt;h3 id=&#34;backpressure&#34;&gt;Backpressure&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Slow consumer should slow down a fast producer&lt;/li&gt;
+&lt;li&gt;Can improve resource utilization&lt;/li&gt;
+&lt;li&gt;Can improve latency&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;donts&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Decode the length prefix of a message.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; l &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uvi::decode::&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;(msg_len_prefix)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Allocate a corresponding buffer.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; buffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; l];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Read message into buffer.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;socket.read_exact(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; buffer)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-1&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;request&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;incomingRequests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Handle the request.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;go&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;handleRequest&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;request&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-2&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;loop&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Handle the request.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;move&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      handle(request)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  });
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-3&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;loop&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Send the request somewhere else.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  request_channel.unbounded_send(request);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-4&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Buffer of requests
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; to_be_handled_later &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// ...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;to_be_handled_later.push(request);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Hole punching in the wild&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</guid>
-      <description>Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
-At FOSDEM 2022 I presented libp2p&amp;rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.</description>
+      <description>&lt;p&gt;Dennis and I presented &lt;em&gt;Hole punching in the wild&lt;/em&gt;, &lt;em&gt;learnings from running libp2p hole punching in production, measured from vantage points across the globe&lt;/em&gt; in the network devroom at FOSDEM 2023.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;At FOSDEM 2022 I presented libp2p&amp;rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</guid>
-      <description>I presented an overview on Peer-to-peer Browser Connectivity options in the network devroom at FOSDEM 2023.
-Connecting from the browser to a public server with a valid TLS certificate is easy. But what if the server has a self-signed certificate? What if it isn&amp;rsquo;t public? What if it is another browser?
-This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity.</description>
+      <description>&lt;p&gt;I presented an overview on &lt;em&gt;Peer-to-peer Browser Connectivity&lt;/em&gt; options in the network devroom at FOSDEM 2023.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Connecting from the browser to a public server with a valid TLS certificate is easy. But what if the server has a self-signed certificate? What if it isn&amp;rsquo;t public? What if it is another browser?&lt;/p&gt;
+&lt;p&gt;This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity. We will leverage the new WebTransport for secure communication to public servers with self-signed certificates and WebRTC for secure communication to other browsers, using hole puching, without the dependency on central infrastructure.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Hole punching with libp2p&#34; @p2p-paris</title>
       <link>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</link>
       <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</guid>
-      <description>We’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
-Recording</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;We’ll take a closer look at the recently added decentralized hole punching
+feature, allowing NAT and firewall traversal without the need for any central
+coordination servers (STUN and TURN).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/MCEEMrIRks8&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris</title>
       <link>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</link>
       <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</guid>
-      <description>We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
-Recording</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;We will discuss the current state of the project, eyeball the various language
+implementations, take a look at the many live networks running on top of
+libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://youtu.be/Sbd7odDFT1w&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hole punching in libp2p</title>
       <link>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</guid>
-      <description>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
-Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/</description>
+      <description>&lt;p&gt;We have been working on hole punching support in libp2p for the last year. It
+finally landed in the Go and Rust libp2p implementation.&lt;/p&gt;
+&lt;p&gt;Read all about it on the IPFS blog:
+&lt;a href=&#34;https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/&#34;&gt;https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</guid>
-      <description>Gave a talk on hole punching in libp2p at FOSDEM 2022.
-Peer-to-peer hole punching without centralized infrastructure
-How libp2p can traverse NATs and firewalls without coordination through central STUN and TURN servers.
-libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
-In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together.</description>
+      <description>&lt;p&gt;Gave a talk on hole punching in libp2p at FOSDEM 2022.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Peer-to-peer hole punching without centralized infrastructure&lt;/p&gt;
+&lt;p&gt;How libp2p can traverse NATs and firewalls without coordination through
+central STUN and TURN servers.&lt;/p&gt;
+&lt;p&gt;libp2p is a universal, cross-platform, multi-language, modular peer-to-peer
+networking library powering multiple large-scale networks, for example IPFS.&lt;/p&gt;
+&lt;p&gt;In the first part of the talk we’ll present the basic building blocks of the
+library and explain how they fit together. In the second part, we’ll take a
+closer look at the recently added decentralized hole punching feature,
+allowing NAT and firewall traversal without the need for any central
+coordination servers (STUN and TURN).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;State of libp2p&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/state-of-libp2p/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/state-of-libp2p/</guid>
-      <description>Gave a talk on the state of libp2p at FOSDEM 2022.
-State of libp2p
-Status quo and future roadmap of the peer-to-peer networking library libp2p.
-libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
-We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.</description>
+      <description>&lt;p&gt;Gave a talk on the state of libp2p at FOSDEM 2022.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;State of libp2p&lt;/p&gt;
+&lt;p&gt;Status quo and future roadmap of the peer-to-peer networking library libp2p.&lt;/p&gt;
+&lt;p&gt;libp2p is a universal, cross-platform, multi-language, modular peer-to-peer
+networking library powering multiple large-scale networks, for example IPFS,
+Ethereum 2, Filecoin or Polkadot.&lt;/p&gt;
+&lt;p&gt;We will discuss the current state of the project, eyeball the various language
+implementations, take a look at the many live networks running on top of
+libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;</description>
     </item>
     <item>
       <title>35th DistSys Reading Group - Nym</title>
       <link>https://max-inden.de/post/2021-06-29-35th-reading-group/</link>
       <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-06-29-35th-reading-group/</guid>
-      <description>In our previous session we looked into Mixnets, more specifically Loopix. With this session we stayed in the space, talking about a network adopting many concepts from Loopix, namely Nym.
-As a preparation, we read section 1 through 4 of the Nym whitepaper.
-Introduction Network-level surveillance The Nym Network Design Mixnet for Network-Level Privacy Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. &amp;ldquo;The Nym Network.&amp;rdquo; (2021).
-https://nymtech.net/nym-whitepaper.pdf</description>
+      <description>&lt;p&gt;In our previous session we looked into Mixnets, more specifically Loopix. With
+this session we stayed in the space, talking about a network adopting many
+concepts from Loopix, namely Nym.&lt;/p&gt;
+&lt;p&gt;As a preparation, we read section 1 through 4  of the Nym whitepaper.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Introduction&lt;/li&gt;
+&lt;li&gt;Network-level surveillance&lt;/li&gt;
+&lt;li&gt;The Nym Network Design&lt;/li&gt;
+&lt;li&gt;Mixnet for Network-Level Privacy&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. &amp;ldquo;The Nym Network.&amp;rdquo; (2021).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://nymtech.net/nym-whitepaper.pdf&#34;&gt;https://nymtech.net/nym-whitepaper.pdf&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>34th DistSys Reading Group - Mixnets</title>
       <link>https://max-inden.de/post/2021-05-10-34th-reading-group/</link>
       <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-05-10-34th-reading-group/</guid>
-      <description>34th session was on Mixnets as lots of people suggested in the past. As a preparation we read the Loopix paper.
-Piotrowska, Ania M., et al. &amp;ldquo;The loopix anonymity system.&amp;rdquo; 26th {USENIX} Security Symposium ({USENIX} Security 17). 2017.
-https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska.pdf
-The corresponding talk by Ania Piotrowska is very much worth watching as an additional resource.
-https://www.youtube.com/watch?v=R-yEqLX_UvI</description>
+      <description>&lt;p&gt;34th session was on Mixnets as lots of people suggested in the past. As a
+preparation we read the Loopix paper.&lt;/p&gt;
+&lt;p&gt;Piotrowska, Ania M., et al. &amp;ldquo;The loopix anonymity system.&amp;rdquo; 26th {USENIX}
+Security Symposium ({USENIX} Security 17). 2017.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska.pdf&#34;&gt;https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The corresponding talk by Ania Piotrowska is very much worth watching as an
+additional resource.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=R-yEqLX_UvI&#34;&gt;https://www.youtube.com/watch?v=R-yEqLX_UvI&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>33rd DistSys Reading Group - BGP 3</title>
       <link>https://max-inden.de/post/2021-04-12-33rd-reading-group/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-04-12-33rd-reading-group/</guid>
-      <description>In our third BGP session we focused on BGP security, more specifically we discussed how to perform hijack and interception attacks using BGP. The primary paper of the session was:
-Birge-Lee, Henry, et al. &amp;ldquo;Sico: Surgical interception attacks by manipulating bgp communities.&amp;rdquo; Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security. 2019.
-A good introduction to RPKI can be found here.</description>
+      <description>&lt;p&gt;In our third BGP session we focused on BGP security, more specifically we
+discussed how to perform hijack and interception attacks using BGP. The primary
+paper of the session was:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cs.princeton.edu/~jrex/papers/sico19.pdf&#34;&gt;Birge-Lee, Henry, et al. &amp;ldquo;Sico: Surgical interception attacks by manipulating
+bgp communities.&amp;rdquo; Proceedings of the 2019 ACM SIGSAC Conference on Computer and
+Communications Security. 2019.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A good introduction to RPKI can be found
+&lt;a href=&#34;https://rpki.readthedocs.io/en/latest/rpki/introduction.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>32nd DistSys Reading Group - BGP 2</title>
       <link>https://max-inden.de/post/2021-03-18-32nd-reading-group/</link>
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-03-18-32nd-reading-group/</guid>
-      <description>After our first BGP session, introducing the protocol based on the convergence problem of BGP, our second session on BGP covered route propagation and tuning. The primary paper was:
-Gray, Caitlin, et al. &amp;ldquo;BGP Beacons, Network Tomography, and Bayesian Computation to Locate Route Flap Damping.&amp;rdquo; Proceedings of the ACM Internet Measurement Conference. 2020.</description>
+      <description>&lt;p&gt;After our first BGP session, introducing the protocol based on the convergence
+problem of BGP, our second session on BGP covered route propagation and tuning.
+The primary paper was:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ilab-pub.imp.fu-berlin.de/papers/gmbpr-bbntb-20.pdf&#34;&gt;Gray, Caitlin, et al. &amp;ldquo;BGP Beacons, Network Tomography, and Bayesian
+Computation to Locate Route Flap Damping.&amp;rdquo; Proceedings of the ACM Internet
+Measurement Conference.
+2020.&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Optimizing Yamux Flow Control - Sending Window Update Frames Early</title>
       <link>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/</guid>
-      <description>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
-https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843</description>
+      <description>&lt;p&gt;Below is a summary of our efforts to optimize flow control in the &lt;a href=&#34;https://github.com/paritytech/yamux&#34;&gt;Rust Yamux
+implementation&lt;/a&gt;. While not a novel
+approach, I still find the end result worth sharing thus my forum post.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843&#34;&gt;https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>31st DistSys Reading Group - BGP 1</title>
       <link>https://max-inden.de/post/2021-02-24-31st-paper-club/</link>
       <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-02-24-31st-paper-club/</guid>
-      <description>We decided to turn our interest to BGP which we will devote 3 sessions to. In today&amp;rsquo;s session - the first one - we introduced BGP, looked at the convergence problem, as well as the solution suggested in the paper below.
-Gao, Lixin, and Jennifer Rexford. &amp;ldquo;Stable Internet routing without global coordination.&amp;rdquo; IEEE/ACM Transactions on networking 9.6 (2001): 681-692.
-To play around with BGP as well as general Internet routing:</description>
+      <description>&lt;p&gt;We decided to turn our interest to BGP which we will devote 3 sessions to. In
+today&amp;rsquo;s session - the first one - we introduced BGP, looked at the convergence
+problem, as well as the solution suggested in the paper below.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cs.princeton.edu/~jrex/papers/sigmetrics00.long.pdf&#34;&gt;Gao, Lixin, and Jennifer Rexford. &amp;ldquo;Stable Internet routing without global
+coordination.&amp;rdquo; IEEE/ACM Transactions on networking 9.6 (2001):
+681-692.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To play around with BGP as well as general Internet routing:&lt;/p&gt;</description>
     </item>
     <item>
       <title>30th DistSys Reading Group - NTP</title>
       <link>https://max-inden.de/post/2021-01-26-30th-paper-club/</link>
       <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2021-01-26-30th-paper-club/</guid>
-      <description>What better way to start a new year than with a paper discussing how to change time?
-In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place.</description>
+      <description>&lt;p&gt;What better way to start a new year than with a paper discussing how to change
+time?&lt;/p&gt;
+&lt;p&gt;In the 30th session we discussed a paper which I think has much up its sleeves -
+&lt;em&gt;Attacking the Network Time Protocol&lt;/em&gt;. First off the paper gives us a good
+introduction to the inner working of the network time protocol. Next up it
+examines the broader ecosystem as well as why we need accurate time in the first
+place. Once we established enough background, the paper dives into how one can
+attack the protocol, starting off with on-path attacks all the way to some crazy
+(creative) off-path attacks. Last but not least, the list of references at the
+end is a small treasure trove.&lt;/p&gt;</description>
     </item>
     <item>
       <title>28th DistSys Reading Group - Hotstuff</title>
       <link>https://max-inden.de/post/2020-09-08-28th-paper-club/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-09-08-28th-paper-club/</guid>
-      <description>With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
-Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.</description>
+      <description>&lt;p&gt;With the 28th session we jumped into the space of byzantine fault tolerant
+consensus protocols. We covered fault tolerant consensus with various Paxos
+variants in the past, but this session was the first one looking into how to
+solve the &lt;a href=&#34;https://en.wikipedia.org/wiki/Byzantine_fault&#34;&gt;byzantine generals
+problem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead.
+The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy
+up-to-date consensus algorithm and (b) that it provides a framework enabling one
+to compare other algorithms (e.g. PBFT) in the space.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Know your latencies</title>
       <link>https://max-inden.de/post/2020-06-19-latencies/</link>
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-06-19-latencies/</guid>
-      <description>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.</description>
+      <description>&lt;p&gt;I find it helpful to know the orders of magnitude by which certain computer
+operations differ. Certainly it is not worth the effort to pay attention to
+every digit or learn these by heart, especially since they differ (slightly)
+across systems, but having a basic understanding of what a tiny fraction of time
+a CPU cycle occupies compared to sending a TCP packet is incredibly helpful
+whenever reasoning about systems performance.&lt;/p&gt;</description>
     </item>
     <item>
       <title>26th DistSys Reading Group - Cache coherence</title>
       <link>https://max-inden.de/post/2020-05-18-26th-paper-club/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-05-18-26th-paper-club/</guid>
-      <description>We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
-CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
-Write Combining exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one can make use of them.</description>
+      <description>&lt;p&gt;We have long been planning to cover the caching mechanisms in CPUs. As a shared
+knowledge base for the discussions in this session we chose the following two
+articles by Martin Thompson among other things known for his work on the &lt;a href=&#34;https://lmax-exchange.github.io/disruptor/&#34;&gt;LMAX
+Disruptor&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://mechanical-sympathy.blogspot.com/2013/02/cpu-cache-flushing-fallacy.html&#34;&gt;CPU Cache Flushing
+Fallacy&lt;/a&gt;
+including a good overview over the different caches in modern Intel CPUs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://mechanical-sympathy.blogspot.com/2011/07/write-combining.html&#34;&gt;Write
+Combining&lt;/a&gt;
+exemplifying the advanced mechanisms one can find in today&amp;rsquo;s CPUs and how one
+can make use of them.&lt;/p&gt;</description>
     </item>
     <item>
       <title>25th DistSys Reading Group - Fair queuing</title>
       <link>https://max-inden.de/post/2020-04-27-25th-paper-club/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-27-25th-paper-club/</guid>
-      <description>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper &amp;ldquo;Efficient fair queuing using deficit round-robin&amp;rdquo; [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
-Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
-Its wide deployment still seen today.
-Its derivatives DRR+ and DRR++ being able to handle both best-effort as well as latency critical flows.</description>
+      <description>&lt;p&gt;In the session today we covered Madhavapeddi Shreedhar and George Varghese paper
+&amp;ldquo;&lt;em&gt;Efficient fair queuing using deficit round-robin&lt;/em&gt;&amp;rdquo; [1]. While the session was
+not so much about the relatively simple algorithmic details of
+deficit-round-robin (still worth checking out) we talked about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Its benefits over basic FIFO queuing and thus its impact for congestion
+controlled traffic (tcp) compared to not congestion controlled traffic (udp).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Its wide deployment still seen today.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Its derivatives DRR+ and DRR++ being able to handle both best-effort as well
+as latency critical flows.&lt;/p&gt;</description>
     </item>
     <item>
       <title>24th DistSys Reading Group - BBR Congestion-Based Congestion Control</title>
       <link>https://max-inden.de/post/2020-04-06-24th-paper-club/</link>
       <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-06-24th-paper-club/</guid>
-      <description>After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
-Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
-We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time &amp;ldquo;just works&amp;rdquo; due to congestion control.</description>
+      <description>&lt;p&gt;After a bit of a break due to current pandemic we decided to carry on and
+continue our meetings as virtual calls. Ignoring the usual initial hiccups and
+the missing whiteboard the medium worked well for us.&lt;/p&gt;
+&lt;p&gt;Topic and reading of this session was the ACM Queue article &lt;a href=&#34;https://queue.acm.org/detail.cfm?id=3022184&#34;&gt;&lt;em&gt;BBR:
+Congestion-Based Congestion
+Control&lt;/em&gt;&lt;/a&gt; [1], as well as the
+Dropbox article &lt;a href=&#34;https://dropbox.tech/infrastructure/evaluating-bbrv2-on-the-dropbox-edge-network&#34;&gt;&lt;em&gt;Evaluating BBRv2 on the Dropbox Edge
+Network&lt;/em&gt;&lt;/a&gt;
+[2].&lt;/p&gt;
+&lt;p&gt;We started off with a quick recap of the previous session covering why we need
+congestion control, how one can view a multi-hop connection as a single hop
+connection with a single bottleneck and most importantly the fact that the
+Internet is the largest distributed system that most of the time &amp;ldquo;just works&amp;rdquo;
+due to congestion control.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Elimination back-off stack performance</title>
       <link>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</guid>
-      <description>I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
-In this post I will compare my implementation to other stack implementations.</description>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://max-inden.de/static/elimination-back-off-stack/lines.svg&#34; alt=&#34;All stacks from 1 thread to up to 128&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;I recently stumbled upon the idea of an &lt;em&gt;Elimination Back-off Stack&lt;/em&gt; promising
+to be a &lt;strong&gt;parallel&lt;/strong&gt;, linearizable and lock-free stack. In case you are not
+familiar with it, I would suggest either reading my &lt;a href=&#34;https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/&#34;&gt;previous
+post&lt;/a&gt; or the corresponding paper
+[1] itself. Being quite intrigued by the ideas of the above stack I wrote &lt;a href=&#34;https://github.com/mxinden/elimination-backoff-stack/&#34;&gt;my
+own implementation&lt;/a&gt; in
+Rust with a &lt;em&gt;little&lt;/em&gt; help from
+&lt;a href=&#34;https://github.com/crossbeam-rs/crossbeam&#34;&gt;crossbeam&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Elimination back-off stack</title>
       <link>https://max-inden.de/post/2020-03-28-elimination-backoff-stack/</link>
       <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-03-28-elimination-backoff-stack/</guid>
-      <description>Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
-How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let&amp;rsquo;s dive into it.
-A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list.</description>
+      <description>&lt;p&gt;Reading &lt;em&gt;The Art of Multiprocessor Programming&lt;/em&gt; [1] I came across the
+&lt;em&gt;Elimination Back-off Stack&lt;/em&gt; [2] datastructure introduced in 2004 by Danny
+Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a &lt;strong&gt;parallel&lt;/strong&gt;
+lock-free stack.&lt;/p&gt;
+&lt;p&gt;How can a stack allow parallel operations without going through a single
+serialization point, e.g. a Mutex or an Atomic? Let&amp;rsquo;s dive into it.&lt;/p&gt;
+&lt;h2 id=&#34;a-lock-free-stack&#34;&gt;A lock-free stack&lt;/h2&gt;
+&lt;p&gt;A lock-free stack, also often referred to as a Treiber stack [3] due to Kent
+Treiber, operates on top of a lock-free linked list. The entry point of the
+stack is an atomic pointer which is either pointing to the node on the very top
+of the stack or is &lt;code&gt;null&lt;/code&gt; in case of an empty stack.&lt;/p&gt;</description>
     </item>
     <item>
       <title>23rd Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2020-02-18-23rd-paper-club/</link>
       <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-02-18-23rd-paper-club/</guid>
-      <description>At the end of the previous session one of us suggested to dive into congestion control algorithms. This has found a greater echo, thus the 23rd session covered congestion control algorithms in general and TCP&amp;rsquo;s Reno as well as TCP&amp;rsquo;s Tahoe in particular.
-This weeks reading was:
-Chapter 13 &amp;ldquo;TCP Reno and Congestion Management&amp;rdquo; from the comprehensive online book &amp;ldquo;An Introduction to Computer Networks&amp;rdquo; [1] from the Loyola University Chicago.</description>
+      <description>&lt;p&gt;At the end of the previous session one of us suggested to dive into congestion
+control algorithms. This has found a greater echo, thus the 23rd session covered
+congestion control algorithms in general and TCP&amp;rsquo;s Reno as well as TCP&amp;rsquo;s Tahoe
+in particular.&lt;/p&gt;
+&lt;p&gt;This weeks reading was:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Chapter 13 &amp;ldquo;TCP Reno and Congestion Management&amp;rdquo; from the comprehensive online
+book &amp;ldquo;An Introduction to Computer Networks&amp;rdquo; [1] from the Loyola University
+Chicago.&lt;/p&gt;</description>
     </item>
     <item>
       <title>22nd Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2020-01-28-22nd-paper-club/</link>
       <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-01-28-22nd-paper-club/</guid>
-      <description>In the 22nd session we took a look at io_uring - a new Kernel interface for asynchronous I/O. Tyler, who is currently implementing an io_uring library in Rust [4] for his database sled [7] guided us through the concepts as well as a bunch of source code.
-Tyler started off introducing the status quo of I/O interfaces within the Linux Kernel like read, pread and preadv, jumped over to asynchronous I/O like aio and eventually helped us develop a sense of what the perfect asynchronous I/O interface of the future could look like.</description>
+      <description>&lt;p&gt;In the 22nd session we took a look at &lt;code&gt;io_uring&lt;/code&gt; - a new Kernel interface for
+asynchronous I/O. Tyler, who is currently implementing an &lt;code&gt;io_uring&lt;/code&gt; library in
+Rust [4] for his database sled [7] guided us through the concepts as well as a
+bunch of source code.&lt;/p&gt;
+&lt;p&gt;Tyler started off introducing the status quo of I/O interfaces within the Linux
+Kernel like read, pread and preadv, jumped over to asynchronous I/O like aio and
+eventually helped us develop a sense of what the perfect asynchronous I/O
+interface of the future could look like. For alll of this he used Jens Axboe&amp;rsquo;s
+slides from a Kernel Recipes 2019 talk [1].&lt;/p&gt;</description>
     </item>
     <item>
       <title>21st Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2020-01-24-21st-paper-club/</link>
       <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-01-24-21st-paper-club/</guid>
-      <description>We started the new year with a session on epidemic / gossip protocols. To decide what to read I compiled the following list of papers that I either enjoyed reading in the past, or that were recommended to me. The Swim (Scalable failure detection and membership protocol) paper won the poll.
-Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&amp;rdquo; Proceedings International Conference on Dependable Systems and Networks.</description>
+      <description>&lt;p&gt;We started the new year with a session on &lt;em&gt;epidemic&lt;/em&gt; / &lt;em&gt;gossip&lt;/em&gt; protocols. To
+decide what to read I compiled the following list of papers that I either
+enjoyed reading in the past, or that were recommended to me. The &lt;em&gt;Swim (Scalable
+failure detection and membership protocol)&lt;/em&gt; paper won the poll.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable
+weakly-consistent infection-style process group membership protocol.&amp;rdquo;
+Proceedings International Conference on Dependable Systems and Networks. IEEE,
+2002.&lt;/p&gt;</description>
     </item>
     <item>
       <title>20th Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2019-11-28-20th-paper-club/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2019-11-28-20th-paper-club/</guid>
-      <description>Last Tuesday we meet again to discuss different attacks and possible countermeasures for distributed hash tables. More in particular we looked at Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on the Ethereum network [2], a novel approach of hiding its own connection buckets as well as using an existing social graph as a network topology in the Whanau paper[3], security extensions to the Chord DHT [4], as well as a larger study of different security techniques for DHTs [5].</description>
+      <description>&lt;p&gt;Last Tuesday we meet again to discuss different attacks and possible
+countermeasures for distributed hash tables. More in particular we looked at
+Kademlia and its security extension S/Kademlia [1], possible eclipse attacks on
+the Ethereum network [2], a novel approach of hiding its own connection buckets
+as well as using an existing social graph as a network topology in the Whanau
+paper[3], security extensions to the Chord DHT [4], as well as a larger study of
+different security techniques for DHTs [5].&lt;/p&gt;</description>
     </item>
     <item>
       <title>19th Distributed Systems Paper Club</title>
       <link>https://max-inden.de/post/2019-10-27-19th-paper-club/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2019-10-27-19th-paper-club/</guid>
-      <description>I have been organizing a distributed systems paper reading group in Berlin for the last year. We meet every other week discussing a paper in the distributed systems space. This could be anything from Chandy–Lamport&amp;rsquo;s algorithm for global distributed snapshots [1] to things like conflict free replicated datatypes [2]. The event is open for anyone interested. I only ask people to come prepared.
-In the last meeting (19th) we covered distributed hash tables.</description>
+      <description>&lt;p&gt;I have been organizing a distributed systems paper reading group in Berlin for
+the last year. We meet every other week discussing a paper in the distributed
+systems space. This could be anything from &lt;em&gt;Chandy–Lamport&amp;rsquo;s algorithm for
+global distributed snapshots&lt;/em&gt; [1] to things like &lt;em&gt;conflict free replicated
+datatypes&lt;/em&gt; [2]. The event is open for anyone interested. I only ask people to
+come prepared.&lt;/p&gt;
+&lt;p&gt;In the last meeting (19th) we covered distributed hash tables. They play a
+crucial role in e.g. decentralized file sharing networks for example as
+directory services, simple key-value stores, or peer-to-peer membership
+management protocols.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Metric driven performance optimization</title>
       <link>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/</guid>
-      <description>Within my work at Red Hat and Kubernetes SIG instrumentation I have been working on kube-state-metrics , a Prometheus exporter exposing the state of a Kubernetes cluster to a Prometheus monitoring system. In particular I have focused on performance optimizing metric rendering for both latency as well as resource usage. Below I want to describe our approach of metric driven performance tuning, using Prometheus to monitor kube-state-metrics on top of Kubernetes, which in itself enables Prometheus to monitor Kubernetes.</description>
+      <description>&lt;p&gt;Within my work at Red Hat and Kubernetes &lt;a href=&#34;https://github.com/kubernetes/community/tree/master/sig-instrumentation&#34;&gt; SIG instrumentation
+&lt;/a&gt; I
+have been working on &lt;a href=&#34;https://github.com/kubernetes/kube-state-metrics/&#34;&gt; kube-state-metrics
+&lt;/a&gt;, a &lt;a href=&#34;https://github.com/prometheus/prometheus&#34;&gt; Prometheus
+&lt;/a&gt; exporter exposing the state of a
+Kubernetes cluster to a Prometheus monitoring system. In particular I have
+focused on performance optimizing metric rendering for both latency as well as
+resource usage. Below I want to describe our approach of metric driven
+performance tuning, using Prometheus to monitor kube-state-metrics on top of
+Kubernetes, which in itself enables Prometheus to monitor Kubernetes.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk Self-healing Kubernetes</title>
       <link>https://max-inden.de/post/self-healing-k8s/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/self-healing-k8s/</guid>
-      <description>What If Component xxx Dies? Introducing Self-Healing Kubernetes
-Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
-This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server.</description>
+      <description>&lt;p&gt;What If Component xxx Dies? Introducing Self-Healing Kubernetes&lt;/p&gt;
+&lt;p&gt;Kubernetes promises healing your application on all kinds of failure scenarios,
+but why not self-heal Kubernetes itself?&lt;/p&gt;
+&lt;p&gt;This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously
+recover from failure scenarios with the help of e.g. itself, systemd and
+checkpointing. We will ask and answer questions like “What happens when xxx
+dies”. The theory will be followed by a demo on a live cluster showcasing what
+happens when we kill central Kubernetes components, like the API-Server. Let’s
+see how well Kubernetes recovers.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

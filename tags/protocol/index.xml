@@ -13,8 +13,15 @@
       <link>https://max-inden.de/post/2020-01-24-21st-paper-club/</link>
       <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-01-24-21st-paper-club/</guid>
-      <description>We started the new year with a session on epidemic / gossip protocols. To decide what to read I compiled the following list of papers that I either enjoyed reading in the past, or that were recommended to me. The Swim (Scalable failure detection and membership protocol) paper won the poll.
-Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable weakly-consistent infection-style process group membership protocol.&amp;rdquo; Proceedings International Conference on Dependable Systems and Networks.</description>
+      <description>&lt;p&gt;We started the new year with a session on &lt;em&gt;epidemic&lt;/em&gt; / &lt;em&gt;gossip&lt;/em&gt; protocols. To
+decide what to read I compiled the following list of papers that I either
+enjoyed reading in the past, or that were recommended to me. The &lt;em&gt;Swim (Scalable
+failure detection and membership protocol)&lt;/em&gt; paper won the poll.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Das, Abhinandan, Indranil Gupta, and Ashish Motivala. &amp;ldquo;Swim: Scalable
+weakly-consistent infection-style process group membership protocol.&amp;rdquo;
+Proceedings International Conference on Dependable Systems and Networks. IEEE,
+2002.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

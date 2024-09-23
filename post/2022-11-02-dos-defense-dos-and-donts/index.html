@@ -7,8 +7,81 @@
 <meta name="robots" content="index, follow">
 <title>Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp | Max Inden</title>
 <meta name="keywords" content="tech, talk, libp2p">
-<meta name="description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts // Decode the length prefix of a message.">
+<meta name="description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in
+peer-to-peer networks. I discussed resource management strategies such as
+enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
+and Go. You can find the recording and slides of my talk below.
+
+
+    
+    
+      
+    
+
+Slides
+DOS
+
+Denial-of-service attack
+Hard in peer-to-peer as identities are cheap
+Relevant for any scarce resource, e.g. CPU, memory(, file descriptors)
+
+Do&rsquo;s
+
+Bound EVERYTHING
+Once a bound is exceeded:
+
+Drop item (good)
+Enforce backpressure (good)
+
+
+
+Do&rsquo;s
+Backpressure
+
+Slow consumer should slow down a fast producer
+Can improve resource utilization
+Can improve latency
+
+Don&rsquo;ts
+// Decode the length prefix of a message.
+let l = uvi::decode::usize(msg_len_prefix)?;
+// Allocate a corresponding buffer.
+let buffer = vec![0; l];
+// Read message into buffer.
+socket.read_exact(&amp;mut buffer)?;
+Don&rsquo;ts
+for {
+  // Receive a request.
+  request := &lt;- incomingRequests
+  // Handle the request.
+  go handleRequest(request)
+}
+Don&rsquo;ts
+loop {
+  // Receive a request.
+  let request = incoming_requests.next().await?;
+
+  // Handle the request.
+  spawn(async move {
+      handle(request)
+  });
+}
+Don&rsquo;ts
+loop {
+  // Receive a request.
+  let request = incoming_requests.next().await?;
+  // Send the request somewhere else.
+  request_channel.unbounded_send(request);
+}
+Don&rsquo;ts
+// Buffer of requests
+let to_be_handled_later = Vec::new();
+
+// ...
+
+let request = incoming_requests.next().await?;
+to_be_handled_later.push(request);
+">
 <meta name="author" content="Max Inden">
 <link rel="canonical" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
@@ -57,8 +130,81 @@ Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap
 
     </style>
 </noscript><meta property="og:title" content="Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" />
-<meta property="og:description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts // Decode the length prefix of a message." />
+<meta property="og:description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in
+peer-to-peer networks. I discussed resource management strategies such as
+enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
+and Go. You can find the recording and slides of my talk below.
+
+
+    
+    
+      
+    
+
+Slides
+DOS
+
+Denial-of-service attack
+Hard in peer-to-peer as identities are cheap
+Relevant for any scarce resource, e.g. CPU, memory(, file descriptors)
+
+Do&rsquo;s
+
+Bound EVERYTHING
+Once a bound is exceeded:
+
+Drop item (good)
+Enforce backpressure (good)
+
+
+
+Do&rsquo;s
+Backpressure
+
+Slow consumer should slow down a fast producer
+Can improve resource utilization
+Can improve latency
+
+Don&rsquo;ts
+// Decode the length prefix of a message.
+let l = uvi::decode::usize(msg_len_prefix)?;
+// Allocate a corresponding buffer.
+let buffer = vec![0; l];
+// Read message into buffer.
+socket.read_exact(&amp;mut buffer)?;
+Don&rsquo;ts
+for {
+  // Receive a request.
+  request := &lt;- incomingRequests
+  // Handle the request.
+  go handleRequest(request)
+}
+Don&rsquo;ts
+loop {
+  // Receive a request.
+  let request = incoming_requests.next().await?;
+
+  // Handle the request.
+  spawn(async move {
+      handle(request)
+  });
+}
+Don&rsquo;ts
+loop {
+  // Receive a request.
+  let request = incoming_requests.next().await?;
+  // Send the request somewhere else.
+  request_channel.unbounded_send(request);
+}
+Don&rsquo;ts
+// Buffer of requests
+let to_be_handled_later = Vec::new();
+
+// ...
+
+let request = incoming_requests.next().await?;
+to_be_handled_later.push(request);
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-02-05T00:00:00+00:00" />
@@ -66,8 +212,81 @@ Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp"/>
-<meta name="twitter:description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do&rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do&rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don&rsquo;ts // Decode the length prefix of a message."/>
+<meta name="twitter:description" content="I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in
+peer-to-peer networks. I discussed resource management strategies such as
+enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
+and Go. You can find the recording and slides of my talk below.
+
+
+    
+    
+      
+    
+
+Slides
+DOS
+
+Denial-of-service attack
+Hard in peer-to-peer as identities are cheap
+Relevant for any scarce resource, e.g. CPU, memory(, file descriptors)
+
+Do&rsquo;s
+
+Bound EVERYTHING
+Once a bound is exceeded:
+
+Drop item (good)
+Enforce backpressure (good)
+
+
+
+Do&rsquo;s
+Backpressure
+
+Slow consumer should slow down a fast producer
+Can improve resource utilization
+Can improve latency
+
+Don&rsquo;ts
+// Decode the length prefix of a message.
+let l = uvi::decode::usize(msg_len_prefix)?;
+// Allocate a corresponding buffer.
+let buffer = vec![0; l];
+// Read message into buffer.
+socket.read_exact(&amp;mut buffer)?;
+Don&rsquo;ts
+for {
+  // Receive a request.
+  request := &lt;- incomingRequests
+  // Handle the request.
+  go handleRequest(request)
+}
+Don&rsquo;ts
+loop {
+  // Receive a request.
+  let request = incoming_requests.next().await?;
+
+  // Handle the request.
+  spawn(async move {
+      handle(request)
+  });
+}
+Don&rsquo;ts
+loop {
+  // Receive a request.
+  let request = incoming_requests.next().await?;
+  // Send the request somewhere else.
+  request_channel.unbounded_send(request);
+}
+Don&rsquo;ts
+// Buffer of requests
+let to_be_handled_later = Vec::new();
+
+// ...
+
+let request = incoming_requests.next().await?;
+to_be_handled_later.push(request);
+"/>
 
 
 <script type="application/ld+json">
@@ -96,7 +315,7 @@ Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap
   "@type": "BlogPosting",
   "headline": "Talk \"DOS Defense - Do’s and Don’ts\" @IPFS-Camp",
   "name": "Talk \u0022DOS Defense - Do’s and Don’ts\u0022 @IPFS-Camp",
-  "description": "I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.\nSlides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do\u0026rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do\u0026rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don\u0026rsquo;ts // Decode the length prefix of a message.",
+  "description": "I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.\nSlides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do\u0026rsquo;s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do\u0026rsquo;s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don\u0026rsquo;ts // Decode the length prefix of a message. let l = uvi::decode::usize(msg_len_prefix)?; // Allocate a corresponding buffer. let buffer = vec![0; l]; // Read message into buffer. socket.read_exact(\u0026amp;mut buffer)?; Don\u0026rsquo;ts for { // Receive a request. request := \u0026lt;- incomingRequests // Handle the request. go handleRequest(request) } Don\u0026rsquo;ts loop { // Receive a request. let request = incoming_requests.next().await?; // Handle the request. spawn(async move { handle(request) }); } Don\u0026rsquo;ts loop { // Receive a request. let request = incoming_requests.next().await?; // Send the request somewhere else. request_channel.unbounded_send(request); } Don\u0026rsquo;ts // Buffer of requests let to_be_handled_later = Vec::new(); // ... let request = incoming_requests.next().await?; to_be_handled_later.push(request); ",
   "keywords": [
     "tech", "talk", "libp2p"
   ],
@@ -215,9 +434,12 @@ peer-to-peer networks. I discussed resource management strategies such as
 enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
 and Go. You can find the recording and slides of my talk below.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube-nocookie.com/embed/jZrAnnFO-2c" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/jZrAnnFO-2c?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <h1 id="slides">Slides<a hidden class="anchor" aria-hidden="true" href="#slides">#</a></h1>
 <h2 id="dos">DOS<a hidden class="anchor" aria-hidden="true" href="#dos">#</a></h2>
