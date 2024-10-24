@@ -1058,6 +1058,7 @@ paradigms.&lt;/p&gt;
 &lt;li&gt;Move to Rust via &lt;code&gt;quinn-udp&lt;/code&gt;. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1901295&#34;&gt;bugzilla#1901295&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Switch to multi-packet UDP IO using OS mechanisms like &lt;code&gt;recvmmsg&lt;/code&gt;, generic receive offloading, across Linux, Windows, and Android.&lt;/li&gt;
 &lt;li&gt;Enables support for ancillary IP metadata, such as Explicit Congestion Notification (ECN), improving congestion signals. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1902065&#34;&gt;bugzilla#1902065&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mozilla/neqo/pull/2184&#34;&gt;Refactor&lt;/a&gt; UDP QUIC receive path to not allocate up to encryption layer.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Introduce Glean metrics into HTTP3/QUIC Rust stack. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1906853&#34;&gt;bugzilla#1906853&lt;/a&gt;.&lt;/li&gt;
