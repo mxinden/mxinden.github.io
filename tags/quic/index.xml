@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Quic on Max Inden</title>
+    <link>https://max-inden.de/tags/quic/</link>
+    <description>Recent content in Quic on Max Inden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://max-inden.de/tags/quic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM</title>
+      <link>https://max-inden.de/post/2025-02-02-fast-udp-makes-quic-quicker/</link>
+      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/post/2025-02-02-fast-udp-makes-quic-quicker/</guid>
+      <description>&lt;p&gt;I presented my recent work on Firefox&amp;rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

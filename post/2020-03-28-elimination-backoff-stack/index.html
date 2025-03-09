@@ -396,8 +396,7 @@ parallel. They do so by increasing the amount of <code>Exchanger</code>s they co
 randomly selecting one from the elimination array.</p>
 <blockquote>
 <p>Backing-off in space instead of time enables the elimination back-off stack to
-be used by multiple operations in <strong>parallel</strong>.</p>
-</blockquote>
+be used by multiple operations in <strong>parallel</strong>.</p></blockquote>
 <p>For example at first a <code>pop</code> operation that failed on the lock-free stack
 selects one out of the two first exchangers of the elimination array. If it
 fails on that <code>Exchanger</code> due to contention it selects one out of the four first

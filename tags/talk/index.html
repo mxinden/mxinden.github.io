@@ -149,6 +149,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I presented my recent work on Firefox’s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:
+QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-02 00:00:00 +0000 UTC'>February 2, 2025</span>&nbsp;·&nbsp;Max Inden</footer>
+  <a class="entry-link" aria-label="post link to Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM" href="https://max-inden.de/post/2025-02-02-fast-udp-makes-quic-quicker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing
     </h2>
   </header>
@@ -276,20 +290,6 @@ Recording Slides </p>
   </div>
   <footer class="entry-footer"><span title='2021-07-20 00:00:00 +0000 UTC'>July 20, 2021</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Talk Intro to libp2p" href="https://max-inden.de/post/intro-to-libp2p/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk Optimizing Metric Rendering in kube-state-metrics
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
-This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-05-22 00:00:00 +0000 UTC'>May 22, 2019</span>&nbsp;·&nbsp;Max Inden</footer>
-  <a class="entry-link" aria-label="post link to Talk Optimizing Metric Rendering in kube-state-metrics" href="https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

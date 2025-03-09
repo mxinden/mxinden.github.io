@@ -25,8 +25,7 @@ Since then lots happened. A couple of milestones I was involved in:&lt;/p&gt;</d
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</guid>
       <description>&lt;p&gt;How you can connect everything (browsers &amp;amp; non-browsers), everywhere (public or private), all at once (using libp2p).&lt;/p&gt;
-
-    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
       &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/4v-iIB0C9_8?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
     &lt;/div&gt;
 
@@ -41,8 +40,7 @@ Since then lots happened. A couple of milestones I was involved in:&lt;/p&gt;</d
 peer-to-peer networks. I discussed resource management strategies such as
 enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
 and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
-
-    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
       &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/jZrAnnFO-2c?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
     &lt;/div&gt;
 
@@ -138,8 +136,7 @@ and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
       <description>&lt;blockquote&gt;
 &lt;p&gt;We’ll take a closer look at the recently added decentralized hole punching
 feature, allowing NAT and firewall traversal without the need for any central
-coordination servers (STUN and TURN).&lt;/p&gt;
-&lt;/blockquote&gt;
+coordination servers (STUN and TURN).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://youtu.be/MCEEMrIRks8&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
@@ -150,8 +147,7 @@ coordination servers (STUN and TURN).&lt;/p&gt;
       <description>&lt;blockquote&gt;
 &lt;p&gt;We will discuss the current state of the project, eyeball the various language
 implementations, take a look at the many live networks running on top of
-libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;
-&lt;/blockquote&gt;
+libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://youtu.be/Sbd7odDFT1w&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
