@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM | Max Inden</title>
 <meta name="keywords" content="tech, talk, quic, firefox">
-<meta name="description" content="I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:
+<meta name="description" content="I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.
 
 QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.">
 <meta name="author" content="Max Inden">
@@ -58,7 +58,7 @@ QUIC is a new transport protocol on top of UDP, transporting a large portion of 
 
     </style>
 </noscript><meta property="og:title" content="Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM" />
-<meta property="og:description" content="I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:
+<meta property="og:description" content="I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.
 
 QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android." />
 <meta property="og:type" content="article" />
@@ -68,7 +68,7 @@ QUIC is a new transport protocol on top of UDP, transporting a large portion of 
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM"/>
-<meta name="twitter:description" content="I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:
+<meta name="twitter:description" content="I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.
 
 QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android."/>
 
@@ -99,11 +99,11 @@ QUIC is a new transport protocol on top of UDP, transporting a large portion of 
   "@type": "BlogPosting",
   "headline": "Talk \"Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack\" @FOSDEM",
   "name": "Talk \u0022Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack\u0022 @FOSDEM",
-  "description": "I presented my recent work on Firefox\u0026rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:\nQUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.\n",
+  "description": "I presented my recent work on Firefox\u0026rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.\nQUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.\n",
   "keywords": [
     "tech", "talk", "quic", "firefox"
   ],
-  "articleBody": "I presented my recent work on Firefox’s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:\nQUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.\nThis talk gives a high level overview of Firefox’s HTTP3 / QUIC / UDP stack, followed by a deep dive into the various performance improvements landing in Firefox. Learn how we are making Firefox even faster and how you too can leverage these techniques to optimize your application.\nSlides and recording\n",
+  "articleBody": "I presented my recent work on Firefox’s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.\nQUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.\nThis talk gives a high level overview of Firefox’s HTTP3 / QUIC / UDP stack, followed by a deep dive into the various performance improvements landing in Firefox. Learn how we are making Firefox even faster and how you too can leverage these techniques to optimize your application.\nSlides and recording\n",
   "wordCount" : "133",
   "inLanguage": "en",
   "datePublished": "2025-02-02T00:00:00Z",
@@ -213,7 +213,7 @@ QUIC is a new transport protocol on top of UDP, transporting a large portion of 
 
 </div>
   </header> 
-  <div class="post-content"><p>I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025:</p>
+  <div class="post-content"><p>I presented my recent work on Firefox&rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.</p>
 <blockquote>
 <p>QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.</p>
 <p>This talk gives a high level overview of Firefox’s HTTP3 / QUIC / UDP stack, followed by a deep dive into the various performance improvements landing in Firefox. Learn how we are making Firefox even faster and how you too can leverage these techniques to optimize your application.</p></blockquote>
