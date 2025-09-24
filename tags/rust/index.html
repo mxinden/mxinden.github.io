@@ -149,6 +149,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Fast UDP I/O for Firefox in Rust
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Motivation Firefox uses NSPR for most of its network I/O. When it comes to UDP I/O, NSPR only offers a limited set of dated APIs, most relevant here PR_SendTo and PR_RecvFrom, wrappers around POSIX’s sendto and recvfrom. The N in NSPR stands for Netscape, giving you a hint of its age.
+Operating systems have evolved since. Many offer multi-message APIs like sendmmsg and recvmmsg. Some offer segmentation offloading like GSO (Generic Segmentation Offload) and GRO (Generic Receive Offload). Each of these promise significant performance improvements for UDP I/O.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-09-14 00:00:00 +0000 UTC'>September 14, 2025</span>&nbsp;·&nbsp;Max Inden</footer>
+  <a class="entry-link" aria-label="post link to Fast UDP I/O for Firefox in Rust" href="https://max-inden.de/post/fast-udp-io-in-firefox/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Elimination back-off stack performance
     </h2>
   </header>

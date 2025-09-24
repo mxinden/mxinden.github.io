@@ -164,6 +164,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Fast UDP I/O for Firefox in Rust
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Motivation Firefox uses NSPR for most of its network I/O. When it comes to UDP I/O, NSPR only offers a limited set of dated APIs, most relevant here PR_SendTo and PR_RecvFrom, wrappers around POSIX’s sendto and recvfrom. The N in NSPR stands for Netscape, giving you a hint of its age.
+Operating systems have evolved since. Many offer multi-message APIs like sendmmsg and recvmmsg. Some offer segmentation offloading like GSO (Generic Segmentation Offload) and GRO (Generic Receive Offload). Each of these promise significant performance improvements for UDP I/O.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-09-14 00:00:00 +0000 UTC'>September 14, 2025</span>&nbsp;·&nbsp;Max Inden</footer>
+  <a class="entry-link" aria-label="post link to Fast UDP I/O for Firefox in Rust" href="https://max-inden.de/post/fast-udp-io-in-firefox/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM
     </h2>
   </header>
@@ -287,23 +301,6 @@ Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-
   </div>
   <footer class="entry-footer"><span title='2022-03-06 00:00:00 +0000 UTC'>March 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
   <a class="entry-link" aria-label="post link to Hole punching in libp2p" href="https://max-inden.de/post/2022-03-06-libp2p-hole-punching/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Gave a talk on hole punching in libp2p at FOSDEM 2022.
-Peer-to-peer hole punching without centralized infrastructure
-How libp2p can traverse NATs and firewalls without coordination through central STUN and TURN servers.
-libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
-In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together. In the second part, we’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM" href="https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

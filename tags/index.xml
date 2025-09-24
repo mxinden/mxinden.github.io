@@ -6,20 +6,41 @@
     <description>Recent content in Tags on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Firefox</title>
       <link>https://max-inden.de/tags/firefox/</link>
-      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/firefox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Networking</title>
+      <link>https://max-inden.de/tags/networking/</link>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>Quic</title>
       <link>https://max-inden.de/tags/quic/</link>
-      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/quic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://max-inden.de/tags/rust/</link>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/rust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tech</title>
+      <link>https://max-inden.de/tags/tech/</link>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     <item>
@@ -27,13 +48,6 @@
       <link>https://max-inden.de/tags/talk/</link>
       <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/talk/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tech</title>
-      <link>https://max-inden.de/tags/tech/</link>
-      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     <item>
@@ -111,13 +125,6 @@
       <link>https://max-inden.de/tags/congestion-control/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/congestion-control/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Networking</title>
-      <link>https://max-inden.de/tags/networking/</link>
-      <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/tags/networking/</guid>
       <description></description>
     </item>
     <item>
@@ -209,13 +216,6 @@
       <link>https://max-inden.de/tags/multithreaded/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/multithreaded/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Rust</title>
-      <link>https://max-inden.de/tags/rust/</link>
-      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/tags/rust/</guid>
       <description></description>
     </item>
     <item>
