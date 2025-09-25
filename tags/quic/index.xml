@@ -14,13 +14,11 @@
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/fast-udp-io-in-firefox/</guid>
       <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Around 20% of Firefox&amp;rsquo;s HTTP traffic today uses HTTP/3, which runs over QUIC, which in turn runs over UDP.
+This translates to substantial UDP I/O activity.&lt;/p&gt;
 &lt;p&gt;Firefox uses &lt;a href=&#34;https://www-archive.mozilla.org/projects/nspr/&#34;&gt;NSPR&lt;/a&gt; for most of its network I/O.
 When it comes to UDP I/O, NSPR only offers a limited set of dated APIs, most relevant here &lt;a href=&#34;https://firefox-source-docs.mozilla.org/nspr/reference/pr_sendto.html&#34;&gt;&lt;code&gt;PR_SendTo&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://firefox-source-docs.mozilla.org/nspr/reference/pr_recvfrom.html&#34;&gt;&lt;code&gt;PR_RecvFrom&lt;/code&gt;&lt;/a&gt;, wrappers around POSIX&amp;rsquo;s &lt;code&gt;sendto&lt;/code&gt; and &lt;code&gt;recvfrom&lt;/code&gt;.
-The N in NSPR stands for Netscape, giving you a hint of its age.&lt;/p&gt;
-&lt;p&gt;Operating systems have evolved since.
-Many offer multi-message APIs like &lt;code&gt;sendmmsg&lt;/code&gt; and &lt;code&gt;recvmmsg&lt;/code&gt;.
-Some offer segmentation offloading like GSO (Generic Segmentation Offload) and GRO (Generic Receive Offload).
-Each of these promise significant performance improvements for UDP I/O.&lt;/p&gt;</description>
+The N in NSPR stands for Netscape, giving you a hint of its age.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM</title>

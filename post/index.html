@@ -168,8 +168,8 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>Motivation Firefox uses NSPR for most of its network I/O. When it comes to UDP I/O, NSPR only offers a limited set of dated APIs, most relevant here PR_SendTo and PR_RecvFrom, wrappers around POSIX’s sendto and recvfrom. The N in NSPR stands for Netscape, giving you a hint of its age.
-Operating systems have evolved since. Many offer multi-message APIs like sendmmsg and recvmmsg. Some offer segmentation offloading like GSO (Generic Segmentation Offload) and GRO (Generic Receive Offload). Each of these promise significant performance improvements for UDP I/O.
+    <p>Motivation Around 20% of Firefox’s HTTP traffic today uses HTTP/3, which runs over QUIC, which in turn runs over UDP. This translates to substantial UDP I/O activity.
+Firefox uses NSPR for most of its network I/O. When it comes to UDP I/O, NSPR only offers a limited set of dated APIs, most relevant here PR_SendTo and PR_RecvFrom, wrappers around POSIX’s sendto and recvfrom. The N in NSPR stands for Netscape, giving you a hint of its age.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-09-14 00:00:00 +0000 UTC'>September 14, 2025</span>&nbsp;·&nbsp;Max Inden</footer>
