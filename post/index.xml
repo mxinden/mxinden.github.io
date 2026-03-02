@@ -6,8 +6,27 @@
     <description>Recent content in Posts on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM</title>
+      <link>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</link>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</guid>
+      <description>&lt;p&gt;I gave a talk on the upcoming WebTransport protocol in the Browser Devroom at FOSDEM 2026.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WebTransport is an upcoming protocol (standardized by the IETF) and Web API (standardized by the W3C) for bidirectional communication on the web. It provides multiplexed streams and unreliable datagrams on top of HTTP/3 and HTTP/2.&lt;/p&gt;
+&lt;p&gt;This talk explains how WebTransport works at the protocol level, how it maps to QUIC when run on top of HTTP/3, and how its capabilities differ from WebSocket. The session will also cover the current state of browser and server support, and where the ecosystem is heading next.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Talk &#34;Modern Network Protocols — What’s Next for Firefox and the Web?&#34; @FOSDEM</title>
+      <link>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</link>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</guid>
+      <description>&lt;p&gt;Andrew, a colleague, and I presented an outlook for Firefox and the web.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Web’s transport stack is changing rapidly, with QUIC, HTTP/3, and encrypted DNS seeing broad adoption. This talk gives an overview of the modern network protocols Firefox already deploys and invests in, including QUIC and HTTP/3’s growing share of Web traffic. It will highlight what Firefox actually sends on the wire today, what benefits we observe in practice, and where the Web’s protocol landscape stands in early 2026.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>netstack.fm - Modern networking in Firefox with Max Inden</title>
       <link>https://max-inden.de/post/modern-networking-in-firefox-podcast/</link>

@@ -6,27 +6,41 @@
     <description>Recent content in Tags on Max Inden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Firefox</title>
       <link>https://max-inden.de/tags/firefox/</link>
-      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/firefox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Http3</title>
+      <link>https://max-inden.de/tags/http3/</link>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/http3/</guid>
       <description></description>
     </item>
     <item>
       <title>Networking</title>
       <link>https://max-inden.de/tags/networking/</link>
-      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>Quic</title>
       <link>https://max-inden.de/tags/quic/</link>
-      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/quic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tech</title>
+      <link>https://max-inden.de/tags/tech/</link>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     <item>
@@ -34,13 +48,6 @@
       <link>https://max-inden.de/tags/rust/</link>
       <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/rust/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tech</title>
-      <link>https://max-inden.de/tags/tech/</link>
-      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     <item>
