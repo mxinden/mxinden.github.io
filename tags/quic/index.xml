@@ -6,8 +6,18 @@
     <description>Recent content in Quic on Max Inden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/quic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working Draft - HTTP/3 und WebTransport mit Max Inden</title>
+      <link>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</link>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</guid>
+      <description>&lt;p&gt;I joined the Working Draft podcast to talk about HTTP/3 and WebTransport.&lt;/p&gt;
+&lt;p&gt;We traced the evolution from HTTP/1 through HTTP/2 to HTTP/3, why head-of-line blocking pushed the web toward QUIC, and how building transport and security together enables 1-RTT and 0-RTT handshakes, connection migration, and encrypted DNS. We closed on WebTransport as a modern alternative to WebSocket, supporting both streams and datagrams.&lt;/p&gt;
+&lt;p&gt;The episode is in German.&lt;/p&gt;
+&lt;p&gt;Thanks for having me!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM</title>
       <link>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</link>

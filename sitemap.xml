@@ -7,36 +7,51 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/firefox/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://max-inden.de/tags/http3/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/networking/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/post/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/quic/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/</loc>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/tags/tech/</loc>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/tags/webtransport/</loc>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</loc>
+    <lastmod>2026-04-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/tags/http3/</loc>
     <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -47,11 +62,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://max-inden.de/tags/tech/</loc>
     <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
