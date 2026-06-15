@@ -4,7 +4,7 @@
     <title>Max Inden</title>
     <link>https://max-inden.de/</link>
     <description>Recent content on Max Inden</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/index.xml" rel="self" type="application/rss+xml" />
@@ -85,7 +85,7 @@ Since then lots happened. A couple of milestones I was involved in:&lt;/p&gt;</d
       <guid>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</guid>
       <description>&lt;p&gt;How you can connect everything (browsers &amp;amp; non-browsers), everywhere (public or private), all at once (using libp2p).&lt;/p&gt;
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/4v-iIB0C9_8?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/4v-iIB0C9_8?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
     &lt;/div&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://bafybeidyb3fucxaq32cm6vf6q5ziaah6foe5caggwsitlm7myd4pwpcgdq.ipfs.w3s.link/connecting-everything-everywhere-all-at-once-with-libp2p.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/p&gt;</description>
@@ -100,7 +100,7 @@ peer-to-peer networks. I discussed resource management strategies such as
 enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
 and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/jZrAnnFO-2c?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/jZrAnnFO-2c?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
     &lt;/div&gt;
 
 &lt;h1 id=&#34;slides&#34;&gt;Slides&lt;/h1&gt;
@@ -129,11 +129,11 @@ and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;donts&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Decode the length prefix of a message.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; l &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uvi::decode::&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;(msg_len_prefix)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; l &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uvi::decode::&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;(msg_len_prefix)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Allocate a corresponding buffer.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; buffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; l];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; buffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;vec!&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; l];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Read message into buffer.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;socket.read_exact(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; buffer)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;socket.read_exact(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; buffer)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-1&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.&lt;/span&gt;
@@ -144,26 +144,26 @@ and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-2&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;loop&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Handle the request.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;move&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;move&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      handle(request)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  });
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-3&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;loop&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Send the request somewhere else.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  request_channel.unbounded_send(request);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  request_channel.unbounded_send(request);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-4&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Buffer of requests
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; to_be_handled_later &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; to_be_handled_later &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;to_be_handled_later.push(request);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
@@ -195,7 +195,8 @@ and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
       <description>&lt;blockquote&gt;
 &lt;p&gt;We’ll take a closer look at the recently added decentralized hole punching
 feature, allowing NAT and firewall traversal without the need for any central
-coordination servers (STUN and TURN).&lt;/p&gt;&lt;/blockquote&gt;
+coordination servers (STUN and TURN).&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://youtu.be/MCEEMrIRks8&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
@@ -206,7 +207,8 @@ coordination servers (STUN and TURN).&lt;/p&gt;&lt;/blockquote&gt;
       <description>&lt;blockquote&gt;
 &lt;p&gt;We will discuss the current state of the project, eyeball the various language
 implementations, take a look at the many live networks running on top of
-libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;&lt;/blockquote&gt;
+libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://youtu.be/Sbd7odDFT1w&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
@@ -474,8 +476,7 @@ due to congestion control.&lt;/p&gt;</description>
       <link>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</guid>
-      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://max-inden.de/static/elimination-back-off-stack/lines.svg&#34; alt=&#34;All stacks from 1 thread to up to 128&#34;  /&gt;
-&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img alt=&#34;All stacks from 1 thread to up to 128&#34; loading=&#34;lazy&#34; src=&#34;https://max-inden.de/static/elimination-back-off-stack/lines.svg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I recently stumbled upon the idea of an &lt;em&gt;Elimination Back-off Stack&lt;/em&gt; promising
 to be a &lt;strong&gt;parallel&lt;/strong&gt;, linearizable and lock-free stack. In case you are not
 familiar with it, I would suggest either reading my &lt;a href=&#34;https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/&#34;&gt;previous
@@ -693,8 +694,7 @@ idea of how Google controls parts of their gigantic infrastructure.&lt;/p&gt;</d
 first &lt;a href=&#34;https://connect.garmin.com/modern/activity/1792046557&#34;&gt;Triathlon&lt;/a&gt; today
 here in Berlin. I survived the swimming way better than I thougt, biking wasn&amp;rsquo;t
 a big problem, but the 10 k at the end were more of a stumbling then a running.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://max-inden.de/assets/17-06-11.jpg&#34; alt=&#34;alt text&#34;  /&gt;
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;img alt=&#34;alt text&#34; loading=&#34;lazy&#34; src=&#34;https://max-inden.de/assets/17-06-11.jpg&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Angels Island</title>
@@ -709,8 +709,7 @@ a big problem, but the 10 k at the end were more of a stumbling then a running.&
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2017-02-11-quick-run-through-sf/</guid>
       <description>&lt;p&gt;My first 16 miles run. Nearly blacked out at the end. Amazing route!&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://max-inden.de/assets/17-02-11.png&#34; alt=&#34;alt text&#34;  /&gt;
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;img alt=&#34;alt text&#34; loading=&#34;lazy&#34; src=&#34;https://max-inden.de/assets/17-02-11.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Back in Germany</title>
@@ -1092,16 +1091,16 @@ paradigms.&lt;/p&gt;</description>
       <description>&lt;h2 id=&#34;experience&#34;&gt;Experience&lt;/h2&gt;
 &lt;h3 id=&#34;software-engineer-at-mozilla&#34;&gt;Software Engineer at Mozilla&lt;/h3&gt;
 &lt;p&gt;June 2024 - now&lt;/p&gt;
+&lt;p&gt;Core maintainer of Firefox&amp;rsquo;s QUIC / HTTP/3 networking stack: &lt;a href=&#34;https://github.com/mozilla/neqo&#34;&gt;&lt;code&gt;neqo&lt;/code&gt;&lt;/a&gt; (Mozilla&amp;rsquo;s Rust QUIC implementation), its integration into Firefox, and related open-source libraries.
+Across both Mozilla engagements: 378 pull requests and 500+ code reviews on &lt;code&gt;neqo&lt;/code&gt;, 100+ commits to Firefox, and 17+ shepherded &lt;code&gt;neqo&lt;/code&gt; releases (v0.9.0 to v0.25.0).&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1901292&#34;&gt;Rewrite&lt;/a&gt; Firefox&amp;rsquo;s QUIC UDP IO path.
-&lt;ul&gt;
-&lt;li&gt;Move to Rust via &lt;code&gt;quinn-udp&lt;/code&gt;. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1901295&#34;&gt;bugzilla#1901295&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Switch to multi-packet UDP IO using OS mechanisms like &lt;code&gt;recvmmsg&lt;/code&gt;, generic receive offloading, across Linux, Windows, and Android.&lt;/li&gt;
-&lt;li&gt;Enables support for ancillary IP metadata, such as Explicit Congestion Notification (ECN), improving congestion signals. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1902065&#34;&gt;bugzilla#1902065&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/mozilla/neqo/pull/2184&#34;&gt;Refactor&lt;/a&gt; UDP QUIC receive path to not allocate up to encryption layer.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Introduce Glean metrics into HTTP3/QUIC Rust stack. See &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1906853&#34;&gt;bugzilla#1906853&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-gigabit UDP IO.&lt;/strong&gt; &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1901292&#34;&gt;Rewrite&lt;/a&gt; Firefox&amp;rsquo;s legacy NSPR-based UDP IO path as a modern, memory-safe Rust stack on top of &lt;a href=&#34;https://github.com/quinn-rs/quinn/tree/main/quinn-udp&#34;&gt;&lt;code&gt;quinn-udp&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1901295&#34;&gt;rolled out&lt;/a&gt; across Linux, Windows, macOS and Android. Multi-packet IO (&lt;code&gt;recvmmsg&lt;/code&gt;), Generic Segmentation/Receive Offload (GSO/GRO) and a &lt;a href=&#34;https://github.com/mozilla/neqo/pull/2184&#34;&gt;zero-allocation receive path&lt;/a&gt; raised CPU-bound throughput from &amp;lt; 1 Gbit/s to &lt;a href=&#34;https://max-inden.de/post/fast-udp-io-in-firefox/&#34;&gt;4 Gbit/s&lt;/a&gt;. Built &lt;a href=&#34;https://github.com/mozilla/neqo/pull/1758&#34;&gt;IO benchmarks&lt;/a&gt; with &lt;a href=&#34;https://github.com/mozilla/neqo/pull/2580&#34;&gt;CI regression detection&lt;/a&gt; to drive the work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Explicit Congestion Notification (ECN).&lt;/strong&gt; Implement &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1902065&#34;&gt;end-to-end QUIC ECN&lt;/a&gt;: marking, reading, RFC 9000 path validation and Congestion Experienced feedback to the congestion controller, resilient to middlebox interference. ~50% of Firefox Nightly QUIC connections now run on ECN-capable paths.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flow control.&lt;/strong&gt; &lt;a href=&#34;https://github.com/mozilla/neqo/pull/3314&#34;&gt;Stabilize stream receive-window auto-tuning&lt;/a&gt; toward the bandwidth-delay product, replacing a hard 1 MB cap (~160 Mbit/s on a 50 ms link).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;New protocols.&lt;/strong&gt; Implement &lt;a href=&#34;https://github.com/mozilla/neqo/pull/2796&#34;&gt;MASQUE connect-udp (RFC 9298)&lt;/a&gt; and classic HTTP CONNECT over HTTP/3, letting Firefox proxy both TCP and UDP over a single HTTP/3 connection. Improve WebTransport support.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Happy Eyeballs v3.&lt;/strong&gt; Author &lt;a href=&#34;https://github.com/mozilla/happy-eyeballs&#34;&gt;&lt;code&gt;mozilla/happy-eyeballs&lt;/code&gt;&lt;/a&gt; from scratch: a protocol-agnostic Rust state machine for dual-stack connection racing (HTTPS/SVCB records, alt-svc, ECH retry configs per RFC 9849), integrated into Firefox. Contribute to the &lt;a href=&#34;https://github.com/ietf-wg-happy/draft-happy-eyeballs-v3&#34;&gt;IETF Happy Eyeballs v3 draft&lt;/a&gt; and present the work at &lt;a href=&#34;https://youtu.be/l9eId_Yjoew&#34;&gt;IETF 125&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Telemetry &amp;amp; profiling.&lt;/strong&gt; Introduce &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1906853&#34;&gt;Glean metrics&lt;/a&gt; and Firefox profiler markers into the HTTP3/QUIC Rust stack.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/quinn-rs/quinn/tree/main/quinn-udp&#34;&gt;&lt;code&gt;quinn-udp&lt;/code&gt;&lt;/a&gt; maintainer.&lt;/strong&gt; The cross-platform UDP IO crate shared by Quinn and Firefox (45 PRs); fix platform issues (Windows ARM USO, Android &lt;code&gt;EINVAL&lt;/code&gt;, macOS address families) that benefit the wider Rust networking ecosystem.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;external-contributor-to-mozillas-http3quic-stack&#34;&gt;External contributor to Mozilla&amp;rsquo;s HTTP3/QUIC stack&lt;/h3&gt;
 &lt;p&gt;December 2023 - May 2024&lt;/p&gt;</description>

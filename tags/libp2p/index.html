@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="Max Inden">
 <link rel="canonical" href="https://max-inden.de/tags/libp2p/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6ff46447b1fa3f8a5cc0bcae48088decc3ae37f5fbc99406a3aefc3bf0e6044a.css" integrity="sha256-b/RkR7H6P4pcwLyuSAiN7MOuN/X7yZQGo678O/DmBEo=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://max-inden.de/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://max-inden.de/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://max-inden.de/favicon-32x32.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://max-inden.de/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://max-inden.de/tags/libp2p/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://max-inden.de/tags/libp2p/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://max-inden.de/tags/libp2p/">
 <noscript>
     <style>
@@ -40,57 +40,54 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
-</noscript><meta property="og:title" content="Libp2p" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://max-inden.de/tags/libp2p/" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Libp2p"/>
-<meta name="twitter:description" content=""/>
-
-</head>
-
-<body class="list" id="top">
+</noscript>
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+       document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
 
-</script>
+</script><meta property="og:url" content="https://max-inden.de/tags/libp2p/">
+  <meta property="og:site_name" content="Max Inden">
+  <meta property="og:title" content="Libp2p">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
 
-<header class="header">
-    <nav class="nav">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Libp2p">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://max-inden.de/" accesskey="h" title="Max Inden (Alt + H)">Max Inden</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -106,7 +103,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://max-inden.de/" title="Home">
                     <span>Home</span>
@@ -158,7 +155,9 @@ As announced before, I have left Protocol Labs in December 2023. After a 2 month
 My first commit was 5y ago, a small bug fix in our address handling. Since then lots happened. A couple of milestones I was involved in:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-02-29 00:00:00 +0000 UTC'>February 29, 2024</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2024-02-29 00:00:00 +0000 UTC'>February 29, 2024</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Stepping down as a (rust-) libp2p maintainer" href="https://max-inden.de/post/2024-02-29-stepping-down/"></a>
 </article>
 
@@ -172,7 +171,9 @@ My first commit was 5y ago, a small bug fix in our address handling. Since then 
 Slides
 </p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-16 00:00:00 +0000 UTC'>April 16, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2023-04-16 00:00:00 +0000 UTC'>April 16, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing" href="https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/"></a>
 </article>
 
@@ -185,7 +186,9 @@ Slides
     <p>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
 Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do’s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do’s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don’ts // Decode the length prefix of a message. let l = uvi::decode::usize(msg_len_prefix)?; // Allocate a corresponding buffer. let buffer = vec![0; l]; // Read message into buffer. socket.read_exact(&amp;mut buffer)?; Don’ts for { // Receive a request. request := &lt;- incomingRequests // Handle the request. go handleRequest(request) } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Handle the request. spawn(async move { handle(request) }); } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Send the request somewhere else. request_channel.unbounded_send(request); } Don’ts // Buffer of requests let to_be_handled_later = Vec::new(); // ... let request = incoming_requests.next().await?; to_be_handled_later.push(request); </p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/"></a>
 </article>
 
@@ -199,7 +202,9 @@ Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap
 At FOSDEM 2022 I presented libp2p’s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Hole punching in the wild&#34; @FOSDEM" href="https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/"></a>
 </article>
 
@@ -214,7 +219,9 @@ Connecting from the browser to a public server with a valid TLS certificate is e
 This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity. We will leverage the new WebTransport for secure communication to public servers with self-signed certificates and WebRTC for secure communication to other browsers, using hole puching, without the dependency on central infrastructure.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM" href="https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/"></a>
 </article>
 
@@ -228,7 +235,9 @@ This talk covers the intricacies of browser communication beyond the standard br
 Recording
 </p>
   </div>
-  <footer class="entry-footer"><span title='2022-04-30 00:00:00 +0000 UTC'>April 30, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2022-04-30 00:00:00 +0000 UTC'>April 30, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Hole punching with libp2p&#34; @p2p-paris" href="https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/"></a>
 </article>
 
@@ -242,7 +251,9 @@ Recording
 Recording
 </p>
   </div>
-  <footer class="entry-footer"><span title='2022-04-29 00:00:00 +0000 UTC'>April 29, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2022-04-29 00:00:00 +0000 UTC'>April 29, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris" href="https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/"></a>
 </article>
 
@@ -256,7 +267,9 @@ Recording
 Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/
 </p>
   </div>
-  <footer class="entry-footer"><span title='2022-03-06 00:00:00 +0000 UTC'>March 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2022-03-06 00:00:00 +0000 UTC'>March 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Hole punching in libp2p" href="https://max-inden.de/post/2022-03-06-libp2p-hole-punching/"></a>
 </article>
 
@@ -273,7 +286,9 @@ libp2p is a universal, cross-platform, multi-language, modular peer-to-peer netw
 In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together. In the second part, we’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM" href="https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/"></a>
 </article>
 
@@ -290,29 +305,41 @@ libp2p is a universal, cross-platform, multi-language, modular peer-to-peer netw
 We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;Max Inden</footer>
+  <footer class="entry-footer">
+
+<span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;State of libp2p&#34; @FOSDEM" href="https://max-inden.de/post/state-of-libp2p/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2026 <a href="https://max-inden.de/">Max Inden</a></span>
+        <span>&copy; 2026 <a href="https://max-inden.de/">Max Inden</a></span> · 
+
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -339,25 +366,25 @@ We will discuss the current state of the project, eyeball the various language i
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

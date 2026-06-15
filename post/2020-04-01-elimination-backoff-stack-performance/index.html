@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,6 @@
 <title>Elimination back-off stack performance | Max Inden</title>
 <meta name="keywords" content="tech, paper, lock-free, multithreaded, concurrent, rust, crossbeam">
 <meta name="description" content="
-
 I recently stumbled upon the idea of an Elimination Back-off Stack promising
 to be a parallel, linearizable and lock-free stack. In case you are not
 familiar with it, I would suggest either reading my previous
@@ -19,7 +18,7 @@ Rust with a little help from
 crossbeam.">
 <meta name="author" content="Max Inden">
 <link rel="canonical" href="https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6ff46447b1fa3f8a5cc0bcae48088decc3ae37f5fbc99406a3aefc3bf0e6044a.css" integrity="sha256-b/RkR7H6P4pcwLyuSAiN7MOuN/X7yZQGo678O/DmBEo=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://max-inden.de/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://max-inden.de/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://max-inden.de/favicon-32x32.png">
@@ -48,50 +47,50 @@ crossbeam.">
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
-</noscript><meta property="og:title" content="Elimination back-off stack performance" />
-<meta property="og:description" content="
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-I recently stumbled upon the idea of an Elimination Back-off Stack promising
-to be a parallel, linearizable and lock-free stack. In case you are not
-familiar with it, I would suggest either reading my previous
-post or the corresponding paper
-[1] itself. Being quite intrigued by the ideas of the above stack I wrote my
-own implementation in
-Rust with a little help from
-crossbeam." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-04-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-04-01T00:00:00+00:00" />
+</script><meta property="og:url" content="https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/">
+  <meta property="og:site_name" content="Max Inden">
+  <meta property="og:title" content="Elimination back-off stack performance">
+  <meta property="og:description" content="I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-04-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-04-01T00:00:00+00:00">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="Paper">
+    <meta property="article:tag" content="Lock-Free">
+    <meta property="article:tag" content="Multithreaded">
+    <meta property="article:tag" content="Concurrent">
+    <meta property="article:tag" content="Rust">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Elimination back-off stack performance"/>
-<meta name="twitter:description" content="
-
-I recently stumbled upon the idea of an Elimination Back-off Stack promising
-to be a parallel, linearizable and lock-free stack. In case you are not
-familiar with it, I would suggest either reading my previous
-post or the corresponding paper
-[1] itself. Being quite intrigued by the ideas of the above stack I wrote my
-own implementation in
-Rust with a little help from
-crossbeam."/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Elimination back-off stack performance">
+  <meta name="twitter:description" content="I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.">
 
 
 <script type="application/ld+json">
@@ -120,11 +119,11 @@ crossbeam."/>
   "@type": "BlogPosting",
   "headline": "Elimination back-off stack performance",
   "name": "Elimination back-off stack performance",
-  "description": " I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.\n",
+  "description": "\nI recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.\n",
   "keywords": [
     "tech", "paper", "lock-free", "multithreaded", "concurrent", "rust", "crossbeam"
   ],
-  "articleBody": " I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.\nIn this post I will compare my implementation to other stack implementations. In particular I want to dive into some performance characteristics and their behavior in regards to the amount of threads (≤ 128) accessing the datastructure.\nThe code of the implementation itself, as well as all benchmarking logic is public at https://github.com/mxinden/elimination-backoff-stack/ .\nTake this with a grain of salt. This is a hobby project, thus in no way sophisticated let alone ready for production.\nStacks of the day (1) Simplest stack in the world A Rust Vec implements both push and pop, wrapping it in a Mutex for mutual exclusion and an Arc for shared ownership makes it a concurrent stack. Let’s see whether an Arc",
+  "articleBody": "\nI recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.\nIn this post I will compare my implementation to other stack implementations. In particular I want to dive into some performance characteristics and their behavior in regards to the amount of threads (≤ 128) accessing the datastructure.\nThe code of the implementation itself, as well as all benchmarking logic is public at https://github.com/mxinden/elimination-backoff-stack/ .\nTake this with a grain of salt. This is a hobby project, thus in no way sophisticated let alone ready for production.\nStacks of the day (1) Simplest stack in the world A Rust Vec implements both push and pop, wrapping it in a Mutex for mutual exclusion and an Arc for shared ownership makes it a concurrent stack. Let’s see whether an Arc",
   "wordCount" : "1156",
   "inLanguage": "en",
   "datePublished": "2020-04-01T00:00:00Z",
@@ -148,31 +147,19 @@ crossbeam."/>
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://max-inden.de/" accesskey="h" title="Max Inden (Alt + H)">Max Inden</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -188,7 +175,7 @@ crossbeam."/>
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://max-inden.de/" title="Home">
                     <span>Home</span>
@@ -230,12 +217,13 @@ crossbeam."/>
     <h1 class="post-title entry-hint-parent">
       Elimination back-off stack performance
     </h1>
-    <div class="post-meta"><span title='2020-04-01 00:00:00 +0000 UTC'>April 1, 2020</span>&nbsp;·&nbsp;Max Inden
+    <div class="post-meta">
+
+<span title='2020-04-01 00:00:00 +0000 UTC'>April 1, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span>
 
 </div>
   </header> 
-  <div class="post-content"><p><img loading="lazy" src="/static/elimination-back-off-stack/lines.svg" alt="All stacks from 1 thread to up to 128"  />
-</p>
+  <div class="post-content md-content"><p><img alt="All stacks from 1 thread to up to 128" loading="lazy" src="/static/elimination-back-off-stack/lines.svg"></p>
 <p>I recently stumbled upon the idea of an <em>Elimination Back-off Stack</em> promising
 to be a <strong>parallel</strong>, linearizable and lock-free stack. In case you are not
 familiar with it, I would suggest either reading my <a href="/blog/2020-03-28-elimination-backoff-stack/">previous
@@ -311,8 +299,7 @@ order to derive proper conclusions.</p>
 single-threaded performance is still a nice-to have. The clear winner, <em>who
 would have thought</em>, is the <code>Arc&lt;Mutex&lt;Vec&lt;_&gt;&gt;&gt;</code> (1) with an average of <code>77.655 ns</code>. While some outliers took longer, all stayed below <code>100 ns</code>. Below you see a
 graph depicting each result as well as the mean of the distribution.</p>
-<p><img loading="lazy" src="/static/elimination-back-off-stack/vec_1.svg" alt="Single Thread - Stack (1)"  />
-</p>
+<p><img alt="Single Thread - Stack (1)" loading="lazy" src="/static/elimination-back-off-stack/vec_1.svg"></p>
 <p>Just as a comparison the lock-free stacks (2), (3) and (4) all took somewhere
 around <code>4.6768 us</code>. The similarities come at no suppries, given that a single
 threaded elimination back-off stack is just a lock-free Treiber stack as there
@@ -327,8 +314,7 @@ just pay attention to averages. Looking at the best and worst cases depicted
 below in the violin graph, the lock-free Treiber stack (2) outperforms all other
 stacks by far. Just as a reminder, this is not the time per operation, but the
 time it takes 8 threads to execute 1_000 operations each.</p>
-<p><img loading="lazy" src="/static/elimination-back-off-stack/violin_8.svg" alt="Violin plot comparing the stacks with 8 threads"  />
-</p>
+<p><img alt="Violin plot comparing the stacks with 8 threads" loading="lazy" src="/static/elimination-back-off-stack/violin_8.svg"></p>
 <h3 id="operating-under-heavy-load-with-128-threads">Operating under heavy load with 128 threads<a hidden class="anchor" aria-hidden="true" href="#operating-under-heavy-load-with-128-threads">#</a></h3>
 <p>While implementing and testing my elimination back-off stack (3) and (4) on my
 local laptop with an i7-8550U I got constantly disappointed as I couldn&rsquo;t get it
@@ -343,13 +329,10 @@ attention at though, is that the lock-free Treiber stack (2) and the elimination
 back-off stack with exponential back-off in space (4) switched spots. (2)
 executes a test run within an average of <code>106.11 ms</code>, while (4) gets through a
 test in nearly halve the time with <code>57.118 ms</code>.</p>
-<p><img loading="lazy" src="/static/elimination-back-off-stack/violin_128.svg" alt="Violin plot comparing the stacks with 128
-threads"  />
-</p>
+<p><img alt="Violin plot comparing the stacks with 128\nthreads" loading="lazy" src="/static/elimination-back-off-stack/violin_128.svg"></p>
 <p>Also the best and worst cases spread across a smaller range (see violin chat above).</p>
 <h3 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h3>
-<p><img loading="lazy" src="/static/elimination-back-off-stack/lines.svg" alt="All stacks from 1 thread to up to 128"  />
-</p>
+<p><img alt="All stacks from 1 thread to up to 128" loading="lazy" src="/static/elimination-back-off-stack/lines.svg"></p>
 <h2 id="open-questions-suggestions-welcome">Open questions (suggestions welcome)<a hidden class="anchor" aria-hidden="true" href="#open-questions-suggestions-welcome">#</a></h2>
 <ul>
 <li>
@@ -395,23 +378,33 @@ International Business Machines Incorporated, Thomas J. Watson Research Center,
     </main>
     
 <footer class="footer">
-    <span>&copy; 2026 <a href="https://max-inden.de/">Max Inden</a></span>
+        <span>&copy; 2026 <a href="https://max-inden.de/">Max Inden</a></span> · 
+
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -438,25 +431,25 @@ International Business Machines Incorporated, Thomas J. Watson Research Center,
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

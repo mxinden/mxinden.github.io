@@ -4,7 +4,7 @@
     <title>Rust on Max Inden</title>
     <link>https://max-inden.de/tags/rust/</link>
     <description>Recent content in Rust on Max Inden</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 29 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/rust/index.xml" rel="self" type="application/rss+xml" />
@@ -35,8 +35,7 @@ The N in NSPR stands for Netscape, giving you a hint of its age.&lt;/p&gt;</desc
       <link>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/</guid>
-      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://max-inden.de/static/elimination-back-off-stack/lines.svg&#34; alt=&#34;All stacks from 1 thread to up to 128&#34;  /&gt;
-&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img alt=&#34;All stacks from 1 thread to up to 128&#34; loading=&#34;lazy&#34; src=&#34;https://max-inden.de/static/elimination-back-off-stack/lines.svg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I recently stumbled upon the idea of an &lt;em&gt;Elimination Back-off Stack&lt;/em&gt; promising
 to be a &lt;strong&gt;parallel&lt;/strong&gt;, linearizable and lock-free stack. In case you are not
 familiar with it, I would suggest either reading my &lt;a href=&#34;https://max-inden.de/blog/2020-03-28-elimination-backoff-stack/&#34;&gt;previous

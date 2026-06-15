@@ -4,7 +4,7 @@
     <title>Usa on Max Inden</title>
     <link>https://max-inden.de/tags/usa/</link>
     <description>Recent content in Usa on Max Inden</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Feb 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/usa/index.xml" rel="self" type="application/rss+xml" />
@@ -21,8 +21,7 @@
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/post/2017-02-11-quick-run-through-sf/</guid>
       <description>&lt;p&gt;My first 16 miles run. Nearly blacked out at the end. Amazing route!&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://max-inden.de/assets/17-02-11.png&#34; alt=&#34;alt text&#34;  /&gt;
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;img alt=&#34;alt text&#34; loading=&#34;lazy&#34; src=&#34;https://max-inden.de/assets/17-02-11.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Back in Germany</title>
