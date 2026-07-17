@@ -6,8 +6,18 @@
     <description>Recent content in Tech on Max Inden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Slides from the HTTP Workshop 2026</title>
+      <link>https://max-inden.de/post/http-workshop-2026-slides/</link>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/post/http-workshop-2026-slides/</guid>
+      <description>&lt;p&gt;I gave three short talks at this year&amp;rsquo;s &lt;a href=&#34;https://github.com/HTTPWorkshop/workshop2026&#34;&gt;HTTP Workshop&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;increase-and-evolve-http3--quic&#34;&gt;Increase and evolve HTTP/3 &amp;amp; QUIC&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Slides: &lt;a href=&#34;https://mxinden-bot.github.io/slides/04-quic-discussion/&#34;&gt;mxinden-bot.github.io/slides/04-quic-discussion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; &amp;ldquo;security&amp;rdquo; software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Working Draft - HTTP/3 und WebTransport mit Max Inden</title>
       <link>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</link>

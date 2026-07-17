@@ -163,6 +163,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk Optimizing Metric Rendering in kube-state-metrics
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes cluster. The project uses the standard Prometheus client Golang library, which is not optimized for the very specific use case of kube-state-metrics.
+This talk covers different optimizations like metric caching and improved text marshaling dividing CPU usage by a factor of 6 and memory and response time by a factor of 3 through introducing an intelligent Prometheus metric cache in the code hot path and optimizing memory allocations during response generation.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2019-05-22 00:00:00 +0000 UTC'>May 22, 2019</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Talk Optimizing Metric Rendering in kube-state-metrics" href="https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Talk Self-Service Monitoring
     </h2>
   </header>
@@ -298,21 +314,6 @@ From this talk, you will learn how we addressed these issues when building the n
 
 <span title='2016-12-17 00:00:00 +0000 UTC'>December 17, 2016</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Back in Germany" href="https://max-inden.de/post/2016-12-17-back-in-germany/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Back in San Francisco
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Made it back to San Francisco. Crashed on a good friends couch.
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2016-12-08 00:00:00 +0000 UTC'>December 8, 2016</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Back in San Francisco" href="https://max-inden.de/post/2016-12-08-back-in-san-francisco/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

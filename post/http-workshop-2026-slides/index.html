@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Slides from the HTTP Workshop 2026 | Max Inden</title>
+<meta name="keywords" content="tech, quic, http3, firefox, networking">
+<meta name="description" content="I gave three short talks at this year&rsquo;s HTTP Workshop.
+Increase and evolve HTTP/3 &amp; QUIC
+Slides: mxinden-bot.github.io/slides/04-quic-discussion
+A discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; &ldquo;security&rdquo; software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.">
+<meta name="author" content="Max Inden">
+<link rel="canonical" href="https://max-inden.de/post/http-workshop-2026-slides/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6ff46447b1fa3f8a5cc0bcae48088decc3ae37f5fbc99406a3aefc3bf0e6044a.css" integrity="sha256-b/RkR7H6P4pcwLyuSAiN7MOuN/X7yZQGo678O/DmBEo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://max-inden.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://max-inden.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://max-inden.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://max-inden.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://max-inden.de/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://max-inden.de/post/http-workshop-2026-slides/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://max-inden.de/post/http-workshop-2026-slides/">
+  <meta property="og:site_name" content="Max Inden">
+  <meta property="og:title" content="Slides from the HTTP Workshop 2026">
+  <meta property="og:description" content="I gave three short talks at this year’s HTTP Workshop.
+Increase and evolve HTTP/3 &amp; QUIC Slides: mxinden-bot.github.io/slides/04-quic-discussion
+A discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; “security” software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-07-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-17T00:00:00+00:00">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="Quic">
+    <meta property="article:tag" content="Http3">
+    <meta property="article:tag" content="Firefox">
+    <meta property="article:tag" content="Networking">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Slides from the HTTP Workshop 2026">
+  <meta name="twitter:description" content="I gave three short talks at this year’s HTTP Workshop.
+Increase and evolve HTTP/3 &amp; QUIC Slides: mxinden-bot.github.io/slides/04-quic-discussion
+A discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; “security” software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://max-inden.de/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Slides from the HTTP Workshop 2026",
+      "item": "https://max-inden.de/post/http-workshop-2026-slides/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Slides from the HTTP Workshop 2026",
+  "name": "Slides from the HTTP Workshop 2026",
+  "description": "I gave three short talks at this year\u0026rsquo;s HTTP Workshop.\nIncrease and evolve HTTP/3 \u0026amp; QUIC Slides: mxinden-bot.github.io/slides/04-quic-discussion\nA discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; \u0026ldquo;security\u0026rdquo; software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.\n",
+  "keywords": [
+    "tech", "quic", "http3", "firefox", "networking"
+  ],
+  "articleBody": "I gave three short talks at this year’s HTTP Workshop.\nIncrease and evolve HTTP/3 \u0026 QUIC Slides: mxinden-bot.github.io/slides/04-quic-discussion\nA discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; “security” software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.\nRollout of Happy Eyeballs v3 in Firefox Slides: mxinden-bot.github.io/slides/03-hev3-workshop\nHappy Eyeballs v3 races connection attempts across address families and protocols. It keeps the first one that connects. This talk covers enabling it by default in Nightly. It walks through various relevant public Glean metrics: end-to-end time, winning attempt index, HTTP/3 discovery, and what HTTPS records carry. It presents the reusable, sans-I/O mozilla/happy-eyeballs library. And it shows where Firefox’s tuned delays deviate from the draft, plus the edge cases hit along the way.\nModern UDP I/O for Firefox in Rust Slides: mxinden-bot.github.io/slides/02-udp-io\nFirefox’s UDP I/O was built on NSPR’s aging sendto and recvfrom, one datagram per system call. This talk covers replacing that stack with modern system calls. sendmmsg and recvmmsg batch datagrams. GSO and GRO offload segmentation. It builds on the quinn-udp library, in Rust, for memory safety. I cover the throughput and CPU wins, and the per-OS quirks (Windows USO/URO, macOS’s undocumented sendmsg_x, Android’s socketcall and seccomp). ECN support came along for free. There is a longer write-up in Fast UDP I/O for Firefox in Rust.\nFeedback welcome.\n",
+  "wordCount" : "276",
+  "inLanguage": "en",
+  "datePublished": "2026-07-17T00:00:00Z",
+  "dateModified": "2026-07-17T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Max Inden"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://max-inden.de/post/http-workshop-2026-slides/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Max Inden",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://max-inden.de/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://max-inden.de/" accesskey="h" title="Max Inden (Alt + H)">Max Inden</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://max-inden.de/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/resume" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/readings" title="Readings">
+                    <span>Readings</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/post/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Slides from the HTTP Workshop 2026
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-07-17 00:00:00 +0000 UTC'>July 17, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p>I gave three short talks at this year&rsquo;s <a href="https://github.com/HTTPWorkshop/workshop2026">HTTP Workshop</a>.</p>
+<h2 id="increase-and-evolve-http3--quic">Increase and evolve HTTP/3 &amp; QUIC<a hidden class="anchor" aria-hidden="true" href="#increase-and-evolve-http3--quic">#</a></h2>
+<p><strong>Slides: <a href="https://mxinden-bot.github.io/slides/04-quic-discussion/">mxinden-bot.github.io/slides/04-quic-discussion</a></strong></p>
+<p>A discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; &ldquo;security&rdquo; software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.</p>
+<h2 id="rollout-of-happy-eyeballs-v3-in-firefox">Rollout of Happy Eyeballs v3 in Firefox<a hidden class="anchor" aria-hidden="true" href="#rollout-of-happy-eyeballs-v3-in-firefox">#</a></h2>
+<p><strong>Slides: <a href="https://mxinden-bot.github.io/slides/03-hev3-workshop/">mxinden-bot.github.io/slides/03-hev3-workshop</a></strong></p>
+<p>Happy Eyeballs v3 races connection attempts across address families and protocols. It keeps the first one that connects. This talk covers enabling it by default in Nightly. It walks through various relevant public Glean metrics: end-to-end time, winning attempt index, HTTP/3 discovery, and what HTTPS records carry. It presents the reusable, sans-I/O <a href="https://github.com/mozilla/happy-eyeballs">mozilla/happy-eyeballs</a> library. And it shows where Firefox&rsquo;s tuned delays deviate from the draft, plus the edge cases hit along the way.</p>
+<h2 id="modern-udp-io-for-firefox-in-rust">Modern UDP I/O for Firefox in Rust<a hidden class="anchor" aria-hidden="true" href="#modern-udp-io-for-firefox-in-rust">#</a></h2>
+<p><strong>Slides: <a href="https://mxinden-bot.github.io/slides/02-udp-io/">mxinden-bot.github.io/slides/02-udp-io</a></strong></p>
+<p>Firefox&rsquo;s UDP I/O was built on NSPR&rsquo;s aging <code>sendto</code> and <code>recvfrom</code>, one datagram per system call. This talk covers replacing that stack with modern system calls. <code>sendmmsg</code> and <code>recvmmsg</code> batch datagrams. GSO and GRO offload segmentation. It builds on the <a href="https://github.com/quinn-rs/quinn/tree/main/quinn-udp">quinn-udp</a> library, in Rust, for memory safety. I cover the throughput and CPU wins, and the per-OS quirks (Windows USO/URO, macOS&rsquo;s undocumented <code>sendmsg_x</code>, Android&rsquo;s <code>socketcall</code> and seccomp). ECN support came along for free. There is a longer write-up in <a href="/post/fast-udp-io-in-firefox/">Fast UDP I/O for Firefox in Rust</a>.</p>
+<p>Feedback welcome.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://max-inden.de/tags/tech/">Tech</a></li>
+      <li><a href="https://max-inden.de/tags/quic/">Quic</a></li>
+      <li><a href="https://max-inden.de/tags/http3/">Http3</a></li>
+      <li><a href="https://max-inden.de/tags/firefox/">Firefox</a></li>
+      <li><a href="https://max-inden.de/tags/networking/">Networking</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://max-inden.de/">Max Inden</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -148,6 +148,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">32nd DistSys Reading Group - BGP 2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>After our first BGP session, introducing the protocol based on the convergence problem of BGP, our second session on BGP covered route propagation and tuning. The primary paper was:
+Gray, Caitlin, et al. “BGP Beacons, Network Tomography, and Bayesian Computation to Locate Route Flap Damping.” Proceedings of the ACM Internet Measurement Conference. 2020.
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2021-03-18 00:00:00 +0000 UTC'>March 18, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 32nd DistSys Reading Group - BGP 2" href="https://max-inden.de/post/2021-03-18-32nd-reading-group/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Optimizing Yamux Flow Control - Sending Window Update Frames Early
     </h2>
   </header>
@@ -292,23 +308,6 @@ I recently stumbled upon the idea of an Elimination Back-off Stack promising to 
 
 <span title='2020-04-01 00:00:00 +0000 UTC'>April 1, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Elimination back-off stack performance" href="https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Elimination back-off stack
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
-How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let’s dive into it.
-A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list. The entry point of the stack is an atomic pointer which is either pointing to the node on the very top of the stack or is null in case of an empty stack.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2020-03-28 00:00:00 +0000 UTC'>March 28, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Elimination back-off stack" href="https://max-inden.de/post/2020-03-28-elimination-backoff-stack/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
