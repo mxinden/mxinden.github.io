@@ -6,8 +6,17 @@
     <description>Recent content in Tech on Max Inden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126</title>
+      <link>https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/</link>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/</guid>
+      <description>&lt;p&gt;I reported on Firefox&amp;rsquo;s Happy Eyeballs v3 implementation in the &lt;a href=&#34;https://datatracker.ietf.org/wg/happy/about/&#34;&gt;HAPPY working group&lt;/a&gt; at IETF 126 in Vienna.&lt;/p&gt;
+&lt;p&gt;Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.&lt;/p&gt;
+&lt;p&gt;The implementation is a library of its own, &lt;a href=&#34;https://github.com/mozilla/happy-eyeballs&#34;&gt;mozilla/happy-eyeballs&lt;/a&gt;: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko&amp;rsquo;s C++ event loop, and every scenario is a plain unit test.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Slides from the HTTP Workshop 2026</title>
       <link>https://max-inden.de/post/http-workshop-2026-slides/</link>
@@ -27,6 +36,15 @@
 &lt;p&gt;We traced the evolution from HTTP/1 through HTTP/2 to HTTP/3, why head-of-line blocking pushed the web toward QUIC, and how building transport and security together enables 1-RTT and 0-RTT handshakes, connection migration, and encrypted DNS. We closed on WebTransport as a modern alternative to WebSocket, supporting both streams and datagrams.&lt;/p&gt;
 &lt;p&gt;The episode is in German.&lt;/p&gt;
 &lt;p&gt;Thanks for having me!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125</title>
+      <link>https://max-inden.de/post/happy-eyeballs-v3-in-firefox/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/post/happy-eyeballs-v3-in-firefox/</guid>
+      <description>&lt;p&gt;I presented Firefox&amp;rsquo;s Happy Eyeballs v3 implementation in the &lt;a href=&#34;https://datatracker.ietf.org/wg/happy/about/&#34;&gt;HAPPY working group&lt;/a&gt; at IETF 125 in Shenzhen.&lt;/p&gt;
+&lt;p&gt;At that point the implementation had landed in Firefox Nightly, still off by default and reachable by flipping &lt;code&gt;network.http.happy_eyeballs_enabled&lt;/code&gt; in &lt;code&gt;about:config&lt;/code&gt;. It followed &lt;a href=&#34;https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/&#34;&gt;the draft&lt;/a&gt; with no major deviation.&lt;/p&gt;
+&lt;p&gt;I introduced &lt;a href=&#34;https://github.com/mozilla/happy-eyeballs&#34;&gt;mozilla/happy-eyeballs&lt;/a&gt;, the Rust library behind it: deterministic, free of side effects, abstract over I/O and time, and with no dependency on Firefox. Each scenario is a plain unit test, which makes the algorithm easy to formalize. I offered those tests to the working group as a way to pin the algorithm down.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM</title>

@@ -210,6 +210,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I reported on Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.
+Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.
+The implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko’s C&#43;&#43; event loop, and every scenario is a plain unit test.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-20 00:00:00 +0000 UTC'>July 20, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126" href="https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Slides from the HTTP Workshop 2026
     </h2>
   </header>
@@ -241,6 +258,23 @@ Thanks for having me!
 
 <span title='2026-04-21 00:00:00 +0000 UTC'>April 21, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Working Draft - HTTP/3 und WebTransport mit Max Inden" href="https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I presented Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 125 in Shenzhen.
+At that point the implementation had landed in Firefox Nightly, still off by default and reachable by flipping network.http.happy_eyeballs_enabled in about:config. It followed the draft with no major deviation.
+I introduced mozilla/happy-eyeballs, the Rust library behind it: deterministic, free of side effects, abstract over I/O and time, and with no dependency on Firefox. Each scenario is a plain unit test, which makes the algorithm easy to formalize. I offered those tests to the working group as a way to pin the algorithm down.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125" href="https://max-inden.de/post/happy-eyeballs-v3-in-firefox/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -341,37 +375,6 @@ My first commit was 5y ago, a small bug fix in our address handling. Since then 
 
 <span title='2024-02-29 00:00:00 +0000 UTC'>February 29, 2024</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Stepping down as a (rust-) libp2p maintainer" href="https://max-inden.de/post/2024-02-29-stepping-down/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>How you can connect everything (browsers &amp; non-browsers), everywhere (public or private), all at once (using libp2p).
-Slides
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2023-04-16 00:00:00 +0000 UTC'>April 16, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing" href="https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do’s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do’s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don’ts // Decode the length prefix of a message. let l = uvi::decode::usize(msg_len_prefix)?; // Allocate a corresponding buffer. let buffer = vec![0; l]; // Read message into buffer. socket.read_exact(&amp;mut buffer)?; Don’ts for { // Receive a request. request := &lt;- incomingRequests // Handle the request. go handleRequest(request) } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Handle the request. spawn(async move { handle(request) }); } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Send the request somewhere else. request_channel.unbounded_send(request); } Don’ts // Buffer of requests let to_be_handled_later = Vec::new(); // ... let request = incoming_requests.next().await?; to_be_handled_later.push(request); </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

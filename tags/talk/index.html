@@ -148,6 +148,40 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I reported on Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.
+Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.
+The implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko’s C&#43;&#43; event loop, and every scenario is a plain unit test.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-20 00:00:00 +0000 UTC'>July 20, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126" href="https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I presented Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 125 in Shenzhen.
+At that point the implementation had landed in Firefox Nightly, still off by default and reachable by flipping network.http.happy_eyeballs_enabled in about:config. It followed the draft with no major deviation.
+I introduced mozilla/happy-eyeballs, the Rust library behind it: deterministic, free of side effects, abstract over I/O and time, and with no dependency on Firefox. Each scenario is a plain unit test, which makes the algorithm easy to formalize. I offered those tests to the working group as a way to pin the algorithm down.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125" href="https://max-inden.de/post/happy-eyeballs-v3-in-firefox/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM
     </h2>
   </header>
@@ -275,40 +309,6 @@ In the first part of the talk we’ll present the basic building blocks of the l
 
 <span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM" href="https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;State of libp2p&#34; @FOSDEM
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Gave a talk on the state of libp2p at FOSDEM 2022.
-State of libp2p
-Status quo and future roadmap of the peer-to-peer networking library libp2p.
-libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
-We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;State of libp2p&#34; @FOSDEM" href="https://max-inden.de/post/state-of-libp2p/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk Intro to libp2p
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>On Tuesday 20th of July I gave a talk introducing libp2p, a modular network stack.
-Recording Slides </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-07-20 00:00:00 +0000 UTC'>July 20, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk Intro to libp2p" href="https://max-inden.de/post/intro-to-libp2p/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -148,6 +148,23 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I reported on Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.
+Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.
+The implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko’s C&#43;&#43; event loop, and every scenario is a plain unit test.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-20 00:00:00 +0000 UTC'>July 20, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126" href="https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Slides from the HTTP Workshop 2026
     </h2>
   </header>
@@ -179,6 +196,23 @@ Thanks for having me!
 
 <span title='2026-04-21 00:00:00 +0000 UTC'>April 21, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Working Draft - HTTP/3 und WebTransport mit Max Inden" href="https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I presented Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 125 in Shenzhen.
+At that point the implementation had landed in Firefox Nightly, still off by default and reachable by flipping network.http.happy_eyeballs_enabled in about:config. It followed the draft with no major deviation.
+I introduced mozilla/happy-eyeballs, the Rust library behind it: deterministic, free of side effects, abstract over I/O and time, and with no dependency on Firefox. Each scenario is a plain unit test, which makes the algorithm easy to formalize. I offered those tests to the working group as a way to pin the algorithm down.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125" href="https://max-inden.de/post/happy-eyeballs-v3-in-firefox/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -278,41 +312,12 @@ https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-
 <span title='2020-06-19 00:00:00 +0000 UTC'>June 19, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Know your latencies" href="https://max-inden.de/post/2020-06-19-latencies/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">25th DistSys Reading Group - Fair queuing
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper “Efficient fair queuing using deficit round-robin” [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
-Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
-Its wide deployment still seen today.
-Its derivatives DRR&#43; and DRR&#43;&#43; being able to handle both best-effort as well as latency critical flows.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2020-04-27 00:00:00 +0000 UTC'>April 27, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to 25th DistSys Reading Group - Fair queuing" href="https://max-inden.de/post/2020-04-27-25th-paper-club/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">24th DistSys Reading Group - BBR Congestion-Based Congestion Control
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
-Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
-We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time “just works” due to congestion control.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2020-04-06 00:00:00 +0000 UTC'>April 6, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to 24th DistSys Reading Group - BBR Congestion-Based Congestion Control" href="https://max-inden.de/post/2020-04-06-24th-paper-club/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://max-inden.de/tags/networking/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">

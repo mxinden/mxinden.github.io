@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126 | Max Inden</title>
+<meta name="keywords" content="tech, talk, firefox, networking, happy-eyeballs">
+<meta name="description" content="I reported on Firefox&rsquo;s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.
+Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.
+The implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko&rsquo;s C&#43;&#43; event loop, and every scenario is a plain unit test.">
+<meta name="author" content="Max Inden">
+<link rel="canonical" href="https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6ff46447b1fa3f8a5cc0bcae48088decc3ae37f5fbc99406a3aefc3bf0e6044a.css" integrity="sha256-b/RkR7H6P4pcwLyuSAiN7MOuN/X7yZQGo678O/DmBEo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://max-inden.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://max-inden.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://max-inden.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://max-inden.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://max-inden.de/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/">
+  <meta property="og:site_name" content="Max Inden">
+  <meta property="og:title" content="Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126">
+  <meta property="og:description" content="I reported on Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.
+Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.
+The implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko’s C&#43;&#43; event loop, and every scenario is a plain unit test.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-07-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-20T00:00:00+00:00">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="Talk">
+    <meta property="article:tag" content="Firefox">
+    <meta property="article:tag" content="Networking">
+    <meta property="article:tag" content="Happy-Eyeballs">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126">
+  <meta name="twitter:description" content="I reported on Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.
+Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.
+The implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko’s C&#43;&#43; event loop, and every scenario is a plain unit test.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://max-inden.de/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Talk \"A Report on Firefox's HEv3 Implementation\" @IETF 126",
+      "item": "https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Talk \"A Report on Firefox's HEv3 Implementation\" @IETF 126",
+  "name": "Talk \u0022A Report on Firefox\u0027s HEv3 Implementation\u0022 @IETF 126",
+  "description": "I reported on Firefox\u0026rsquo;s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.\nHappy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.\nThe implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko\u0026rsquo;s C++ event loop, and every scenario is a plain unit test.\n",
+  "keywords": [
+    "tech", "talk", "firefox", "networking", "happy-eyeballs"
+  ],
+  "articleBody": "I reported on Firefox’s Happy Eyeballs v3 implementation in the HAPPY working group at IETF 126 in Vienna.\nHappy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.\nThe implementation is a library of its own, mozilla/happy-eyeballs: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko’s C++ event loop, and every scenario is a plain unit test.\nI walked through the ten public Glean metrics we now collect in Nightly. From the first DNS query to a connected socket the median is 74 ms and the 95th percentile 603 ms. 84% of connections are won by the first attempt. Failures either fail fast or grind to the 10 s cap, with little in between.\nFirefox tracks the draft closely, with two delays tuned from that telemetry: a 25 ms resolution delay rather than the draft’s 50 ms, and a 50 ms connection attempt delay that doubles on each step (50, 150, 350, 750 ms) rather than a flat 250 ms.\nI closed on savearoundtrip.com, which checks whether a domain publishes an HTTPS record. Many sites advertise HTTP/3 through Alt-Svc alone, so every first visit pays a wasted round trip: connect over HTTP/2, read the header, and reach HTTP/3 only on the next connection. An HTTPS record with alpn=\"h3\" goes straight to QUIC, and it is the only way to deliver ECH.\nSlides and recording\n",
+  "wordCount" : "270",
+  "inLanguage": "en",
+  "datePublished": "2026-07-20T00:00:00Z",
+  "dateModified": "2026-07-20T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Max Inden"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Max Inden",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://max-inden.de/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://max-inden.de/" accesskey="h" title="Max Inden (Alt + H)">Max Inden</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://max-inden.de/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/resume" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/readings" title="Readings">
+                    <span>Readings</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/post/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-07-20 00:00:00 +0000 UTC'>July 20, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>I reported on Firefox&rsquo;s Happy Eyeballs v3 implementation in the <a href="https://datatracker.ietf.org/wg/happy/about/">HAPPY working group</a> at IETF 126 in Vienna.</p>
+<p>Happy Eyeballs v3 races connection attempts across address families and protocols and keeps the first one that connects. Since IETF 125 it is enabled by default in Firefox Nightly, reaching roughly 15k users.</p>
+<p>The implementation is a library of its own, <a href="https://github.com/mozilla/happy-eyeballs">mozilla/happy-eyeballs</a>: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko&rsquo;s C++ event loop, and every scenario is a plain unit test.</p>
+<p>I walked through the ten public <a href="https://glam.telemetry.mozilla.org/fog/probe/netwerk_happy_eyeballs_end_to_end_time_succeeded/explore">Glean</a> metrics we now collect in Nightly. From the first DNS query to a connected socket the median is 74 ms and the 95th percentile 603 ms. 84% of connections are won by the first attempt. Failures either fail fast or grind to the 10 s cap, with little in between.</p>
+<p>Firefox tracks <a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/">the draft</a> closely, with two delays tuned from that telemetry: a 25 ms resolution delay rather than the draft&rsquo;s 50 ms, and a 50 ms connection attempt delay that doubles on each step (50, 150, 350, 750 ms) rather than a flat 250 ms.</p>
+<p>I closed on <a href="https://savearoundtrip.com">savearoundtrip.com</a>, which checks whether a domain publishes an HTTPS record. Many sites advertise HTTP/3 through Alt-Svc alone, so every first visit pays a wasted round trip: connect over HTTP/2, read the header, and reach HTTP/3 only on the next connection. An HTTPS record with <code>alpn=&quot;h3&quot;</code> goes straight to QUIC, and it is the only way to deliver ECH.</p>
+<p><a href="https://datatracker.ietf.org/meeting/126/materials/slides-126-happy-update-on-firefox-implementation-00">Slides</a> and <a href="https://www.youtube.com/watch?v=5GaOjpjgCt8&amp;t=2805s">recording</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://max-inden.de/tags/tech/">Tech</a></li>
+      <li><a href="https://max-inden.de/tags/talk/">Talk</a></li>
+      <li><a href="https://max-inden.de/tags/firefox/">Firefox</a></li>
+      <li><a href="https://max-inden.de/tags/networking/">Networking</a></li>
+      <li><a href="https://max-inden.de/tags/happy-eyeballs/">Happy-Eyeballs</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://max-inden.de/">Max Inden</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

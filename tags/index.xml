@@ -6,13 +6,41 @@
     <description>Recent content in Tags on Max Inden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Firefox</title>
       <link>https://max-inden.de/tags/firefox/</link>
-      <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/firefox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Happy-Eyeballs</title>
+      <link>https://max-inden.de/tags/happy-eyeballs/</link>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/happy-eyeballs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Networking</title>
+      <link>https://max-inden.de/tags/networking/</link>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/networking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Talk</title>
+      <link>https://max-inden.de/tags/talk/</link>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/talk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tech</title>
+      <link>https://max-inden.de/tags/tech/</link>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     <item>
@@ -23,24 +51,10 @@
       <description></description>
     </item>
     <item>
-      <title>Networking</title>
-      <link>https://max-inden.de/tags/networking/</link>
-      <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/tags/networking/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Quic</title>
       <link>https://max-inden.de/tags/quic/</link>
       <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/quic/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tech</title>
-      <link>https://max-inden.de/tags/tech/</link>
-      <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/tags/tech/</guid>
       <description></description>
     </item>
     <item>
@@ -55,13 +69,6 @@
       <link>https://max-inden.de/tags/rust/</link>
       <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://max-inden.de/tags/rust/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Talk</title>
-      <link>https://max-inden.de/tags/talk/</link>
-      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/tags/talk/</guid>
       <description></description>
     </item>
     <item>
