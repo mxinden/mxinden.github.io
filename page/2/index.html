@@ -131,6 +131,11 @@
                 </a>
             </li>
             <li>
+                <a href="https://max-inden.de/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://max-inden.de/readings" title="Readings">
                     <span>Readings</span>
                 </a>
@@ -157,167 +162,167 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing
+    <h2 class="entry-hint-parent">31st DistSys Reading Group - BGP 1
     </h2>
   </header>
   <div class="entry-content">
-    <p>How you can connect everything (browsers &amp; non-browsers), everywhere (public or private), all at once (using libp2p).
-Slides
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2023-04-16 00:00:00 +0000 UTC'>April 16, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing" href="https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in peer-to-peer networks. I discussed resource management strategies such as enforcing backpressure and provided examples of coding pitfalls to avoid in Rust and Go. You can find the recording and slides of my talk below.
-Slides DOS Denial-of-service attack Hard in peer-to-peer as identities are cheap Relevant for any scarce resource, e.g. CPU, memory(, file descriptors) Do’s Bound EVERYTHING Once a bound is exceeded: Drop item (good) Enforce backpressure (good) Do’s Backpressure Slow consumer should slow down a fast producer Can improve resource utilization Can improve latency Don’ts // Decode the length prefix of a message. let l = uvi::decode::usize(msg_len_prefix)?; // Allocate a corresponding buffer. let buffer = vec![0; l]; // Read message into buffer. socket.read_exact(&amp;mut buffer)?; Don’ts for { // Receive a request. request := &lt;- incomingRequests // Handle the request. go handleRequest(request) } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Handle the request. spawn(async move { handle(request) }); } Don’ts loop { // Receive a request. let request = incoming_requests.next().await?; // Send the request somewhere else. request_channel.unbounded_send(request); } Don’ts // Buffer of requests let to_be_handled_later = Vec::new(); // ... let request = incoming_requests.next().await?; to_be_handled_later.push(request); </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Hole punching in the wild&#34; @FOSDEM
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Dennis and I presented Hole punching in the wild, learnings from running libp2p hole punching in production, measured from vantage points across the globe in the network devroom at FOSDEM 2023.
-At FOSDEM 2022 I presented libp2p’s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.
+    <p>We decided to turn our interest to BGP which we will devote 3 sessions to. In today’s session - the first one - we introduced BGP, looked at the convergence problem, as well as the solution suggested in the paper below.
+Gao, Lixin, and Jennifer Rexford. “Stable Internet routing without global coordination.” IEEE/ACM Transactions on networking 9.6 (2001): 681-692.
+To play around with BGP as well as general Internet routing:
 ...</p>
   </div>
   <footer class="entry-footer">
 
-<span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Hole punching in the wild&#34; @FOSDEM" href="https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/"></a>
+<span title='2021-02-24 00:00:00 +0000 UTC'>February 24, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 31st DistSys Reading Group - BGP 1" href="https://max-inden.de/post/2021-02-24-31st-paper-club/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM
+    <h2 class="entry-hint-parent">New GPG Key
     </h2>
   </header>
   <div class="entry-content">
-    <p>I presented an overview on Peer-to-peer Browser Connectivity options in the network devroom at FOSDEM 2023.
-Connecting from the browser to a public server with a valid TLS certificate is easy. But what if the server has a self-signed certificate? What if it isn’t public? What if it is another browser?
-This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity. We will leverage the new WebTransport for secure communication to public servers with self-signed certificates and WebRTC for secure communication to other browsers, using hole puching, without the dependency on central infrastructure.
+    <p>I have created a new GPG key replacing my old GPG key. I did not loose access to the old one, nor was it, as far as I am able to tell, ever compromised. As I did with the old key, I will use the new key both for signing my open source work as well as securing my e-mail communication.
+You can find both the old and the new key on all major key servers. Along with the new key you find a signature of the old key signing the new key.
 ...</p>
   </div>
   <footer class="entry-footer">
 
-<span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM" href="https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/"></a>
+<span title='2021-02-17 00:00:00 +0000 UTC'>February 17, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to New GPG Key" href="https://max-inden.de/post/2021-02-17-new-gpg-key/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Hole punching with libp2p&#34; @p2p-paris
+    <h2 class="entry-hint-parent">30th DistSys Reading Group - NTP
     </h2>
   </header>
   <div class="entry-content">
-    <p> We’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
-Recording
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2022-04-30 00:00:00 +0000 UTC'>April 30, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Hole punching with libp2p&#34; @p2p-paris" href="https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p> We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
-Recording
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2022-04-29 00:00:00 +0000 UTC'>April 29, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris" href="https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hole punching in libp2p
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
-Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2022-03-06 00:00:00 +0000 UTC'>March 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Hole punching in libp2p" href="https://max-inden.de/post/2022-03-06-libp2p-hole-punching/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Gave a talk on hole punching in libp2p at FOSDEM 2022.
-Peer-to-peer hole punching without centralized infrastructure
-How libp2p can traverse NATs and firewalls without coordination through central STUN and TURN servers.
-libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS.
-In the first part of the talk we’ll present the basic building blocks of the library and explain how they fit together. In the second part, we’ll take a closer look at the recently added decentralized hole punching feature, allowing NAT and firewall traversal without the need for any central coordination servers (STUN and TURN).
+    <p>What better way to start a new year than with a paper discussing how to change time?
+In the 30th session we discussed a paper which I think has much up its sleeves - Attacking the Network Time Protocol. First off the paper gives us a good introduction to the inner working of the network time protocol. Next up it examines the broader ecosystem as well as why we need accurate time in the first place. Once we established enough background, the paper dives into how one can attack the protocol, starting off with on-path attacks all the way to some crazy (creative) off-path attacks. Last but not least, the list of references at the end is a small treasure trove.
 ...</p>
   </div>
   <footer class="entry-footer">
 
-<span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM" href="https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/"></a>
+<span title='2021-01-26 00:00:00 +0000 UTC'>January 26, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 30th DistSys Reading Group - NTP" href="https://max-inden.de/post/2021-01-26-30th-paper-club/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;State of libp2p&#34; @FOSDEM
+    <h2 class="entry-hint-parent">28th DistSys Reading Group - Hotstuff
     </h2>
   </header>
   <div class="entry-content">
-    <p>Gave a talk on the state of libp2p at FOSDEM 2022.
-State of libp2p
-Status quo and future roadmap of the peer-to-peer networking library libp2p.
-libp2p is a universal, cross-platform, multi-language, modular peer-to-peer networking library powering multiple large-scale networks, for example IPFS, Ethereum 2, Filecoin or Polkadot.
-We will discuss the current state of the project, eyeball the various language implementations, take a look at the many live networks running on top of libp2p today and finally cover the project roadmap for the years to come.
+    <p>With the 28th session we jumped into the space of byzantine fault tolerant consensus protocols. We covered fault tolerant consensus with various Paxos variants in the past, but this session was the first one looking into how to solve the byzantine generals problem.
+Instead of using PBFT [1] as a first paper we went with Hotstuff [2] instead. The reasoning behind this choice was (a) Hotstuff presenting a somewhat easy up-to-date consensus algorithm and (b) that it provides a framework enabling one to compare other algorithms (e.g. PBFT) in the space.
 ...</p>
   </div>
   <footer class="entry-footer">
 
-<span title='2022-02-06 00:00:00 +0000 UTC'>February 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;State of libp2p&#34; @FOSDEM" href="https://max-inden.de/post/state-of-libp2p/"></a>
+<span title='2020-09-08 00:00:00 +0000 UTC'>September 8, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 28th DistSys Reading Group - Hotstuff" href="https://max-inden.de/post/2020-09-08-28th-paper-club/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk Intro to libp2p
+    <h2 class="entry-hint-parent">Know your latencies
     </h2>
   </header>
   <div class="entry-content">
-    <p>On Tuesday 20th of July I gave a talk introducing libp2p, a modular network stack.
-Recording Slides </p>
+    <p>I find it helpful to know the orders of magnitude by which certain computer operations differ. Certainly it is not worth the effort to pay attention to every digit or learn these by heart, especially since they differ (slightly) across systems, but having a basic understanding of what a tiny fraction of time a CPU cycle occupies compared to sending a TCP packet is incredibly helpful whenever reasoning about systems performance.
+...</p>
   </div>
   <footer class="entry-footer">
 
-<span title='2021-07-20 00:00:00 +0000 UTC'>July 20, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk Intro to libp2p" href="https://max-inden.de/post/intro-to-libp2p/"></a>
+<span title='2020-06-19 00:00:00 +0000 UTC'>June 19, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Know your latencies" href="https://max-inden.de/post/2020-06-19-latencies/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">26th DistSys Reading Group - Cache coherence
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We have long been planning to cover the caching mechanisms in CPUs. As a shared knowledge base for the discussions in this session we chose the following two articles by Martin Thompson among other things known for his work on the LMAX Disruptor:
+CPU Cache Flushing Fallacy including a good overview over the different caches in modern Intel CPUs.
+Write Combining exemplifying the advanced mechanisms one can find in today’s CPUs and how one can make use of them.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2020-05-18 00:00:00 +0000 UTC'>May 18, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 26th DistSys Reading Group - Cache coherence" href="https://max-inden.de/post/2020-05-18-26th-paper-club/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">25th DistSys Reading Group - Fair queuing
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper “Efficient fair queuing using deficit round-robin” [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
+Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
+Its wide deployment still seen today.
+Its derivatives DRR&#43; and DRR&#43;&#43; being able to handle both best-effort as well as latency critical flows.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2020-04-27 00:00:00 +0000 UTC'>April 27, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 25th DistSys Reading Group - Fair queuing" href="https://max-inden.de/post/2020-04-27-25th-paper-club/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">24th DistSys Reading Group - BBR Congestion-Based Congestion Control
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>After a bit of a break due to current pandemic we decided to carry on and continue our meetings as virtual calls. Ignoring the usual initial hiccups and the missing whiteboard the medium worked well for us.
+Topic and reading of this session was the ACM Queue article BBR: Congestion-Based Congestion Control [1], as well as the Dropbox article Evaluating BBRv2 on the Dropbox Edge Network [2].
+We started off with a quick recap of the previous session covering why we need congestion control, how one can view a multi-hop connection as a single hop connection with a single bottleneck and most importantly the fact that the Internet is the largest distributed system that most of the time “just works” due to congestion control.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2020-04-06 00:00:00 +0000 UTC'>April 6, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 24th DistSys Reading Group - BBR Congestion-Based Congestion Control" href="https://max-inden.de/post/2020-04-06-24th-paper-club/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Elimination back-off stack performance
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+I recently stumbled upon the idea of an Elimination Back-off Stack promising to be a parallel, linearizable and lock-free stack. In case you are not familiar with it, I would suggest either reading my previous post or the corresponding paper [1] itself. Being quite intrigued by the ideas of the above stack I wrote my own implementation in Rust with a little help from crossbeam.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2020-04-01 00:00:00 +0000 UTC'>April 1, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Elimination back-off stack performance" href="https://max-inden.de/post/2020-04-01-elimination-backoff-stack-performance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Elimination back-off stack
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Reading The Art of Multiprocessor Programming [1] I came across the Elimination Back-off Stack [2] datastructure introduced in 2004 by Danny Hendler, Nir Shavit, and Lena Yerushalmi. It promises to be a parallel lock-free stack.
+How can a stack allow parallel operations without going through a single serialization point, e.g. a Mutex or an Atomic? Let’s dive into it.
+A lock-free stack A lock-free stack, also often referred to as a Treiber stack [3] due to Kent Treiber, operates on top of a lock-free linked list. The entry point of the stack is an atomic pointer which is either pointing to the node on the very top of the stack or is null in case of an empty stack.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2020-03-28 00:00:00 +0000 UTC'>March 28, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Elimination back-off stack" href="https://max-inden.de/post/2020-03-28-elimination-backoff-stack/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

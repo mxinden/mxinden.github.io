@@ -6,8 +6,16 @@
     <description>Recent content in Networking on Max Inden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://max-inden.de/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF-127</title>
+      <link>https://max-inden.de/talks/happy-eyeballs-v3-in-firefox-ietf-127/</link>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://max-inden.de/talks/happy-eyeballs-v3-in-firefox-ietf-127/</guid>
+      <description>&lt;p&gt;I gave an update on Happy Eyeballs v3 in Firefox at the HAPPY working group session at IETF 127.&lt;/p&gt;
+&lt;p&gt;Since IETF 126, Happy Eyeballs v3 is on by default in Nightly and rolled out to 50% of Release. A Release experiment on Firefox 160 compared it to a control group. Page loads on a new connection used HTTP/3 more often, 24.6% instead of 19.6%, and first contentful paint was faster at every percentile: 2.7% at the median (661 ms to 643 ms) and 3.6% at P99 (11.2 s to 10.8 s).&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Talk &#34;A Report on Firefox&#39;s HEv3 Implementation&#34; @IETF 126</title>
       <link>https://max-inden.de/post/a-report-on-firefoxs-hev3-implementation/</link>
@@ -19,9 +27,9 @@
     </item>
     <item>
       <title>Slides from the HTTP Workshop 2026</title>
-      <link>https://max-inden.de/post/http-workshop-2026-slides/</link>
+      <link>https://max-inden.de/talks/http-workshop-2026-slides/</link>
       <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/http-workshop-2026-slides/</guid>
+      <guid>https://max-inden.de/talks/http-workshop-2026-slides/</guid>
       <description>&lt;p&gt;I gave three short talks at this year&amp;rsquo;s &lt;a href=&#34;https://github.com/HTTPWorkshop/workshop2026&#34;&gt;HTTP Workshop&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;increase-and-evolve-http3--quic&#34;&gt;Increase and evolve HTTP/3 &amp;amp; QUIC&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Slides: &lt;a href=&#34;https://mxinden-bot.github.io/slides/04-quic-discussion/&#34;&gt;mxinden-bot.github.io/slides/04-quic-discussion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -29,9 +37,9 @@
     </item>
     <item>
       <title>Working Draft - HTTP/3 und WebTransport mit Max Inden</title>
-      <link>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</link>
+      <link>https://max-inden.de/talks/working-draft-http3-and-webtransport-podcast/</link>
       <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</guid>
+      <guid>https://max-inden.de/talks/working-draft-http3-and-webtransport-podcast/</guid>
       <description>&lt;p&gt;I joined the Working Draft podcast to talk about HTTP/3 and WebTransport.&lt;/p&gt;
 &lt;p&gt;We traced the evolution from HTTP/1 through HTTP/2 to HTTP/3, why head-of-line blocking pushed the web toward QUIC, and how building transport and security together enables 1-RTT and 0-RTT handshakes, connection migration, and encrypted DNS. We closed on WebTransport as a modern alternative to WebSocket, supporting both streams and datagrams.&lt;/p&gt;
 &lt;p&gt;The episode is in German.&lt;/p&gt;
@@ -48,9 +56,9 @@
     </item>
     <item>
       <title>Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</link>
+      <link>https://max-inden.de/talks/intro-to-webtransport-the-next-websocket/</link>
       <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</guid>
+      <guid>https://max-inden.de/talks/intro-to-webtransport-the-next-websocket/</guid>
       <description>&lt;p&gt;I gave a talk on the upcoming WebTransport protocol in the Browser Devroom at FOSDEM 2026.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;WebTransport is an upcoming protocol (standardized by the IETF) and Web API (standardized by the W3C) for bidirectional communication on the web. It provides multiplexed streams and unreliable datagrams on top of HTTP/3 and HTTP/2.&lt;/p&gt;
@@ -58,18 +66,18 @@
     </item>
     <item>
       <title>Talk &#34;Modern Network Protocols — What’s Next for Firefox and the Web?&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</link>
+      <link>https://max-inden.de/talks/modern-network-protocols-whats-next-for-firefox-and-the-web/</link>
       <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</guid>
+      <guid>https://max-inden.de/talks/modern-network-protocols-whats-next-for-firefox-and-the-web/</guid>
       <description>&lt;p&gt;Andrew, a colleague, and I presented an outlook for Firefox and the web.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The Web’s transport stack is changing rapidly, with QUIC, HTTP/3, and encrypted DNS seeing broad adoption. This talk gives an overview of the modern network protocols Firefox already deploys and invests in, including QUIC and HTTP/3’s growing share of Web traffic. It will highlight what Firefox actually sends on the wire today, what benefits we observe in practice, and where the Web’s protocol landscape stands in early 2026.&lt;/p&gt;</description>
     </item>
     <item>
       <title>netstack.fm - Modern networking in Firefox with Max Inden</title>
-      <link>https://max-inden.de/post/modern-networking-in-firefox-podcast/</link>
+      <link>https://max-inden.de/talks/modern-networking-in-firefox-podcast/</link>
       <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/modern-networking-in-firefox-podcast/</guid>
+      <guid>https://max-inden.de/talks/modern-networking-in-firefox-podcast/</guid>
       <description>&lt;p&gt;I joined Glen on the netstack.fm podcast to talk about modern networking in Firefox.&lt;/p&gt;
 &lt;p&gt;We discussed Mozilla &amp;rsquo;s work on Firefox&amp;rsquo;s QUIC and HTTP/3 stack — improving UDP I/O, congestion control, and overall performance — and why QUIC matters as a fast, encrypted, and evolvable transport for HTTP/3, WebTransport, and beyond.&lt;/p&gt;
 &lt;p&gt;Thanks for having me, Glen!&lt;/p&gt;

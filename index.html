@@ -131,6 +131,11 @@
                 </a>
             </li>
             <li>
+                <a href="https://max-inden.de/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://max-inden.de/readings" title="Readings">
                     <span>Readings</span>
                 </a>
@@ -227,41 +232,6 @@ The implementation is a library of its own, mozilla/happy-eyeballs: a determinis
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Slides from the HTTP Workshop 2026
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I gave three short talks at this year’s HTTP Workshop.
-Increase and evolve HTTP/3 &amp; QUIC Slides: mxinden-bot.github.io/slides/04-quic-discussion
-A discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; “security” software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-07-17 00:00:00 +0000 UTC'>July 17, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Slides from the HTTP Workshop 2026" href="https://max-inden.de/post/http-workshop-2026-slides/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Working Draft - HTTP/3 und WebTransport mit Max Inden
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I joined the Working Draft podcast to talk about HTTP/3 and WebTransport.
-We traced the evolution from HTTP/1 through HTTP/2 to HTTP/3, why head-of-line blocking pushed the web toward QUIC, and how building transport and security together enables 1-RTT and 0-RTT handshakes, connection migration, and encrypted DNS. We closed on WebTransport as a modern alternative to WebSocket, supporting both streams and datagrams.
-The episode is in German.
-Thanks for having me!
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-04-21 00:00:00 +0000 UTC'>April 21, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Working Draft - HTTP/3 und WebTransport mit Max Inden" href="https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125
     </h2>
   </header>
@@ -275,57 +245,6 @@ I introduced mozilla/happy-eyeballs, the Rust library behind it: deterministic, 
 
 <span title='2026-03-18 00:00:00 +0000 UTC'>March 18, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125" href="https://max-inden.de/post/happy-eyeballs-v3-in-firefox/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I gave a talk on the upcoming WebTransport protocol in the Browser Devroom at FOSDEM 2026.
-WebTransport is an upcoming protocol (standardized by the IETF) and Web API (standardized by the W3C) for bidirectional communication on the web. It provides multiplexed streams and unreliable datagrams on top of HTTP/3 and HTTP/2.
-This talk explains how WebTransport works at the protocol level, how it maps to QUIC when run on top of HTTP/3, and how its capabilities differ from WebSocket. The session will also cover the current state of browser and server support, and where the ecosystem is heading next.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-01-31 00:00:00 +0000 UTC'>January 31, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM" href="https://max-inden.de/post/intro-to-webtransport-the-next-websocket/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Modern Network Protocols — What’s Next for Firefox and the Web?&#34; @FOSDEM
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Andrew, a colleague, and I presented an outlook for Firefox and the web.
-The Web’s transport stack is changing rapidly, with QUIC, HTTP/3, and encrypted DNS seeing broad adoption. This talk gives an overview of the modern network protocols Firefox already deploys and invests in, including QUIC and HTTP/3’s growing share of Web traffic. It will highlight what Firefox actually sends on the wire today, what benefits we observe in practice, and where the Web’s protocol landscape stands in early 2026.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-01-31 00:00:00 +0000 UTC'>January 31, 2026</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Modern Network Protocols — What’s Next for Firefox and the Web?&#34; @FOSDEM" href="https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">netstack.fm - Modern networking in Firefox with Max Inden
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I joined Glen on the netstack.fm podcast to talk about modern networking in Firefox.
-We discussed Mozilla ’s work on Firefox’s QUIC and HTTP/3 stack — improving UDP I/O, congestion control, and overall performance — and why QUIC matters as a fast, encrypted, and evolvable transport for HTTP/3, WebTransport, and beyond.
-Thanks for having me, Glen!
-https://netstack.fm/#episode-11
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2025-10-29 00:00:00 +0000 UTC'>October 29, 2025</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to netstack.fm - Modern networking in Firefox with Max Inden" href="https://max-inden.de/post/modern-networking-in-firefox-podcast/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -346,22 +265,6 @@ Firefox uses NSPR for most of its network I/O. When it comes to UDP I/O, NSPR on
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I presented my recent work on Firefox’s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.
-QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2025-02-02 00:00:00 +0000 UTC'>February 2, 2025</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM" href="https://max-inden.de/post/2025-02-02-fast-udp-makes-quic-quicker/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">Stepping down as a (rust-) libp2p maintainer
     </h2>
   </header>
@@ -375,6 +278,108 @@ My first commit was 5y ago, a small bug fix in our address handling. Since then 
 
 <span title='2024-02-29 00:00:00 +0000 UTC'>February 29, 2024</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Stepping down as a (rust-) libp2p maintainer" href="https://max-inden.de/post/2024-02-29-stepping-down/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hole punching in libp2p
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We have been working on hole punching support in libp2p for the last year. It finally landed in the Go and Rust libp2p implementation.
+Read all about it on the IPFS blog: https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2022-03-06 00:00:00 +0000 UTC'>March 6, 2022</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Hole punching in libp2p" href="https://max-inden.de/post/2022-03-06-libp2p-hole-punching/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">35th DistSys Reading Group - Nym
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In our previous session we looked into Mixnets, more specifically Loopix. With this session we stayed in the space, talking about a network adopting many concepts from Loopix, namely Nym.
+As a preparation, we read section 1 through 4 of the Nym whitepaper.
+Introduction Network-level surveillance The Nym Network Design Mixnet for Network-Level Privacy Diaz, Claudia, Harry Halpin, and Aggelos Kiayias. “The Nym Network.” (2021).
+https://nymtech.net/nym-whitepaper.pdf
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2021-06-29 00:00:00 +0000 UTC'>June 29, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 35th DistSys Reading Group - Nym" href="https://max-inden.de/post/2021-06-29-35th-reading-group/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">34th DistSys Reading Group - Mixnets
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>34th session was on Mixnets as lots of people suggested in the past. As a preparation we read the Loopix paper.
+Piotrowska, Ania M., et al. “The loopix anonymity system.” 26th {USENIX} Security Symposium ({USENIX} Security 17). 2017.
+https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-piotrowska.pdf
+The corresponding talk by Ania Piotrowska is very much worth watching as an additional resource.
+https://www.youtube.com/watch?v=R-yEqLX_UvI
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2021-05-10 00:00:00 +0000 UTC'>May 10, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 34th DistSys Reading Group - Mixnets" href="https://max-inden.de/post/2021-05-10-34th-reading-group/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">33rd DistSys Reading Group - BGP 3
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In our third BGP session we focused on BGP security, more specifically we discussed how to perform hijack and interception attacks using BGP. The primary paper of the session was:
+Birge-Lee, Henry, et al. “Sico: Surgical interception attacks by manipulating bgp communities.” Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security. 2019.
+A good introduction to RPKI can be found here.
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2021-04-12 00:00:00 +0000 UTC'>April 12, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 33rd DistSys Reading Group - BGP 3" href="https://max-inden.de/post/2021-04-12-33rd-reading-group/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">32nd DistSys Reading Group - BGP 2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>After our first BGP session, introducing the protocol based on the convergence problem of BGP, our second session on BGP covered route propagation and tuning. The primary paper was:
+Gray, Caitlin, et al. “BGP Beacons, Network Tomography, and Bayesian Computation to Locate Route Flap Damping.” Proceedings of the ACM Internet Measurement Conference. 2020.
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2021-03-18 00:00:00 +0000 UTC'>March 18, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 32nd DistSys Reading Group - BGP 2" href="https://max-inden.de/post/2021-03-18-32nd-reading-group/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Optimizing Yamux Flow Control - Sending Window Update Frames Early
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Below is a summary of our efforts to optimize flow control in the Rust Yamux implementation. While not a novel approach, I still find the end result worth sharing thus my forum post.
+https://discuss.libp2p.io/t/optimizing-yamux-flow-control-sending-window-update-frames-early/843
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2021-03-07 00:00:00 +0000 UTC'>March 7, 2021</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to Optimizing Yamux Flow Control - Sending Window Update Frames Early" href="https://max-inden.de/post/2021-03-07-optimizing-yamux-flow-control/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -117,6 +117,11 @@
                 </a>
             </li>
             <li>
+                <a href="https://max-inden.de/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://max-inden.de/readings" title="Readings">
                     <span>Readings</span>
                 </a>
@@ -145,6 +150,24 @@
     Tech
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">25th DistSys Reading Group - Fair queuing
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In the session today we covered Madhavapeddi Shreedhar and George Varghese paper “Efficient fair queuing using deficit round-robin” [1]. While the session was not so much about the relatively simple algorithmic details of deficit-round-robin (still worth checking out) we talked about:
+Its benefits over basic FIFO queuing and thus its impact for congestion controlled traffic (tcp) compared to not congestion controlled traffic (udp).
+Its wide deployment still seen today.
+Its derivatives DRR&#43; and DRR&#43;&#43; being able to handle both best-effort as well as latency critical flows.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2020-04-27 00:00:00 +0000 UTC'>April 27, 2020</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
+  <a class="entry-link" aria-label="post link to 25th DistSys Reading Group - Fair queuing" href="https://max-inden.de/post/2020-04-27-25th-paper-club/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -290,27 +313,12 @@ In the last meeting (19th) we covered distributed hash tables. They play a cruci
 <span title='2019-06-24 00:00:00 +0000 UTC'>June 24, 2019</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
   <a class="entry-link" aria-label="post link to Metric driven performance optimization" href="https://max-inden.de/post/2019-06-25-metric-driven-performance-optimization/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Talk Self-healing Kubernetes
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>What If Component xxx Dies? Introducing Self-Healing Kubernetes
-Kubernetes promises healing your application on all kinds of failure scenarios, but why not self-heal Kubernetes itself?
-This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously recover from failure scenarios with the help of e.g. itself, systemd and checkpointing. We will ask and answer questions like “What happens when xxx dies”. The theory will be followed by a demo on a live cluster showcasing what happens when we kill central Kubernetes components, like the API-Server. Let’s see how well Kubernetes recovers.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2017-10-22 00:00:00 +0000 UTC'>October 22, 2017</span>&nbsp;·&nbsp;<span>Max Inden</span></footer>
-  <a class="entry-link" aria-label="post link to Talk Self-healing Kubernetes" href="https://max-inden.de/post/self-healing-k8s/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://max-inden.de/tags/tech/page/3/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://max-inden.de/tags/tech/page/5/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>

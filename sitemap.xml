@@ -7,36 +7,56 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/firefox/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/happy-eyeballs/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/tags/http3/</loc>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/networking/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://max-inden.de/post/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://max-inden.de/tags/talk/</loc>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/talks/happy-eyeballs-v3-in-firefox-ietf-127/</loc>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/talks/</loc>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/tags/tech/</loc>
+    <lastmod>2026-11-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://max-inden.de/post/</loc>
     <lastmod>2026-07-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -46,22 +66,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/tags/tech/</loc>
-    <lastmod>2026-07-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://max-inden.de/tags/http3/</loc>
-    <lastmod>2026-07-17T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://max-inden.de/tags/quic/</loc>
     <lastmod>2026-07-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/http-workshop-2026-slides/</loc>
+    <loc>https://max-inden.de/talks/http-workshop-2026-slides/</loc>
     <lastmod>2026-07-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -71,7 +81,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</loc>
+    <loc>https://max-inden.de/talks/working-draft-http3-and-webtransport-podcast/</loc>
     <lastmod>2026-04-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -81,17 +91,17 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</loc>
+    <loc>https://max-inden.de/talks/intro-to-webtransport-the-next-websocket/</loc>
     <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</loc>
+    <loc>https://max-inden.de/talks/modern-network-protocols-whats-next-for-firefox-and-the-web/</loc>
     <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/modern-networking-in-firefox-podcast/</loc>
+    <loc>https://max-inden.de/talks/modern-networking-in-firefox-podcast/</loc>
     <lastmod>2025-10-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -106,7 +116,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/2025-02-02-fast-udp-makes-quic-quicker/</loc>
+    <loc>https://max-inden.de/talks/2025-02-02-fast-udp-makes-quic-quicker/</loc>
     <lastmod>2025-02-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -121,32 +131,32 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</loc>
+    <loc>https://max-inden.de/talks/2023-04-16-connecting-everything-everywhere-all-at-once/</loc>
     <lastmod>2023-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</loc>
+    <loc>https://max-inden.de/talks/2022-11-02-dos-defense-dos-and-donts/</loc>
     <lastmod>2023-02-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</loc>
+    <loc>https://max-inden.de/talks/2023-02-05-hole-punching-in-the-wild/</loc>
     <lastmod>2023-02-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</loc>
+    <loc>https://max-inden.de/talks/2023-02-05-peer-to-peer-browser-connectivity/</loc>
     <lastmod>2023-02-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</loc>
+    <loc>https://max-inden.de/talks/2022-04-30-hole-punching-with-libp2p/</loc>
     <lastmod>2022-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</loc>
+    <loc>https://max-inden.de/talks/2022-04-29-introduction-to-and-state-of-libp2p/</loc>
     <lastmod>2022-04-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -166,17 +176,17 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</loc>
+    <loc>https://max-inden.de/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/</loc>
     <lastmod>2022-02-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/state-of-libp2p/</loc>
+    <loc>https://max-inden.de/talks/state-of-libp2p/</loc>
     <lastmod>2022-02-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/intro-to-libp2p/</loc>
+    <loc>https://max-inden.de/talks/intro-to-libp2p/</loc>
     <lastmod>2021-07-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -426,32 +436,32 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</loc>
+    <loc>https://max-inden.de/talks/optimizing-metric-rendering-in-kube-state-metrics/</loc>
     <lastmod>2019-05-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/self-service-monitoring/</loc>
+    <loc>https://max-inden.de/talks/self-service-monitoring/</loc>
     <lastmod>2018-09-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/self-healing-k8s/</loc>
+    <loc>https://max-inden.de/talks/self-healing-k8s/</loc>
     <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</loc>
+    <loc>https://max-inden.de/talks/end-to-end-monitoring-with-the-prometheus-operator/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/introduction-to-k8s/</loc>
+    <loc>https://max-inden.de/talks/introduction-to-k8s/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</loc>
+    <loc>https://max-inden.de/talks/improving-user-and-developer-experience-of-the-alertmanager-ui/</loc>
     <lastmod>2017-08-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

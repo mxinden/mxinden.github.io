@@ -18,26 +18,6 @@
 &lt;p&gt;The implementation is a library of its own, &lt;a href=&#34;https://github.com/mozilla/happy-eyeballs&#34;&gt;mozilla/happy-eyeballs&lt;/a&gt;: a deterministic, sans-I/O state machine in Rust with no network and no clock. The caller drives the I/O and passes time in. It does not depend on Firefox, it embeds in Necko&amp;rsquo;s C++ event loop, and every scenario is a plain unit test.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Slides from the HTTP Workshop 2026</title>
-      <link>https://max-inden.de/post/http-workshop-2026-slides/</link>
-      <pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/http-workshop-2026-slides/</guid>
-      <description>&lt;p&gt;I gave three short talks at this year&amp;rsquo;s &lt;a href=&#34;https://github.com/HTTPWorkshop/workshop2026&#34;&gt;HTTP Workshop&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;increase-and-evolve-http3--quic&#34;&gt;Increase and evolve HTTP/3 &amp;amp; QUIC&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Slides: &lt;a href=&#34;https://mxinden-bot.github.io/slides/04-quic-discussion/&#34;&gt;mxinden-bot.github.io/slides/04-quic-discussion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;A discussion deck. HTTP/3 sits around 30% and has plateaued. I cover the ways to measure that share. Then what holds adoption back: server and framework support; &amp;ldquo;security&amp;rdquo; software and enterprise middleboxes that break QUIC; and the server-side performance gap to TCP. I raise QUIC v2 as an anti-ossification concern, barely deployed. I close on the HTTP/3-native use cases (WebTransport, Media over QUIC, MASQUE) and the two ways to reach HTTP/3, Alt-Svc and HTTPS records, with the latter preferred.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Working Draft - HTTP/3 und WebTransport mit Max Inden</title>
-      <link>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</link>
-      <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/working-draft-http3-and-webtransport-podcast/</guid>
-      <description>&lt;p&gt;I joined the Working Draft podcast to talk about HTTP/3 and WebTransport.&lt;/p&gt;
-&lt;p&gt;We traced the evolution from HTTP/1 through HTTP/2 to HTTP/3, why head-of-line blocking pushed the web toward QUIC, and how building transport and security together enables 1-RTT and 0-RTT handshakes, connection migration, and encrypted DNS. We closed on WebTransport as a modern alternative to WebSocket, supporting both streams and datagrams.&lt;/p&gt;
-&lt;p&gt;The episode is in German.&lt;/p&gt;
-&lt;p&gt;Thanks for having me!&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF 125</title>
       <link>https://max-inden.de/post/happy-eyeballs-v3-in-firefox/</link>
       <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
@@ -45,35 +25,6 @@
       <description>&lt;p&gt;I presented Firefox&amp;rsquo;s Happy Eyeballs v3 implementation in the &lt;a href=&#34;https://datatracker.ietf.org/wg/happy/about/&#34;&gt;HAPPY working group&lt;/a&gt; at IETF 125 in Shenzhen.&lt;/p&gt;
 &lt;p&gt;At that point the implementation had landed in Firefox Nightly, still off by default and reachable by flipping &lt;code&gt;network.http.happy_eyeballs_enabled&lt;/code&gt; in &lt;code&gt;about:config&lt;/code&gt;. It followed &lt;a href=&#34;https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/&#34;&gt;the draft&lt;/a&gt; with no major deviation.&lt;/p&gt;
 &lt;p&gt;I introduced &lt;a href=&#34;https://github.com/mozilla/happy-eyeballs&#34;&gt;mozilla/happy-eyeballs&lt;/a&gt;, the Rust library behind it: deterministic, free of side effects, abstract over I/O and time, and with no dependency on Firefox. Each scenario is a plain unit test, which makes the algorithm easy to formalize. I offered those tests to the working group as a way to pin the algorithm down.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</link>
-      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/intro-to-webtransport-the-next-websocket/</guid>
-      <description>&lt;p&gt;I gave a talk on the upcoming WebTransport protocol in the Browser Devroom at FOSDEM 2026.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;WebTransport is an upcoming protocol (standardized by the IETF) and Web API (standardized by the W3C) for bidirectional communication on the web. It provides multiplexed streams and unreliable datagrams on top of HTTP/3 and HTTP/2.&lt;/p&gt;
-&lt;p&gt;This talk explains how WebTransport works at the protocol level, how it maps to QUIC when run on top of HTTP/3, and how its capabilities differ from WebSocket. The session will also cover the current state of browser and server support, and where the ecosystem is heading next.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;Modern Network Protocols — What’s Next for Firefox and the Web?&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</link>
-      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/modern-network-protocols-whats-next-for-firefox-and-the-web/</guid>
-      <description>&lt;p&gt;Andrew, a colleague, and I presented an outlook for Firefox and the web.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The Web’s transport stack is changing rapidly, with QUIC, HTTP/3, and encrypted DNS seeing broad adoption. This talk gives an overview of the modern network protocols Firefox already deploys and invests in, including QUIC and HTTP/3’s growing share of Web traffic. It will highlight what Firefox actually sends on the wire today, what benefits we observe in practice, and where the Web’s protocol landscape stands in early 2026.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>netstack.fm - Modern networking in Firefox with Max Inden</title>
-      <link>https://max-inden.de/post/modern-networking-in-firefox-podcast/</link>
-      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/modern-networking-in-firefox-podcast/</guid>
-      <description>&lt;p&gt;I joined Glen on the netstack.fm podcast to talk about modern networking in Firefox.&lt;/p&gt;
-&lt;p&gt;We discussed Mozilla &amp;rsquo;s work on Firefox&amp;rsquo;s QUIC and HTTP/3 stack — improving UDP I/O, congestion control, and overall performance — and why QUIC matters as a fast, encrypted, and evolvable transport for HTTP/3, WebTransport, and beyond.&lt;/p&gt;
-&lt;p&gt;Thanks for having me, Glen!&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://netstack.fm/#episode-11&#34;&gt;https://netstack.fm/#episode-11&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Fast UDP I/O for Firefox in Rust</title>
@@ -88,15 +39,6 @@ When it comes to UDP I/O, NSPR only offers a limited set of dated APIs, most rel
 The N in NSPR stands for Netscape, giving you a hint of its age.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/2025-02-02-fast-udp-makes-quic-quicker/</link>
-      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/2025-02-02-fast-udp-makes-quic-quicker/</guid>
-      <description>&lt;p&gt;I presented my recent work on Firefox&amp;rsquo;s HTTP3/QUIC stack in the Network Devroom at FOSDEM 2025.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;QUIC is a new transport protocol on top of UDP, transporting a large portion of the Internet traffic today. UDP I/O performance is crucial for QUIC implementations, where e.g. system call overhead can significantly impact throughput at high network speeds. To improve QUIC throughput, Firefox is switching to a modern UDP IO stack in Rust, using mechanisms like recvmmsg, and GRO across Linux, Windows, and Android.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Stepping down as a (rust-) libp2p maintainer</title>
       <link>https://max-inden.de/post/2024-02-29-stepping-down/</link>
       <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
@@ -108,139 +50,6 @@ After a 2 month re-orientation break, I have decided to move on entirely.&lt;/p&
 Since then lots happened. A couple of milestones I was involved in:&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing</title>
-      <link>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</link>
-      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/2023-04-16-connecting-everything-everywhere-all-at-once/</guid>
-      <description>&lt;p&gt;How you can connect everything (browsers &amp;amp; non-browsers), everywhere (public or private), all at once (using libp2p).&lt;/p&gt;
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/4v-iIB0C9_8?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
-    &lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://bafybeidyb3fucxaq32cm6vf6q5ziaah6foe5caggwsitlm7myd4pwpcgdq.ipfs.w3s.link/connecting-everything-everywhere-all-at-once-with-libp2p.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp</title>
-      <link>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</link>
-      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/</guid>
-      <description>&lt;p&gt;I presented at IPFS Camp 2022 on mitigating Denial-of-Service attacks in
-peer-to-peer networks. I discussed resource management strategies such as
-enforcing backpressure and provided examples of coding pitfalls to avoid in Rust
-and Go. You can find the recording and slides of my talk below.&lt;/p&gt;
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/jZrAnnFO-2c?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
-    &lt;/div&gt;
-
-&lt;h1 id=&#34;slides&#34;&gt;Slides&lt;/h1&gt;
-&lt;h2 id=&#34;dos&#34;&gt;DOS&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Denial-of-service attack&lt;/li&gt;
-&lt;li&gt;Hard in peer-to-peer as identities are cheap&lt;/li&gt;
-&lt;li&gt;Relevant for any scarce resource, e.g. CPU, memory(, file descriptors)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;dos-1&#34;&gt;Do&amp;rsquo;s&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Bound EVERYTHING&lt;/li&gt;
-&lt;li&gt;Once a bound is exceeded:
-&lt;ul&gt;
-&lt;li&gt;Drop item (&lt;del&gt;good&lt;/del&gt;)&lt;/li&gt;
-&lt;li&gt;Enforce backpressure (good)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;dos-2&#34;&gt;Do&amp;rsquo;s&lt;/h2&gt;
-&lt;h3 id=&#34;backpressure&#34;&gt;Backpressure&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Slow consumer should slow down a fast producer&lt;/li&gt;
-&lt;li&gt;Can improve resource utilization&lt;/li&gt;
-&lt;li&gt;Can improve latency&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;donts&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Decode the length prefix of a message.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; l &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uvi::decode::&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;(msg_len_prefix)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Allocate a corresponding buffer.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; buffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;vec!&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; l];
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Read message into buffer.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;socket.read_exact(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; buffer)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-1&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;request&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;incomingRequests&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Handle the request.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;go&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;handleRequest&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;request&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-2&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;loop&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Handle the request.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;move&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      handle(request)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  });
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-3&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;loop&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Receive a request.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Send the request somewhere else.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  request_channel.unbounded_send(request);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;donts-4&#34;&gt;Don&amp;rsquo;ts&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Buffer of requests
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; to_be_handled_later &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; incoming_requests.next().&lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;to_be_handled_later.push(request);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;Hole punching in the wild&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</link>
-      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/2023-02-05-hole-punching-in-the-wild/</guid>
-      <description>&lt;p&gt;Dennis and I presented &lt;em&gt;Hole punching in the wild&lt;/em&gt;, &lt;em&gt;learnings from running libp2p hole punching in production, measured from vantage points across the globe&lt;/em&gt; in the network devroom at FOSDEM 2023.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;At FOSDEM 2022 I presented libp2p&amp;rsquo;s hole punching mechanism, overcoming NATs and firewalls with no dependencies on central infrastructure. One year has passed since. We rolled it out to live networks. We launched a large measurement campaign with many volunteers deploying vantage points in their home network, punching holes across the globe.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</link>
-      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/2023-02-05-peer-to-peer-browser-connectivity/</guid>
-      <description>&lt;p&gt;I presented an overview on &lt;em&gt;Peer-to-peer Browser Connectivity&lt;/em&gt; options in the network devroom at FOSDEM 2023.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Connecting from the browser to a public server with a valid TLS certificate is easy. But what if the server has a self-signed certificate? What if it isn&amp;rsquo;t public? What if it is another browser?&lt;/p&gt;
-&lt;p&gt;This talk covers the intricacies of browser communication beyond the standard browser-to-server use-case. I will give an overview of the many protocols available and how they can be used in a peer-to-peer fashion without sacrificing authenticity, confidentiality or integrity. We will leverage the new WebTransport for secure communication to public servers with self-signed certificates and WebRTC for secure communication to other browsers, using hole puching, without the dependency on central infrastructure.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;Hole punching with libp2p&#34; @p2p-paris</title>
-      <link>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</link>
-      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/2022-04-30-hole-punching-with-libp2p/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;We’ll take a closer look at the recently added decentralized hole punching
-feature, allowing NAT and firewall traversal without the need for any central
-coordination servers (STUN and TURN).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://youtu.be/MCEEMrIRks8&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris</title>
-      <link>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/2022-04-29-introduction-to-and-state-of-libp2p/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;We will discuss the current state of the project, eyeball the various language
-implementations, take a look at the many live networks running on top of
-libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://youtu.be/Sbd7odDFT1w&#34;&gt;Recording&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Hole punching in libp2p</title>
       <link>https://max-inden.de/post/2022-03-06-libp2p-hole-punching/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
@@ -249,52 +58,6 @@ libp2p today and finally cover the project roadmap for the years to come.&lt;/p&
 finally landed in the Go and Rust libp2p implementation.&lt;/p&gt;
 &lt;p&gt;Read all about it on the IPFS blog:
 &lt;a href=&#34;https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/&#34;&gt;https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</link>
-      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/peer-to-peer-hole-punching-without-centralized-infrastructure/</guid>
-      <description>&lt;p&gt;Gave a talk on hole punching in libp2p at FOSDEM 2022.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Peer-to-peer hole punching without centralized infrastructure&lt;/p&gt;
-&lt;p&gt;How libp2p can traverse NATs and firewalls without coordination through
-central STUN and TURN servers.&lt;/p&gt;
-&lt;p&gt;libp2p is a universal, cross-platform, multi-language, modular peer-to-peer
-networking library powering multiple large-scale networks, for example IPFS.&lt;/p&gt;
-&lt;p&gt;In the first part of the talk we’ll present the basic building blocks of the
-library and explain how they fit together. In the second part, we’ll take a
-closer look at the recently added decentralized hole punching feature,
-allowing NAT and firewall traversal without the need for any central
-coordination servers (STUN and TURN).&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk &#34;State of libp2p&#34; @FOSDEM</title>
-      <link>https://max-inden.de/post/state-of-libp2p/</link>
-      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/state-of-libp2p/</guid>
-      <description>&lt;p&gt;Gave a talk on the state of libp2p at FOSDEM 2022.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;State of libp2p&lt;/p&gt;
-&lt;p&gt;Status quo and future roadmap of the peer-to-peer networking library libp2p.&lt;/p&gt;
-&lt;p&gt;libp2p is a universal, cross-platform, multi-language, modular peer-to-peer
-networking library powering multiple large-scale networks, for example IPFS,
-Ethereum 2, Filecoin or Polkadot.&lt;/p&gt;
-&lt;p&gt;We will discuss the current state of the project, eyeball the various language
-implementations, take a look at the many live networks running on top of
-libp2p today and finally cover the project roadmap for the years to come.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk Intro to libp2p</title>
-      <link>https://max-inden.de/post/intro-to-libp2p/</link>
-      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/intro-to-libp2p/</guid>
-      <description>&lt;p&gt;On Tuesday 20th of July I gave a talk introducing &lt;a href=&#34;https://libp2p.io/&#34;&gt;libp2p&lt;/a&gt;,
-a modular network stack.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://youtu.be/7OZLImVRvro&#34;&gt;Recording&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://max-inden.de/static/introduction-to-libp2p.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     <item>
       <title>35th DistSys Reading Group - Nym</title>
@@ -643,76 +406,6 @@ focused on performance optimizing metric rendering for both latency as well as
 resource usage. Below I want to describe our approach of metric driven
 performance tuning, using Prometheus to monitor kube-state-metrics on top of
 Kubernetes, which in itself enables Prometheus to monitor Kubernetes.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk Optimizing Metric Rendering in kube-state-metrics</title>
-      <link>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</link>
-      <pubDate>Wed, 22 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/optimizing-metric-rendering-in-kube-state-metrics/</guid>
-      <description>&lt;p&gt;Kube-state-metrics exposes Prometheus metrics of the state of a given Kubernetes
-cluster. The project uses the standard Prometheus client Golang library, which
-is not optimized for the very specific use case of kube-state-metrics.&lt;/p&gt;
-&lt;p&gt;This talk covers different optimizations like metric caching and improved text
-marshaling dividing CPU usage by a factor of 6 and memory and response time by a
-factor of 3 through introducing an intelligent Prometheus metric cache in the
-code hot path and optimizing memory allocations during response generation.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk Self-Service Monitoring</title>
-      <link>https://max-inden.de/post/self-service-monitoring/</link>
-      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/self-service-monitoring/</guid>
-      <description>&lt;p&gt;Monitoring plays a crucial role in a microservice architecture. Restricting the
-management and configuration of the monitoring stack to the operations team
-results in workflow bottlenecks. Instead one could provide a self-service
-monitoring platform, enabling each team to easily setup monitoring for their
-applications and customize it to their needs. This gives each team the ability
-to deeply introspect their application, benchmark new features and alert on
-failures on their own.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk Self-healing Kubernetes</title>
-      <link>https://max-inden.de/post/self-healing-k8s/</link>
-      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/self-healing-k8s/</guid>
-      <description>&lt;p&gt;What If Component xxx Dies? Introducing Self-Healing Kubernetes&lt;/p&gt;
-&lt;p&gt;Kubernetes promises healing your application on all kinds of failure scenarios,
-but why not self-heal Kubernetes itself?&lt;/p&gt;
-&lt;p&gt;This talk introduces self-hosted Kubernetes (K8s inside itself) to autonomously
-recover from failure scenarios with the help of e.g. itself, systemd and
-checkpointing. We will ask and answer questions like “What happens when xxx
-dies”. The theory will be followed by a demo on a live cluster showcasing what
-happens when we kill central Kubernetes components, like the API-Server. Let’s
-see how well Kubernetes recovers.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk End-to-end monitoring with the Prometheus Operator</title>
-      <link>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</link>
-      <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/end-to-end-monitoring-with-the-prometheus-operator/</guid>
-      <description>&lt;p&gt;Kubernetes is a powerful system to build and operate a modern cloud-native infrastructure. Monitoring with Prometheus ensures that Kubernetes stays healthy. Prometheus is a stateful application, so operating it in a cloud native environment can be a challenging task. The Prometheus Operator makes running highly available Prometheus clusters, and even an entire end to end monitoring pipeline, easily manageable. Max will explain the functionality of the Prometheus Operator and describe a desirable end-to-end monitoring stack, including alerts and dashboards.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk Intro to Kubernetes</title>
-      <link>https://max-inden.de/post/introduction-to-k8s/</link>
-      <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/introduction-to-k8s/</guid>
-      <description>&lt;p&gt;Distributing and deploying software inside (Docker-) containers for security,
-isolation and ease of use is the new big thing. But once you got all your
-services nicely wrapped - who takes care of all these containers?&lt;/p&gt;
-&lt;p&gt;The open source project Kubernetes, originating from Google, helps you manage
-containerized applications, as the operating system of your datacenter, treating
-hundreds of machines as a single resource pool. This talk introduces the core
-concepts of Kubernetes, its benefits and its huge ecosystem and gives you an
-idea of how Google controls parts of their gigantic infrastructure.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Talk Improving user and developer experience of the Alertmanager UI</title>
-      <link>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</link>
-      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/improving-user-and-developer-experience-of-the-alertmanager-ui/</guid>
-      <description>&lt;p&gt;Alertmanager deduplicates, groups, and routes alerts from Prometheus to all kinds of paging services. With it comes a dated UI which does not live up to the expectations of the users, nor does it attract new contributors.&lt;/p&gt;
-&lt;p&gt;From this talk, you will learn how we addressed these issues when building the new UI from scratch. We made it friendlier to users by removing unnecessary domain language noise. In addition we added new power features such as filtering and grouping. As a result, it is now much easier to navigate through thousands of alerts.&lt;/p&gt;</description>
     </item>
     <item>
       <title>First Triathlon</title>

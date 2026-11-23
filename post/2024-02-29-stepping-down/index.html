@@ -183,6 +183,11 @@ My first commit was 5y ago, a small bug fix in our address handling. Since then 
                 </a>
             </li>
             <li>
+                <a href="https://max-inden.de/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://max-inden.de/readings" title="Readings">
                     <span>Readings</span>
                 </a>
@@ -245,7 +250,7 @@ The outcome in my eyes is both <a href="https://observablehq.com/@libp2p-workspa
 <li>We shipped many developer experience improvements, taming some of the complexity inherent to peer-to-peer networking e.g. the <a href="https://github.com/libp2p/rust-libp2p/pull/4120"><code>SwarmBuilder</code></a>.</li>
 <li>Security is hard, especially on the internet, doubly so when in a peer-to-peer setting.
 A lot of our work went into security fixes, especially around DOS attacks.
-See e.g. a <a href="https://github.com/libp2p/rust-libp2p/security/advisories/GHSA-jvgw-gccv-q5p8">major memory exhaustion attack</a> and <a href="https://max-inden.de/post/2022-11-02-dos-defense-dos-and-donts/">a talk</a> inspired by this work.</li>
+See e.g. a <a href="https://github.com/libp2p/rust-libp2p/security/advisories/GHSA-jvgw-gccv-q5p8">major memory exhaustion attack</a> and <a href="https://max-inden.de/talks/2022-11-02-dos-defense-dos-and-donts/">a talk</a> inspired by this work.</li>
 <li>Talking about talks, I gave <a href="https://max-inden.de/tags/talk/">several</a> on peer-to-peer networking and libp2p as well as helped organize related conferences, e.g. the FOSDEM networking devroom.</li>
 <li>As a final big contribution, the before mentioned automated performance benchmark setup enabled me to land a major improvement to libp2p&rsquo;s bandwidth performance.
 Implementing <a href="https://github.com/libp2p/rust-yamux/pull/176">stream receive window auto-tuning in the Rust Yamux implementation</a> improved throughput on high bandwidth connections from 33 Mbit/s to 1.3 Gbit/s.</li>

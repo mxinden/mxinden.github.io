@@ -10,9 +10,9 @@
     <atom:link href="https://max-inden.de/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>netstack.fm - Modern networking in Firefox with Max Inden</title>
-      <link>https://max-inden.de/post/modern-networking-in-firefox-podcast/</link>
+      <link>https://max-inden.de/talks/modern-networking-in-firefox-podcast/</link>
       <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://max-inden.de/post/modern-networking-in-firefox-podcast/</guid>
+      <guid>https://max-inden.de/talks/modern-networking-in-firefox-podcast/</guid>
       <description>&lt;p&gt;I joined Glen on the netstack.fm podcast to talk about modern networking in Firefox.&lt;/p&gt;
 &lt;p&gt;We discussed Mozilla &amp;rsquo;s work on Firefox&amp;rsquo;s QUIC and HTTP/3 stack — improving UDP I/O, congestion control, and overall performance — and why QUIC matters as a fast, encrypted, and evolvable transport for HTTP/3, WebTransport, and beyond.&lt;/p&gt;
 &lt;p&gt;Thanks for having me, Glen!&lt;/p&gt;

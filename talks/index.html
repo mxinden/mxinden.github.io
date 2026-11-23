@@ -1,311 +1,425 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Archive - Max Inden</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html lang="en" dir="auto" data-theme="auto">
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Talks | Max Inden</title>
+<meta name="keywords" content="">
+<meta name="description" content="Talks, workshop slides and podcast appearances, newest first.">
+<meta name="author" content="Max Inden">
+<link rel="canonical" href="https://max-inden.de/talks/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6ff46447b1fa3f8a5cc0bcae48088decc3ae37f5fbc99406a3aefc3bf0e6044a.css" integrity="sha256-b/RkR7H6P4pcwLyuSAiN7MOuN/X7yZQGo678O/DmBEo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://max-inden.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://max-inden.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://max-inden.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://max-inden.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://max-inden.de/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://max-inden.de/talks/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://max-inden.de/talks/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://max-inden.de/talks/">
+  <meta property="og:site_name" content="Max Inden">
+  <meta property="og:title" content="Talks">
+  <meta property="og:description" content="Talks, workshop slides and podcast appearances, newest first.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Talks">
+  <meta name="twitter:description" content="Talks, workshop slides and podcast appearances, newest first.">
 
 
-<meta name="author" content="Max Inden" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
-
-
-<link rel="canonical" href="https://max-inden.de/talks/" />
-  <link href="https://max-inden.de/talks/index.xml" rel="alternate" type="application/rss+xml" title="Max Inden" />
-  <link href="https://max-inden.de/talks/index.xml" rel="feed" type="application/rss+xml" title="Max Inden" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="Talks" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://max-inden.de/talks/" />
-
-<meta itemprop="name" content="Talks">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Talks"/>
-<meta name="twitter:description" content=""/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Talks",
+      "item": "https://max-inden.de/talks/"
+    }
+  ]
+}
+</script>
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Max Inden</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/resume">
-        <li class="mobile-menu-item">Resume</li>
-      </a><a href="/misc">
-        <li class="mobile-menu-item">Misc</li>
-      </a><a href="/talks">
-        <li class="mobile-menu-item">Talks</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archive</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a>
-  </ul>
-
-  
-
-
-</nav>
-
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Max Inden</a>
-</div>
-
-
-
-
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/resume">Resume</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/misc">Misc</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/talks">Talks</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archive</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li>
-  </ul>
-</nav>
-
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          
-<section id="archive" class="archive">
-      <div class="collection-title">
-        <h2 class="archive-year">2022</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        02-06
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/state-of-libp2p/" class="archive-post-link">
-          State of libp2p
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        02-06
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/" class="archive-post-link">
-          Peer-to-peer hole punching without centralized infrastructure
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2021</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        07-20
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/intro-to-libp2p/" class="archive-post-link">
-          Intro to libp2p
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2019</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        05-22
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/optimizing-metric-rendering-in-kube-state-metrics/" class="archive-post-link">
-          Optimizing Metric Rendering in kube-state-metrics
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2018</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        09-26
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/self-service-monitoring/" class="archive-post-link">
-          Self-Service Monitoring
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2017</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        10-22
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/self-healing-k8s/" class="archive-post-link">
-          Self-healing Kubernetes
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-19
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/introduction-to-k8s/" class="archive-post-link">
-          Intro to Kubernetes
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-19
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/end-to-end-monitoring-with-the-prometheus-operator/" class="archive-post-link">
-          End-to-end monitoring with the Prometheus Operator
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-18
-      </span>
-      <span class="archive-post-title">
-        <a href="/talks/improving-user-and-developer-experience-of-the-alertmanager-ui/" class="archive-post-link">
-          Improving user and developer experience of the Alertmanager UI
-        </a>
-      </span>
-    </div></section>
-
-<nav class="pagination">
-  
-  
-</nav>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://max-inden.de/" accesskey="h" title="Max Inden (Alt + H)">Max Inden</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-        
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://max-inden.de/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/resume" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/talks/" title="Talks">
+                    <span class="active">Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/readings" title="Readings">
+                    <span>Readings</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/post/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://max-inden.de/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:mail@max-inden.de" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/mxinden" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/mxinden/" class="iconfont icon-github" title="github"></a>
-  <a href="https://max-inden.de/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+<header class="page-header">
+  <h1>Talks</h1>
+</header>
+<div class="post-content md-content"><p>Talks, workshop slides and podcast appearances, newest first.</p>
 </div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2016 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Max Inden</span>
-  </span>
-</div>
-
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2026">
+    <a class="archive-header-link" href="#2026">2026</a>
+    <sup class="archive-count">&nbsp;5</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Happy Eyeballs v3 in Firefox&rdquo; @IETF-127</h3>
+      <div class="archive-meta">November 16, 2026</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Happy Eyeballs v3 in Firefox&#34; @IETF-127" href="https://max-inden.de/talks/happy-eyeballs-v3-in-firefox-ietf-127/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Slides from the HTTP Workshop 2026</h3>
+      <div class="archive-meta">July 17, 2026</div>
+      <a class="entry-link" aria-label="link to Slides from the HTTP Workshop 2026" href="https://max-inden.de/talks/http-workshop-2026-slides/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Working Draft - HTTP/3 und WebTransport mit Max Inden</h3>
+      <div class="archive-meta">April 21, 2026</div>
+      <a class="entry-link" aria-label="link to Working Draft - HTTP/3 und WebTransport mit Max Inden" href="https://max-inden.de/talks/working-draft-http3-and-webtransport-podcast/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Modern Network Protocols — What’s Next for Firefox and the Web?&rdquo; @FOSDEM</h3>
+      <div class="archive-meta">January 31, 2026</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Modern Network Protocols — What’s Next for Firefox and the Web?&#34; @FOSDEM" href="https://max-inden.de/talks/modern-network-protocols-whats-next-for-firefox-and-the-web/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Intro to WebTransport - the next WebSocket?!&rdquo; @FOSDEM</h3>
+      <div class="archive-meta">January 31, 2026</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Intro to WebTransport - the next WebSocket?!&#34; @FOSDEM" href="https://max-inden.de/talks/intro-to-webtransport-the-next-websocket/"></a>
     </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2025">
+    <a class="archive-header-link" href="#2025">2025</a>
+    <sup class="archive-count">&nbsp;2</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">netstack.fm - Modern networking in Firefox with Max Inden</h3>
+      <div class="archive-meta">October 29, 2025</div>
+      <a class="entry-link" aria-label="link to netstack.fm - Modern networking in Firefox with Max Inden" href="https://max-inden.de/talks/modern-networking-in-firefox-podcast/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&rdquo; @FOSDEM</h3>
+      <div class="archive-meta">February 2, 2025</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Fast UDP makes QUIC quicker - optimizing Firefox’s HTTP3 IO stack&#34; @FOSDEM" href="https://max-inden.de/talks/2025-02-02-fast-udp-makes-quic-quicker/"></a>
+    </div>
+  </div>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2023">
+    <a class="archive-header-link" href="#2023">2023</a>
+    <sup class="archive-count">&nbsp;4</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Connecting everything, everywhere, all at once&rdquo; @IPFS-Thing</h3>
+      <div class="archive-meta">April 16, 2023</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Connecting everything, everywhere, all at once&#34; @IPFS-Thing" href="https://max-inden.de/talks/2023-04-16-connecting-everything-everywhere-all-at-once/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Peer-to-peer Browser Connectivity&rdquo; @FOSDEM</h3>
+      <div class="archive-meta">February 5, 2023</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Peer-to-peer Browser Connectivity&#34; @FOSDEM" href="https://max-inden.de/talks/2023-02-05-peer-to-peer-browser-connectivity/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Hole punching in the wild&rdquo; @FOSDEM</h3>
+      <div class="archive-meta">February 5, 2023</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Hole punching in the wild&#34; @FOSDEM" href="https://max-inden.de/talks/2023-02-05-hole-punching-in-the-wild/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;DOS Defense - Do’s and Don’ts&rdquo; @IPFS-Camp</h3>
+      <div class="archive-meta">February 5, 2023</div>
+      <a class="entry-link" aria-label="link to Talk &#34;DOS Defense - Do’s and Don’ts&#34; @IPFS-Camp" href="https://max-inden.de/talks/2022-11-02-dos-defense-dos-and-donts/"></a>
+    </div>
+  </div>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2022">
+    <a class="archive-header-link" href="#2022">2022</a>
+    <sup class="archive-count">&nbsp;4</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Hole punching with libp2p&rdquo; @p2p-paris</h3>
+      <div class="archive-meta">April 30, 2022</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Hole punching with libp2p&#34; @p2p-paris" href="https://max-inden.de/talks/2022-04-30-hole-punching-with-libp2p/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Introduction to and State of libp2p&rdquo; @p2p-paris</h3>
+      <div class="archive-meta">April 29, 2022</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Introduction to and State of libp2p&#34; @p2p-paris" href="https://max-inden.de/talks/2022-04-29-introduction-to-and-state-of-libp2p/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;State of libp2p&rdquo; @FOSDEM</h3>
+      <div class="archive-meta">February 6, 2022</div>
+      <a class="entry-link" aria-label="link to Talk &#34;State of libp2p&#34; @FOSDEM" href="https://max-inden.de/talks/state-of-libp2p/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk &ldquo;Peer-to-peer hole punching without centralized infrastructure&rdquo; @FOSDEM</h3>
+      <div class="archive-meta">February 6, 2022</div>
+      <a class="entry-link" aria-label="link to Talk &#34;Peer-to-peer hole punching without centralized infrastructure&#34; @FOSDEM" href="https://max-inden.de/talks/peer-to-peer-hole-punching-without-centralized-infrastructure/"></a>
+    </div>
+  </div>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2021">
+    <a class="archive-header-link" href="#2021">2021</a>
+    <sup class="archive-count">&nbsp;1</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk Intro to libp2p</h3>
+      <div class="archive-meta">July 20, 2021</div>
+      <a class="entry-link" aria-label="link to Talk Intro to libp2p" href="https://max-inden.de/talks/intro-to-libp2p/"></a>
+    </div>
+  </div>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2019">
+    <a class="archive-header-link" href="#2019">2019</a>
+    <sup class="archive-count">&nbsp;1</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk Optimizing Metric Rendering in kube-state-metrics</h3>
+      <div class="archive-meta">May 22, 2019</div>
+      <a class="entry-link" aria-label="link to Talk Optimizing Metric Rendering in kube-state-metrics" href="https://max-inden.de/talks/optimizing-metric-rendering-in-kube-state-metrics/"></a>
+    </div>
+  </div>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2018">
+    <a class="archive-header-link" href="#2018">2018</a>
+    <sup class="archive-count">&nbsp;1</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk Self-Service Monitoring</h3>
+      <div class="archive-meta">September 26, 2018</div>
+      <a class="entry-link" aria-label="link to Talk Self-Service Monitoring" href="https://max-inden.de/talks/self-service-monitoring/"></a>
+    </div>
+  </div>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2017">
+    <a class="archive-header-link" href="#2017">2017</a>
+    <sup class="archive-count">&nbsp;4</sup>
+  </h2>
+  <div class="archive-posts">
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk Self-healing Kubernetes</h3>
+      <div class="archive-meta">October 22, 2017</div>
+      <a class="entry-link" aria-label="link to Talk Self-healing Kubernetes" href="https://max-inden.de/talks/self-healing-k8s/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk Intro to Kubernetes</h3>
+      <div class="archive-meta">August 19, 2017</div>
+      <a class="entry-link" aria-label="link to Talk Intro to Kubernetes" href="https://max-inden.de/talks/introduction-to-k8s/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk End-to-end monitoring with the Prometheus Operator</h3>
+      <div class="archive-meta">August 19, 2017</div>
+      <a class="entry-link" aria-label="link to Talk End-to-end monitoring with the Prometheus Operator" href="https://max-inden.de/talks/end-to-end-monitoring-with-the-prometheus-operator/"></a>
+    </div>
+    <div class="archive-entry">
+      <h3 class="archive-entry-title entry-hint-parent">Talk Improving user and developer experience of the Alertmanager UI</h3>
+      <div class="archive-meta">August 18, 2017</div>
+      <a class="entry-link" aria-label="link to Talk Improving user and developer experience of the Alertmanager UI" href="https://max-inden.de/talks/improving-user-and-developer-experience-of-the-alertmanager-ui/"></a>
+    </div>
+  </div>
+</div>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://max-inden.de/">Max Inden</a></span> · 
 
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-
-
-
-
-
+</script>
 </body>
+
 </html>
